@@ -1,6 +1,33 @@
 from lxml import etree
 import re
 
+'''
+Elements to add 2016-02-11:
+    typeOfResource
+    genre + URI & authority
+    originInfo
+        dates
+        publisher
+        place of pub
+        issuance
+    languages text & code
+    physDesc
+        extent
+        notes
+        digitalOrigin
+    abstract
+    notes
+    subject
+        URI
+        authority (& split by authority... i.e. colocate TGM, LCSH, & FAST)
+        geographicCode
+    realtedItem
+    relatedItem (archival host collection)
+        purl to finding aid
+        collection title
+    location - physical location
+    recordInfo (??)
+'''
 def nameGen(names, fullName):
     keys = []
     for key in names.keys():
@@ -94,9 +121,9 @@ def fsudl_pid_search(mods_record, nameSpace_dict):
 def mods_subject_generator(mods_record, nameSpace_dict):
     allSubjects = []
     for subject in mods_record.iterfind('.//{%s}subject' % nameSpace_dict['mods']):
-        print('subject loop')
         fullSubject = []
-        for subjectTerm in subject.xpath('{%s}subject::child' % nameSpace_dict['mods']):
+        for subjectTerm in subject:
             fullSubject.append(subjectTerm.text)
-    allSubjects.append(fullSubject)
+        if fullSubject:
+            allSubjects.append(fullSubject)
     return allSubjects

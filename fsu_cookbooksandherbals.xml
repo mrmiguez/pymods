@@ -613,6 +613,10 @@
   <mods:note>Leaf [1] (t.p.): Theologia naturalis sive liber creaturarum specialiter de homine et de natura eius inquantum homo, et de his que sunt ei necessaria ad cognoscendum se ipsum &amp; deum, et omne debitum ad quod homo tenetur et obligatur tam deo quam proximo.</mods:note>
   <mods:note>&quot;Tabula alphabetica&quot;: leaves 2-[6].</mods:note>
   <mods:note>Rubricated; initials supplied in red.</mods:note>
+  <mods:subject>
+    <mods:topic>Matthew</mods:topic>
+    <mods:topic>Miguez</mods:topic>
+  </mods:subject>
   <mods:subject authority="lcsh">
     <mods:topic>Natural theology</mods:topic>
     <mods:genre>Early works to 1800</mods:genre>
