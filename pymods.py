@@ -29,6 +29,12 @@ Elements to add 2016-02-11:
     recordInfo (??)
 '''
 
+def mods_typeOfResource(mods_record, nameSpace_dict):
+    if mods_record.find('.//{%s}typeOfResource' % nameSpace_dict['mods']) is not None:
+        typeOfResource = mods_record.find('.//{%s}typeOfResource' % nameSpace_dict['mods'])
+        return typeOfResource.text
+    else:
+        return None
 
 def nameGen(names, fullName):
     keys = []
