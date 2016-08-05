@@ -4,13 +4,13 @@ import re
 '''
 Elements to add 2016-02-11:
 
-    genre + URI & authority
+
     originInfo
         dates
         publisher
         place of pub
         issuance
-    languages text & code
+
     physDesc
         extent
         notes
@@ -48,12 +48,15 @@ def mods_genre_text(mods_record, nameSpace_dict):
     else:
         return None
 
-def mods_genre_URI(mods_record, nameSpace_dict):
-    if mods_record.find('.//{%s}genre' % nameSpace_dict['mods']).attrib['valueURI'] is not None:
-        genreURI = mods_record.find('.//{%s}genre' % nameSpace_dict['mods']).attrib['valueURI']
-        return genreURI
-    else:
-        return None
+def mods_genre_URIs(mods_record, nameSpace_dict):
+    genreURIs = []
+    for genre_elem in mods_record.iterfind('.//{%s}genre' % nameSpace_dict['mods']):
+        if len(genre_elem.attrib) >= 1:
+            genreURI = {}
+            for key in genre_elem.attrib.keys():
+                genreURI[key] = genre_elem.attrib[key]
+            genreURIs.append(genreURI)
+    return genreURIs
   
 
 def mods_typeOfResource(mods_record, nameSpace_dict):
