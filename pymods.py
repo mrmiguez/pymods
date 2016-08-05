@@ -41,12 +41,19 @@ def mods_language(mods_record, nameSpace_dict):
         return None
 
 
-def mods_genre(mods_record, nameSpace_dict):
+def mods_genre_text(mods_record, nameSpace_dict):
     if mods_record.find('.//{%s}genre' % nameSpace_dict['mods']) is not None:
         genre = mods_record.find('.//{%s}genre' % nameSpace_dict['mods'])
         return genre.text
     else:
-        return None       
+        return None
+
+def mods_genre_URI(mods_record, nameSpace_dict):
+    if mods_record.find('.//{%s}genre' % nameSpace_dict['mods']).attrib['valueURI'] is not None:
+        genreURI = mods_record.find('.//{%s}genre' % nameSpace_dict['mods']).attrib['valueURI']
+        return genreURI
+    else:
+        return None
   
 
 def mods_typeOfResource(mods_record, nameSpace_dict):
@@ -55,6 +62,7 @@ def mods_typeOfResource(mods_record, nameSpace_dict):
         return typeOfResource.text
     else:
         return None
+
 
 def nameGen(names, fullName):
     keys = []
