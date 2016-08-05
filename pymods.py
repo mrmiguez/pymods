@@ -3,7 +3,7 @@ import re
 
 '''
 Elements to add 2016-02-11:
-    typeOfResource
+
     genre + URI & authority
     originInfo
         dates
@@ -28,6 +28,26 @@ Elements to add 2016-02-11:
     location - physical location
     recordInfo (??)
 '''
+def mods_language(mods_record, nameSpace_dict):
+    allLanguages = []
+    if mods_record.find('.//{%s}language' % nameSpace_dict['mods']) is not None:
+        for language in mods_record.iterfind('.//{%s}language' % nameSpace_dict['mods']):
+            languages = {}
+            for term in language.iterchildren():
+                languages[term.attrib['type']] = term.text
+            allLanguages.append(languages)
+        return allLanguages
+    else:
+        return None
+
+
+def mods_genre(mods_record, nameSpace_dict):
+    if mods_record.find('.//{%s}genre' % nameSpace_dict['mods']) is not None:
+        genre = mods_record.find('.//{%s}genre' % nameSpace_dict['mods'])
+        return genre.text
+    else:
+        return None       
+  
 
 def mods_typeOfResource(mods_record, nameSpace_dict):
     if mods_record.find('.//{%s}typeOfResource' % nameSpace_dict['mods']) is not None:
