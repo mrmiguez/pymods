@@ -14,9 +14,9 @@ Elements to add 2016-02-11:
     physDesc
         extent
         notes
-        digitalOrigin
+
     abstract
-    notes
+
     subject
         URI
         authority (& split by authority... i.e. colocate TGM, LCSH, & FAST)
@@ -28,6 +28,20 @@ Elements to add 2016-02-11:
     location - physical location
     recordInfo (??)
 '''
+def mods_note(mods_record, nameSpace_dict):
+    allNotes = []
+    for note in mods_record.iterfind('./{%s}note' % nameSpace_dict['mods']):
+        allNotes.append(note.text)
+    return allNotes
+
+
+def mods_digitalOrigin(mods_record, nameSpace_dict):
+    if mods_record.find('.//{%s}digitalOrigin' % nameSpace_dict['mods']) is not None:
+        return mods_record.find('.//{%s}digitalOrigin' % nameSpace_dict['mods']).text
+    else:
+        return None
+
+
 def mods_language(mods_record, nameSpace_dict):
     allLanguages = []
     if mods_record.find('.//{%s}language' % nameSpace_dict['mods']) is not None:
