@@ -6,6 +6,6 @@ NS = {'oai_dc': 'http://www.openarchives.org/OAI/2.0/oai_dc/', 'dc': 'http://pur
 tree = etree.parse('fsu_cookbooksandherbals.xml')
 root = tree.getroot()
 for record in root.iterfind('.//{%s}mods' % NS['mods']):
-    if pymods.mods_note(record, NS) is not None:
-        for note in pymods.mods_note(record, NS):
-            print(pymods.fsudl_pid_search(record, NS), ':', note)
+#    if pymods.mods_note(record, NS) is not None:
+    for subject in pymods.mods_subject_generator(record, NS):
+        print(pymods.fsudl_pid_search(record, NS), ':', subject)

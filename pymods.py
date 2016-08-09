@@ -31,7 +31,13 @@ Elements to add 2016-02-11:
 def mods_note(mods_record, nameSpace_dict):
     allNotes = []
     for note in mods_record.iterfind('./{%s}note' % nameSpace_dict['mods']):
-        allNotes.append(note.text)
+        if len(note.attrib) >= 1:
+            if note.attrib['type'] is not None:
+                #other option: allNotes.append('{0} : {1}'.format(note.attrib['type'], note.text))
+                typed_note = {note.attrib['type'] : note.text}
+                allNotes.append(typed_note)
+        else:
+            allNotes.append(note.text)
     return allNotes
 
 
@@ -196,8 +202,9 @@ def mods_subject_generator(mods_record, nameSpace_dict):
     allSubjects = []
     for subject in mods_record.iterfind('.//{%s}subject' % nameSpace_dict['mods']):
         fullSubject = []
-        for subjectTerm in subject:
-            fullSubject.append(subjectTerm.text)
-        if fullSubject:
-            allSubjects.append(fullSubject)
+        for subjectTerm in subject.iterchildren():
+            fullSubject.append({subjectTerm.tag[28: ] : subjectTerm.text})
+#        if fullSubject:
+#            allSubjects.append(fullSubject)
+        allSubjects.append(fullSubject)
     return allSubjects
