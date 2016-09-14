@@ -210,3 +210,13 @@ class fsudl:
             match = pid.search(identifier.text)
             if match:
                 return match.group()
+                
+                
+class oai_dc:
+    
+    def oai_pid_search(record, NS):
+        pid = re.compile('fsu_[0-9]*')
+        for identifier in record.iterfind('.//identifier'):
+            match = pid.search(identifier.text)
+            if match:
+                return match.group().replace('_',':')
