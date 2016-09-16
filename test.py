@@ -3,5 +3,5 @@ from lxml import etree
 from pymods import mods, fsudl, oai_dc
 
 for record in mods.load('fsu_cookbooksandherbals.xml'):
-    for name in mods.name_generator(record):
-        print(fsudl.pid_search(record), ':', name)
+    for title in mods.title_generator(record):
+        print(fsudl.pid_search(record), ':', title)

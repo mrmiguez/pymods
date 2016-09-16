@@ -173,7 +173,7 @@ class mods:
             else:
                 titleFull = title.find('./{%s}title' % nameSpace_dict['mods']).text
             allTitles.append(titleFull)
-            return allTitles
+        return allTitles
 
 
     def date_generator(record, nameSpace_dict=nameSpace_default):
