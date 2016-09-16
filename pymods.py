@@ -11,9 +11,9 @@ Elements to add 2016-02-11:
 
     originInfo
         dates
-        publisher
-        place of pub
-        issuance
+
+
+
     physDesc
         extent
         notes
@@ -38,6 +38,49 @@ class mods:
         for record in root.iterfind('.//{%s}mods' % nameSpace_dict['mods']):
             record_list.append(record)
         return record_list
+
+
+    def extent(record, nameSpace_dict=nameSpace_default):
+        allExtents = []
+        if record.find('.//{%s}extent' % nameSpace_dict['mods']) is not None:
+            for extent in record.iterfind('.//{%s}extent' % nameSpace_dict['mods']):
+                allExtents.append(extent.text)
+        else:
+            allExtents.append('None')
+        return allExtents
+
+
+    def issuance(record, nameSpace_dict=nameSpace_default):
+        allIssuances = []
+        if record.find('.//{%s}issuance' % nameSpace_dict['mods']) is not None:
+            for issuance in record.iterfind('.//{%s}issuance' % nameSpace_dict['mods']):
+                allIssuances.append(issuance.text)
+        else:
+            allIssuances.append('None')
+        return allIssuances
+
+
+    def publication_place(record, nameSpace_dict=nameSpace_default):
+        allPlaces = []
+        if record.find('.//{%s}place' % nameSpace_dict['mods']) is not None:
+            for place in record.iterfind('.//{%s}place' % nameSpace_dict['mods']):
+                places = {}
+                for term in place.iterchildren():
+                    places[term.attrib['type']] = term.text
+                allPlaces.append(places)
+        else:
+            allPlaces.append('None')
+        return allPlaces
+
+   
+    def publisher(record, nameSpace_dict=nameSpace_default):
+        allPublishers = []
+        if record.find('.//{%s}publisher' % nameSpace_dict['mods']) is not None:
+            for publisher in record.iterfind('.//{%s}publisher' % nameSpace_dict['mods']):
+                allPublishers.append(publisher.text)
+        else:
+            allPublishers.append('None')
+        return allPublishers
 
 
     def note(record, nameSpace_dict=nameSpace_default):
