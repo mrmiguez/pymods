@@ -2,6 +2,6 @@
 from lxml import etree
 from pymods import mods, fsudl, oai_dc
 
-for record in oai_dc.load('fsu_bepress_modern_etds.mods.xml'):
-#    for subject in mods.subject_generator(record):
-        print(oai_dc.pid_search(record))#, ':', subject)
+for record in mods.load('fsu_cookbooksandherbals.xml'):
+    for name in mods.name_generator(record):
+        print(fsudl.pid_search(record), ':', name)

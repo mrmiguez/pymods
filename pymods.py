@@ -103,9 +103,9 @@ class mods:
         keys = []
         for key in names.keys():
             keys.append(key)
-        if all(x in keys for x in ['family', 'given', 'termsOfAddress', 'date']):
-            fullName = fullName + names['family'] + ', ' + names['given'] + ', ' + names['termsOfAddress'] + ' ' + names[
-                'date']
+        if all(x in keys for x in ['family', 'given', 
+                                   'termsOfAddress', 'date']):
+            fullName = fullName + names['family'] + ', ' + names['given'] + ', ' + names['termsOfAddress'] + ' ' + names['date']
         elif all(x in keys for x in ['family', 'given', 'date']):
             fullName = fullName + names['family'] + ', ' + names['given'] + ' ' + names['date']
         elif all(x in keys for x in ['family', 'given', 'termsOfAddress']):
@@ -135,21 +135,25 @@ class mods:
 
     def name_generator(record, nameSpace_dict=nameSpace_default):
         allNames = []
-        for name in record.iterfind('./{%s}name' % nameSpace_dict['mods']):
-            fullName = ""
-            if len(name.findall('./{%s}namePart' % nameSpace_dict['mods'])) > 1:
-                # Multipart name
-                names = {}
-                for namePart in name.findall('./{%s}namePart' % nameSpace_dict['mods']):
-                    if 'type' not in namePart.attrib.keys():
-                        fullName = namePart.text
-                    elif 'type' in namePart.attrib.keys():
-                        names[namePart.attrib['type']] = namePart.text
-                fullName = nameGen(names, fullName)
-            else:
-                # Single part name
-                fullName = fullName + name.find('./{%s}namePart' % nameSpace_dict['mods']).text
-            allNames.append(fullName)
+        if len(record.findall('./{%s}name' % nameSpace_dict['mods'])) > 0:
+            for name in record.iterfind('./{%s}name' % nameSpace_dict['mods']):
+                fullName = ""
+                if len(name.findall('./{%s}namePart' % nameSpace_dict['mods'])) > 1:
+                    # Multipart name
+                    names = {}
+                    for namePart in name.findall('./{%s}namePart' % nameSpace_dict['mods']):
+                        if 'type' not in namePart.attrib.keys():
+                            fullName = namePart.text
+                        elif 'type' in namePart.attrib.keys():
+                            names[namePart.attrib['type']] = namePart.text
+                    fullName = mods.nameGen(names, fullName)
+                else:
+                    # Single part name
+                    fullName = fullName + name.find('./{%s}namePart' % nameSpace_dict['mods']).text
+                allNames.append(fullName)
+            return allNames
+        else:
+            allNames.append('None')
             return allNames
 
 
