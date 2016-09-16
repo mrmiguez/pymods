@@ -31,6 +31,15 @@ Elements to add 2016-02-11:
 '''
 class mods:
 
+    def load(input_file, nameSpace_dict=nameSpace_default):
+        record_list = []
+        tree = etree.parse(input_file)
+        root = tree.getroot()
+        for record in root.iterfind('.//{%s}mods' % nameSpace_dict['mods']):
+            record_list.append(record)
+        return record_list
+
+
     def note(record, nameSpace_dict=nameSpace_default):
         allNotes = []
         for note in record.iterfind('./{%s}note' % nameSpace_dict['mods']):
@@ -214,10 +223,25 @@ class fsudl:
                 
                 
 class oai_dc:
+
+'''
+Some implementations of the OAI-PMH standard do not include the default namespace for
+oai_dc. A future release will include a test for inclusion of the default namespace,
+and add it to the file when not present.
+'''
+
+    def load(input_file, nameSpace_dict=nameSpace_default):
+        record_list = []
+        tree = etree.parse(input_file)
+        root = tree.getroot()
+        for record in root.iterfind('.//{%s}record' % nameSpace_dict['oai_dc']):
+            record_list.append(record)
+        return record_list
     
-    def oai_pid_search(record, NS=nameSpace_default):
+
+    def pid_search(record, nameSpace_dict=nameSpace_default):
         pid = re.compile('fsu_[0-9]*')
-        for identifier in record.iterfind('.//identifier'):
+        for identifier in record.iterfind('.//{%s}identifier' % nameSpace_dict['oai_dc']):
             match = pid.search(identifier.text)
             if match:
                 return match.group().replace('_',':')

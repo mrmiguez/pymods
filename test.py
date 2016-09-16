@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 from lxml import etree
-from pymods import mods, fsudl
+from pymods import mods, fsudl, oai_dc
 
-tree = etree.parse('fsu_cookbooksandherbals.xml')
-root = tree.getroot()
-for record in root.iterfind('.//{%s}mods' % 'http://www.loc.gov/mods/v3'):
-#    if pymods.mods_note(record, NS) is not None:
-    for subject in mods.subject_generator(record):
-        print(fsudl.pid_search(record), ':', subject)
+for record in oai_dc.load('fsu_bepress_modern_etds.mods.xml'):
+#    for subject in mods.subject_generator(record):
+        print(oai_dc.pid_search(record))#, ':', subject)
