@@ -1,22 +1,23 @@
 from lxml import etree
 import re
 
+nameSpace_default = {'oai_dc': 'http://www.openarchives.org/OAI/2.0/oai_dc/', 
+                     'dc': 'http://purl.org/dc/elements/1.1/', 
+                     'mods': 'http://www.loc.gov/mods/v3', 
+                     'dcterms': 'http://purl.org/dc/terms'}
+
 '''
 Elements to add 2016-02-11:
-
 
     originInfo
         dates
         publisher
         place of pub
         issuance
-
     physDesc
         extent
         notes
-
     abstract
-
     subject
         URI
         authority (& split by authority... i.e. colocate TGM, LCSH, & FAST)
@@ -30,7 +31,7 @@ Elements to add 2016-02-11:
 '''
 class mods:
 
-    def note(record, nameSpace_dict):
+    def note(record, nameSpace_dict=nameSpace_default):
         allNotes = []
         for note in record.iterfind('./{%s}note' % nameSpace_dict['mods']):
             if len(note.attrib) >= 1:
@@ -50,7 +51,7 @@ class mods:
             return None
 
 
-    def language(record, nameSpace_dict):
+    def language(record, nameSpace_dict=nameSpace_default):
         allLanguages = []
         if record.find('.//{%s}language' % nameSpace_dict['mods']) is not None:
             for language in record.iterfind('.//{%s}language' % nameSpace_dict['mods']):
@@ -63,14 +64,14 @@ class mods:
             return None
 
 
-    def genre_text(record, nameSpace_dict):
+    def genre_text(record, nameSpace_dict=nameSpace_default):
         if record.find('.//{%s}genre' % nameSpace_dict['mods']) is not None:
             genre = record.find('.//{%s}genre' % nameSpace_dict['mods'])
             return genre.text
         else:
             return None
 
-    def genre_URIs(record, nameSpace_dict):
+    def genre_URIs(record, nameSpace_dict=nameSpace_default):
         genreURIs = []
         for genre_elem in record.iterfind('.//{%s}genre' % nameSpace_dict['mods']):
             if len(genre_elem.attrib) >= 1:
@@ -81,7 +82,7 @@ class mods:
         return genreURIs
       
 
-    def typeOfResource(record, nameSpace_dict):
+    def typeOfResource(record, nameSpace_dict=nameSpace_default):
         if record.find('.//{%s}typeOfResource' % nameSpace_dict['mods']) is not None:
             typeOfResource = record.find('.//{%s}typeOfResource' % nameSpace_dict['mods'])
             return typeOfResource.text
@@ -123,7 +124,7 @@ class mods:
         return fullName
 
 
-    def name_generator(record, nameSpace_dict):
+    def name_generator(record, nameSpace_dict=nameSpace_default):
         allNames = []
         for name in record.iterfind('./{%s}name' % nameSpace_dict['mods']):
             fullName = ""
@@ -143,7 +144,7 @@ class mods:
             return allNames
 
 
-    def title_generator(record, nameSpace_dict):
+    def title_generator(record, nameSpace_dict=nameSpace_default):
         allTitles = []
         for title in record.iterfind('.//{%s}titleInfo' % nameSpace_dict['mods']):
             if title.find('./{%s}nonSort' % nameSpace_dict['mods']) is not None and title.find(
@@ -162,7 +163,7 @@ class mods:
             return allTitles
 
 
-    def date_generator(record, nameSpace_dict):
+    def date_generator(record, nameSpace_dict=nameSpace_default):
         if record.find('./{%s}originInfo/{%s}copyrightDate' % (
         nameSpace_dict['mods'], nameSpace_dict['mods'])) is not None:
             date = record.find(
@@ -183,7 +184,7 @@ class mods:
             date = "No date"
         return date
         
-    def subject_generator(record, nameSpace_dict):
+    def subject_generator(record, nameSpace_dict=nameSpace_default):
         allSubjects = []
         for subject in record.iterfind('.//{%s}subject' % nameSpace_dict['mods']):
             fullSubject = []
@@ -196,7 +197,7 @@ class mods:
 
 class fsudl:
     
-    def purl_search(mods_record, nameSpace_dict):
+    def purl_search(mods_record, nameSpace_dict=nameSpace_default):
         purl = re.compile('((https?):((//)|(\\\\))+([\w\d:#@%/;$()~_?\+-=\\\.&](#!)?)*)')
         for url in mods_record.iterfind('./{%s}location/{%s}url' % (nameSpace_dict['mods'], nameSpace_dict['mods'])):
             match = purl.search(url.text)
@@ -204,7 +205,7 @@ class fsudl:
                 return match.group()
 
 
-    def pid_search(mods_record, nameSpace_dict):
+    def pid_search(mods_record, nameSpace_dict=nameSpace_default):
         pid = re.compile('fsu:[0-9]*')
         for identifier in mods_record.iterfind('.//{%s}identifier' % nameSpace_dict['mods']):
             match = pid.search(identifier.text)
@@ -214,7 +215,7 @@ class fsudl:
                 
 class oai_dc:
     
-    def oai_pid_search(record, NS):
+    def oai_pid_search(record, NS=nameSpace_default):
         pid = re.compile('fsu_[0-9]*')
         for identifier in record.iterfind('.//identifier'):
             match = pid.search(identifier.text)
