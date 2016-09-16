@@ -15,7 +15,7 @@ Elements to add 2016-02-11:
 
 
     physDesc
-        extent
+
         notes
     abstract
     subject
@@ -38,6 +38,16 @@ class mods:
         for record in root.iterfind('.//{%s}mods' % nameSpace_dict['mods']):
             record_list.append(record)
         return record_list
+
+
+    def physicalLocation(record, nameSpace_dict=nameSpace_default):
+        allLocations = []
+        if record.find('.//{%s}physicalLocation' % nameSpace_dict['mods']) is not None:
+            for location in record.iterfind('.//{%s}physicalLocation' % nameSpace_dict['mods']):
+                allLocations.append(location.text)
+        else:
+            allLocations.append(None)
+        return allLocations
 
 
     def extent(record, nameSpace_dict=nameSpace_default):
