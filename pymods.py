@@ -1,5 +1,5 @@
-from lxml import etree
 import re
+from lxml import etree
 
 nameSpace_default = {'oai_dc': 'http://www.openarchives.org/OAI/2.0/oai_dc/', 
                      'dc': 'http://purl.org/dc/elements/1.1/', 
@@ -224,11 +224,12 @@ class fsudl:
                 
 class oai_dc:
 
-'''
-Some implementations of the OAI-PMH standard do not include the default namespace for
-oai_dc. A future release will include a test for inclusion of the default namespace,
-and add it to the file when not present.
-'''
+    '''
+    Some implementations of the OAI-PMH standard do not include the
+    default namespace for oai_dc. A future release will include a test
+    for inclusion of the default namespace,and add it to the file when
+    not present.
+    '''
 
     def load(input_file, nameSpace_dict=nameSpace_default):
         record_list = []
