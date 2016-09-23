@@ -42,28 +42,22 @@ class mods:
 
     def abstract(record, nameSpace_dict=nameSpace_default):
         
-        '''
-        Currently returning a key error 
-        '''
+
+
+
 
         allAbstracts = []
         if record.find('./{%s}abstract' % nameSpace_default['mods']) is not None:
             for abstract in record.iterfind('./{%s}abstract' % nameSpace_dict['mods']):
                 if len(abstract.attrib) >= 1:
-                    print(abstract.attrib.keys(), abstract.attrib.values())
-
-                    if abstract.attrib['type'] is not None:
-                        print('TYPE-TRACE')
+                    if 'type' in abstract.attrib.keys():
                         typed_abstract = {abstract.attrib['type'] : abstract.text}
                         allAbstracts.append(typed_abstract)
-#                    elif abstract.attrib['displayLabel'] is not None:
-#                        print('LABEL-TRACE')
-#                        labeled_abstract = {abstract.attrib['displayLabel'] : abstract.text}
-#                        allAbstracts.append(labeled_abstract)
+                    elif 'displayLabel' in abstract.attrib.keys():
+                        labeled_abstract = {abstract.attrib['displayLabel'] : abstract.text}
+                        allAbstracts.append(labeled_abstract)
                     else:
-                        print('OTHER-TRACE')
                         allAbstracts.append(abstract.text)
-
                 else:
                     allAbstracts.append(abstract.text)
         return allAbstracts
