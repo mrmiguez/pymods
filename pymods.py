@@ -152,7 +152,7 @@ class mods:
             return None
 
 
-    def nameGen(names, fullName):
+    def _nameGen_(names, fullName):
         keys = []
         for key in names.keys():
             keys.append(key)
@@ -199,7 +199,7 @@ class mods:
                             fullName = namePart.text
                         elif 'type' in namePart.attrib.keys():
                             names[namePart.attrib['type']] = namePart.text
-                    fullName = mods.nameGen(names, fullName)
+                    fullName = mods._nameGen_(names, fullName)
                 else:
                     # Single part name
                     fullName = fullName + name.find('./{%s}namePart' % nameSpace_dict['mods']).text
