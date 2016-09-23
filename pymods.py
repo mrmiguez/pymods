@@ -14,9 +14,9 @@ Elements to add 2016-02-11:
 
 
 
-    physDesc
 
-        notes
+
+
     abstract
     subject
         URI
@@ -38,6 +38,43 @@ class mods:
         for record in root.iterfind('.//{%s}mods' % nameSpace_dict['mods']):
             record_list.append(record)
         return record_list
+
+
+    def abstract(record, nameSpace_dict=nameSpace_default):
+        
+        '''
+        Currently returning a key error 
+        '''
+
+        allAbstracts = []
+        if record.find('./{%s}abstract' % nameSpace_default['mods']) is not None:
+            for abstract in record.iterfind('./{%s}abstract' % nameSpace_dict['mods']):
+                if len(abstract.attrib) >= 1:
+                    print(abstract.attrib.keys(), abstract.attrib.values())
+
+                    if abstract.attrib['type'] is not None:
+                        print('TYPE-TRACE')
+                        typed_abstract = {abstract.attrib['type'] : abstract.text}
+                        allAbstracts.append(typed_abstract)
+#                    elif abstract.attrib['displayLabel'] is not None:
+#                        print('LABEL-TRACE')
+#                        labeled_abstract = {abstract.attrib['displayLabel'] : abstract.text}
+#                        allAbstracts.append(labeled_abstract)
+                    else:
+                        print('OTHER-TRACE')
+                        allAbstracts.append(abstract.text)
+
+                else:
+                    allAbstracts.append(abstract.text)
+        return allAbstracts
+
+
+    def physicalDescription_note(record, nameSpace_dict=nameSpace_default):
+        allNotes = []
+        for physicalDescription in record.iterfind('./{%s}physicalDescription' % nameSpace_dict['mods']):
+            for note in physicalDescription.iterfind('./{%s}note' % nameSpace_dict['mods']):
+                allNotes.append(note.text)
+        return allNotes
 
 
     def physicalLocation(record, nameSpace_dict=nameSpace_default):

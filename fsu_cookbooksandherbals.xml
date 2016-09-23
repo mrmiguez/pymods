@@ -7,7 +7,8 @@
                 Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</mods:accessCondition>
   <mods:titleInfo>
     <mods:title>Musaeum Regalis Societatis, or A catalogue &amp; description of the natural and artificial rarities belonging to the Royal Society and preserved at Gresham Colledge</mods:title>
-  </mods:titleInfo>
+</mods:titleInfo>
+<mods:abstract type="summary">TEST01</mods:abstract>
   <mods:titleInfo type="alternative">
     <mods:title>Catalogue &amp; description of the natural and artificial rarities belonging to the Royal Society and preserved at Gresham Colledge</mods:title>
   </mods:titleInfo>
@@ -69,6 +70,7 @@
     <mods:digitalOrigin>reformatted digital</mods:digitalOrigin>
     <mods:form authority="marcform">print</mods:form>
     <mods:extent>[12], 386, [4], 43 p., [1], 31 leaves of plates : ill., port. ; 34 cm (fol.)</mods:extent>
+    <mods:note>test</mods:note>
   </mods:physicalDescription>
   <mods:note type="statement of responsibility">made by Nehemjah Grew M.D. ; fellow of the Royal Society, and of the Colledge of Physitians ; whereunto is subjoyned the comparative anatomy of stomachs and guts by the same author.</mods:note>
   <mods:note type="language">In English with Greek references.</mods:note>
@@ -204,7 +206,8 @@
   <mods:titleInfo>
     <mods:title>New cyclopædia of botany and complete book of herbs</mods:title>
     <mods:subTitle>forming a history and description of all plants, British or foreign</mods:subTitle>
-  </mods:titleInfo>
+</mods:titleInfo>
+<mods:abstract displayLabel='scope and contents'>TEST02</mods:abstract>
   <mods:titleInfo type="alternative">
     <mods:title>The cyclopædia of botany</mods:title>
   </mods:titleInfo>
@@ -268,7 +271,8 @@
   <mods:titleInfo>
     <mods:title>Caroli Clvsii Atrebat</mods:title>
     <mods:subTitle>Rariorum aliquot stirpium per Hispanias obseruatarum Historia, libris dvobvs expressa...</mods:subTitle>
-  </mods:titleInfo>
+</mods:titleInfo>
+<mods:abstract>TEST03</mods:abstract>
   <mods:name type="personal" usage="primary">
     <mods:namePart>Clusius, Carolus</mods:namePart>
     <mods:namePart type="date">1526-1609</mods:namePart>
