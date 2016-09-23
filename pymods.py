@@ -8,16 +8,8 @@ nameSpace_default = {'oai_dc': 'http://www.openarchives.org/OAI/2.0/oai_dc/',
 
 '''
 Elements to add 2016-02-11:
-
     originInfo
         dates
-
-
-
-
-
-
-    abstract
     subject
         URI
         authority (& split by authority... i.e. colocate TGM, LCSH, & FAST)
@@ -41,11 +33,6 @@ class mods:
 
 
     def abstract(record, nameSpace_dict=nameSpace_default):
-        
-
-
-
-
         allAbstracts = []
         if record.find('./{%s}abstract' % nameSpace_default['mods']) is not None:
             for abstract in record.iterfind('./{%s}abstract' % nameSpace_dict['mods']):
