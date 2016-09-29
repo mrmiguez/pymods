@@ -115,12 +115,16 @@ class mods:
         allNotes = []
         for note in record.iterfind('./{%s}note' % nameSpace_dict['mods']):
             if len(note.attrib) >= 1:
-                if note.attrib['type'] is not None:
-                    #other option: allNotes.append('{0} : {1}'.format(note.attrib['type'], note.text))
+                if 'type' in note.attrib.keys():
                     typed_note = {note.attrib['type'] : note.text}
                     allNotes.append(typed_note)
+                elif 'displayLabel' in note.attrib.keys():
+                    labeled_note = {note.attrib['displayLabel'] : note.text}
+                    allNotes.append(labeled_note)
+                else:
+                    allNotes.append(note.text)
             else:
-                allNotes.append(note.text)
+                allANotes.append(note.text)
         return allNotes
 
 
