@@ -22,14 +22,29 @@ Elements to add 2016-02-11:
     recordInfo (??)
 '''
 class mods:
-
+    '''
+    class Error(Exception):
+        pass
+        
+    class No_MODS_Error(Error):
+        def __init__(self, expression, message):
+            self.expression = expression
+            self.message = message
+    '''
     def load(input_file, nameSpace_dict=nameSpace_default):
-        record_list = []
         tree = etree.parse(input_file)
         root = tree.getroot()
-        for record in root.iterfind('.//{%s}mods' % nameSpace_dict['mods']):
-            record_list.append(record)
-        return record_list
+        if len(root.findall('.//{%s}mods' % nameSpace_dict['mods'])) > 1:
+            record_list = []
+            for record in root.iterfind('.//{%s}mods' % nameSpace_dict['mods']):
+                record_list.append(record)
+            return record_list
+        #elif len(root.findall('.//{%s}mods' % nameSpace_dict['mods'])) == 1:
+        else:
+            return root
+#        else:
+#            print('No MODS record detected.')    
+        
 
 
     def abstract(record, nameSpace_dict=nameSpace_default):
