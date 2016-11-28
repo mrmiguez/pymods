@@ -315,6 +315,12 @@ class fsudl:
             if match:
                 return match.group()
                 
+    def local_identifier(mods_record, nameSpace_dict=nameSpace_default):
+        for identifier in mods_record.iterfind('.//{%s}identifier' % nameSpace_dict['mods']):
+            if 'type' in identifier.attrib is not None:
+                if 'IID' == identifier.attrib['type']:
+                    return identifier.text
+                
                 
 class oai_dc:
 
