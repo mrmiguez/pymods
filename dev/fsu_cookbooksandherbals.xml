@@ -4816,7 +4816,6 @@
       <mods:placeTerm type="text">London</mods:placeTerm>
     </mods:place>
     <mods:publisher>Printed for Richard Montagu</mods:publisher>
-    <mods:dateIssued encoding="marc">1730</mods:dateIssued>
     <mods:issuance>monographic</mods:issuance>
   </mods:originInfo>
   <mods:language>
