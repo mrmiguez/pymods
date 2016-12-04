@@ -1,4 +1,4 @@
-<repository xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"      xmlns:dc="http://purl.org/dc/elements/1.1/"      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instanc">
+<repository xmlns="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"      xmlns:dc="http://purl.org/dc/elements/1.1/"      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instanc">
 <record><header><identifier>oai:fsu.digital.flvc.org:fsu_210608</identifier><datestamp>2015-10-19T19:18:41Z</datestamp><setSpec>fsu_cookbooksandherbals</setSpec></header><metadata>
 <mods:mods xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
   <mods:accessCondition type="useAndReproduction">Use of this item is provided for non-commercial, personal, educational, and
