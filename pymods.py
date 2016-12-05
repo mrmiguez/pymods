@@ -474,7 +474,3 @@ class OAI(MODSReader):
             match = pid.search(identifier.text)
             if match:
                 return match.group().replace('_', ':')
-
-mods = MODS('dev/fsu_cookbooksandherbals.xml')
-for record in mods.record_list:
-    print(MODS.subject(record))
