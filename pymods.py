@@ -323,7 +323,38 @@ class MODS(MODSReader):
             all_publishers.append('None')
         return all_publishers
 
-    #def subject(record):
+    def _subject_parser_(subject):
+        """
+
+        :return:
+        """
+        parts = ['authority', 'authorityURI', 'valueURI']
+        if subject.tag == '{0}subject'.format(nameSpace_default['mods']) or subject.tag == '{0}name'.format(nameSpace_default['mods']):
+            subject_parts = {}
+        else:
+            subject_parts = {'type': subject.tag, 'term': subject.text}
+        children = []
+        for part in parts:
+            if part in subject.attrib.keys():
+                subject_parts.update({part: subject.attrib[part]})
+            else:
+                subject_parts.update({part: None})
+        for child in subject.iterchildren():
+            children.append(MODS._subject_parser_(child))
+        subject_parts.update({'children': children})
+        return subject_parts
+
+
+    def subject(record):
+        """
+
+        :return:
+        """
+        if record.find('./{0}subject'.format(nameSpace_default['mods'])) is not None:
+            all_subjects = []
+            for subject in record.iterfind('./{0}subject'.format(nameSpace_default['mods'])):
+                all_subjects.append(MODS._subject_parser_(subject))
+            return all_subjects
 
     def title_constructor(record):
         """
@@ -446,4 +477,4 @@ class OAI(MODSReader):
 
 mods = MODS('dev/fsu_cookbooksandherbals.xml')
 for record in mods.record_list:
-    print(MODS.genre(record))
+    print(MODS.subject(record))
