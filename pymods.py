@@ -131,7 +131,30 @@ class MODS(MODSReader):
             all_extents.append('None')
         return all_extents
 
-    #def genre(record):
+    def genre(record):
+        """
+
+        :return:
+        """
+        all_genres = []
+        if record.find('./{0}genre'.format(nameSpace_default['mods'])) is not None:
+            for genre in record.iterfind('./{0}genre'.format(nameSpace_default['mods'])):
+                genre_elems = {}
+                genre_elems['term'] = genre.text
+                if 'authority' in genre.attrib.keys():
+                    genre_elems['authority'] = genre.attrib['authority']
+                else:
+                    genre_elems['authority'] = None
+                if 'authorityURI' in genre.attrib.keys():
+                    genre_elems['authorityURI'] = genre.attrib['authorityURI']
+                else:
+                    genre_elems['authorityURI'] = None
+                if 'valueURI' in genre.attrib.keys():
+                    genre_elems['valueURI'] = genre.attrib['valueURI']
+                else:
+                    genre_elems['valueURI'] = None
+                all_genres.append(genre_elems)
+            return all_genres
 
     def issuance(record):
         """
@@ -421,6 +444,6 @@ class OAI(MODSReader):
             if match:
                 return match.group().replace('_', ':')
 
-#mods = MODS('dev/fsu_cookbooksandherbals.xml')
-#for record in mods.record_list:
-#    print(MODS.title_constructor(record))
+mods = MODS('dev/fsu_cookbooksandherbals.xml')
+for record in mods.record_list:
+    print(MODS.genre(record))
