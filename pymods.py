@@ -61,6 +61,13 @@ class MODS(MODSReader):
             return all_abstracts
         else:
             return None
+            
+    def classification(record):
+        if record.find('./{0}classification'.format(nameSpace_default['mods'])) is not None:
+            classification = record.find('./{0}classification'.format(nameSpace_default['mods'])).text
+        else:
+            classification = None
+        return classification
 
     def date_constructor(record):
         """
