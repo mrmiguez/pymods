@@ -372,7 +372,7 @@ class MODS(MODSReader):
         :return:
         """
         all_titles = []
-        for title in record.iterfind('.//{0}titleInfo'.format(nameSpace_default['mods'])):
+        for title in record.iterfind('./{0}titleInfo'.format(nameSpace_default['mods'])):
             if title.find('./{0}nonSort'.format(nameSpace_default['mods'])) is not None and title.find(
                           './{0}title'.format(nameSpace_default['mods'])) is not None and title.find(
                           './{0}subTitle'.format(nameSpace_default['mods'])) is not None:
