@@ -6,7 +6,8 @@ nameSpace_default = {None: '{http://www.loc.gov/mods/v3}',
                      'oai_dc': '{http://www.openarchives.org/OAI/2.0/oai_dc/}',
                      'dc': '{http://purl.org/dc/elements/1.1/}',
                      'mods': '{http://www.loc.gov/mods/v3}',
-                     'dcterms': '{http://purl.org/dc/terms}'}
+                     'dcterms': '{http://purl.org/dc/terms}',
+                     'xlink': '{http://www.w3.org/1999/xlink}'}
 
 
 class MODSReader:
@@ -332,6 +333,20 @@ class MODS(MODSReader):
         else:
             all_publishers.append('None')
         return all_publishers
+
+    def rights(record):
+        """
+
+        :return:
+        """
+        if record.find('.//{0}accessCondition'.format(nameSpace_default['mods'])) is not None:
+            for access_condition in record.iterfind('.//{0}accessCondition'.format(nameSpace_default['mods'])):
+                rights = {}
+                if 'use and reproduction' or 'useAndReproduction' in access_condition.attrib['type']:
+                    rights['text'] = access_condition.text
+                    if '{http://www.w3.org/1999/xlink}href' in access_condition.attrib.keys():
+                        rights['URI'] = access_condition.attrib['{http://www.w3.org/1999/xlink}href']
+            return rights
 
     def _subject_parser_(subject):
         """
