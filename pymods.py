@@ -73,6 +73,17 @@ class MODS(MODSReader):
             classification = None
         return classification
 
+    def collection(record):
+        if record.find('./{0}relatedItem'.format(nameSpace_default['mods'])) is not None:
+            for related_item in record.iterfind('./{0}relatedItem'.format(nameSpace_default['mods'])):
+                if 'host' == related_item.attrib['type']:
+                    host_title = MODS.title_constructor(related_item)[0]
+                    host_location = MODS.physical_location(related_item)[0]
+                    host_info = { 'title': host_title, 'location': host_location }
+                    if related_item.find('./{0}location/{0}url'.format(nameSpace_default['mods'])) is not None:
+                        host_info['url'] = related_item.find('./{0}location/{0}url'.format(nameSpace_default['mods'])).text
+                    return host_info
+
     def date_constructor(record):
         """
         Accesses mods:dateIssued, mods:dateCreated, mods:copyrightDate,
@@ -305,8 +316,8 @@ class MODS(MODSReader):
         :return:
         """
         all_locations = []
-        if record.find('.//{0}physicalLocation'.format(nameSpace_default['mods'])) is not None:
-            for location in record.iterfind('.//{0}physicalLocation'.format(nameSpace_default['mods'])):
+        if record.find('./{0}location/{0}physicalLocation'.format(nameSpace_default['mods'])) is not None:
+            for location in record.iterfind('./{0}location/{0}physicalLocation'.format(nameSpace_default['mods'])):
                 all_locations.append(location.text)
         else:
             all_locations.append(None)
