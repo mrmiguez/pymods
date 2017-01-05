@@ -241,9 +241,7 @@ class MODS(MODSReader):
         all_names = []
         if record.find('./{0}name'.format(nameSpace_default['mods'])) is not None:
             for name in record.iterfind('./{0}name'.format(nameSpace_default['mods'])):
-                full_name = {}
-                for key, value in name.attrib.items():
-                    full_name[key] = value
+                full_name = name.attrib
                 name_text = ""
 
                 # Multipart name
@@ -273,7 +271,6 @@ class MODS(MODSReader):
             return all_names
 
         else:
-            all_names.append('None')
             return all_names
 
     def note(record):
