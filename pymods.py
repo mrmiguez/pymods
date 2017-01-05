@@ -242,7 +242,7 @@ class MODS(MODSReader):
         if record.find('./{0}name'.format(nameSpace_default['mods'])) is not None:
             for name in record.iterfind('./{0}name'.format(nameSpace_default['mods'])):
                 full_name = {}
-                for key, value in name.attrib:
+                for key, value in name.attrib.items():
                     full_name[key] = value
                 name_text = ""
 
