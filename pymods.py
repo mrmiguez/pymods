@@ -239,23 +239,37 @@ class MODS(MODSReader):
         :return: a list of strings.
         """
         all_names = []
-        if len(record.findall('./{0}name'.format(nameSpace_default['mods']))) > 0:
+        if record.find('./{0}name'.format(nameSpace_default['mods'])) is not None:
             for name in record.iterfind('./{0}name'.format(nameSpace_default['mods'])):
-                full_name = ""
+                full_name = name.attrib
+                name_text = ""
+
+                # Multipart name
                 if len(name.findall('./{0}namePart'.format(nameSpace_default['mods']))) > 1:
-                    # Multipart name
                     names = {}
                     for name_part in name.findall('./{0}namePart'.format(nameSpace_default['mods'])):
                         if 'type' not in name_part.attrib.keys():
-                            full_name = name_part.text
+                            full_name['text'] = name_part.text
                         elif 'type' in name_part.attrib.keys():
                             names[name_part.attrib['type']] = name_part.text
-                    full_name = MODS._nameGen_(names, full_name)
+                            full_name['text'] = MODS._nameGen_(names, name_text)
+
+                # Single part name
                 else:
-                    # Single part name
-                    full_name = full_name + name.find('./{0}namePart'.format(nameSpace_default['mods'])).text
+                    full_name['text'] = name_text + name.find('./{0}namePart'.format(nameSpace_default['mods'])).text
+
+                # Roles
+                if name.find('./{0}role'.format(nameSpace_default['mods'])) is not None:
+                    for role_term in name.iterfind('./{0}role/{0}roleTerm'.format(nameSpace_default['mods'])):
+                        if role_term.attrib['type'] == 'code':
+                            full_name['roleCode'] = role_term.text
+                        elif role_term.attrib['type'] == 'text':
+                            full_name['roleText'] = role_term.text
+
                 all_names.append(full_name)
+
             return all_names
+
         else:
             all_names.append('None')
             return all_names
