@@ -138,9 +138,9 @@ class MODS(MODSReader):
         if record.find('.//{0}extent'.format(nameSpace_default['mods'])) is not None:
             for extent in record.iterfind('.//{0}extent'.format(nameSpace_default['mods'])):
                 all_extents.append(extent.text)
+            return all_extents
         else:
-            all_extents.append('None')
-        return all_extents
+            return None
 
     def genre(record):
         """
@@ -154,16 +154,10 @@ class MODS(MODSReader):
                 genre_elems['term'] = genre.text
                 if 'authority' in genre.attrib.keys():
                     genre_elems['authority'] = genre.attrib['authority']
-                else:
-                    genre_elems['authority'] = None
                 if 'authorityURI' in genre.attrib.keys():
                     genre_elems['authorityURI'] = genre.attrib['authorityURI']
-                else:
-                    genre_elems['authorityURI'] = None
                 if 'valueURI' in genre.attrib.keys():
                     genre_elems['valueURI'] = genre.attrib['valueURI']
-                else:
-                    genre_elems['valueURI'] = None
                 all_genres.append(genre_elems)
             return all_genres
 
