@@ -396,7 +396,14 @@ class MODS(MODSReader):
         if record.find('./{0}subject'.format(nameSpace_default['mods'])) is not None:
             all_subjects = []
             for subject in record.iterfind('./{0}subject'.format(nameSpace_default['mods'])):
-                all_subjects.append(MODS._subject_parser_(subject))
+                if 'authority' in subject.attrib.keys():
+                    if 'lcsh' == subject.attrib['authority']:
+                        all_subjects.append(MODS._subject_parser_(subject))
+                    elif ('naf' or 'lcnaf') in subject.attrib['authority']:
+                        if MODS.name_constructor(subject) is not None:
+                            all_subjects.append(MODS.name_constructor(subject)[0])
+                else:
+                    all_subjects.append(MODS._subject_parser_(subject))
             return all_subjects
 
     def title_constructor(record):
