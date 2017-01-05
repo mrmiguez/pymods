@@ -271,7 +271,7 @@ class MODS(MODSReader):
             return all_names
 
         else:
-            return all_names
+            return None
 
     def note(record):
         """
