@@ -1,20 +1,20 @@
-import os
 import re
 from lxml import etree
 
-nameSpace_default = {None: '{http://www.loc.gov/mods/v3}',
-                     'oai_dc': '{http://www.openarchives.org/OAI/2.0/oai_dc/}',
-                     'dc': '{http://purl.org/dc/elements/1.1/}',
-                     'mods': '{http://www.loc.gov/mods/v3}',
-                     'dcterms': '{http://purl.org/dc/terms}',
-                     'xlink': '{http://www.w3.org/1999/xlink}',
-                     'repox': '{http://repox.ist.utl.pt}'}
+nameSpace_default = { None: '{http://www.loc.gov/mods/v3}',
+                      'oai_dc': '{http://www.openarchives.org/OAI/2.0/oai_dc/}',
+                      'dc': '{http://purl.org/dc/elements/1.1/}',
+                      'mods': '{http://www.loc.gov/mods/v3}',
+                      'dcterms': '{http://purl.org/dc/terms}',
+                      'xlink': '{http://www.w3.org/1999/xlink}',
+                      'repox': '{http://repox.ist.utl.pt}' }
 
 
 class MODSReader:
     """
     Superclass constructor and file reader.
     """
+
     def __init__(self, input_file=None):
         """
         General constructor class.
@@ -24,12 +24,13 @@ class MODSReader:
             self.input_file = input_file
             self.tree = etree.parse(self.input_file)
             self.root = self.tree.getroot()
-        
+
 
 class MODS(MODSReader):
     """
     Class for accessing elements in the MODS namespace.
     """
+
     def __init__(self, input_file=None):
         """
         MODS constructor class.
@@ -55,10 +56,10 @@ class MODS(MODSReader):
             for abstract in record.iterfind('./{0}abstract'.format(nameSpace_default['mods'])):
                 if len(abstract.attrib) >= 1:
                     if 'type' in abstract.attrib.keys():
-                        typed_abstract = {abstract.attrib['type']: abstract.text}
+                        typed_abstract = { abstract.attrib['type']: abstract.text }
                         all_abstracts.append(typed_abstract)
                     elif 'displayLabel' in abstract.attrib.keys():
-                        labeled_abstract = {abstract.attrib['displayLabel']: abstract.text}
+                        labeled_abstract = { abstract.attrib['displayLabel']: abstract.text }
                         all_abstracts.append(labeled_abstract)
                     else:
                         all_abstracts.append(abstract.text)
@@ -67,7 +68,7 @@ class MODS(MODSReader):
             return all_abstracts
         else:
             return None
-            
+
     def classification(record):
         if record.find('./{0}classification'.format(nameSpace_default['mods'])) is not None:
             classification = record.find('./{0}classification'.format(nameSpace_default['mods'])).text
@@ -83,7 +84,8 @@ class MODS(MODSReader):
                     host_location = MODS.physical_location(related_item)[0]
                     host_info = { 'title': host_title, 'location': host_location }
                     if related_item.find('./{0}location/{0}url'.format(nameSpace_default['mods'])) is not None:
-                        host_info['url'] = related_item.find('./{0}location/{0}url'.format(nameSpace_default['mods'])).text
+                        host_info['url'] = related_item.find(
+                            './{0}location/{0}url'.format(nameSpace_default['mods'])).text
                     return host_info
 
     def date_constructor(record):
@@ -163,7 +165,7 @@ class MODS(MODSReader):
         all_genres = []
         if record.find('./{0}genre'.format(nameSpace_default['mods'])) is not None:
             for genre in record.iterfind('./{0}genre'.format(nameSpace_default['mods'])):
-                genre_elems = {}
+                genre_elems = { }
                 genre_elems['term'] = genre.text
                 if 'authority' in genre.attrib.keys():
                     genre_elems['authority'] = genre.attrib['authority']
@@ -197,7 +199,7 @@ class MODS(MODSReader):
         all_languages = []
         if record.find('.//{0}language'.format(nameSpace_default['mods'])) is not None:
             for language in record.iterfind('.//{0}language'.format(nameSpace_default['mods'])):
-                languages = {}
+                languages = { }
                 for term in language.iterchildren():
                     languages[term.attrib['type']] = term.text
                 all_languages.append(languages)
@@ -211,7 +213,8 @@ class MODS(MODSReader):
             keys.append(key)
         if all(x in keys for x in ['family', 'given',
                                    'termsOfAddress', 'date']):
-            fullName = fullName + names['family'] + ', ' + names['given'] + ', ' + names['termsOfAddress'] + ' ' + names['date']
+            fullName = fullName + names['family'] + ', ' + names['given'] + ', ' + names['termsOfAddress'] + ' ' + \
+                       names['date']
         elif all(x in keys for x in ['family', 'given', 'date']):
             fullName = fullName + names['family'] + ', ' + names['given'] + ' ' + names['date']
         elif all(x in keys for x in ['family', 'given', 'termsOfAddress']):
@@ -253,7 +256,7 @@ class MODS(MODSReader):
 
                 # Multipart name
                 if len(name.findall('./{0}namePart'.format(nameSpace_default['mods']))) > 1:
-                    names = {}
+                    names = { }
                     for name_part in name.findall('./{0}namePart'.format(nameSpace_default['mods'])):
                         if 'type' not in name_part.attrib.keys():
                             full_name['text'] = name_part.text
@@ -290,10 +293,10 @@ class MODS(MODSReader):
         for note in record.iterfind('./{0}note'.format(nameSpace_default['mods'])):
             if len(note.attrib) >= 1:
                 if 'type' in note.attrib.keys():
-                    typed_note = {note.attrib['type']: note.text}
+                    typed_note = { note.attrib['type']: note.text }
                     all_notes.append(typed_note)
                 elif 'displayLabel' in note.attrib.keys():
-                    labeled_note = {note.attrib['displayLabel']: note.text}
+                    labeled_note = { note.attrib['displayLabel']: note.text }
                     all_notes.append(labeled_note)
                 else:
                     all_notes.append(note.text)
@@ -333,7 +336,7 @@ class MODS(MODSReader):
         all_places = []
         if record.find('.//{0}place'.format(nameSpace_default['mods'])) is not None:
             for place in record.iterfind('.//{0}place'.format(nameSpace_default['mods'])):
-                places = {}
+                places = { }
                 for term in place.iterchildren():
                     places[term.attrib['type']] = term.text
                 all_places.append(places)
@@ -361,7 +364,7 @@ class MODS(MODSReader):
         """
         if record.find('.//{0}accessCondition'.format(nameSpace_default['mods'])) is not None:
             for access_condition in record.iterfind('.//{0}accessCondition'.format(nameSpace_default['mods'])):
-                rights = {}
+                rights = { }
                 if 'use and reproduction' or 'useAndReproduction' in access_condition.attrib['type']:
                     rights['text'] = access_condition.text
                     if '{http://www.w3.org/1999/xlink}href' in access_condition.attrib.keys():
@@ -374,21 +377,21 @@ class MODS(MODSReader):
         :return:
         """
         parts = ['authority', 'authorityURI', 'valueURI']
-        if subject.tag == '{0}subject'.format(nameSpace_default['mods']) or subject.tag == '{0}name'.format(nameSpace_default['mods']):
-            subject_parts = {}
+        if subject.tag == '{0}subject'.format(nameSpace_default['mods']) or subject.tag == '{0}name'.format(
+                nameSpace_default['mods']):
+            subject_parts = { }
         else:
-            subject_parts = {'type': subject.tag, 'term': subject.text}
+            subject_parts = { 'type': subject.tag, 'term': subject.text }
         children = []
         for part in parts:
             if part in subject.attrib.keys():
-                subject_parts.update({part: subject.attrib[part]})
+                subject_parts.update({ part: subject.attrib[part] })
             else:
-                subject_parts.update({part: None})
+                subject_parts.update({ part: None })
         for child in subject.iterchildren():
             children.append(MODS._subject_parser_(child))
-        subject_parts.update({'children': children})
+        subject_parts.update({ 'children': children })
         return subject_parts
-
 
     def subject(record):
         """
@@ -416,15 +419,15 @@ class MODS(MODSReader):
         all_titles = []
         for title in record.iterfind('./{0}titleInfo'.format(nameSpace_default['mods'])):
             if title.find('./{0}nonSort'.format(nameSpace_default['mods'])) is not None and title.find(
-                          './{0}title'.format(nameSpace_default['mods'])) is not None and title.find(
-                          './{0}subTitle'.format(nameSpace_default['mods'])) is not None:
+                    './{0}title'.format(nameSpace_default['mods'])) is not None and title.find(
+                    './{0}subTitle'.format(nameSpace_default['mods'])) is not None:
                 title_full = title.find('./{0}nonSort'.format(nameSpace_default['mods'])).text + ' ' + title.find(
-                                        './{0}title'.format(nameSpace_default['mods'])).text + ': ' + title.find(
-                                        './{0}subTitle'.format(nameSpace_default['mods'])).text
+                        './{0}title'.format(nameSpace_default['mods'])).text + ': ' + title.find(
+                        './{0}subTitle'.format(nameSpace_default['mods'])).text
             elif title.find('./{0}nonSort'.format(nameSpace_default['mods'])) is not None and title.find(
-                            './{0}title'.format(nameSpace_default['mods'])) is not None:
+                    './{0}title'.format(nameSpace_default['mods'])) is not None:
                 title_full = title.find('./{0}nonSort'.format(nameSpace_default['mods'])).text + ' ' + title.find(
-                                        './{0}title'.format(nameSpace_default['mods'])).text
+                        './{0}title'.format(nameSpace_default['mods'])).text
             else:
                 title_full = title.find('./{0}title'.format(nameSpace_default['mods'])).text
             all_titles.append(title_full)
@@ -447,6 +450,7 @@ class FSUDL(MODSReader):
     Helper functions specific to Florida State
     University's DigiNole: http://diginole.lib.fsu.edu
     """
+
     def __init__(self, input_file=None):
         """
         MODS constructor class.
@@ -504,6 +508,7 @@ class OAI(MODSReader):
     for inclusion of the default namespace,and add it to the file when
     not present.
     """
+
     def __init__(self, input_file=None):
         """
         Constructor class for oai_dc namespace elements.
@@ -517,20 +522,29 @@ class OAI(MODSReader):
 
         if 'oai_dc' in self.nsmap:
             for oai_record in self.root.iterfind('.//{0}record'.format(nameSpace_default['oai_dc'])):
-#                record = OAI(oai_record)    # OOP testing
-#                record_list.append(record)  #
-                record_list.append(oai_record) # actually working line
+                #                record = OAI(oai_record)    # OOP testing
+                #                record_list.append(record)  #
+                record_list.append(oai_record)  # actually working line
             self.nsroot = 'oai_dc'
             self.set_spec = self.root.find('.//{0}setSpec'.format(nameSpace_default['oai_dc'])).text
+            oai_id = self.root.find('.//{0}header/{0}identifier'.format(nameSpace_default['oai_dc'])).text
+            oai_urn = ""
+            for part in oai_id.split(':')[:-1]:
+                oai_urn = oai_urn + ':' + part
+            self.oai_urn = oai_urn.strip(':')
 
         elif 'repox' in self.nsmap:
             for oai_record in self.root.iterfind('.//{0}record'.format(nameSpace_default['repox'])):
-#                record = OAI(oai_record)    # OOP testing
-#                record_list.append(record)  #
-                record_list.append(oai_record) # actually working line
+                #                record = OAI(oai_record)    # OOP testing
+                #                record_list.append(record)  #
+                record_list.append(oai_record)  # actually working line
             self.nsroot = 'repox'
             self.set_spec = self.root.attrib['set']
-#            self.oai_urn =
+            oai_id = self.root.find('./{0}record'.format(nameSpace_default['repox'])).attrib['id']
+            oai_urn = ""
+            for part in oai_id.split(':')[:-1]:
+                oai_urn = oai_urn + ':' + part
+            self.oai_urn = oai_urn.strip(':')
 
         elif nameSpace_default['mods'] in self.nsmap:
             return MODS(self)
