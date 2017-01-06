@@ -1,0 +1,2571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repox:exportedRecords xmlns:repox="http://repox.ist.utl.pt" set="fsu_nap01" batchsize="-1" total="45">
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6630" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo type="uniform">
+          <title>Regimental Expense Report, March 9, 1787</title>
+        </titleInfo>
+        <titleInfo type="alternative">
+          <title>Document for the relief stipend from the Dillon Regiment</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i8</identifier>
+        <identifier type="digitool">3180290</identifier>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1787</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+          <languageTerm type="code">fre</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180290</url>
+        </location>
+        <identifier type="fedora">fsu:6630</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:04", modified_by="super:TWEATHER", modification_date="2011-09-29 09:37:36"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Letter explaining the specific expenses of the Dillon Regiment and including some notes at the top about these expenses.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051305">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>18th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6631" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo lang="fre" type="uniform">
+          <title>Observations Du Comte De Lally-Tolendal, Sur La Lettre Ecrite Par M. Le Comte De Mirabeau, Au Comite Des Recheres, Contre M. Le Comte De Saint-Priest, Ministre D'Etat.</title>
+        </titleInfo>
+        <titleInfo lang="eng" type="alternative">
+          <title>Observations of Count Lally-Tolendal, on the letter written by M. Le Comte de Mirabeau</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s4_ss2</identifier>
+        <identifier type="digitool">3180291</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n84005257">
+          <namePart type="family">Lally-Tolendal</namePart>
+          <namePart type="given">Trophime-Gerard</namePart>
+          <namePart type="termsOfAddress">marquis de</namePart>
+          <namePart type="date">1751-1830</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <name>
+            <namePart>Miguez, Matthew</namePart>
+            <role>
+                <roleTerm type='text'>Adapter</roleTerm>
+                <roleTerm type='code'>adp</roleTerm>
+            </role>
+        </name>
+        <originInfo>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180291</url>
+        </location>
+        <identifier type="fedora">fsu:6631</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:04", modified_by="super:TWEATHER", modification_date="2011-10-04 09:23:38"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>53 p.</extent>
+          <note>Sewn but unbound and untrimmed as issued. Stained and marked but the text is complete.</note>
+        </physicalDescription>
+        <abstract>Response letter written that states how heroic Le Comte de Mirabeau is and argues against Le Comte de Saint-Priest.</abstract>
+        <genre authority="marcgt">Journals</genre>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/nr97013860">
+            <namePart>Saint-Priest, Marie Joseph Emmanuel Guignard, vicomte de, 1732-1794</namePart>
+          </name>
+        </subject>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n2003077263">
+            <namePart>Mirabeau, Marie-Emilie de Riquetti, comtesse de, 1754?-1800</namePart>
+          </name>
+        </subject>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="corporate" valueURI="http://id.loc.gov/authorities/names/n50079445">
+            <namePart>Palais-Royal (Paris, France)</namePart>
+          </name>
+        </subject>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6628" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo lang="fre" type="uniform">
+          <title>Reglement Concernant Les Cadets-Gentilshommes, August 20, 1776</title>
+        </titleInfo>
+        <titleInfo lang="eng" type="alternative">
+          <title>Regulations concerning the cadet-gentlemen, made into the troops of the king, by the order of 25 March 1776.</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i27</identifier>
+        <identifier type="digitool">3180288</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1776-08-20</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180288</url>
+        </location>
+        <identifier type="fedora">fsu:6628</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:04", modified_by="super:TWEATHER", modification_date="2011-10-03 10:14:25"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>7 p.</extent>
+        </physicalDescription>
+        <abstract>Rules and regulations for the troops concerning the management of receipts, supplies, lodgings, payment, clothing, etc.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n79058874">
+          <geographic>Paris (France)</geographic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6627" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter from the military department to the Vicount of Foncaude, July 29, 1816</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i24</identifier>
+        <identifier type="digitool">3180287</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1816-07-29</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180287</url>
+        </location>
+        <identifier type="fedora">fsu:6627</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:04", modified_by="super:TWEATHER", modification_date="2011-10-03 09:03:29"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Letter from the Lieutenant-General, Count O-Mahony of the Military Department to the Vicount of Foncaude. Most of the letter is illegible.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051396">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>19th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6629" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter from the Army of the French Republic regarding General Macdonald, November 14, 1800</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i26</identifier>
+        <identifier type="digitool">3180289</identifier>
+        <originInfo>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180289</url>
+        </location>
+        <identifier type="fedora">fsu:6629</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:04", modified_by="super:TWEATHER", modification_date="2011-10-03 10:35:38"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Letter from the Army of the French Republic concerning General Macdonald. Includes the seal of the French Republic at the time and most of the letter is illegible.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051319">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>Revolution, 1789-1799</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6636" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter from the superior officers of the Dillon Regiment regarding Charles Moy</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i7</identifier>
+        <identifier type="digitool">3180296</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1784-08-15</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180296</url>
+        </location>
+        <identifier type="fedora">fsu:6636</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-09-29 09:29:22"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>3 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Letter written by the superior officers of the Dillon Regiment concerning Charles Moy's injuries and his inability to continue fighting in the army.</abstract>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/no90009778">
+            <namePart>Moy, Charles-Alexandre de, 1750-1834</namePart>
+          </name>
+        </subject>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051305">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>18th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6637" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Approximate detail of revenue and expenses from 1791 to 1798</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i13</identifier>
+        <identifier type="digitool">3180297</identifier>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180297</url>
+        </location>
+        <identifier type="fedora">fsu:6637</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:KTHOMAS", modification_date="2012-09-26 09:31:34"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <originInfo>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Receipts</genre>
+        <abstract displayLabel="Summary">Receipt detailing the weight, amount, and expenses of various army purchases during the war between France and Austria.</abstract>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/nr2001040126">
+            <namePart type="family">Dillon</namePart>
+            <namePart type="given">Arthur</namePart>
+            <namePart type="termsOfAddress">comte</namePart>
+            <namePart type="date">1750-1794</namePart>
+          </name>
+        </subject>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051319">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>Revolution, 1789-1799</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6638" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter from the king</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i31</identifier>
+        <identifier type="digitool">3180298</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1719-05-20</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180298</url>
+        </location>
+        <identifier type="fedora">fsu:6638</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-10-03 10:47:59"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>4 p.</extent>
+        </physicalDescription>
+        <abstract>Letter from the king written for the Duke of Berwick and commander of the spanish army that explains the contentious relationship between France and Spain during the War of the Quadruple Alliance.</abstract>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n85088696">
+            <namePart>Berwick, James Fitzjames, Duke of, 1670-1734</namePart>
+          </name>
+        </subject>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n50080622">
+            <namePart>Louis XV, King of France, 1710-1774</namePart>
+          </name>
+        </subject>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n79058874">
+          <geographic>Paris (France)</geographic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6640" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Berwick Regiment list of revenue and expenses. January, 1772 to May, 1772</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i33</identifier>
+        <identifier type="digitool">3180300</identifier>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1772</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180300</url>
+        </location>
+        <identifier type="fedora">fsu:6640</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-10-03 11:06:59"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n79054933">
+            <namePart>Napoleon I, Emperor of the French, 1769-1821</namePart>
+          </name>
+        </subject>
+        <genre authority="marcgt">Receipts</genre>
+        <abstract>Receipts listing the items purchased, whom they were purchased by, and total expenses.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6641" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter to J. L. Mallet-du-San</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i18</identifier>
+        <identifier type="digitool">3180301</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1800-03</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180301</url>
+        </location>
+        <identifier type="fedora">fsu:6641</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-09-30 08:53:47"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>3 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract>Personal letter written to J. L. Mallet-du-San, secretary to the auditor's office in London concerning the Napoleonic Wars and the author's own concerns.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85089767">
+          <topic>Napoleonic Wars, 1800-1815</topic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6639" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo type="uniform">
+          <title>Letter on Jean MacDonnogh</title>
+        </titleInfo>
+        <titleInfo type="alternative">
+          <title>Note regarding Dillon's Regiment</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i5</identifier>
+        <identifier type="digitool">3180299</identifier>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180299</url>
+        </location>
+        <identifier type="fedora">fsu:6639</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-10-04 10:13:21"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <originInfo>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <physicalDescription>
+          <extent>2 p.</extent>
+        </physicalDescription>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6647" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Salary for Lieutenant Colonel James Gormocan</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i1</identifier>
+        <identifier type="digitool">3180307</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1792-01-24</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180307</url>
+        </location>
+        <identifier type="fedora">fsu:6647</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-09-29 08:16:13"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Handwritten letter detailing the battles Lieutenant Colonel James Gormocan has fought in and what his pay should be based upon his duties as an officer in the 92nd Regiment.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051319">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>Revolution, 1789-1799</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6646" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter to Brother Philippe of Colloredo from the Count of Dillon</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i16</identifier>
+        <identifier type="digitool">3180306</identifier>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180306</url>
+        </location>
+        <identifier type="fedora">fsu:6646</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-09-29 11:32:52"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <originInfo>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <physicalDescription>
+          <extent>3 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Letter written by Count August Henry of Dillon to Brother Philip of Colloredo regarding payments and other issues. Most of the letter is illegible.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051256">
+          <geographic>France</geographic>
+          <topic>History</topic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6649" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>The president of the electoral college to the gentlemen voters of Herault.</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i30</identifier>
+        <identifier type="digitool">3180309</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1815-08-02</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180309</url>
+        </location>
+        <identifier type="fedora">fsu:6649</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-10-03 10:43:33"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>4 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract>Letter written to the male voters living in Herault, France from the president of the electoral college in Paris named Le Comte de Lally-Tolendal. The letter is meant to convince wealthy men that the newly re-instated monarchy will ensure that they are allowed to vote in an election.</abstract>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n84005257">
+            <namePart type="family">Lally-Tolendal</namePart>
+            <namePart type="given">Trophime-Gerard</namePart>
+            <namePart type="termsOfAddress">marquis de</namePart>
+            <namePart type="date">1751-1830</namePart>
+          </name>
+        </subject>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="corporate" valueURI="http://id.loc.gov/authorities/names/n79117287">
+            <namePart>France. Assemblée nationale (1871-1942). Chambre des députés</namePart>
+          </name>
+        </subject>
+        <subject authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n80125708">
+          <geographic>Hérault (France)</geographic>
+        </subject>
+        <subject authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n79058874">
+          <geographic>Paris (France)</geographic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6645" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo lang="fre" type="uniform">
+          <nonSort>Le</nonSort>
+          <title>Vieux Cordelier</title>
+        </titleInfo>
+        <titleInfo lang="eng" type="alternative">
+          <nonSort>The</nonSort>
+          <title>old franciscan</title>
+        </titleInfo>
+        <part>
+          <detail>
+            <caption>No.</caption>
+            <number>1</number>
+          </detail>
+        </part>
+        <identifier type="IID">MSS 20110329_b1_s4_ss1_i1</identifier>
+        <identifier type="digitool">3180305</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n85242196">
+          <namePart type="family">Desmoulins</namePart>
+          <namePart type="given">Camille</namePart>
+          <namePart type="date">1760-1794</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1793</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180305</url>
+        </location>
+        <identifier type="fedora">fsu:6645</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-10-04 10:47:52"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>8 p.</extent>
+          <note>Sewn but unbound and untrimmed as issued. Stained and marked but the text is complete.</note>
+        </physicalDescription>
+        <abstract>First edition of "The Old Franciscan" written by Camille Desmoulins that appeals to those who fight during the French Revolution in favor of a french republic and argues against the restraints put upon journalists in France.</abstract>
+        <genre authority="marcgt">Journals</genre>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh87000416">
+          <topic>Revolutionary literature, French</topic>
+        </subject>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85069215">
+          <topic>Jacobins</topic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6648" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter from the embassy of France to Rome</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i21</identifier>
+        <identifier type="digitool">3180308</identifier>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1847</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">Italian</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180308</url>
+        </location>
+        <identifier type="fedora">fsu:6648</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-09-30 10:41:46"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Letter announcing that Earl August Henry Dillon at Rome is being awarded the "gold cross of devotion" by the French Embassy.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051396">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>19th century</temporal>
+        </subject>
+        <subject authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n79018704">
+          <geographic>Rome (Italy)</geographic>
+        </subject>
+        <subject authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n79006404">
+          <geographic>France</geographic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6623" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter from Morard of Galles</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_bi_s3_i10</identifier>
+        <identifier type="digitool">3180284</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/no2015059047">
+          <namePart type="family">Morard de Galles</namePart>
+          <namePart type="given">Justin-Bonaventure</namePart>
+          <namePart type="date">1741-1809</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180284</url>
+        </location>
+        <identifier type="fedora">fsu:6623</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:04", modified_by="super:TWEATHER", modification_date="2011-09-29 10:25:06"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <originInfo>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <physicalDescription>
+          <extent>3 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Letter from Justin-Bonaventure Morard of Galles, commander of the army, concerning the republic of France and the military during the French Revolution.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051319">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>Revolution, 1789-1799</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6622" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>List of the regiment of Dillon</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i12</identifier>
+        <identifier type="digitool">3180283</identifier>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1797</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/nr2001040126">
+            <namePart type="family">Dillon</namePart>
+            <namePart type="given">Arthur</namePart>
+            <namePart type="termsOfAddress">comte</namePart>
+            <namePart type="date">1750-1794</namePart>
+          </name>
+        </subject>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180283</url>
+        </location>
+        <identifier type="fedora">fsu:6622</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:01", modified_by="super:TWEATHER", modification_date="2011-09-29 11:00:53"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>2 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Notes</genre>
+        <abstract displayLabel="Summary">Handwritten list of the names, rankings, and other attributes of the men serving in the regiment of Arthur Dillon, which includes notes at the bottom and on the second page.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85048583">
+          <topic>First Coalition, War of the, 1792-1797</topic>
+        </subject>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051319">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>Revolution, 1789-1799</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6624" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo lang="fre" type="uniform">
+          <nonSort>Le</nonSort>
+          <title>Vieux Cordelier</title>
+        </titleInfo>
+        <titleInfo lang="eng" type="alternative">
+          <nonSort>The</nonSort>
+          <title>old franciscan</title>
+        </titleInfo>
+        <part>
+          <detail>
+            <caption>No.</caption>
+            <number>4</number>
+          </detail>
+        </part>
+        <identifier type="IID">MSS 20110329_b1_s4_ss1_i4</identifier>
+        <identifier type="digitool">3180285</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n85242196">
+          <namePart type="family">Desmoulins</namePart>
+          <namePart type="given">Camille</namePart>
+          <namePart type="date">1760-1794</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1793</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180285</url>
+        </location>
+        <identifier type="fedora">fsu:6624</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:04", modified_by="super:TWEATHER", modification_date="2011-10-04 10:48:30"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <genre authority="marcgt">Journals</genre>
+        <physicalDescription>
+          <extent>16 p.</extent>
+          <note>Sewn but unbound and untrimmed as issued. Stained and marked but the text is complete.</note>
+        </physicalDescription>
+        <abstract>Fourth edition of "The Old Franciscan" written to defend the third edition and argue against the monarchy of France.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85069215">
+          <topic>Jacobins</topic>
+        </subject>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh87000416">
+          <topic>Revolutionary literature, French</topic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6626" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Note from the Duke of Fitz-James, Paris</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i34</identifier>
+        <identifier type="digitool">3180286</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/nr2005026935">
+          <namePart type="given">Charles de Fitzjames</namePart>
+          <namePart type="family">Fitzjames</namePart>
+          <namePart type="termsOfAddress">duc de</namePart>
+          <namePart type="date">1712-1787</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <originInfo>
+          <dateIssued keyDate="yes">1774-03-05</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180286</url>
+        </location>
+        <identifier type="fedora">fsu:6626</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:04", modified_by="super:TWEATHER", modification_date="2011-10-03 11:15:51"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Brief response to a previous letter sent to the Duke of Fitz-James. At the end of the letter, the Duke proclaims himself a humble and obedient servant to the man this letter was written to.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051305">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>18th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6634" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Note of the documents necessary to obtain the cross of devotion</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i9</identifier>
+        <identifier type="digitool">3180294</identifier>
+        <originInfo>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">Italian</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180294</url>
+        </location>
+        <identifier type="fedora">fsu:6634</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:04", modified_by="super:TWEATHER", modification_date="2011-09-29 10:08:00"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Notes</genre>
+        <abstract>Document explaining the relations one must possess to obtain the Cross of Devotion, including a genealogy chart and explanation of how one can prove their relations.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="naf" authorityURI="http://id.loc.gov/authorities/names/n79021783" valueURI="http://id.loc.gov/authorities/names/n79021783">
+          <geographic>Italy</geographic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6633" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Text and drawings</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i19</identifier>
+        <identifier type="digitool">3180293</identifier>
+        <originInfo>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180293</url>
+        </location>
+        <identifier type="fedora">fsu:6633</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:04", modified_by="super:TWEATHER", modification_date="2011-09-30 09:06:46"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>2 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Notes</genre>
+        <abstract>Untitled document with handwritten notes, diagrams, and drawings.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6635" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter to the Count of Dillon</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i23</identifier>
+        <identifier type="digitool">3180295</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1847-09-11</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180295</url>
+        </location>
+        <identifier type="fedora">fsu:6635</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-10-03 08:45:45"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>2 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Letter from the Count of Dillon listing certain expenses and other concerns. Much of the letter is illegible.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051396">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>19th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6632" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Berwick Regiment list of revenue and expenses. 1771 to 1772</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i32</identifier>
+        <identifier type="digitool">3180292</identifier>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1772</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180292</url>
+        </location>
+        <identifier type="fedora">fsu:6632</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:04", modified_by="super:TWEATHER", modification_date="2011-10-03 10:53:22"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <genre authority="marcgt">Receipts</genre>
+        <physicalDescription>
+          <extent>2 p.</extent>
+        </physicalDescription>
+        <abstract>Receipts that list the total expenses of various military purchases and who they were purchased by.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6643" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo lang="fre" type="uniform">
+          <nonSort>Le</nonSort>
+          <title>Vieux Cordelier</title>
+        </titleInfo>
+        <titleInfo lang="eng" type="alternative">
+          <nonSort>The</nonSort>
+          <title>old franciscan</title>
+        </titleInfo>
+        <part>
+          <detail>
+            <caption>No.</caption>
+            <number>3</number>
+          </detail>
+        </part>
+        <identifier type="IID">MSS 20110329_b1_s4_ss1_i3</identifier>
+        <identifier type="digitool">3180303</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n85242196">
+          <namePart type="family">Desmoulins</namePart>
+          <namePart type="given">Camille</namePart>
+          <namePart type="date">1760-1794</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1793</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180303</url>
+        </location>
+        <identifier type="fedora">fsu:6643</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-10-04 10:48:11"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <genre authority="marcgt">Journals</genre>
+        <physicalDescription>
+          <extent>25 p.</extent>
+          <note>Sewn but unbound and untrimmed as issued. Stained and marked but the text is complete. Stitched into paper wrapper with a simple penned floral design on the inside.</note>
+        </physicalDescription>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh87000416">
+          <topic>Revolutionary literature, French</topic>
+        </subject>
+        <abstract>Third edition of "The Old Franciscan" that includes sketches of flowers on the cover. The journal discusses the idea that monarchies are built upon deceit and corruption while republics are more virtuous.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85069215">
+          <topic>Jacobins</topic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6644" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter from Arthur Dillon to Camille Desmoulins</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s2</identifier>
+        <identifier type="digitool">3180304</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/nr2001040126">
+          <namePart type="family">Dillon</namePart>
+          <namePart type="given">Arthur</namePart>
+          <namePart type="termsOfAddress">comte</namePart>
+          <namePart type="date">1750-1794</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <originInfo>
+          <dateIssued keyDate="yes">1793-07-26</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180304</url>
+        </location>
+        <identifier type="fedora">fsu:6644</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-09-29 08:15:54"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>3 p.</extent>
+          <note>Single manuscript leaf with integral address dated 26 July, 1793 which was written at 7 in the evening from the Madelonettes prison in Paris. It is addressed 'Au Citoyen Camille des Moulins depute rue du theatre francais. A Paris' and has a broken seal.</note>
+        </physicalDescription>
+        <abstract displayLabel="Summary">Letter written by General Arthur Dillon concerning his imprisonment and the need for a French Republic.</abstract>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n85242196">
+            <namePart type="family">Desmoulins</namePart>
+            <namePart type="given">Camille</namePart>
+            <namePart type="date">1760-1794</namePart>
+          </name>
+        </subject>
+        <subject authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n79058874">
+          <geographic>Paris (France)</geographic>
+        </subject>
+        <genre authority="marcgt">Letter</genre>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6642" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Note from Lieutenant Colonel O'Kennelly</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i14</identifier>
+        <identifier type="digitool">3180302</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1766-04-19</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180302</url>
+        </location>
+        <identifier type="fedora">fsu:6642</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-09-29 11:12:17"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Notes</genre>
+        <abstract displayLabel="Summary">Note to the volunteers in Lieutenant Colonel O'Kennelly's regiment, including a seal of the French army. Most of the letter is illegible.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051305">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>18th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6651" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter to Arthur Donnelly Irlandais</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i15</identifier>
+        <identifier type="digitool">3180311</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1714-03-25</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180311</url>
+        </location>
+        <identifier type="fedora">fsu:6651</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-09-29 11:25:54"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>3 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Letter written to Arthur Donnelly Irlandais. Most of the letter is illegible.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051305">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>18th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6650" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Note from Surgeon-Major LeGros regarding Charles Moy</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i6</identifier>
+        <identifier type="digitool">3180310</identifier>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1784</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180310</url>
+        </location>
+        <identifier type="fedora">fsu:6650</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-09-29 09:28:25"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Notes</genre>
+        <abstract displayLabel="Summary">Note written by Surgeon-Major LeGross, who was part of Arthur Dillon's regiment, concerning the surgical staff and Charles Moy from the infantry.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051305">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>18th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6652" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo lang="fre" type="uniform">
+          <nonSort>Le</nonSort>
+          <title>Vieux Cordelier</title>
+        </titleInfo>
+        <titleInfo lang="eng" type="alternative">
+          <nonSort>The</nonSort>
+          <title>old franciscan</title>
+        </titleInfo>
+        <part>
+          <detail>
+            <caption>No.</caption>
+            <number>5</number>
+          </detail>
+        </part>
+        <identifier type="IID">MSS 20110329_b1_s4_ss1_i5</identifier>
+        <identifier type="digitool">3180312</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n85242196">
+          <namePart type="family">Desmoulins</namePart>
+          <namePart type="given">Camille</namePart>
+          <namePart type="date">1760-1794</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1793</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180312</url>
+        </location>
+        <identifier type="fedora">fsu:6652</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:05", modified_by="super:TWEATHER", modification_date="2011-10-04 10:48:49"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>56 p.</extent>
+          <note>Sewn but unbound and untrimmed as issued. Stained and marked but the text is complete. Stitched into paper wrapper with a simple penned floral design on the inside.</note>
+        </physicalDescription>
+        <genre authority="marcgt">Journals</genre>
+        <abstract>Fifth edition of "The Old Franciscan" that includes sketches of flowers on the cover. This edition describes why Camille Desmoulins felt he needed to write a political journal and support the Republic and the Jacobins.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh87000416">
+          <topic>Revolutionary literature, French</topic>
+        </subject>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85069215">
+          <topic>Jacobins</topic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6653" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo lang="fre" type="uniform">
+          <nonSort>Le</nonSort>
+          <title>Vieux Cordelier</title>
+        </titleInfo>
+        <titleInfo lang="eng" type="alternative">
+          <nonSort>The</nonSort>
+          <title>old franciscan</title>
+        </titleInfo>
+        <part>
+          <detail>
+            <caption>No.</caption>
+            <number>6</number>
+          </detail>
+        </part>
+        <identifier type="IID">MSS 20110329_b1_s4_ss1_i6</identifier>
+        <identifier type="digitool">3180313</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n85242196">
+          <namePart type="family">Desmoulins</namePart>
+          <namePart type="given">Camille</namePart>
+          <namePart type="date">1760-1794</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1794</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180313</url>
+        </location>
+        <identifier type="fedora">fsu:6653</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:06", modified_by="super:TWEATHER", modification_date="2011-10-04 10:49:08"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>20 p.</extent>
+          <note>Sewn but unbound and untrimmed as issued. Stained and marked but the text is complete. Stitched into paper wrapper with a simple penned floral design on the inside.</note>
+        </physicalDescription>
+        <genre authority="marcgt">Journals</genre>
+        <abstract>Sixth edition of "The Old Franciscan" that includes sketches of flowers on the cover and claims that the monarchy cannot bring freedom to people the way a republic can.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh87000416">
+          <topic>Revolutionary literature, French</topic>
+        </subject>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85069215">
+          <topic>Jacobins</topic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6654" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Note from Surgeon-Major LeGros</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i2</identifier>
+        <identifier type="digitool">3180314</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1784-08-11</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180314</url>
+        </location>
+        <identifier type="fedora">fsu:6654</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:06", modified_by="super:TWEATHER", modification_date="2011-09-29 08:16:51"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <abstract displayLabel="Summary">Note written by Surgeon-Major LeGros, who was a member of Arthur Dillon's regiment, that discusses the surgical staff.</abstract>
+        <genre authority="marcgt">Notes</genre>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051305">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>18th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6656" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo lang="fre" type="uniform">
+          <nonSort>Le</nonSort>
+          <title>Vieux Cordelier</title>
+        </titleInfo>
+        <titleInfo lang="eng" type="alternative">
+          <nonSort>The</nonSort>
+          <title>old franciscan</title>
+        </titleInfo>
+        <part>
+          <detail>
+            <caption>No.</caption>
+            <number>2</number>
+          </detail>
+        </part>
+        <identifier type="IID">MSS 20110329_b1_s4_ss1_i2</identifier>
+        <identifier type="digitool">3180316</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n85242196">
+          <namePart type="family">Desmoulins</namePart>
+          <namePart type="given">Camille</namePart>
+          <namePart type="date">1760-1794</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1793</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180316</url>
+        </location>
+        <identifier type="fedora">fsu:6656</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:06", modified_by="super:TWEATHER", modification_date="2011-10-04 10:48:11"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>16 p.</extent>
+          <note>Sewn but unbound and untrimmed as issued. Stained and marked but the text is complete.</note>
+        </physicalDescription>
+        <genre authority="marcgt">Journals</genre>
+        <abstract>Second edition of "The Old Franciscan" written by Camille Desmoulins that argues against the Girondins and in favor of the Jacobins and uses specific quotes, allusions, and examples to do so.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh87000416">
+          <topic>Revolutionary literature, French</topic>
+        </subject>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85069215">
+          <topic>Jacobins</topic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6657" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter from Lieutenant of Lally-Tolendal</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i17</identifier>
+        <identifier type="digitool">3180317</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n84005257">
+          <namePart type="family">Lally-Tolendal</namePart>
+          <namePart type="given">Trophime-Gerard</namePart>
+          <namePart type="termsOfAddress">marquis de</namePart>
+          <namePart type="date">1751-1830</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1815</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180317</url>
+        </location>
+        <identifier type="fedora">fsu:6657</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:06", modified_by="super:TWEATHER", modification_date="2011-10-04 10:09:33"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>2 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Letter from the Lieutenant of Lally-Toldendal to Monsieur Baron concerning the French Republic.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051396">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>19th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6658" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo lang="fre" type="uniform">
+          <nonSort>Le</nonSort>
+          <title>Vieux Cordelier</title>
+        </titleInfo>
+        <titleInfo lang="eng" type="alternative">
+          <nonSort>The</nonSort>
+          <title>old franciscan</title>
+        </titleInfo>
+        <part>
+          <detail>
+            <caption>No.</caption>
+            <number>7</number>
+          </detail>
+        </part>
+        <identifier type="IID">MSS 20110329_b1_s4_ss1_i7</identifier>
+        <identifier type="digitool">3180318</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n85242196">
+          <namePart type="family">Desmoulins</namePart>
+          <namePart type="given">Camille</namePart>
+          <namePart type="date">1760-1794</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1794</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180318</url>
+        </location>
+        <identifier type="fedora">fsu:6658</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:06", modified_by="super:TWEATHER", modification_date="2011-10-04 10:49:08"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>56 p.</extent>
+          <note>Sewn but unbound and untrimmed as issued. Stained and marked but the text is complete.</note>
+        </physicalDescription>
+        <genre authority="marcgt">Journals</genre>
+        <abstract>Seventh edition of "The Old Franciscan," which argues against those who favor monarchy and supports those who favor republic. This journal uses many specific references to Classical authors.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh87000416">
+          <topic>Revolutionary literature, French</topic>
+        </subject>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85069215">
+          <topic>Jacobins</topic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6655" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Law: Arthur Dillon and the National Assembly</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i28</identifier>
+        <identifier type="digitool">3180315</identifier>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1792</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180315</url>
+        </location>
+        <identifier type="fedora">fsu:6655</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:06", modified_by="super:TWEATHER", modification_date="2011-10-03 10:34:41"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>2 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Journals</genre>
+        <abstract displayLabel="Summary">Document written on behalf of the National Assembly, stating that, by the motion of a member, a decree that Arthur Dillon lost the confidence of the nation must be suspended.</abstract>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/nr2001040126">
+            <namePart type="family">Dillon</namePart>
+            <namePart type="given">Arthur</namePart>
+            <namePart type="termsOfAddress">comte</namePart>
+            <namePart type="date">1750-1794</namePart>
+          </name>
+        </subject>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051305">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>18th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6659" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Notice from the department of war</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i22</identifier>
+        <identifier type="digitool">3180319</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1816-12-11</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180319</url>
+        </location>
+        <identifier type="fedora">fsu:6659</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:07", modified_by="super:TWEATHER", modification_date="2011-10-03 08:33:43"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract>Letter from the office of the Department of War under King Louis XVIII awarding Dearron Deserennet the Order of the Knight. The notice is signed by the secretary of the Department of War and bears the king's coat of arms.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n79058874">
+          <geographic>Paris (France)</geographic>
+        </subject>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh2010101358">
+          <topic>Monarchy</topic>
+          <geographic>France</geographic>
+          <topic>History</topic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6660" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo type="uniform">
+          <title>Notebook of Lucile Duplessis Desmoulins</title>
+        </titleInfo>
+        <titleInfo type="alternative">
+          <nonSort>The</nonSort>
+          <title>red book</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s1</identifier>
+        <identifier type="digitool">3180320</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n85242197">
+          <namePart type="family">Desmoulins</namePart>
+          <namePart type="given">Lucile</namePart>
+          <namePart type="date">1770 or 71-1794</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180320</url>
+        </location>
+        <identifier type="fedora">fsu:6660</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:07", modified_by="super:TWEATHER", modification_date="2013-04-04 10:00:05"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <originInfo>
+          <dateCreated point="start">1771</dateCreated>
+          <dateCreated point="end">1774</dateCreated>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <abstract displayLabel="Summary">Book that is named "The red book," written by Lucile Duplessis, wife of Camille Desmoulins. The inscriptions at the front state who the book was written by and that in 1834, it was given to Lucile Duplessis's sister, and the remainder of the book contains poems written by Lucile Duplessis.</abstract>
+        <genre authority="marcgt">Books</genre>
+        <physicalDescription>
+          <extent>26 p.</extent>
+          <note>Red homemade manuscript book/diary by Duplessis, wife of Camille Desmoulins. Bound with red paper-covered card covers and a green marbled spine. 'Lucile Desmoulins' is written on the front cover in a nineteenth century hand. The book runs to 22 leaves with ten leaves - twenty pages - covered in Duplessis' handwriting. Two preliminary leaves set out the book's subsequent history; ten leaves at the rear of the book are blank and uncut.</note>
+        </physicalDescription>
+        <note displayLabel="Provenance">Provenance of the book is clear for its first century. After Lucile Desmoulins' death it passed to her sister who subsequently gave it to the Baron de Girardot who writes on the first page: 'Cahier ecrit de la Main de Lucile Duplessis femme de Camille Desmoulins M'a ete donne par la soeur de Lucile en 1834, a Paris B de Girardot'. Additionally it appears to be Girardot who has written the name 'Lucile Desmoulins' on the front cover. Claretie had access to the notebook for his 1876 biography and thanks 'M De Lescure' (presumably the historical author Matthieu-Francois-Adolphe Mathurin de Lescure) for the privilege. Beyond that date nothing is known until it appeared at auction in the UK in late 2010.</note>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6661" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo lang="fre" type="uniform">
+          <title>Lettre de Camille Desmoulins, Depute de Paris a la Convention, Au General Dillon, En prison aux Madelonettes.</title>
+        </titleInfo>
+        <titleInfo lang="eng" type="alternative">
+          <title>Letter from Camille Desmoulins to General Arthur Dillon</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s4_ss3</identifier>
+        <identifier type="digitool">3180321</identifier>
+        <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n85242196">
+          <namePart type="family">Desmoulins</namePart>
+          <namePart type="given">Camille</namePart>
+          <namePart type="date">1760-1794</namePart>
+          <role>
+            <roleTerm authority="marcrelator" type="text">Creator</roleTerm>
+            <roleTerm authority="marcrelator" type="code">cre</roleTerm>
+          </role>
+        </name>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1793-07-08</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/nr2001040126">
+            <namePart type="family">Dillon</namePart>
+            <namePart type="given">Arthur</namePart>
+            <namePart type="termsOfAddress">comte</namePart>
+            <namePart type="date">1750-1794</namePart>
+          </name>
+        </subject>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180321</url>
+        </location>
+        <identifier type="fedora">fsu:6661</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:07", modified_by="super:TWEATHER", modification_date="2011-10-04 10:47:14"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>59 p.</extent>
+          <note>Sewn but unbound and untrimmed as issued. Stained and marked but the text is complete.</note>
+        </physicalDescription>
+        <abstract>Letter written by Camille Desmoulins, a member of the Paris Convention, to General Dillon, who was imprisoned at the time. This document also includes the letter from Dillon informing Desmoulins and the Convention of his wrongful imprisonment and Desmoulins's response.</abstract>
+        <genre authority="marcgt">Letter</genre>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh87000416">
+          <topic>Revolutionary literature, French</topic>
+        </subject>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6662" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter from the superior officers of the Dillon Regiment regarding Sergeant Prudeaux</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i3</identifier>
+        <identifier type="digitool">3180322</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1784-08</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180322</url>
+        </location>
+        <identifier type="fedora">fsu:6662</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:07", modified_by="super:TWEATHER", modification_date="2011-09-29 09:29:03"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>2 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract displayLabel="Summary">Letter written by the superior officers of the Dillon Regiment urging that Sergeant Prudeaux be allowed to continue his services in the military.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051305">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>18th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6663" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Note from the office of the movement of troops</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i11</identifier>
+        <identifier type="digitool">3180323</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1789-03-07</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180323</url>
+        </location>
+        <identifier type="fedora">fsu:6663</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:07", modified_by="super:TWEATHER", modification_date="2011-09-29 10:31:26"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Notes</genre>
+        <abstract displayLabel="Summary">Short note from the Office of the Movement of the Troops concerning the Duke of Fitz-James and the regiment of the Irlandois infantry.</abstract>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/nr2005026935">
+            <namePart type="given">Charles de Fitzjames</namePart>
+            <namePart type="family">Fitzjames</namePart>
+            <namePart type="termsOfAddress">duc de</namePart>
+            <namePart type="date">1712-1787</namePart>
+          </name>
+        </subject>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051305">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>18th century</temporal>
+        </subject>
+        <subject authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n79026909">
+          <geographic>Versailles (France)</geographic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6664" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Law No. 1691: On attacks against M. Dillon and others</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i29</identifier>
+        <identifier type="digitool">3180324</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1792-05</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180324</url>
+        </location>
+        <identifier type="fedora">fsu:6664</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:07", modified_by="super:TWEATHER", modification_date="2011-10-03 10:38:48"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>2 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Journals</genre>
+        <abstract displayLabel="Summary">Document criticizing the way in which the National Assembly tried to suspend Arthur Dillon and others as members.</abstract>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/nr2001040126">
+            <namePart type="family">Dillon</namePart>
+            <namePart type="given">Arthur</namePart>
+            <namePart type="termsOfAddress">comte</namePart>
+            <namePart type="date">1750-1794</namePart>
+          </name>
+        </subject>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051305">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>18th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6666" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Berwick Regiment list of revenue and expenses. May, 1771 to May, 1772</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i4</identifier>
+        <identifier type="digitool">3180326</identifier>
+        <originInfo>
+          <dateIssued encoding="w3cdtf" keyDate="yes">1772</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180326</url>
+        </location>
+        <identifier type="fedora">fsu:6666</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:07", modified_by="super:TWEATHER", modification_date="2011-10-04 13:14:29"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <subject authority="naf">
+          <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n79054933">
+            <namePart>Napoleon I, Emperor of the French, 1769-1821</namePart>
+          </name>
+        </subject>
+        <genre authority="marcgt">Receipts</genre>
+        <physicalDescription>
+          <extent>1 p.</extent>
+        </physicalDescription>
+        <abstract>Receipts listing purchases, expenses, and whom the purchases were made by the Berwick Regiment.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6665" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>Letter from the Count of Bourke</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i20</identifier>
+        <identifier type="digitool">3180325</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1816-07-21</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180325</url>
+        </location>
+        <identifier type="fedora">fsu:6665</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:07", modified_by="super:TWEATHER", modification_date="2011-09-30 09:15:00"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <physicalDescription>
+          <extent>2 p.</extent>
+        </physicalDescription>
+        <genre authority="marcgt">Letter</genre>
+        <abstract>Letter written by Count of Bourke to another, unknown count concerning the gentlemen and king of France. Most of the letter is illegible.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n79058874">
+          <geographic>Paris (France)</geographic>
+        </subject>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh2010101358">
+          <topic>Monarchy</topic>
+          <geographic>France</geographic>
+          <topic>History</topic>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.fsu_nap01:oai:fsu.digital.flvc.org:fsu_6667" timestamp="2016-12-16">
+    <repox:metadata>
+      <mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+        <titleInfo>
+          <title>My good mama letter</title>
+        </titleInfo>
+        <identifier type="IID">MSS 20110329_b1_s3_i25</identifier>
+        <identifier type="digitool">3180327</identifier>
+        <originInfo>
+          <dateIssued keyDate="yes">1813-07-19</dateIssued>
+          <issuance>single unit</issuance>
+        </originInfo>
+        <language>
+          <languageTerm type="text">French</languageTerm>
+        </language>
+        <location displayLabel="purl">
+          <url>http://purl.flvc.org/fcla/dt/3180327</url>
+        </location>
+        <identifier type="fedora">fsu:6667</identifier>
+        <extension>
+          <flvc:flvc>
+            <flvc:owningInstitution>FSU</flvc:owningInstitution>
+            <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+            <flvc:objectHistory source="digitool">admin_unit="FSU01", ingest_id="ing10879", creator="creator:PSMITH", creation_date="2011-09-26 08:48:07", modified_by="super:TWEATHER", modification_date="2011-10-03 09:10:27"</flvc:objectHistory>
+          </flvc:flvc>
+        </extension>
+        <typeOfResource>text</typeOfResource>
+        <genre authority="marcgt">Letter</genre>
+        <physicalDescription>
+          <extent>2 p.</extent>
+        </physicalDescription>
+        <abstract displayLabel="Summary">Letter that is addressed to "my good mama" concerning the army. Most of the letter, including the signature, is illegible.</abstract>
+        <relatedItem type="host">
+          <titleInfo>
+            <title>French Revolution Collection on Camille Desmoulins, Lucile Duplessis, and Arthur Dillon, 1702-1876</title>
+          </titleInfo>
+          <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2011-0329</url>
+          </location>
+        </relatedItem>
+        <accessCondition type="access and use" xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+        <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85051396">
+          <geographic>France</geographic>
+          <topic>History</topic>
+          <temporal>19th century</temporal>
+        </subject>
+      </mods:mods>
+    </repox:metadata>
+  </repox:record>
+</repox:exportedRecords>
