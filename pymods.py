@@ -7,7 +7,8 @@ nameSpace_default = {None: '{http://www.loc.gov/mods/v3}',
                      'dc': '{http://purl.org/dc/elements/1.1/}',
                      'mods': '{http://www.loc.gov/mods/v3}',
                      'dcterms': '{http://purl.org/dc/terms}',
-                     'xlink': '{http://www.w3.org/1999/xlink}'}
+                     'xlink': '{http://www.w3.org/1999/xlink}',
+                     'repox': '{http://repox.ist.utl.pt}'}
 
 
 class MODSReader:
@@ -502,25 +503,48 @@ class OAI(MODSReader):
     for inclusion of the default namespace,and add it to the file when
     not present.
     """
-    def __init__(self, input_file):
+    def __init__(self, input_file=None):
         """
         Constructor class for oai_dc namespace elements.
         :param input_file: file or directory of files to be accessed.
         """
         super(OAI, self).__init__(input_file)
         record_list = []
-        for oai_record in self.root.iterfind('.//{0}record'.format(nameSpace_default['oai_dc'])):
-            record_list.append(oai_record)
+        if self.root.nsmap is not None:
+            self.nsmap = self.root.nsmap
+        if 'oai_dc' in self.nsmap:
+            for oai_record in self.root.iterfind('.//{0}record'.format(nameSpace_default['oai_dc'])):
+                record = OAI(oai_record)
+                record_list.append(record)
+            self.nsroot = 'oai_dc'
+            self.set_spec = self.root.find('.//{0}setSpec'.format(nameSpace_default['oai_dc'])).text
+        elif 'repox' in self.nsmap:
+            for oai_record in self.root.iterfind('.//{0}record'.format(nameSpace_default['repox'])):
+                record = OAI(oai_record)
+                record_list.append(record)
+            self.nsroot = 'repox'
+            self.set_spec = self.root.attrib['set']
+#            self.oai_urn =
         self.record_list = record_list
 
-    def pid_search(record):
+    def pid_search(self, record=None):
         """
         Get fedora PID from oai_dc wrapper.
         :param record: A single oai_dc record.
         :return: item's fedora PID.
         """
         pid = re.compile('fsu_[0-9]*')
-        for identifier in record.iterfind('.//{0}identifier'.format(nameSpace_default['oai_dc'])):
-            match = pid.search(identifier.text)
-            if match:
-                return match.group().replace('_', ':')
+
+        if record == None:
+            for record in self.record_list:
+                return self.pid_search(record)
+
+        if self.nsroot == 'oai_dc':
+            for identifier in record.iterfind('.//{0}identifier'.format(nameSpace_default['oai_dc'])):
+                match = pid.search(identifier.text)
+                if match:
+                    return match.group().replace('_', ':')
+
+        if self.nsroot == 'repox':
+            return FSUDL.pid_search(record)
+
