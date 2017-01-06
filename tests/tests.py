@@ -6,12 +6,12 @@ from pymods import MODS, FSUDL, OAI
 
 
 
-mods = OAI('C:\\Users\\mmiguez\\bin\pymods\\tests\\fsu_nap01.oai.mods.xml')
+mods = OAI('C:\\Users\\mmiguez\\bin\pymods\\tests\\fsu_nap01-1.xml')
 
-#print(mods.set_spec)
+#print(mods.nsroot)
 
-for record in mods.record_list:
-    print(mods.pid_search())
+#for record in mods.record_list:
+#    print(mods.pid_search())
 
 #for record in mods.record_list:
 #    print(mods.pid_search(record))

@@ -15,21 +15,22 @@ class MODSReader:
     """
     Superclass constructor and file reader.
     """
-    def __init__(self, input_file):
+    def __init__(self, input_file=None):
         """
         General constructor class.
         :param input_file: file or directory of files to be accessed.
         """
-        self.input_file = input_file
-        self.tree = etree.parse(self.input_file)
-        self.root = self.tree.getroot()
+        if input_file is not None:
+            self.input_file = input_file
+            self.tree = etree.parse(self.input_file)
+            self.root = self.tree.getroot()
         
 
 class MODS(MODSReader):
     """
     Class for accessing elements in the MODS namespace.
     """
-    def __init__(self, input_file):
+    def __init__(self, input_file=None):
         """
         MODS constructor class.
         :param input_file: file or directory of files to be accessed.
@@ -446,7 +447,7 @@ class FSUDL(MODSReader):
     Helper functions specific to Florida State
     University's DigiNole: http://diginole.lib.fsu.edu
     """
-    def __init__(self, input_file):
+    def __init__(self, input_file=None):
         """
         MODS constructor class.
         :param input_file: file or directory of files to be accessed.
@@ -510,21 +511,30 @@ class OAI(MODSReader):
         """
         super(OAI, self).__init__(input_file)
         record_list = []
+
         if self.root.nsmap is not None:
             self.nsmap = self.root.nsmap
+
         if 'oai_dc' in self.nsmap:
             for oai_record in self.root.iterfind('.//{0}record'.format(nameSpace_default['oai_dc'])):
-                record = OAI(oai_record)
-                record_list.append(record)
+#                record = OAI(oai_record)    # OOP testing
+#                record_list.append(record)  #
+                record_list.append(oai_record) # actually working line
             self.nsroot = 'oai_dc'
             self.set_spec = self.root.find('.//{0}setSpec'.format(nameSpace_default['oai_dc'])).text
+
         elif 'repox' in self.nsmap:
             for oai_record in self.root.iterfind('.//{0}record'.format(nameSpace_default['repox'])):
-                record = OAI(oai_record)
-                record_list.append(record)
+#                record = OAI(oai_record)    # OOP testing
+#                record_list.append(record)  #
+                record_list.append(oai_record) # actually working line
             self.nsroot = 'repox'
             self.set_spec = self.root.attrib['set']
 #            self.oai_urn =
+
+        elif nameSpace_default['mods'] in self.nsmap:
+            return MODS(self)
+
         self.record_list = record_list
 
     def pid_search(self, record=None):
