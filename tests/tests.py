@@ -10,8 +10,8 @@ mods = OAI('C:\\Users\\mmiguez\\bin\pymods\\tests\\fsu_nap01-1.xml')
 
 #print(mods.nsroot)
 
-#for record in mods.record_list:
-#    print(mods.pid_search())
+for record in mods.record_list:
+    print(mods.pid_search())
 
 #for record in mods.record_list:
 #    print(mods.pid_search(record))

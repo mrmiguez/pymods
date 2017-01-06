@@ -557,4 +557,3 @@ class OAI(MODSReader):
 
         if self.nsroot == 'repox':
             return FSUDL.pid_search(record)
-
