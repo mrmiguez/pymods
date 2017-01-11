@@ -33,6 +33,7 @@
         <typeOfResource>text</typeOfResource>
         <physicalDescription>
           <extent>1 p.</extent>
+          <form>FormTest</form>
         </physicalDescription>
         <genre authority="marcgt">Letter</genre>
         <abstract displayLabel="Summary">Letter explaining the specific expenses of the Dillon Regiment and including some notes at the top about these expenses.</abstract>

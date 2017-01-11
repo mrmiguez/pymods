@@ -157,6 +157,16 @@ class MODS(MODSReader):
         else:
             return None
 
+    def form(record):
+        all_forms = []
+        if record.find('./{0}physicalDescription/{0}form'.format(nameSpace_default['mods'])) is not None:
+            for form in record.iterfind('./{0}physicalDescription/{0}form'.format(nameSpace_default['mods'])):
+                all_forms.append(form.text)
+            return all_forms
+        else:
+            return None
+
+
     def genre(record):
         """
 
