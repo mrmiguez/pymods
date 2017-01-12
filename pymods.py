@@ -186,6 +186,22 @@ class MODS(MODSReader):
                 all_genres.append(genre_elems)
             return all_genres
 
+
+    def geographic_code(record):
+        """
+        Accesses mods:geographicCode element.
+        :param record: a single MODS record.
+        :return: list of mods:geographicCode texts or None.
+        """
+        all_geocodes = []
+        if record.find('./{0}subject/{0}geographicCode'.format(nameSpace_default['mods'])) is not None:
+            for geocode in record.iterfind('./{0}subject/{0}geographicCode'.format(nameSpace_default['mods'])):
+                all_geocodes.append(geocode.text)
+            return all_geocodes
+        else:
+            return None
+
+
     def issuance(record):
         """
         Accesses mods:issuance element.

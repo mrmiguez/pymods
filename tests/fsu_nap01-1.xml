@@ -52,6 +52,7 @@
           <topic>History</topic>
           <temporal>18th century</temporal>
         </subject>
+        <subject authority="tgn"><geographicCode>7013938</geographicCode></subject>
       </mods:mods>
     </repox:metadata>
   </repox:record>
