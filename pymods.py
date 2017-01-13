@@ -476,7 +476,7 @@ class FSUDL(MODSReader):
     def __init__(self, input_file=None):
         """
         MODS constructor class.
-        :param input_file: file or directory of files to be accessed.
+        input_file: file or directory of files to be accessed.
         """
         super(FSUDL, self).__init__(input_file)
         record_list = []
@@ -486,9 +486,8 @@ class FSUDL(MODSReader):
 
     def purl_search(record):
         """
-        Accesses record's Persistent URL from mods:mods/mods:location/mods:url.
-        :param record: A single MODS record.
-        :return: item PURL as string.
+        Accesses record's Persistent URL from mods:mods/mods:location/mods:url:
+        return: item PURL as string.
         """
         purl = re.compile('((https?):((//)|(\\\\))+([\w\d:#@%/;$()~_?\+-=\\\.&](#!)?)*)')
         for url in record.iterfind('./{0}location/{1}url'.format(nameSpace_default['mods'], nameSpace_default['mods'])):
@@ -498,9 +497,8 @@ class FSUDL(MODSReader):
 
     def pid_search(record):
         """
-        Get fedora PID from MODS record.
-        :param record: A single MODS record.
-        :return: item's fedora PID.
+        Get fedora PID from MODS record:
+        return: item's fedora PID.
         """
         pid = re.compile('fsu:[0-9]*')
         for identifier in record.iterfind('.//{0}identifier'.format(nameSpace_default['mods'])):
@@ -510,9 +508,8 @@ class FSUDL(MODSReader):
 
     def local_identifier(record):
         """
-        Get DigiNole IID from MODS record.
-        :param record: A single MODS record
-        :return: item's fedora PID
+        Get DigiNole IID from MODS record:
+        return: item's IID.
         """
         for identifier in record.iterfind('.//{0}identifier'.format(nameSpace_default['mods'])):
             if 'type' in identifier.attrib is not None:
@@ -534,7 +531,7 @@ class OAI(MODSReader):
     def __init__(self, input_file=None):
         """
         Constructor class for oai_dc namespace elements.
-        :param input_file: file or directory of files to be accessed.
+        input_file: file or directory of files to be accessed.
         """
         super(OAI, self).__init__(input_file)
         record_list = []
@@ -575,9 +572,8 @@ class OAI(MODSReader):
 
     def pid_search(self, record=None):
         """
-        Get fedora PID from oai_dc wrapper.
-        :param record: A single oai_dc record.
-        :return: item's fedora PID.
+        Get fedora PID from oai_dc wrapper:
+        return: item's fedora PID.
         """
         pid = re.compile('fsu_[0-9]*')
 
