@@ -33,8 +33,8 @@ class MODS(MODSReader):
 
     def __init__(self, input_file=None):
         """
-        MODS constructor class.
-        :param input_file: file or directory of files to be accessed.
+        MODS constructor class:
+        input_file: file or directory of files to be accessed.
         """
         super(MODS, self).__init__(input_file)
         record_list = []
@@ -48,8 +48,7 @@ class MODS(MODSReader):
     def abstract(record):
         """
         Access mods:abstract elements and return a list of dicts:
-        :param record: a single MODS record.
-        :return: [{abstract displayLabel: abstract text}] or None.
+        return: [{abstract displayLabel: abstract text}] or None.
         """
         all_abstracts = []
         if record.find('./{0}abstract'.format(nameSpace_default['mods'])) is not None:
@@ -70,6 +69,10 @@ class MODS(MODSReader):
             return None
 
     def classification(record):
+        """
+        Access mods:classification element:
+        return: mods:classification.text
+        """
         if record.find('./{0}classification'.format(nameSpace_default['mods'])) is not None:
             classification = record.find('./{0}classification'.format(nameSpace_default['mods'])).text
         else:
@@ -77,6 +80,10 @@ class MODS(MODSReader):
         return classification
 
     def collection(record):
+        """
+        Retrieve archival collection metadata from mods:relatedItem[type="host"]:
+        return: {'location': collection location, 'title': collection title, 'url': link to collection (if found)}
+        """
         if record.find('./{0}relatedItem'.format(nameSpace_default['mods'])) is not None:
             for related_item in record.iterfind('./{0}relatedItem'.format(nameSpace_default['mods'])):
                 if 'host' == related_item.attrib['type']:
@@ -90,11 +97,8 @@ class MODS(MODSReader):
 
     def date_constructor(record):
         """
-        Accesses mods:dateIssued, mods:dateCreated, mods:copyrightDate,
-        and mods:dateOther underneath mods:originInfo. Other date-type
-        elements are ignored.
-        :param record: A single MODS record.
-        :return: A date containing string or None.
+        Accesses mods:dateIssued, mods:dateCreated, mods:copyrightDate, and mods:dateOther underneath mods:originInfo. Other date-type elements are ignored:
+        return: A date containing string or None.
         """
         date_list = ['{0}dateIssued'.format(nameSpace_default['mods']),
                      '{0}dateCreated'.format(nameSpace_default['mods']),
@@ -134,9 +138,8 @@ class MODS(MODSReader):
 
     def digital_origin(record):
         """
-        Accesses mods:digitalOrigin element.
-        :param record: a single MODS record.
-        :return: mods:digitalOrigin's text or None.
+        Accesses mods:digitalOrigin element:
+        return: element text or None.
         """
         if record.find('.//{0}digitalOrigin'.format(nameSpace_default['mods'])) is not None:
             return record.find('.//{0}digitalOrigin'.format(nameSpace_default['mods'])).text
@@ -145,9 +148,8 @@ class MODS(MODSReader):
 
     def extent(record):
         """
-        Accesses mods:extent element.
-        :param record: a single MODS record.
-        :return: list of mods:extent texts or None.
+        Accesses mods:extent element:
+        return: list of mods:extent texts or None.
         """
         all_extents = []
         if record.find('.//{0}extent'.format(nameSpace_default['mods'])) is not None:
@@ -158,6 +160,10 @@ class MODS(MODSReader):
             return None
 
     def form(record):
+        """
+        Accesses mods:physicalDescription/mods:form element:
+        return: list of mods:form texts or None.
+        """
         all_forms = []
         if record.find('./{0}physicalDescription/{0}form'.format(nameSpace_default['mods'])) is not None:
             for form in record.iterfind('./{0}physicalDescription/{0}form'.format(nameSpace_default['mods'])):
@@ -170,7 +176,7 @@ class MODS(MODSReader):
     def genre(record):
         """
 
-        :return:
+        return:
         """
         all_genres = []
         if record.find('./{0}genre'.format(nameSpace_default['mods'])) is not None:
@@ -189,9 +195,8 @@ class MODS(MODSReader):
 
     def geographic_code(record):
         """
-        Accesses mods:geographicCode element.
-        :param record: a single MODS record.
-        :return: list of mods:geographicCode texts or None.
+        Accesses mods:geographicCode element:
+        return: list of mods:geographicCode texts or None.
         """
         all_geocodes = []
         if record.find('./{0}subject/{0}geographicCode'.format(nameSpace_default['mods'])) is not None:
@@ -204,9 +209,8 @@ class MODS(MODSReader):
 
     def issuance(record):
         """
-        Accesses mods:issuance element.
-        :param record: a single MODS record.
-        :return: list of mods:issuance texts or None.
+        Accesses mods:issuance element:
+        return: list of mods:issuance texts or None.
         """
         all_issuances = []
         if record.find('.//{0}issuance'.format(nameSpace_default['mods'])) is not None:
@@ -218,8 +222,7 @@ class MODS(MODSReader):
 
     def language(record):
         """
-        Accesses mods:languageterm elements.
-        :param record: a single MODS record.
+        Accesses mods:languageterm elements:
         :return: list of of dicts [{term-type: term}] or None.
         """
         all_languages = []
@@ -269,10 +272,8 @@ class MODS(MODSReader):
 
     def name_constructor(record):
         """
-        Accesses mods:name/mods:namePart elements
-        and reconstructs names into LOC order.
-        :param record: A single MODS record.
-        :return: a list of strings.
+        Accesses mods:name/mods:namePart elements and reconstructs names into LOC order:
+        return: a list of strings.
         """
         all_names = []
         if record.find('./{0}name'.format(nameSpace_default['mods'])) is not None:
@@ -312,8 +313,7 @@ class MODS(MODSReader):
     def note(record):
         """
         Access mods:note elements and return a list of dicts:
-        :param record: a single MODS record.
-        :return: [{note-type: note-text}, untyped-note-text]
+        return: [{note-type: note-text}, untyped-note-text]
         """
         all_notes = []
         for note in record.iterfind('./{0}note'.format(nameSpace_default['mods'])):
@@ -332,8 +332,8 @@ class MODS(MODSReader):
 
     def physical_description_note(record):
         """
-
-        :return:
+        Access mods:physicalDescription/mods:note elements and return a list of text values:
+        return: list of note text values.
         """
         all_notes = []
         for physical_description in record.iterfind('./{0}physicalDescription'.format(nameSpace_default['mods'])):
@@ -343,8 +343,8 @@ class MODS(MODSReader):
 
     def physical_location(record):
         """
-
-        :return:
+        Access mods:mods/mods:location/mods:physicalLocation and return text values.
+        return: list of element text values.
         """
         all_locations = []
         if record.find('./{0}location/{0}physicalLocation'.format(nameSpace_default['mods'])) is not None:
@@ -356,8 +356,8 @@ class MODS(MODSReader):
 
     def publication_place(record):
         """
-
-        :return:
+        Access mods:place and return a list of dicts:
+        return: [{termType: termText}, ...]
         """
         all_places = []
         if record.find('.//{0}place'.format(nameSpace_default['mods'])) is not None:
@@ -372,8 +372,8 @@ class MODS(MODSReader):
 
     def publisher(record):
         """
-
-        :return:
+        Access mods:publisher and return a list of text values:
+        return: [publisher, ...]
         """
         all_publishers = []
         if record.find('.//{0}publisher'.format(nameSpace_default['mods'])) is not None:
@@ -385,8 +385,8 @@ class MODS(MODSReader):
 
     def rights(record):
         """
-
-        :return:
+        Access mods:rights[type="use and reproduction|useAndReproduction" and return a dict:
+        return: {'text': elementText, 'URI': rightsURI}
         """
         if record.find('.//{0}accessCondition'.format(nameSpace_default['mods'])) is not None:
             for access_condition in record.iterfind('.//{0}accessCondition'.format(nameSpace_default['mods'])):
@@ -398,10 +398,6 @@ class MODS(MODSReader):
             return rights
 
     def _subject_parser_(subject):
-        """
-
-        :return:
-        """
         parts = ['authority', 'authorityURI', 'valueURI']
         if subject.tag == '{0}subject'.format(nameSpace_default['mods']) or subject.tag == '{0}name'.format(
                 nameSpace_default['mods']):
@@ -421,8 +417,8 @@ class MODS(MODSReader):
 
     def subject(record):
         """
-
-        :return:
+        Access mods:subject elements and return a list of dicts:
+        return: [{'authority': , 'authorityURI': , 'valueURI': , children: {'type': child element name, 'term': text value}}, ... ]
         """
         if record.find('./{0}subject'.format(nameSpace_default['mods'])) is not None:
             all_subjects = []
@@ -439,8 +435,8 @@ class MODS(MODSReader):
 
     def title_constructor(record):
         """
-
-        :return:
+        Accesses children of mods:titleInfo and return a list of titles in natural order:
+        return: list of titles.
         """
         all_titles = []
         for title in record.iterfind('./{0}titleInfo'.format(nameSpace_default['mods'])):
@@ -461,8 +457,8 @@ class MODS(MODSReader):
 
     def type_of_resource(record):
         """
-
-        :return:
+        Access mods:typeOfResourcec and return text value:
+        return: text value or None
         """
         if record.find('.//{0}typeOfResource'.format(nameSpace_default['mods'])) is not None:
             type_of_resource = record.find('.//{0}typeOfResource'.format(nameSpace_default['mods']))
