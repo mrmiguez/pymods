@@ -88,12 +88,12 @@ class MODS(MODSReader):
             for related_item in record.iterfind('./{0}relatedItem'.format(nameSpace_default['mods'])):
                 if 'host' == related_item.attrib['type']:
                     host_info = {}
-                    if MODS.title_constructor(related_item) is not None:
+                    if len(MODS.title_constructor(related_item)) > 0:
                         host_title = MODS.title_constructor(related_item)[0]
-                        host_info.update({ 'title': host_title })
+                        host_info['title'] = host_title
                     if MODS.physical_location(related_item) is not None:
                         host_location = MODS.physical_location(related_item)[0]
-                        host_info.update({ 'location': host_location })
+                        host_info['location'] = host_location
                     if related_item.find('./{0}location/{0}url'.format(nameSpace_default['mods'])) is not None:
                         host_info['url'] = related_item.find(
                             './{0}location/{0}url'.format(nameSpace_default['mods'])).text
