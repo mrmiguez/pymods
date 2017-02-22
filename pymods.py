@@ -50,8 +50,8 @@ class MODS(MODSReader):
         Access mods:abstract elements and return a list of dicts:
         return: [{abstract displayLabel: abstract text}] or None.
         """
-        all_abstracts = []
         if record.find('./{0}abstract'.format(nameSpace_default['mods'])) is not None:
+            all_abstracts = []
             for abstract in record.iterfind('./{0}abstract'.format(nameSpace_default['mods'])):
                 if len(abstract.attrib) >= 1:
                     if 'type' in abstract.attrib.keys():
@@ -86,18 +86,19 @@ class MODS(MODSReader):
         """
         if record.find('./{0}relatedItem'.format(nameSpace_default['mods'])) is not None:
             for related_item in record.iterfind('./{0}relatedItem'.format(nameSpace_default['mods'])):
-                if 'host' == related_item.attrib['type']:
-                    host_info = {}
-                    if len(MODS.title_constructor(related_item)) > 0:
-                        host_title = MODS.title_constructor(related_item)[0]
-                        host_info['title'] = host_title
-                    if MODS.physical_location(related_item) is not None:
-                        host_location = MODS.physical_location(related_item)[0]
-                        host_info['location'] = host_location
-                    if related_item.find('./{0}location/{0}url'.format(nameSpace_default['mods'])) is not None:
-                        host_info['url'] = related_item.find(
-                            './{0}location/{0}url'.format(nameSpace_default['mods'])).text
-                    return host_info
+                if 'type' in related_item.attrib.keys():
+                    if 'host' == related_item.attrib['type']:
+                        host_info = {}
+                        if len(MODS.title_constructor(related_item)) > 0:
+                            host_title = MODS.title_constructor(related_item)[0]
+                            host_info['title'] = host_title
+                        if MODS.physical_location(related_item) is not None:
+                            host_location = MODS.physical_location(related_item)[0]
+                            host_info['location'] = host_location
+                        if related_item.find('./{0}location/{0}url'.format(nameSpace_default['mods'])) is not None:
+                            host_info['url'] = related_item.find(
+                                './{0}location/{0}url'.format(nameSpace_default['mods'])).text
+                        return host_info
 
     def date_constructor(record):
         """
@@ -155,8 +156,8 @@ class MODS(MODSReader):
         Accesses mods:extent element:
         return: list of mods:extent texts or None.
         """
-        all_extents = []
         if record.find('.//{0}extent'.format(nameSpace_default['mods'])) is not None:
+            all_extents = []
             for extent in record.iterfind('.//{0}extent'.format(nameSpace_default['mods'])):
                 all_extents.append(extent.text)
             return all_extents
@@ -168,8 +169,8 @@ class MODS(MODSReader):
         Accesses mods:physicalDescription/mods:form element:
         return: list of mods:form texts or None.
         """
-        all_forms = []
         if record.find('./{0}physicalDescription/{0}form'.format(nameSpace_default['mods'])) is not None:
+            all_forms = []
             for form in record.iterfind('./{0}physicalDescription/{0}form'.format(nameSpace_default['mods'])):
                 all_forms.append(form.text)
             return all_forms
@@ -179,11 +180,11 @@ class MODS(MODSReader):
 
     def genre(record):
         """
-
-        return:
+        Accesses mods:genre element:
+        return: [ { 'term': , 'authority': , 'authorityURI': , 'valueURI': }, ] or None.
         """
-        all_genres = []
         if record.find('./{0}genre'.format(nameSpace_default['mods'])) is not None:
+            all_genres = []
             for genre in record.iterfind('./{0}genre'.format(nameSpace_default['mods'])):
                 genre_elems = { }
                 genre_elems['term'] = genre.text
@@ -195,6 +196,8 @@ class MODS(MODSReader):
                     genre_elems['valueURI'] = genre.attrib['valueURI']
                 all_genres.append(genre_elems)
             return all_genres
+        else:
+            return None
 
 
     def geographic_code(record):
@@ -202,8 +205,8 @@ class MODS(MODSReader):
         Accesses mods:geographicCode element:
         return: list of mods:geographicCode texts or None.
         """
-        all_geocodes = []
         if record.find('./{0}subject/{0}geographicCode'.format(nameSpace_default['mods'])) is not None:
+            all_geocodes = []
             for geocode in record.iterfind('./{0}subject/{0}geographicCode'.format(nameSpace_default['mods'])):
                 all_geocodes.append(geocode.text)
             return all_geocodes
@@ -216,21 +219,22 @@ class MODS(MODSReader):
         Accesses mods:issuance element:
         return: list of mods:issuance texts or None.
         """
-        all_issuances = []
         if record.find('.//{0}issuance'.format(nameSpace_default['mods'])) is not None:
+            all_issuances = []
             for issuance in record.iterfind('.//{0}issuance'.format(nameSpace_default['mods'])):
                 all_issuances.append(issuance.text)
+            return all_issuances
         else:
-            all_issuances.append('None')
-        return all_issuances
+            return None
+
 
     def language(record):
         """
         Accesses mods:languageterm elements:
         :return: list of of dicts [{term-type: term}] or None.
         """
-        all_languages = []
         if record.find('.//{0}language'.format(nameSpace_default['mods'])) is not None:
+            all_languages = []
             for language in record.iterfind('.//{0}language'.format(nameSpace_default['mods'])):
                 languages = { }
                 for term in language.iterchildren():
@@ -279,8 +283,8 @@ class MODS(MODSReader):
         Accesses mods:name/mods:namePart elements and reconstructs names into LOC order:
         return: a list of strings.
         """
-        all_names = []
         if record.find('./{0}name'.format(nameSpace_default['mods'])) is not None:
+            all_names = []
             for name in record.iterfind('./{0}name'.format(nameSpace_default['mods'])):
                 full_name = name.attrib
                 name_text = ""
@@ -319,73 +323,81 @@ class MODS(MODSReader):
         Access mods:note elements and return a list of dicts:
         return: [{note-type: note-text}, untyped-note-text]
         """
-        all_notes = []
-        for note in record.iterfind('./{0}note'.format(nameSpace_default['mods'])):
-            if len(note.attrib) >= 1:
-                if 'type' in note.attrib.keys():
-                    typed_note = { note.attrib['type']: note.text }
-                    all_notes.append(typed_note)
-                elif 'displayLabel' in note.attrib.keys():
-                    labeled_note = { note.attrib['displayLabel']: note.text }
-                    all_notes.append(labeled_note)
+        if record.find('./{0}note'.format(nameSpace_default['mods'])) is not None:
+            for note in record.iterfind('./{0}note'.format(nameSpace_default['mods'])):
+                all_notes = []
+                if len(note.attrib) >= 1:
+                    if 'type' in note.attrib.keys():
+                        typed_note = { note.attrib['type']: note.text }
+                        all_notes.append(typed_note)
+                    elif 'displayLabel' in note.attrib.keys():
+                        labeled_note = { note.attrib['displayLabel']: note.text }
+                        all_notes.append(labeled_note)
+                    else:
+                        all_notes.append(note.text)
                 else:
                     all_notes.append(note.text)
-            else:
-                all_notes.append(note.text)
-        return all_notes
+            return all_notes
+        else:
+            return None
 
     def physical_description_note(record):
         """
         Access mods:physicalDescription/mods:note elements and return a list of text values:
         return: list of note text values.
         """
-        all_notes = []
-        for physical_description in record.iterfind('./{0}physicalDescription'.format(nameSpace_default['mods'])):
-            for note in physical_description.iterfind('./{0}note'.format(nameSpace_default['mods'])):
-                all_notes.append(note.text)
-        return all_notes
+        if record.find('./{0}physicalDescription'.format(nameSpace_default['mods'])) is not None:
+            for physical_description in record.iterfind('./{0}physicalDescription'.format(nameSpace_default['mods'])):
+                all_notes = []
+                for note in physical_description.iterfind('./{0}note'.format(nameSpace_default['mods'])):
+                    all_notes.append(note.text)
+            return all_notes
+        else:
+            return None
 
     def physical_location(record):
         """
         Access mods:mods/mods:location/mods:physicalLocation and return text values.
         return: list of element text values.
         """
-        all_locations = []
         if record.find('./{0}location/{0}physicalLocation'.format(nameSpace_default['mods'])) is not None:
+            all_locations = []
             for location in record.iterfind('./{0}location/{0}physicalLocation'.format(nameSpace_default['mods'])):
                 all_locations.append(location.text)
+            return all_locations
         else:
-            all_locations.append(None)
-        return all_locations
+            return None
 
     def publication_place(record):
         """
         Access mods:place and return a list of dicts:
         return: [{termType: termText}, ...]
         """
-        all_places = []
         if record.find('.//{0}place'.format(nameSpace_default['mods'])) is not None:
+            all_places = []
             for place in record.iterfind('.//{0}place'.format(nameSpace_default['mods'])):
                 places = { }
                 for term in place.iterchildren():
                     places[term.attrib['type']] = term.text
                 all_places.append(places)
+            return all_places
         else:
-            all_places.append('None')
-        return all_places
+            return None
 
     def publisher(record):
         """
         Access mods:publisher and return a list of text values:
         return: [publisher, ...]
         """
-        all_publishers = []
+
         if record.find('.//{0}publisher'.format(nameSpace_default['mods'])) is not None:
+            all_publishers = []
             for publisher in record.iterfind('.//{0}publisher'.format(nameSpace_default['mods'])):
                 all_publishers.append(publisher.text)
+            return all_publishers
         else:
-            all_publishers.append('None')
-        return all_publishers
+            return None
+
 
     def rights(record):
         """
@@ -430,34 +442,39 @@ class MODS(MODSReader):
                 if 'authority' in subject.attrib.keys():
                     if 'lcsh' == subject.attrib['authority']:
                         all_subjects.append(MODS._subject_parser_(subject))
-                    elif ('naf' or 'lcnaf') in subject.attrib['authority']:
+                    elif ('naf' or 'lcnaf' or 'NAF') in subject.attrib['authority']:
                         if MODS.name_constructor(subject) is not None:
                             all_subjects.append(MODS.name_constructor(subject)[0])
                 else:
                     all_subjects.append(MODS._subject_parser_(subject))
             return all_subjects
+        else:
+            return None
 
     def title_constructor(record):
         """
         Accesses children of mods:titleInfo and return a list of titles in natural order:
         return: list of titles.
         """
-        all_titles = []
-        for title in record.iterfind('./{0}titleInfo'.format(nameSpace_default['mods'])):
-            if title.find('./{0}nonSort'.format(nameSpace_default['mods'])) is not None and title.find(
-                    './{0}title'.format(nameSpace_default['mods'])) is not None and title.find(
-                    './{0}subTitle'.format(nameSpace_default['mods'])) is not None:
-                title_full = title.find('./{0}nonSort'.format(nameSpace_default['mods'])).text + ' ' + title.find(
-                        './{0}title'.format(nameSpace_default['mods'])).text + ': ' + title.find(
-                        './{0}subTitle'.format(nameSpace_default['mods'])).text
-            elif title.find('./{0}nonSort'.format(nameSpace_default['mods'])) is not None and title.find(
-                    './{0}title'.format(nameSpace_default['mods'])) is not None:
-                title_full = title.find('./{0}nonSort'.format(nameSpace_default['mods'])).text + ' ' + title.find(
-                        './{0}title'.format(nameSpace_default['mods'])).text
-            else:
-                title_full = title.find('./{0}title'.format(nameSpace_default['mods'])).text
-            all_titles.append(title_full)
-        return all_titles
+        if record.find('./{0}titleInfo'.format(nameSpace_default['mods'])) is not None:
+            all_titles = []
+            for title in record.iterfind('./{0}titleInfo'.format(nameSpace_default['mods'])):
+                if title.find('./{0}nonSort'.format(nameSpace_default['mods'])) is not None and title.find(
+                        './{0}title'.format(nameSpace_default['mods'])) is not None and title.find(
+                        './{0}subTitle'.format(nameSpace_default['mods'])) is not None:
+                    title_full = title.find('./{0}nonSort'.format(nameSpace_default['mods'])).text + ' ' + title.find(
+                            './{0}title'.format(nameSpace_default['mods'])).text + ': ' + title.find(
+                            './{0}subTitle'.format(nameSpace_default['mods'])).text
+                elif title.find('./{0}nonSort'.format(nameSpace_default['mods'])) is not None and title.find(
+                        './{0}title'.format(nameSpace_default['mods'])) is not None:
+                    title_full = title.find('./{0}nonSort'.format(nameSpace_default['mods'])).text + ' ' + title.find(
+                            './{0}title'.format(nameSpace_default['mods'])).text
+                else:
+                    title_full = title.find('./{0}title'.format(nameSpace_default['mods'])).text
+                all_titles.append(title_full)
+            return all_titles
+        else:
+            return None
 
     def type_of_resource(record):
         """
