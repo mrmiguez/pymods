@@ -297,7 +297,7 @@ class MODS(MODSReader):
                             full_name['text'] = name_part.text
                         elif 'type' in name_part.attrib.keys():
                             names[name_part.attrib['type']] = name_part.text
-                            full_name['text'] = MODS._nameGen_(names, name_text)
+                            full_name['text'] = full_name['text'] + MODS._nameGen_(names, name_text)
 
                 # Single part name
                 else:
