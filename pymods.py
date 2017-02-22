@@ -89,7 +89,7 @@ class MODS(MODSReader):
                 if 'type' in related_item.attrib.keys():
                     if 'host' == related_item.attrib['type']:
                         host_info = {}
-                        if len(MODS.title_constructor(related_item)) > 0:
+                        if MODS.title_constructor(related_item) is not None:
                             host_title = MODS.title_constructor(related_item)[0]
                             host_info['title'] = host_title
                         if MODS.physical_location(related_item) is not None:
