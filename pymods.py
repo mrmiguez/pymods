@@ -290,12 +290,17 @@ class MODS(MODSReader):
                 name_text = ""
 
                 if name.find('./{0}namePart'.format(nameSpace_default['mods'])) is not None:
+
                     # Multipart name
                     if len(name.findall('./{0}namePart'.format(nameSpace_default['mods']))) > 1:
                         names = { }
                         for name_part in name.findall('./{0}namePart'.format(nameSpace_default['mods'])):
+
+                            # Untyped nameParts
                             if 'type' not in name_part.attrib.keys():
-                                full_name['text'] = name_part.text
+                                name_text = name_text + ', ' + name_part.text
+                                full_name['text'] = name_text.strip(', ')
+                            # Typed nameParts
                             elif 'type' in name_part.attrib.keys():
                                 names[name_part.attrib['type']] = name_part.text
                                 if 'text' in full_name.keys():
@@ -315,10 +320,10 @@ class MODS(MODSReader):
                             elif role_term.attrib['type'] == 'text':
                                 full_name['roleText'] = role_term.text
 
-                    all_names.append(full_name)
-
                 else:
                     pass
+
+                all_names.append(full_name)
 
             if len(all_names) == 0:
                 return None
