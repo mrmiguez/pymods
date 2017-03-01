@@ -20,6 +20,10 @@
     <namePart type="family">Miguez</namePart>
     <namePart type="date">1984-</namePart>
   </name>
+  <name type="personal">
+    <namePart>Steinbeck, John</namePart>
+    <namePart type="date">1902-1968</namePart>
+  </name>
   
   <!-- corp names -->
   <name type="corporate" authority="local">

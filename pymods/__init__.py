@@ -250,16 +250,16 @@ class MODS(MODSReader):
             keys.append(key)
         if all(x in keys for x in ['family', 'given',
                                    'termsOfAddress', 'date']):
-            fullName = fullName + names['family'] + ', ' + names['given'] + ', ' + names['termsOfAddress'] + ' ' + \
+            fullName = fullName + names['family'] + ', ' + names['given'] + ', ' + names['termsOfAddress'] + ', ' + \
                        names['date']
         elif all(x in keys for x in ['family', 'given', 'date']):
-            fullName = fullName + names['family'] + ', ' + names['given'] + ' ' + names['date']
+            fullName = fullName + names['family'] + ', ' + names['given'] + ', ' + names['date']
         elif all(x in keys for x in ['family', 'given', 'termsOfAddress']):
             fullName = fullName + names['family'] + ', ' + names['given'] + ', ' + names['termsOfAddress']
         elif all(x in keys for x in ['family', 'termsOfAddress', 'date']):
-            fullName = fullName + names['family'] + ', ' + names['termsOfAddress'] + ' ' + names['date']
+            fullName = fullName + names['family'] + ', ' + names['termsOfAddress'] + ', ' + names['date']
         elif all(x in keys for x in ['given', 'termsOfAddress', 'date']):
-            fullName = fullName + names['given'] + ', ' + names['termsOfAddress'] + ' ' + names['date']
+            fullName = fullName + names['given'] + ', ' + names['termsOfAddress'] + ', ' + names['date']
         elif all(x in keys for x in ['family', 'given']):
             fullName = fullName + names['family'] + ', ' + names['given']
         elif all(x in keys for x in ['family', 'date']):
@@ -271,7 +271,7 @@ class MODS(MODSReader):
         elif all(x in keys for x in ['given', 'termsOfAddress']):
             fullName = fullName + names['given'] + ', ' + names['termsOfAddress']
         elif all(x in keys for x in ['termsOfAddress', 'date']):
-            fullName = fullName + ', ' + names['termsOfAddress'] + ' ' + names['date']
+            fullName = fullName + ', ' + names['termsOfAddress'] + ', ' + names['date']
         elif 'date' in keys:
             fullName = fullName + ', ' + names['date']
         elif 'termsOfAddress' in keys:
@@ -305,7 +305,7 @@ class MODS(MODSReader):
                                 names[name_part.attrib['type']] = name_part.text
 
                         if len(names) > 0:
-                            full_name['text'] = MODS._nameGen_(names, name_text)
+                            full_name['text'] = MODS._nameGen_(names, name_text.strip(', '))
 
                     # Single part name
                     else:
@@ -586,9 +586,7 @@ class OAI(MODSReader):
 
         if 'oai_dc' in self.nsmap:
             for oai_record in self.root.iterfind('.//{0}record'.format(nameSpace_default['oai_dc'])):
-                #                record = OAI(oai_record)    # OOP testing
-                #                record_list.append(record)  #
-                record_list.append(oai_record)  # actually working line
+                record_list.append(oai_record)
             self.nsroot = 'oai_dc'
             self.set_spec = self.root.find('.//{0}setSpec'.format(nameSpace_default['oai_dc'])).text
             oai_id = self.root.find('.//{0}header/{0}identifier'.format(nameSpace_default['oai_dc'])).text
@@ -599,9 +597,7 @@ class OAI(MODSReader):
 
         elif 'repox' in self.nsmap:
             for oai_record in self.root.iterfind('.//{0}record'.format(nameSpace_default['repox'])):
-                #                record = OAI(oai_record)    # OOP testing
-                #                record_list.append(record)  #
-                record_list.append(oai_record)  # actually working line
+                record_list.append(oai_record)
             self.nsroot = 'repox'
             self.set_spec = self.root.attrib['set']
             oai_id = self.root.find('./{0}record'.format(nameSpace_default['repox'])).attrib['id']
