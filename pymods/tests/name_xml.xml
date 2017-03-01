@@ -1,0 +1,57 @@
+<mods:mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:flvc="info:flvc/manifest/v1" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd" version="3.4">
+
+  <!--  pers names -->
+  <name type="personal" authority="local">
+    <namePart type="given">Stanford</namePart>
+    <namePart type="family">Olsen</namePart>
+    <role>
+      <roleTerm authority="local" type="text">committee member</roleTerm>
+    </role>
+  </name>
+  <name type="personal" authority="local">
+    <namePart type="given">Roy</namePart>
+    <namePart type="family">Delp</namePart>
+    <role>
+      <roleTerm authority="local" type="text">committee member</roleTerm>
+    </role>
+  </name>
+  <name type="personal">
+    <namePart type="given">Matthew Roland</namePart>
+    <namePart type="family">Miguez</namePart>
+    <napePart type="date">1984-</napePart>
+  </name>
+  
+  <!-- corp names -->
+  <name type="corporate" authority="local">
+    <namePart>College of Music</namePart>
+    <role>
+      <roleTerm authority="local" type="text">degree granting
+                            department</roleTerm>
+    </role>
+  </name>
+  <name type="corporate" authority="naf" authorityURI="http://id.loc.gov/authorities/names/n80126238?">
+    <namePart>Florida State University</namePart>
+    <role>
+      <roleTerm authority="rda" type="text">degree granting institution</roleTerm>
+    </role>
+  </name>
+  
+  <!-- multipart corp name -->
+  <name type="corporate" authority="NAF">
+    <namePart>Florida</namePart>
+    <namePart>Legislature</namePart>
+    <namePart>House of Representatives</namePart>
+    <namePart>Office of the Clerk</namePart>
+    <role>
+        <roleTerm type="text" authority="marcrelator">compiler</roleTerm>
+    </role>
+  </name>
+  
+  <!-- No namePart elements -->
+  <name>
+    <role>
+        <roleTerm type='text'></roleTerm>
+        <toleTerm type='code'></toleTerm>
+    </role>
+  </name>
+</mods:mods>
