@@ -294,7 +294,7 @@ class MODS(MODSReader):
                     # Multipart name
                     if len(name.findall('./{0}namePart'.format(nameSpace_default['mods']))) > 1:
                         names = { }
-                        for name_part in name.findall('./{0}namePart'.format(nameSpace_default['mods'])):
+                        for name_part in name.iterfind('./{0}namePart'.format(nameSpace_default['mods'])):
 
                             # Untyped nameParts
                             if 'type' not in name_part.attrib.keys():
@@ -305,10 +305,7 @@ class MODS(MODSReader):
                                 names[name_part.attrib['type']] = name_part.text
 
                         if len(names) > 0:
-                            if 'text' in full_name.keys():
-                                full_name['text'] = full_name['text'] + MODS._nameGen_(names, name_text)
-                            else:
-                                full_name['text'] = MODS._nameGen_(names, name_text)
+                            full_name['text'] = MODS._nameGen_(names, name_text)
 
                     # Single part name
                     else:

@@ -5,7 +5,7 @@ sys.path.append('../')
 from pymods import MODS, FSUDL, OAI
 
 
-mods = MODS('tests/fsu_nap01-1.xml')
+mods = MODS('../pymods/tests/name_xml.xml')
 
 #print(mods.nsroot)
 

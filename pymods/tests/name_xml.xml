@@ -15,10 +15,10 @@
       <roleTerm authority="local" type="text">committee member</roleTerm>
     </role>
   </name>
-  <name type="personal">
+ <name type="personal">
     <namePart type="given">Matthew Roland</namePart>
     <namePart type="family">Miguez</namePart>
-    <napePart type="date">1984-</napePart>
+    <namePart type="date">1984-</namePart>
   </name>
   
   <!-- corp names -->
