@@ -1,19 +1,22 @@
+from os.path import abspath, dirname, join
 import unittest
 from pymods import MODS, FSUDL, OAI
 
+test_dir_path = abspath(dirname(__file__))
+
 class AbstractTests(unittest.TestCase):
 
-    abstract_xml = MODS('tests/abstract_xml.xml')
+    abstract_xml = MODS(join(test_dir_path, 'tests/abstract_xml.xml'))
 
     def test_mods_abstract_text(self):
         '''checks element value'''
-        test_string = 'Remain calm! This is only a test!'
+        test_strings = ['Remain calm! This is only a test!']
         result = MODS.abstract(self.abstract_xml.record_list[0])
-        self.assertEqual(result, test_string)
+        self.assertTrue(all(x in result for x in test_strings))
 
 class NameTests(unittest.TestCase):
 
-    name_xml = MODS('tests/name_xml.xml')
+    name_xml = MODS(join(test_dir_path, 'tests/name_xml.xml'))
 
     def test_mods_names_pers_text(self):
         '''checks reformatting of name elements'''
