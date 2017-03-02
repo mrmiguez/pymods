@@ -1,3 +1,21 @@
 <mods:mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:flvc="info:flvc/manifest/v1" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd" version="3.4">
+
+    <!-- abstract -->
     <abstract>Remain calm! This is only a test!</abstract>
+
+    <!-- classification values -->
+    <classification>PS3566.Y55 G7</classification>
+    <classification>Y 4.B 22/3:S.PRT.109-8</classification>
+
+    <!-- relatedItem@type='host' for CollectionTests -->
+    <relatedItem type="host">
+        <titleInfo>
+            <title>Pine Hill Plantation Papers, 1832-1926</title>
+        </titleInfo>
+        <location>
+            <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+            <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_0-204</url>
+        </location>
+    </relatedItem>
+
 </mods:mods>

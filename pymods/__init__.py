@@ -71,13 +71,15 @@ class MODS(MODSReader):
     def classification(record):
         """
         Access mods:classification element:
-        return: mods:classification.text
+        return: [classification text, ... ] or None
         """
         if record.find('./{0}classification'.format(nameSpace_default['mods'])) is not None:
-            classification = record.find('./{0}classification'.format(nameSpace_default['mods'])).text
+            all_classifications = []
+            for classification in record.iterfind('./{0}classification'.format(nameSpace_default['mods'])):
+                all_classifications.append(classification.text)
+            return all_classifications
         else:
-            classification = None
-        return classification
+            return None
 
     def collection(record):
         """
