@@ -1,0 +1,26 @@
+<mods:modsCollection xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:flvc="info:flvc/manifest/v1" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd" version="3.4">
+
+    <!-- date range test -->
+    <mods>
+        <originInfo>
+            <dateIssued point="start">1776-07-04</dateIssued>
+            <dateIssued point="end">today</dateIssued>
+        </originInfo>
+    </mods>
+
+    <!-- single date -->
+    <mods>
+        <originInfo>
+            <dateCreated>1984-10-14</dateCreated>
+        </originInfo>
+    </mods>
+
+    <!-- non-checked date -->
+    <mods>
+        <originInfo>
+
+            <dateValid>2017-03-02</dateValid>
+        </originInfo>
+    </mods>
+
+</mods:modsCollection>
