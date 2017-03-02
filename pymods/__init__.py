@@ -537,7 +537,7 @@ class FSUDL(MODSReader):
         Get fedora PID from MODS record:
         return: item's fedora PID.
         """
-        pid = re.compile('fsu:[0-9]*')
+        pid = re.compile('fsu:[0-9]+')
         for identifier in record.iterfind('.//{0}identifier'.format(nameSpace_default['mods'])):
             match = pid.search(identifier.text)
             if match:
@@ -618,7 +618,7 @@ class OAI(MODSReader):
         Get fedora PID from oai_dc wrapper:
         return: item's fedora PID.
         """
-        pid = re.compile('fsu_[0-9]*')
+        pid = re.compile('fsu_[0-9]+')
 
         if record == None:
             for record in self.record_list:

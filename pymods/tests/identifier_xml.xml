@@ -10,6 +10,11 @@
     <identifier type="DOI">10.3389/fmicb.2016.00458</identifier>
     
     <!-- PURL -->
+    <location>
+        <url displayLabel="Click Here to go to this edition of the Florida Handbook">
+        http://www.myfloridahouse.gov/filestores/Adhoc/FloridaHandbook/The%20Florida%20Handbook%202013-2014.pdf
+        </url>
+    </location>
     <location displayLabel="purl">
         <url>http://purl.flvc.org/fsu/fd/FSU_MSS0204_B03_F10_13</url>
     </location>
