@@ -526,7 +526,7 @@ class FSUDL(MODSReader):
         Accesses record's Persistent URL from mods:mods/mods:location/mods:url:
         return: item PURL as string.
         """
-        purl = re.compile('((https?):((//)|(\\\\))+([\w\d:#@%/;$()~_?\+-=\\\.&](#!)?)*)')
+        purl = re.compile('((http://purl)[\w\d:#@%/;$()~_?\+-=\\\.&]+)')
         for url in record.iterfind('./{0}location/{1}url'.format(nameSpace_default['mods'], nameSpace_default['mods'])):
             match = purl.search(url.text)
             if match:
