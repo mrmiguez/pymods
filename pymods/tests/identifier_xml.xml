@@ -1,0 +1,17 @@
+<mods:mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:flvc="info:flvc/manifest/v1" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd" version="3.4">
+
+    <!-- PID -->
+    <identifier type="fedora">fsu:1028</identifier>
+    
+    <!-- IID -->
+    <identifier type="IID">FSU_MSS0204_B03_F10_13</identifier>
+    
+    <!-- DOI -->
+    <identifier type="DOI">10.3389/fmicb.2016.00458</identifier>
+    
+    <!-- PURL -->
+    <location displayLabel="purl">
+        <url>http://purl.flvc.org/fsu/fd/FSU_MSS0204_B03_F10_13</url>
+    </location>
+
+</mods:mods>

@@ -65,6 +65,56 @@ class DateTests(unittest.TestCase):
         return True
 
 
+#class DigitalOriginTests(unittest.TestCase):
+
+
+#class ExtentTests(unittest.TestCase):
+
+
+#class FormTests(unittest.TestCase):
+
+
+#class GenreTests(unittest.TestCase):
+
+
+#class GeographicCodeTests(unittest.TestCase):
+
+
+class IdentifierTests(unittest.TestCase):
+
+    identifier_xml = MODS(join(test_dir_path, 'tests/identifier_xml.xml'))
+
+    def test_fsudl_purl_search(self):
+        '''checks PURL service'''
+        purl = 'http://purl.flvc.org/fsu/fd/FSU_MSS0204_B03_F10_13'
+        result = FSUDL.purl_search(self.identifier_xml.record_list[0])
+        self.assertEqual(result, purl)
+
+    def test_fsudl_pid_search(self):
+        '''checks fedora PID service'''
+        pid = 'fsu:1028'
+        result = FSUDL.pid_search(self.identifier_xml.record_list[0])
+        self.assertEqual(result, pid)
+
+    def test_fsudl_local_identifier(self):
+        '''checks IID service'''
+        iid = 'FSU_MSS0204_B03_F10_13'
+        result = FSUDL.local_identifier(self.identifier_xml.record_list[0])
+        self.assertEqual(result, iid)
+
+    def test_fsudl_doi_search(self):
+        '''checks fedora pid service'''
+        doi = '10.3389/fmicb.2016.00458'
+        result = FSUDL.doi_search(self.identifier_xml.record_list[0])
+        self.assertEqual(result, doi)
+
+
+#class IssuanceTests(unittest.TestCase):
+
+
+#class LanguageTests(unittest.TestCase):
+
+
 class NameTests(unittest.TestCase):
 
     name_xml = MODS(join(test_dir_path, 'tests/name_xml.xml'))
@@ -87,6 +137,33 @@ class NameTests(unittest.TestCase):
         for name in MODS.name_constructor(self.name_xml.record_list[0]):
             if 'type' in name.keys() and name['type'] == 'corporate':
                 self.assertTrue(name['text'] in expected_names)
+
+
+#class NoteTests(unittest.TestCase):
+
+
+#class PhysicalDescriptionTests(unittest.TestCase):
+
+
+#class PhysicalLocationTests(unittest.TestCase):
+
+
+#class PublicationPlaceTests(unittest.TestCase):
+
+
+#class PublisherTests(unittest.TestCase):
+
+
+#class RightsTests(unittest.TestCase):
+
+
+#class SubjectTests(unittest.TestCase):
+
+
+#class TitleTests(unittest.TestCase):
+
+
+#class TypeOfResourceTests(unittest.TestCase):
 
 
 if __name__ == '__main__':
