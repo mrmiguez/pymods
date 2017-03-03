@@ -10,4 +10,4 @@ python:
 # command to install dependencies
 install: "pip install lxml"
 # command to run tests
-script: pytest
+script: pytest pymods/tests.py
