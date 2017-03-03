@@ -153,6 +153,16 @@ class MODS(MODSReader):
         else:
             return None
 
+    def edition(record):
+        """
+        Accesses mods:edition element:
+        return: element text or None.
+        """
+        if record.find('.//{0}edition'.format(nameSpace_default['mods'])) is not None:
+            return record.find('.//{0}edition'.format(nameSpace_default['mods'])).text
+        else:
+            return None
+
     def extent(record):
         """
         Accesses mods:extent element:
@@ -387,14 +397,17 @@ class MODS(MODSReader):
     def publication_place(record):
         """
         Access mods:place and return a list of dicts:
-        return: [{termType: termText}, ...]
+        return: [{termType: termText}, {'untyped': termText}, ...]
         """
         if record.find('.//{0}place'.format(nameSpace_default['mods'])) is not None:
             all_places = []
             for place in record.iterfind('.//{0}place'.format(nameSpace_default['mods'])):
                 places = { }
                 for term in place.iterchildren():
-                    places[term.attrib['type']] = term.text
+                    if 'type' in term.attrib.keys():
+                        places[term.attrib['type']] = term.text
+                    else:
+                        places['untyped'] = term.text
                 all_places.append(places)
             return all_places
         else:

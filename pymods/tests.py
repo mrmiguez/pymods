@@ -82,15 +82,28 @@ class OriginInfoTests(unittest.TestCase):
 
     def test_mods_edition(self):
         '''checks edition'''
+        expected = 'Pre-print'
+        result = MODS.edition(self.originInfo_xml.record_list[3])
+        self.assertEqual(result, expected)
 
     def test_mods_issuance(self):
         '''checks issuance'''
+        expected = 'integrating resource'
+        result = MODS.issuance(self.originInfo_xml.record_list[4])
+        self.assertEqual(result[0], expected)
 
     def test_mods_place(self):
         '''checks place of publication'''
+        expected = [{'code': 'hgz',
+                    'untyped': 'Hogwartz'}]
+        result = MODS.publication_place(self.originInfo_xml.record_list[5])
+        self.assertEqual(result, expected)
 
     def test_mods_publisher(self):
         '''checks publisher'''
+        expected = 'Image Comics'
+        result = MODS.publisher(self.originInfo_xml.record_list[6])
+        self.assertEqual(result[0], expected)
 
 class PhysicalDescriptionTests(unittest.TestCase):
 
@@ -113,9 +126,12 @@ class PhysicalDescriptionTests(unittest.TestCase):
 
     def test_mods_physdesk_note(self):
         '''checks physicalDescription/note'''
-        expected = 'Battered & bruised'
-        result = MODS.physical_description_note(self.physicalDesc_xml.record_list[3])
-        self.assertEqual(result, expected)
+        expected = ['Battered & bruised',
+                    'Infinite summer']
+        results = []
+        for note in MODS.physical_description_note(self.physicalDesc_xml.record_list[3]):
+            results.append(note)
+        self.assertTrue(all(x in results for x in expected))
 
 
 #class GenreTests(unittest.TestCase):
@@ -151,9 +167,6 @@ class IdentifierTests(unittest.TestCase):
         doi = '10.3389/fmicb.2016.00458'
         result = FSUDL.doi_search(self.identifier_xml.record_list[0])
         self.assertEqual(result, doi)
-
-
-#class IssuanceTests(unittest.TestCase):
 
 
 #class LanguageTests(unittest.TestCase):

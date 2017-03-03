@@ -18,8 +18,38 @@
     <!-- non-checked date -->
     <mods>
         <originInfo>
-
             <dateValid>2017-03-02</dateValid>
+        </originInfo>
+    </mods>
+
+    <!-- edition -->
+    <mods>
+        <originInfo>
+            <edition>Pre-print</edition>
+        </originInfo>
+    </mods>
+
+    <!-- issuance -->
+        <mods>
+        <originInfo>
+            <issuance>integrating resource</issuance>
+        </originInfo>
+    </mods>
+
+    <!-- place -->
+    <mods>
+        <originInfo>
+            <place>
+                <placeTerm>Hogwartz</placeTerm>
+                <placeTerm type="code">hgz</placeTerm>
+            </place>
+        </originInfo>
+    </mods>
+
+    <!-- publisher -->
+    <mods>
+        <originInfo>
+            <publisher>Image Comics</publisher>
         </originInfo>
     </mods>
 

@@ -24,9 +24,10 @@
 
     <!-- physDesc note -->
     <mods>
-        <physicalDesctiption>
+        <physicalDescription>
             <note>Battered &amp; bruised</note>
-        </physicalDesctiption>
+            <note>Infinite summer</note>
+        </physicalDescription>
     </mods>
 
 </mods:modsCollection>
