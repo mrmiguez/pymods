@@ -8,10 +8,10 @@ python:
   - "3.7-dev" # 3.7 development branch
   - "nightly" # currently points to 3.7-dev
 # command to install dependencies
-install: "pip install lxml pytest"
+install: "pip install lxml"
 # command to run tests
-script: python -m pytest pymods/tests.py
+script: pytest pymods/tests.py
 notifications:
     email: 
-    on_success: change
-    on_failure: change
+        on_success: change
+        on_failure: change

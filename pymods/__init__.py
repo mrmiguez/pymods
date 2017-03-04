@@ -250,7 +250,10 @@ class MODS(MODSReader):
             for language in record.iterfind('.//{0}language'.format(nameSpace_default['mods'])):
                 languages = { }
                 for term in language.iterchildren():
-                    languages[term.attrib['type']] = term.text
+                    if 'type' in term.keys():
+                        languages[term.attrib['type']] = term.text
+                    else:
+                        languages['untyped'] = term.text
                 all_languages.append(languages)
             return all_languages
         else:

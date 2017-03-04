@@ -137,8 +137,16 @@ class PhysicalDescriptionTests(unittest.TestCase):
 #class GenreTests(unittest.TestCase):
 
 
-#class GeographicCodeTests(unittest.TestCase):
+class GeographicCodeTests(unittest.TestCase):
 
+    subject_xml = MODS(join(test_dir_path, 'tests/subject_xml.xml'))
+
+    def test_mods_geographicCode(self):
+        '''checks subject/geographicCode'''
+        expected = ['7013331',
+                    '7013938']
+        result = MODS.geographic_code(self.subject_xml.record_list[0])
+        self.assertTrue(all(x in result for x in expected))
 
 class IdentifierTests(unittest.TestCase):
 
@@ -169,8 +177,33 @@ class IdentifierTests(unittest.TestCase):
         self.assertEqual(result, doi)
 
 
-#class LanguageTests(unittest.TestCase):
+class LanguageTests(unittest.TestCase):
 
+    language_xml = MODS(join(test_dir_path, 'tests/language_xml.xml'))
+
+    def test_mods_lang_text(self):
+        '''checks languageTerm@type="text"'''
+        expected = 'English'
+        result = MODS.language(self.language_xml.record_list[0])
+        self.assertEqual(result[0]['text'], expected)
+
+    def test_mods_lang_code(self):
+        '''checks languageTerm@type="code"'''
+        expected = 'eng'
+        result = MODS.language(self.language_xml.record_list[0])
+        self.assertEqual(result[0]['code'], expected)
+
+    def test_mods_lang_untyped(self):
+        '''checks untyped languageTerm elements'''
+        expected = 'Klingon'
+        result = MODS.language(self.language_xml.record_list[1])
+        self.assertEqual(result[0]['untyped'], expected)
+
+    def test_mods_lang_none(self):
+        '''checks lang None value'''
+        expected = None
+        result = MODS.language(self.language_xml.record_list[2])
+        self.assertEqual(result, expected)
 
 class NameTests(unittest.TestCase):
 
@@ -202,12 +235,6 @@ class NameTests(unittest.TestCase):
 #class PhysicalLocationTests(unittest.TestCase):
 
 
-#class PublicationPlaceTests(unittest.TestCase):
-
-
-#class PublisherTests(unittest.TestCase):
-
-
 #class RightsTests(unittest.TestCase):
 
 
@@ -217,7 +244,21 @@ class NameTests(unittest.TestCase):
 #class TitleTests(unittest.TestCase):
 
 
-#class TypeOfResourceTests(unittest.TestCase):
+class TypeOfResourceTests(unittest.TestCase):
+
+    resourceType_xml = MODS(join(test_dir_path, 'tests/resourceType_xml.xml'))
+
+    def test_mods_resourceType_text(self):
+        '''checks typeOfResource element'''
+        expected = 'still image'
+        result = MODS.type_of_resource(self.resourceType_xml.record_list[0])
+        self.assertEqual(result, expected)
+
+    def test_mods_resourceType_none(self):
+        '''checks typeOfResource None value'''
+        expected = None
+        result = MODS.type_of_resource(self.resourceType_xml.record_list[1])
+        self.assertEqual(result, expected)
 
 
 if __name__ == '__main__':
