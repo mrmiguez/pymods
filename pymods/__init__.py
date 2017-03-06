@@ -353,8 +353,8 @@ class MODS(MODSReader):
         return: [{note-type: note-text}, untyped-note-text]
         """
         if record.find('./{0}note'.format(nameSpace_default['mods'])) is not None:
+            all_notes = []
             for note in record.iterfind('./{0}note'.format(nameSpace_default['mods'])):
-                all_notes = []
                 if len(note.attrib) >= 1:
                     if 'type' in note.attrib.keys():
                         typed_note = { note.attrib['type']: note.text }
@@ -363,9 +363,9 @@ class MODS(MODSReader):
                         labeled_note = { note.attrib['displayLabel']: note.text }
                         all_notes.append(labeled_note)
                     else:
-                        all_notes.append(note.text)
+                        all_notes.append({ 'untyped': note.text })
                 else:
-                    all_notes.append(note.text)
+                    all_notes.append({ 'untyped': note.text })
             return all_notes
         else:
             return None

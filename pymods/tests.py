@@ -134,7 +134,53 @@ class PhysicalDescriptionTests(unittest.TestCase):
         self.assertTrue(all(x in results for x in expected))
 
 
-#class GenreTests(unittest.TestCase):
+class GenreTests(unittest.TestCase):
+
+    genre_xml = MODS(join(test_dir_path, 'tests/genre_xml.xml'))
+
+    def test_mods_genre_text(self):
+        '''checks genre term values'''
+        expected = ['Personal correspondence',
+                    'receipts (financial records)']
+        results = []
+        for record in self.genre_xml.record_list:
+            if MODS.genre(record) is not None:
+                results.append(MODS.genre(record)[0]['term'])
+        self.assertTrue(all(x in results for x in expected))
+
+    def test_mods_genre_authority(self):
+        '''checks genre authority value'''
+        expected = ['aat', 'lcgft']
+        results = []
+        for record in self.genre_xml.record_list:
+            if MODS.genre(record) is not None:
+                results.append(MODS.genre(record)[0]['authority'])
+        self.assertTrue(all(x in results for x in expected))
+
+    def test_mods_genre_authorityURI(self):
+        '''checks genre authorityURI'''
+        expected = ['http://vocab.getty.edu/aat']
+        results = []
+        for record in self.genre_xml.record_list:
+            if MODS.genre(record) is not None and 'authorityURI' in MODS.genre(record)[0].keys():
+                results.append(MODS.genre(record)[0]['authorityURI'])
+        self.assertTrue(all(x in results for x in expected))
+
+    def test_mods_genre_valueURI(self):
+        '''checks genre valueURI'''
+        expected = ['http://id.loc.gov/authorities/genreForms/gf2014026141',
+                    'http://vocab.getty.edu/page/aat/300027015']
+        results = []
+        for record in self.genre_xml.record_list:
+            if MODS.genre(record) is not None:
+                results.append(MODS.genre(record)[0]['valueURI'])
+        self.assertTrue(all(x in results for x in expected))
+
+    def test_mods_genre_none(self):
+        '''checks for None value for missing element'''
+        expected = None
+        result = MODS.genre(self.genre_xml.record_list[2])
+        self.assertEqual(result, expected)
 
 
 class GeographicCodeTests(unittest.TestCase):
@@ -229,13 +275,56 @@ class NameTests(unittest.TestCase):
                 self.assertTrue(name['text'] in expected_names)
 
 
-#class NoteTests(unittest.TestCase):
+class NoteTests(unittest.TestCase):
 
+    abstract_xml = MODS(join(test_dir_path, 'tests/abstract_xml.xml'))
 
-#class PhysicalLocationTests(unittest.TestCase):
+    def test_mods_note_typed(self):
+        '''checks typed note'''
+        expected = 'Pulled from garbage.'
+        for note in MODS.note(self.abstract_xml.record_list[0]):
+            if 'acquisition' in note.keys():
+                result = note['acquisition']
+        self.assertEqual(result, expected)
 
+    def test_mods_note_labelled(self):
+        '''checks labelled note'''
+        expected = '0234.234.532'
+        for note in MODS.note(self.abstract_xml.record_list[0]):
+            if 'Related burial(s)' in note.keys():
+                result = note['Related burial(s)']
+        self.assertEqual(result, expected)
+
+    def test_mods_note_untyped(self):
+        '''checks untyped note'''
+        expected = 'Stick it in a note.'
+        for note in MODS.note(self.abstract_xml.record_list[0]):
+            if 'untyped' in note.keys():
+                result = note['untyped']
+        self.assertEqual(result, expected)
+
+class PhysicalLocationTests(unittest.TestCase):
+
+    location_xml = MODS(join(test_dir_path, 'tests/location_xml.xml'))
+
+    def test_mods_physical_location(self):
+        '''tests location values'''
+        expected = ['The Circus', 'The Zoo',
+                    'The Snow']
+        results = []
+        for location in MODS.physical_location(self.location_xml.record_list[0]):
+            results.append(location)
+        self.assertTrue(all(x in results for x in expected))
 
 #class RightsTests(unittest.TestCase):
+
+#   rights_xml = MODS(join(test_dir_path, tests/rights_xml.xml))
+
+#   def test_mods_rights_text(self):
+        '''checks rights text'''
+
+#   def test_mods_rights_uri(self):
+        '''checks rights URI'''
 
 
 #class SubjectTests(unittest.TestCase):

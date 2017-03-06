@@ -1,0 +1,15 @@
+<mods:modsCollection xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:flvc="info:flvc/manifest/v1" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd" version="3.4">
+
+    <!-- geographicCode -->
+    <mods>
+        <genre valueURI="http://id.loc.gov/authorities/genreForms/gf2014026141" authority="lcgft">Personal correspondence</genre>
+    </mods>
+
+    <mods>
+        <genre valueURI="http://vocab.getty.edu/page/aat/300027015" authority="aat" authorityURI="http://vocab.getty.edu/aat">receipts (financial records)</genre>
+    </mods>
+
+    <!-- none value -->
+    <mods></mods>
+
+</mods:modsCollection>
