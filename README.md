@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/mrmiguez/pymods.svg?branch=master)](https://travis-ci.org/mrmiguez/pymods)
-
-# pymods
+# pymods [![Build Status](https://travis-ci.org/mrmiguez/pymods.svg?branch=master)](https://travis-ci.org/mrmiguez/pymods)
 
 pymods is utility module for working with the Library of Congress's MODS XML standard: Metadata Description Schema (MODS). It is a utility wrapper for the lxml module specific to deserializing data out of MODSXML into python data types.
 
