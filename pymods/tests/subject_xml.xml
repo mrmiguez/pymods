@@ -10,6 +10,48 @@
         </subject>
     </mods>
 
+    <!-- simple subjects -->
+    <mods>
+        <subject authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+            <topic valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm007948">Poetry</topic>
+        </subject>
+        <subject authority="lcsh"
+                 authorityURI="http://id.loc.gov/authorities/subjects"
+                 valueURI="http://id.loc.gov/authorities/subjects/sh99004940">
+            <topic>Childhood and youth</topic>
+        </subject>
+        <subject authority="fast" authorityURI="http://id.worldcat.org/fast/">
+            <topic valueURI="http://id.worldcat.org/fast/813184">Architectural design</topic>
+      </subject>
+    </mods>
+
+    <!-- complex subjects -->
+    <mods>
+        <subject authority="lcsh"
+                 authorityURI="http://id.loc.gov/authorities/subjects"
+                 valueURI="http://id.loc.gov/authorities/subjects/sh85140205">
+            <geographic>United States</geographic>
+            <topic>History</topic>
+            <temporal>Civil War, 1861-1865</temporal>
+        </subject>
+    </mods>
+
+    <!-- name subject -->
+    <mods>
+        <subject authority="naf"
+                 authorityURI="http://id.loc.gov/authorities/subjects"
+                 valueURI="http://id.loc.gov/authorities/subjects/sh85077082">
+            <name authority="lcnaf"
+                  type="personal"
+                  authorityURI="http://id.loc.gov/authorities/names"
+                  valueURI="http://id.loc.gov/authorities/names/n79006779">
+                <namePart type="family">Lincoln</namePart>
+                <namePart type="given">Abraham</namePart>
+                <namePart type="date">1809-1865</namePart>
+            </name>
+        </subject>
+    </mods>
+
     <!-- none value -->
     <mods></mods>
 

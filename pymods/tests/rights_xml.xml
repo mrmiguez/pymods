@@ -1,0 +1,19 @@
+<mods:modsCollection xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:flvc="info:flvc/manifest/v1" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd" version="3.4">
+
+    <!-- rights w/ URI -->
+    <mods>
+        <accessCondition xlink:href="http://rightsstatements.org/vocab/InC/1.0/"
+                            type="use and reproduction">Cue legalese</accessCondition>
+    </mods>
+
+    <!-- rights w/o URI -->
+    <mods>
+        <accessCondition type="use and reproduction">No machine legalese</accessCondition>
+    </mods>
+
+    <!-- camel-cased -->
+    <mods>
+        <accessCondition type="useAndReproduction">camelCasedCamelHump</accessCondition>
+    </mods>
+
+</mods:modsCollection>

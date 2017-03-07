@@ -316,18 +316,78 @@ class PhysicalLocationTests(unittest.TestCase):
             results.append(location)
         self.assertTrue(all(x in results for x in expected))
 
-#class RightsTests(unittest.TestCase):
+class RightsTests(unittest.TestCase):
 
-#   rights_xml = MODS(join(test_dir_path, tests/rights_xml.xml))
+   rights_xml = MODS(join(test_dir_path, 'tests/rights_xml.xml'))
 
-#   def test_mods_rights_text(self):
-        '''checks rights text'''
+   def test_mods_rights_text(self):
+       '''checks rights text'''
+       expected = 'Cue legalese'
+       result = MODS.rights(self.rights_xml.record_list[0])['text']
+       self.assertEqual(result, expected)
 
-#   def test_mods_rights_uri(self):
-        '''checks rights URI'''
+   def test_mods_rights_uri(self):
+       '''checks rights URI'''
+       expected = 'http://rightsstatements.org/vocab/InC/1.0/'
+       result = MODS.rights(self.rights_xml.record_list[0])['URI']
+       self.assertEqual(result, expected)
+
+   def test_mods_rights_camelCased(self):
+       '''checks camel-cased @type'''
+       expected = 'camelCasedCamelHump'
+       result = MODS.rights(self.rights_xml.record_list[2])['text']
+       self.assertEqual(result, expected)
 
 
-#class SubjectTests(unittest.TestCase):
+class SubjectTests(unittest.TestCase):
+
+    subject_xml = MODS(join(test_dir_path, 'tests/subject_xml.xml'))
+
+    def test_mods_subject_simple_text(self):
+        '''checks simple subject text'''
+        expected = ['Poetry',
+                    'Childhood and youth',
+                    'Architectural design']
+        results = []
+        for subject in MODS.subject(self.subject_xml.record_list[1]):
+            results.append(subject['children'][0]['term'])
+        self.assertTrue(all(x in results for x in expected))
+
+    def test_mods_subject_simple_authority(self):
+        '''checks simple subject text'''
+        expected = ['lctgm', 'fast', 'lcsh']
+        results = []
+        for subject in MODS.subject(self.subject_xml.record_list[1]):
+            results.append(subject['authority'])
+        self.assertTrue(all(x in results for x in expected))
+
+    def test_mods_subject_simple_uri(self):
+        '''checks simple subject text'''
+        expected = ['http://id.loc.gov/vocabulary/graphicMaterials/tgm007948',
+                    'http://id.loc.gov/authorities/subjects/sh99004940',
+                    'http://id.worldcat.org/fast/813184']
+        results = []
+        for subject in MODS.subject(self.subject_xml.record_list[1]):
+            if subject['valueURI'] is not None:
+                results.append(subject['valueURI'])
+            else:
+                for child in subject['children']:
+                    if child['valueURI'] is not None:
+                        results.append(child['valueURI'])
+        self.assertTrue(all(x in results for x in expected))
+
+    def test_mods_subject_complex_text(self):
+        '''checks complex subject text'''
+        expected = 'United States--History--Civil War, 1861-1865'
+        result = MODS.subject_constructor(self.subject_xml.record_list[2])[0]
+        self.assertEqual(result, expected)
+
+    def test_mods_subject_name(self):
+        '''checks reformatting of name subject'''
+        #expected = 'Lincoln, Abraham, 1809-1865'
+        #result = MODS.subject_constructor(self.subject_xml.record_list[3])[0]
+        #self.assertEqual(result, expected)
+
 
 
 #class TitleTests(unittest.TestCase):
