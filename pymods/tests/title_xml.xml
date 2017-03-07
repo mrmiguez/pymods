@@ -1,0 +1,27 @@
+<mods:modsCollection xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:flvc="info:flvc/manifest/v1" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd" version="3.4">
+
+    <!-- simple title -->
+    <mods>
+        <titleInfo>
+            <title>Gravity's Rainbow</title>
+        </titleInfo>
+    </mods>
+
+    <!-- title + subtitle -->
+    <mods>
+        <titleInfo>
+            <title>Homer Simpson</title>
+            <subTitle>A retrospective</subTitle>
+        </titleInfo>
+    </mods>
+
+    <!-- article + title + subtitle -->
+    <mods>
+        <titleInfo>
+            <nonSort>A</nonSort>
+            <title>Title</title>
+            <subTitle>Should never be alone</subTitle>
+        </titleInfo>
+    </mods>
+
+</mods:modsCollection>

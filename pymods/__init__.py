@@ -457,10 +457,11 @@ class MODS(MODSReader):
             if part in subject.attrib.keys():
                 subject_parts.update({ part: subject.attrib[part] })
             else:
-                subject_parts.update({ part: None })
+                pass
         for child in subject.iterchildren():
             children.append(MODS._subject_parser_(child))
-        subject_parts.update({ 'children': children })
+        if len(children) > 0:
+            subject_parts.update({ 'children': children })
         return subject_parts
 
     def subject(record):
@@ -472,9 +473,9 @@ class MODS(MODSReader):
             all_subjects = []
             for subject in record.iterfind('./{0}subject'.format(nameSpace_default['mods'])):
                 if 'authority' in subject.attrib.keys():
-                    if 'lcsh' or 'lctgm' == subject.attrib['authority']:
+                    if 'lcsh' or 'lctgm' or 'fast' == subject.attrib['authority'].lower():
                         all_subjects.append(MODS._subject_parser_(subject))
-                    elif ('naf' or 'lcnaf' or 'NAF') in subject.attrib['authority']:
+                    elif 'naf' or 'lcnaf' == subject.attrib['authority'].lower():
                         if MODS.name_constructor(subject) is not None:
                             all_subjects.append(MODS.name_constructor(subject)[0])
                 else:
@@ -499,8 +500,8 @@ class MODS(MODSReader):
                             if 'term' in child.keys():
                                 subject_term = subject_term + '--' + child['term']
 
-                    elif 'naf' or 'lcnaf' in subject['authority'].lower():
-                        subject_term = subject['term']
+                    elif 'naf' or 'lcnaf' == subject['authority'].lower():
+                        subject_term = subject['text']
 
                     else:
                         subject_term = subject['term']
@@ -532,6 +533,10 @@ class MODS(MODSReader):
                         './{0}title'.format(nameSpace_default['mods'])) is not None:
                     title_full = title.find('./{0}nonSort'.format(nameSpace_default['mods'])).text + ' ' + title.find(
                             './{0}title'.format(nameSpace_default['mods'])).text
+                elif title.find('./{0}title'.format(nameSpace_default['mods'])) is not None and title.find(
+                        './{0}subTitle'.format(nameSpace_default['mods'])) is not None:
+                    title_full = title.find('./{0}title'.format(nameSpace_default['mods'])).text + ': ' + title.find(
+                            './{0}subTitle'.format(nameSpace_default['mods'])).text
                 else:
                     title_full = title.find('./{0}title'.format(nameSpace_default['mods'])).text
                 all_titles.append(title_full)

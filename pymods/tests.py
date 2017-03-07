@@ -368,8 +368,9 @@ class SubjectTests(unittest.TestCase):
                     'http://id.worldcat.org/fast/813184']
         results = []
         for subject in MODS.subject(self.subject_xml.record_list[1]):
-            if subject['valueURI'] is not None:
-                results.append(subject['valueURI'])
+            if 'valueURI' in subject.keys():
+                if subject['valueURI'] is not None:
+                    results.append(subject['valueURI'])
             else:
                 for child in subject['children']:
                     if child['valueURI'] is not None:
@@ -384,14 +385,34 @@ class SubjectTests(unittest.TestCase):
 
     def test_mods_subject_name(self):
         '''checks reformatting of name subject'''
-        #expected = 'Lincoln, Abraham, 1809-1865'
-        #result = MODS.subject_constructor(self.subject_xml.record_list[3])[0]
-        #self.assertEqual(result, expected)
+        expected = 'Lincoln, Abraham, 1809-1865'
+        result = MODS.subject_constructor(self.subject_xml.record_list[3])[0]
+        print(result) #test
+        self.assertEqual(result, expected)
 
 
 
-#class TitleTests(unittest.TestCase):
+class TitleTests(unittest.TestCase):
 
+    title_xml = MODS(join(test_dir_path, 'tests/title_xml.xml'))
+
+    def test_mods_title_simple(self):
+        '''checks simple title formatting'''
+        expected = "Gravity's Rainbow"
+        result = MODS.title_constructor(self.title_xml.record_list[0])[0]
+        self.assertEqual(result, expected)
+
+    def test_mods_title_subtitle(self):
+        '''checks title & subtitle formatting'''
+        expected = "Homer Simpson: A retrospective"
+        result = MODS.title_constructor(self.title_xml.record_list[1])[0]
+        self.assertEqual(result, expected)
+
+    def test_mods_title_complex(self):
+        '''checks complex formatting'''
+        expected = "A Title: Should never be alone"
+        result = MODS.title_constructor(self.title_xml.record_list[2])[0]
+        self.assertEqual(result, expected)
 
 class TypeOfResourceTests(unittest.TestCase):
 
