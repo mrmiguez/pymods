@@ -385,10 +385,8 @@ class SubjectTests(unittest.TestCase):
 
     def test_mods_subject_name(self):
         '''checks reformatting of name subject'''
-        expected = 'Lincoln, Abraham, 1809-1865'
-        for child in MODS.subject(self.subject_xml.record_list[3])[0]['children']:
-            if 'text' in child.keys():
-                result = child['text']
+        expected = 'Lincoln, Abraham, 1809-1865--Assassination'
+        result = MODS.subject(self.subject_xml.record_list[3])[0]['text']
         self.assertEqual(result, expected)
 
 

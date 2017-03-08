@@ -448,9 +448,7 @@ class MODS(MODSReader):
     def _subject_parser_(subject):
         parts = ['authority', 'authorityURI', 'valueURI']
         if subject.tag == '{0}subject'.format(nameSpace_default['mods']):
-            subject_parts = { }
-        elif subject.tag == '{0}name'.format(nameSpace_default['mods']): #debug
-            subject_parts = {'text': MODS.name_constructor(subject.getparent())[0]['text'] }
+            subject_parts = { 'text': MODS._subject_text_(subject) }
         else:
             subject_parts = { 'type': subject.tag, 'term': subject.text }
         children = []
@@ -485,34 +483,25 @@ class MODS(MODSReader):
         else:
             return None
 
+    def _subject_text_(subject):
+        subject_text = ""
+        for child in subject:
+            if child.tag == '{0}name'.format(nameSpace_default['mods']):
+                subject_text = subject_text + '--' + MODS.name_constructor(child.getparent())[0]['text']
+            else:
+                subject_text = subject_text + '--' + child.text
+        return subject_text.strip(' -,.')
+
     def subject_constructor(record):
         """
         Access mods:subject elements and parses text values into LOC double hyphenated complex headings
         return: A list of strings
         """
         if MODS.subject(record) is not None:
-            subject_term_list = []
+            subject_text_list = []
             for subject in MODS.subject(record):
-                if 'authority' in subject.keys() and subject['authority'] is not None:
-
-                    if 'lcsh' in subject['authority'].lower():
-                        subject_term = ""
-                        for child in subject['children']:
-                            if 'term' in child.keys():
-                                subject_term = subject_term + '--' + child['term']
-
-                    elif 'naf' or 'lcnaf' == subject['authority'].lower():
-                        subject_term = subject['text']
-
-                    else:
-                        subject_term = subject['term']
-
-                subject_term_list.append(subject_term.strip('- ,.'))
-
-            if len(subject_term_list) > 0:
-                return subject_term_list
-            else:
-                return None
+                subject_text_list.append(subject['text'])
+            return subject_text_list
         else:
             return None
 
