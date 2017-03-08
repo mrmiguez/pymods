@@ -389,6 +389,12 @@ class SubjectTests(unittest.TestCase):
         result = MODS.subject(self.subject_xml.record_list[3])[0]['text']
         self.assertEqual(result, expected)
 
+    def test_mods_subject_name_no_authority_text(self):
+        '''checks handling of subject w/ no @authority'''
+        expected = 'Baruch, Bernard M. (Bernard Mannes), 1870-1965'
+        result = MODS.subject(self.subject_xml.record_list[4])[0]['text']
+        self.assertEqual(result, expected)
+
 
 class TitleTests(unittest.TestCase):
 

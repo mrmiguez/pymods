@@ -53,6 +53,17 @@
         </subject>
     </mods>
 
+    <!-- name subject w/o authority -->
+    <mods>
+          <subject>
+                <name authority="lcnaf" authorityURI="http://id.loc.gov/authorities/names" type="personal" valueURI="http://id.loc.gov/authorities/names/n50023552">
+                      <namePart type="date">1870-1965</namePart>
+                      <namePart type="given">Bernard M. (Bernard Mannes)</namePart>
+                      <namePart type="family">Baruch</namePart>
+                </name>
+          </subject>
+    </mods>
+
     <!-- none value -->
     <mods></mods>
 
