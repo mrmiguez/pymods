@@ -38,7 +38,7 @@
 
     <!-- name subject -->
     <mods>
-        <subject authority="naf"
+        <subject authority="lcsh"
                  authorityURI="http://id.loc.gov/authorities/subjects"
                  valueURI="http://id.loc.gov/authorities/subjects/sh85077082">
             <name authority="lcnaf"

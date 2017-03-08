@@ -447,9 +447,10 @@ class MODS(MODSReader):
 
     def _subject_parser_(subject):
         parts = ['authority', 'authorityURI', 'valueURI']
-        if subject.tag == '{0}subject'.format(nameSpace_default['mods']) or subject.tag == '{0}name'.format(
-                nameSpace_default['mods']):
+        if subject.tag == '{0}subject'.format(nameSpace_default['mods']):
             subject_parts = { }
+        elif subject.tag == '{0}name'.format(nameSpace_default['mods']): #debug
+            subject_parts = {'text': MODS.name_constructor(subject.getparent())[0]['text'] }
         else:
             subject_parts = { 'type': subject.tag, 'term': subject.text }
         children = []
