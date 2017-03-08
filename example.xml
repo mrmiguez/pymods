@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<mods:modsCollection xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:flvc="info:flvc/manifest/v1" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dcterms="http://purl.org/dc/terms/" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd" version="3.4">
+  <mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:flvc="info:flvc/manifest/v1" xmlns:xlink="http://www.w3.org/1999/xlink" version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-4.xsd">
+    <identifier type="IID">FSU_2010002_J1232_SR5-02</identifier>
+    <extension>
+      <flvc:flvc>
+        <flvc:owningInstitution>FSU</flvc:owningInstitution>
+        <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+      </flvc:flvc>
+    </extension>
+    <titleInfo>
+      <title>Fire Line System</title>
+    </titleInfo>
+    <name type="corporate" authority="lcnaf" valueURI="http://id.loc.gov/authorities/names/no2011169175">
+      <namePart>J.R. Clancy (Firm)</namePart>
+      <role>
+        <roleTerm type="text" authority="marcelator" authorityURI="http://id.loc.gov/vocabulary/relators">Creator</roleTerm>
+        <roleTerm type="code" authority="marcelator" authorityURI="http://id.loc.gov/vocabulary/relators">cre</roleTerm>
+      </role>
+    </name>
+    <typeOfResource>still image</typeOfResource>
+    <genre valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm001125" authority="gmgpc">Blueprints</genre>
+    <originInfo>
+      <dateCreated encoding="w3cdtf">1966-12-08</dateCreated>
+      <publisher>J. R. Clancy Inc.</publisher>
+      <place>
+        <placeTerm>Syracuse, New York</placeTerm>
+      </place>
+    </originInfo>
+    <language>
+      <languageTerm type="text" authority="iso639-2b">English</languageTerm>
+      <languageTerm type="code" authority="iso639-2b">eng</languageTerm>
+    </language>
+    <physicalDescription>
+      <extent>91 x 60 cm</extent>
+      <digitalOrigin>reformatted digital</digitalOrigin>
+    </physicalDescription>
+    <note>Stage Rigging Contractor: Canadian Contract Sales, Dorval, Quebec, Canada</note>
+    <note>Job title: Concert Hall: The Manitoba Centennial Project; Winnipeg, Manitoba, Canada</note>
+    <note>Job number: 1232, Sheet number: R-5</note>
+    <subject authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+      <topic valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm002411">Concert halls</topic>
+    </subject>
+    <subject authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+      <topic valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm000469">Architecture</topic>
+    </subject>
+    <subject authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+      <topic valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm000455">Architectural drawings</topic>
+    </subject>
+    <subject authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+      <topic valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm010282">Structural systems</topic>
+    </subject>
+    <subject authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+      <topic valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm010283">Structural systems drawings</topic>
+    </subject>
+    <subject authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+      <topic valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm010279">Structural drawings</topic>
+    </subject>
+    <subject authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+      <topic valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm009101">Safety equipment</topic>
+    </subject>
+    <subject authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+      <topic valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm002475">Construction</topic>
+    </subject>
+    <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85082767">
+      <topic>Mechanics</topic>
+    </subject>
+    <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh88004614">
+      <topic>Structural optimization</topic>
+    </subject>
+    <subject authority="fast" authorityURI="http://id.worldcat.org/fast/">
+      <topic valueURI="http://id.worldcat.org/fast/813184">Architectural design</topic>
+    </subject>
+    <subject authority="fast" authorityURI="http://id.worldcat.org/fast/">
+      <topic valueURI="http://id.worldcat.org/fast/932173">Fire prevention--Safety measures</topic>
+    </subject>
+    <subject authority="tgn">
+      <geographicCode>7013143</geographicCode>
+    </subject>
+    <accessCondition xlink:href="http://rightsstatements.org/vocab/InC/1.0/" type="use and reproduction">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+    <relatedItem type="host">
+      <titleInfo>
+        <title>J. R. Clancy Collection, 1937-1999</title>
+      </titleInfo>
+      <location>
+        <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+        <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2010-002</url>
+      </location>
+    </relatedItem>
+    <recordInfo>
+      <descriptionStandard>dacs</descriptionStandard>
+      <recordCreationDate>2017-02-24</recordCreationDate>
+    </recordInfo>
+  </mods>
+  <mods>
+    <identifier type="IID">FSU_MSS0204_B01_F10_09</identifier>
+    <extension>
+      <flvc:flvc>
+        <flvc:owningInstitution>FSU</flvc:owningInstitution>
+        <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+      </flvc:flvc>
+    </extension>
+    <titleInfo>
+      <title>$93,668.90. One Mill Tax Apportioned by Various Ways Proposed</title>
+    </titleInfo>
+    <typeOfResource>text</typeOfResource>
+    <genre valueURI="http://vocab.getty.edu/page/aat/300027015" authority="aat" authorityURI="http://vocab.getty.edu/aat">receipts (financial records)</genre>
+    <language>
+      <languageTerm type="text" authority="iso639-2b">English</languageTerm>
+      <languageTerm type="code" authority="iso639-2b">eng</languageTerm>
+    </language>
+    <physicalDescription>
+      <extent>1 page</extent>
+      <extent>18 x 22 cm</extent>
+      <digitalOrigin>reformatted digital</digitalOrigin>
+    </physicalDescription>
+    <subject authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+      <topic valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm010578">Taxes</topic>
+    </subject>
+    <subject authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+      <topic valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm010575">Tax payers</topic>
+    </subject>
+    <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85132810">
+      <topic>Tax collection</topic>
+    </subject>
+    <accessCondition xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/" type="use and reproduction">Use of this item is provided for non-commercial, personal, educational, and research use only. Florida State University Libraries is providing access to these materials for educational and research purposes and makes no warranty with regard to their use for other purposes. The written permission of the copyright owners and/or other rights holders (such as holders of publicity and/or privacy rights) is required for distribution, reproduction, or other use of protected items beyond that allowed by fair use or other statutory exemptions (see Title 17, U.S.C.). For information about the copyright and reproduction rights for this item, please contact Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida: https://www.lib.fsu.edu/department/special-collections-archives.</accessCondition>
+    <relatedItem type="host">
+      <titleInfo>
+        <title>Pine Hill Plantation Papers, 1832-1926</title>
+      </titleInfo>
+      <location>
+        <physicalLocation>Special Collections &amp; Archives, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+        <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_0-204</url>
+      </location>
+    </relatedItem>
+    <recordInfo>
+      <descriptionStandard>dacs</descriptionStandard>
+      <recordCreationDate>2016-09-12</recordCreationDate>
+    </recordInfo>
+    <location displayLabel="purl">
+      <url>http://purl.flvc.org/fsu/fd/FSU_MSS0204_B01_F10_09</url>
+    </location>
+  </mods>
+  <mods>
+    <identifier type="IID">FSU_MSS2008003_B18_F01_004</identifier>
+    <extension>
+      <flvc:flvc>
+        <flvc:owningInstitution>FSU</flvc:owningInstitution>
+        <flvc:submittingInstitution>FSU</flvc:submittingInstitution>
+      </flvc:flvc>
+    </extension>
+    <titleInfo>
+      <title>Broward NOW News</title>
+      <subTitle>National Organization for Women, February 1987</subTitle>
+    </titleInfo>
+    <name type="corporate">
+      <namePart>Broward NOW</namePart>
+      <role>
+        <roleTerm type="text" authority="marcrelator" authorityURI="http://id.loc.gov/vocabulary/relators">Creator</roleTerm>
+        <roleTerm type="code" authority="marcrelator" authorityURI="http://id.loc.gov/vocabulary/relators">cre</roleTerm>
+      </role>
+    </name>
+    <name type="personal">
+      <namePart type="family">Loss</namePart>
+      <namePart type="given">Florence</namePart>
+      <role>
+        <roleTerm type="text" authority="marcelator" authorityURI="http://id.loc.gov/vocabulary/relators">Editor</roleTerm>
+        <roleTerm type="code" authority="marcelator" authorityURI="http://id.loc.gov/vocabulary/relators">edt</roleTerm>
+      </role>
+    </name>
+    <typeOfResource>text</typeOfResource>
+    <genre valueURI="http://id.loc.gov/authorities/genreForms/gf2014026131" authority="lcgtf">Newsletters</genre>
+    <originInfo>
+      <dateIssued encoding="w3cdtf">1987-02</dateIssued>
+      <place>
+        <placeTerm>Oakland Park, FL</placeTerm>
+      </place>
+      <issuance>serial</issuance>
+    </originInfo>
+    <language>
+      <languageTerm type="text" authority="iso639-2b">English</languageTerm>
+      <languageTerm type="code" authority="iso639-2b">eng</languageTerm>
+    </language>
+    <physicalDescription>
+      <extent>11 pages</extent>
+      <extent>28 x 22 xm</extent>
+      <digitalOrigin>reformatted digital</digitalOrigin>
+    </physicalDescription>
+    <subject authority="lctgm" authorityURI="http://id.loc.gov/vocabulary/graphicMaterials">
+      <topic valueURI="http://id.loc.gov/vocabulary/graphicMaterials/tgm007297">Organizations</topic>
+    </subject>
+    <subject authority="fast" authorityURI="http://id.worldcat.org/fast/">
+      <topic valueURI="http://id.worldcat.org/fast/922671">Feminism</topic>
+    </subject>
+    <subject authority="fast" authorityURI="http://id.worldcat.org/fast/">
+      <topic valueURI="http://id.worldcat.org/fast/1114376">Sex discrimination against women</topic>
+    </subject>
+    <subject authority="fast" authorityURI="http://id.worldcat.org/fast/">
+      <topic valueURI="http://id.worldcat.org/fast/1178818">Women's rights</topic>
+    </subject>
+    <subject authority="fast" authorityURI="http://id.worldcat.org/fast/">
+      <topic valueURI="http://id.worldcat.org/fast/914449">Equal rights amendments</topic>
+    </subject>
+    <subject authority="tgn">
+      <geographicCode>2020598</geographicCode>
+    </subject>
+    <accessCondition xlink:href="http://rightsstatements.org/vocab/NoC-US/1.0/" type="use and reproduction">Use of this item is provided for non-commercial, personal, educational, and research use only. For information about the copyright and reproduction rights for this item, please contact the Claude Pepper Library, Florida State University Libraries: https://www.lib.fsu.edu/pepper-library.</accessCondition>
+    <relatedItem type="host">
+      <location>
+        <url displayLabel="Finding Aid">http://purl.fcla.edu/fsu/MSS_2008-033</url>
+      </location>
+    </relatedItem>
+    <location>
+      <physicalLocation>Claude Pepper Library, Florida State University Libraries, Tallahassee, Florida.</physicalLocation>
+    </location>
+    <recordInfo>
+      <descriptionStandard>dacs</descriptionStandard>
+      <recordCreationDate>42576</recordCreationDate>
+    </recordInfo>
+    <subject authority="lcsh" authorityURI="http://id.loc.gov/authorities/subjects" valueURI="http://id.loc.gov/authorities/subjects/sh85147343">
+      <topic>Women</topic>
+      <topic>Societies and clubs</topic>
+    </subject>
+    <subject>
+      <name authority="naf" authorityURI="http://id.loc.gov/authorities/names" valueURI="http://id.loc.gov/authorities/names/n50063455" type="corporate">
+        <namePart>National Organization for Women</namePart>
+      </name>
+    </subject>
+    <location displayLabel="purl">
+      <url>http://purl.flvc.org/fsu/fd/FSU_MSS2008003_B18_F01_004</url>
+    </location>
+  </mods>
+</mods:modsCollection>
