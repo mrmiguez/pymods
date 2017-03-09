@@ -1,7 +1,7 @@
 pymods |Build Status|
 =====================
 
-pymods is utility module for working with the Library of Congress’s MODS
+pymods is utility module for working with the Library of Congress's MODS
 XML standard: Metadata Description Schema (MODS). It is a utility
 wrapper for the lxml module specific to deserializing data out of
 MODSXML into python data types.
@@ -11,6 +11,10 @@ If you need a module to serialize data into MODSXML, see the other
 
 Installing
 ----------
+
+Recommended:
+
+``pip install pymods``
 
 Using
 -----
@@ -66,7 +70,7 @@ FSUDL
 ~~~~~
 
 Methods in the FSUDL class are helper functions specific to Florida
-State University’s `DigiNole`_ and might not apply to records from other
+State University's `DigiNole`_ and might not apply to records from other
 sources.
 
 Examples
@@ -120,7 +124,7 @@ Creating a subject list
     Mechanics
     Structural optimization
     Architectural design
-    Fire prevention–Safety measures
+    Fire prevention--Safety measures
     7013143
     Taxes
     Tax payers
@@ -128,7 +132,11 @@ Creating a subject list
     Organizations
     Feminism
     Sex discrimination against women
-    Women’s
+    Women's rights
+    Equal rights amendments
+    2020598
+    Women--Societies and clubs
+    National Organization for Women
 
 .. _pymods by Matt Cordial: https://github.com/cordmata/pymods
 .. _DigiNole: http://diginole.lib.fsu.edu

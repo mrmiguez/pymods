@@ -6,6 +6,10 @@ If you need a module to serialize data into MODSXML, see the other [pymods by Ma
 
 ## Installing
 
+Recommended:
+
+`pip install pymods`
+
 ## Using
 
 ### Basics
