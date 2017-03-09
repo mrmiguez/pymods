@@ -109,8 +109,8 @@ Creating a subject list
 
 .. code:: python
 
-    In [17]: for record in mods.record\_list:
-       ....: for subject in MODS.subject\_constructor(record):
+    In [17]: for record in mods.record_list:
+       ....: for subject in MODS.subject_constructor(record):
        ....: print(subject)
        ....:
     Concert halls
