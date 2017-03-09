@@ -1,4 +1,11 @@
 from setuptools import setup, find_packages
+from codecs import open
+from os import path
+
+here = path.abspath(path.dirname(__file__))
+
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name="pymods",
@@ -7,9 +14,8 @@ setup(
     install_requires=['lxml >= 2.3'],
     author="Matthew Miguez",
     author_email="r.m.miguez@gmail.com",
-    description=(
-        "Utility class wrapping lxml for serializing data from MODS v3.4 XML metadata."
-    ),
+    description="Utility class wrapping lxml for reading data from MODS v3.4 XML metadata into Python data types.",
+    long_description=long_description,
     url='https://github.com/mrmiguez/pymods',
     keywords="MODS metadata xml",
     license='MIT',
