@@ -1,3 +1,5 @@
+'''
+
 import re
 from lxml import etree
 
@@ -674,3 +676,18 @@ class OAI(MODSReader):
 
         if self.nsroot == 'repox':
             return FSUDL.pid_search(record)
+
+'''
+
+from .record import *
+#from .field import *
+from .exceptions import *
+from .reader import *
+#from .writer import *
+from .constants import *
+#from .marc8 import marc8_to_unicode, MARC8ToUnicode
+#from .marcxml import *
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
