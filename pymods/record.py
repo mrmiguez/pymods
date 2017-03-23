@@ -6,6 +6,10 @@ from pymods.exceptions import ElementNotFound
 
 class Record(etree.ElementBase):
 
+    def _init(self):
+        super(etree.ElementBase, self).__init__()
+        return self
+
     def abstract(self, record):
         """
         Access mods:abstract elements and return a list of dicts:
@@ -516,7 +520,7 @@ class Record(etree.ElementBase):
 
     def type_of_resource(self, record):
         """
-        Access mods:typeOfResourcec and return text value:
+        Access mods:typeOfResource and return text value:
         return: text value or None
         """
         self.record = record
