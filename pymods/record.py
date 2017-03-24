@@ -7,7 +7,14 @@ from pymods.exceptions import ElementNotFound
 class Record(etree.ElementBase):
 
     def _init(self):
-        super(etree.ElementBase, self).__init__()
+        #self.mods_parser_registration = etree.ElementDefaultClassLookup(element=Record)
+        #self.mods_parser = etree.XMLParser()
+        #self.mods_parser.set_element_class_lookup(self.mods_parser_registration)
+        #self.tree = etree.ElementTree(self, parser=self.mods_parser)
+        #self.root = self.tree.getroot()
+
+        #self = super(etree.ElementBase, self.root).__init__()
+
         return self
 
     def abstract(self, record):
@@ -363,19 +370,24 @@ class Record(etree.ElementBase):
         else:
             raise ElementNotFound
 
-    def physical_location(self, record):
+    def physical_location(self):
         """
         Access mods:mods/mods:location/mods:physicalLocation and return text values.
         return: list of element text values.
         """
-        self.record = record
-        if self.record.find('./{0}location/{0}physicalLocation'.format(NAMESPACES['mods'])) is not None:
-            self.all_locations = []
-            for location in self.record.iterfind('./{0}location/{0}physicalLocation'.format(NAMESPACES['mods'])):
-                self.all_locations.append(location.text)
-            return self.all_locations
+        #if record is not None:
+        #    self.record = record
+        #else:
+        #    self.record = self[0]
+        #if self[0].find('./{0}location/{0}physicalLocation'.format(NAMESPACES['mods'])) is not None:
+        if self._exists('./{0}location/{0}physicalLocation'.format(NAMESPACES['mods'])) is True:
+            all_locations = []
+            for location in self[0].iterfind('./{0}location/{0}physicalLocation'.format(NAMESPACES['mods'])):
+                all_locations.append(location.text)
+            return all_locations
         else:
-            raise ElementNotFound
+            return None
+            #raise ElementNotFound
 
     def publication_place(self, record):
         """
@@ -529,3 +541,12 @@ class Record(etree.ElementBase):
             return self.type_of_resource.text
         else:
             raise ElementNotFound
+
+    def _exists(self, elem):
+        if self[0].find(elem) is not None:
+            return True
+        else:
+            raise ElementNotFound
+
+    #@staticmethod
+    #tag = super().tag

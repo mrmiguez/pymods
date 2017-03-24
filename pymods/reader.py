@@ -10,9 +10,12 @@ class Reader(etree.XMLParser):
     A base class for all iterating readers in the pymods package.
     """
     def __init__(self):
-        self.mods_parser_registration = etree.ElementDefaultClassLookup(element=Record)
-        self.mods_parser = etree.XMLParser()
-        self.mods_parser.set_element_class_lookup(self.mods_parser_registration)
+        """
+
+        """
+        #self.mods_parser_registration = etree.ElementDefaultClassLookup(element=Record)
+        #self.mods_parser = etree.XMLParser()
+        #self.mods_parser.set_element_class_lookup(self.mods_parser_registration)
 
 #    def __iter__(self):
 #        return self
@@ -31,11 +34,16 @@ class MODSReader(Reader):
             self.tree = etree.parse(self.mods_target)
             self.root = self.tree.getroot()
 
+        self.mods_parser_registration = etree.ElementDefaultClassLookup(element=Record)
+        self.mods_parser = etree.XMLParser()
+        self.mods_parser.set_element_class_lookup(self.mods_parser_registration)
+
         self.record_list = []
-        for record in self.root.iterfind('{0}mods'.format(NAMESPACES['mods'])):
-            self.record = record #test
-            self.recordRoot = etree.parse(self.record, parser=self.mods_parser)
-            self.record_list.append(self.record)
+        for record in self.root.iter('{0}mods'.format(NAMESPACES['mods'])):
+            record_tree = etree.ElementTree(record, parser=self.mods_parser)
+            record_root = Record(record_tree.getroot())
+            #self.record = Record(record_root)
+            self.record_list.append(record_root)
 
     def close(self):
         """
@@ -49,6 +57,9 @@ class MODSReader(Reader):
 
     def __iter__(self):
         return iter(self.record_list)
+
+    def __len__(self):
+        return len(self.record_list)
 
     '''
     def __next__(self):
