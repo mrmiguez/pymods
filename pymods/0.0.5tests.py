@@ -5,29 +5,10 @@ import pymods
 test_dir_path = abspath(dirname(__file__))
 
 
-class AbstractTests(unittest.TestCase):
-
-    abstract_xml = MODS(join(test_dir_path, 'tests/abstract_xml.xml'))
-
-    def test_mods_abstract_text(self):
-        '''checks element value'''
-        expected_text = ['Remain calm! This is only a test!']
-        result = MODS.abstract(self.abstract_xml.record_list[0])
-        self.assertTrue(all(x in result for x in expected_text))
 
 
-class ClassificationTests(unittest.TestCase):
 
-    abstract_xml = MODS(join(test_dir_path, 'tests/abstract_xml.xml'))
 
-    def test_mods_classification_text(self):
-        '''checks element value'''
-        expected_classifications = ['PS3566.Y55 G7',
-                                    'Y 4.B 22/3:S.PRT.109-8']
-        results = []
-        for classification in MODS.classification(self.abstract_xml.record_list[0]):
-            results.append(classification)
-        self.assertTrue(all(x in expected_classifications for x in results))
 
 
 class CollectionTests(unittest.TestCase):
@@ -58,129 +39,12 @@ class CollectionTests(unittest.TestCase):
         self.assertEqual(result, expected_url)
 
 
-class OriginInfoTests(unittest.TestCase):
-
-    originInfo_xml = MODS(join(test_dir_path, 'tests/originInfo_xml.xml'))
-
-    def test_mods_date_range(self):
-        '''checks date range reformatting'''
-        expected = '1776-07-04 - today'
-        result = MODS.date_constructor(self.originInfo_xml.record_list[0])
-        self.assertEqual(expected, result)
-
-    def test_mods_date_single(self):
-        '''checks single date'''
-        expected = '1984-10-14'
-        result = MODS.date_constructor(self.originInfo_xml.record_list[1])
-        self.assertEqual(expected, result)
-
-    def test_mods_date_none(self):
-        '''dates not in date_list should return None'''
-        expected = None
-        result = MODS.date_constructor(self.originInfo_xml.record_list[2])
-        self.assertEqual(expected, result)
-
-    def test_mods_edition(self):
-        '''checks edition'''
-        expected = 'Pre-print'
-        result = MODS.edition(self.originInfo_xml.record_list[3])
-        self.assertEqual(result, expected)
-
-    def test_mods_issuance(self):
-        '''checks issuance'''
-        expected = 'integrating resource'
-        result = MODS.issuance(self.originInfo_xml.record_list[4])
-        self.assertEqual(result[0], expected)
-
-    def test_mods_place(self):
-        '''checks place of publication'''
-        expected = [{'code': 'hgz',
-                    'untyped': 'Hogwartz'}]
-        result = MODS.publication_place(self.originInfo_xml.record_list[5])
-        self.assertEqual(result, expected)
-
-    def test_mods_publisher(self):
-        '''checks publisher'''
-        expected = 'Image Comics'
-        result = MODS.publisher(self.originInfo_xml.record_list[6])
-        self.assertEqual(result[0], expected)
-
-class PhysicalDescriptionTests(unittest.TestCase):
-
-    physicalDesc_xml = MODS(join(test_dir_path, 'tests/physicalDesc_xml.xml'))
-
-    def test_mods_digital_origin(self):
-        '''checks digital origin'''
-        expected = 'reformatted digital'
-        result = MODS.digital_origin(self.physicalDesc_xml.record_list[0])
-        self.assertEqual(result, expected)
-
-    def test_mods_extent(self):
-        '''checks extent'''
-        expected = ['5 pieces', '2 tonnes']
-        result = MODS.extent(self.physicalDesc_xml.record_list[1])
-        self.assertTrue(all(x in result for x in expected))
-
-    def test_mods_form(self):
-        '''checks form'''
-
-    def test_mods_physdesk_note(self):
-        '''checks physicalDescription/note'''
-        expected = ['Battered & bruised',
-                    'Infinite summer']
-        results = []
-        for note in MODS.physical_description_note(self.physicalDesc_xml.record_list[3]):
-            results.append(note)
-        self.assertTrue(all(x in results for x in expected))
 
 
-class GenreTests(unittest.TestCase):
 
-    genre_xml = MODS(join(test_dir_path, 'tests/genre_xml.xml'))
 
-    def test_mods_genre_text(self):
-        '''checks genre term values'''
-        expected = ['Personal correspondence',
-                    'receipts (financial records)']
-        results = []
-        for record in self.genre_xml.record_list:
-            if MODS.genre(record) is not None:
-                results.append(MODS.genre(record)[0]['term'])
-        self.assertTrue(all(x in results for x in expected))
 
-    def test_mods_genre_authority(self):
-        '''checks genre authority value'''
-        expected = ['aat', 'lcgft']
-        results = []
-        for record in self.genre_xml.record_list:
-            if MODS.genre(record) is not None:
-                results.append(MODS.genre(record)[0]['authority'])
-        self.assertTrue(all(x in results for x in expected))
 
-    def test_mods_genre_authorityURI(self):
-        '''checks genre authorityURI'''
-        expected = ['http://vocab.getty.edu/aat']
-        results = []
-        for record in self.genre_xml.record_list:
-            if MODS.genre(record) is not None and 'authorityURI' in MODS.genre(record)[0].keys():
-                results.append(MODS.genre(record)[0]['authorityURI'])
-        self.assertTrue(all(x in results for x in expected))
-
-    def test_mods_genre_valueURI(self):
-        '''checks genre valueURI'''
-        expected = ['http://id.loc.gov/authorities/genreForms/gf2014026141',
-                    'http://vocab.getty.edu/page/aat/300027015']
-        results = []
-        for record in self.genre_xml.record_list:
-            if MODS.genre(record) is not None:
-                results.append(MODS.genre(record)[0]['valueURI'])
-        self.assertTrue(all(x in results for x in expected))
-
-    def test_mods_genre_none(self):
-        '''checks for None value for missing element'''
-        expected = None
-        result = MODS.genre(self.genre_xml.record_list[2])
-        self.assertEqual(result, expected)
 
 
 class GeographicCodeTests(unittest.TestCase):
