@@ -1,3 +1,4 @@
+import re
 from lxml import etree
 
 from pymods.constants import NAMESPACES
@@ -143,6 +144,23 @@ class Record(etree.ElementBase):
         else:
             return None
 
+    def doi_search(self, elem=None):
+        """
+        Get DigiNole IID from MODS record:
+        return: item's IID.
+        """
+        if elem is not None:
+            record = elem
+        else:
+            record = self[0]
+        if record.find('.//{0}identifier'.format(NAMESPACES['mods'])) is not None:
+            for identifier in record.iterfind('.//{0}identifier'.format(NAMESPACES['mods'])):
+                if 'type' in identifier.attrib is not None:
+                    if 'DOI' == identifier.attrib['type']:
+                        return identifier.text
+        else:
+            return None
+
     def edition(self, elem=None):
         """
         Accesses mods:edition element:
@@ -272,6 +290,21 @@ class Record(etree.ElementBase):
             return all_languages
         else:
             return None
+
+    def local_identifier(self, elem=None, type='IID'):
+        """
+        Get DigiNole IID from MODS record:
+        return: item's IID.
+        """
+        if elem is not None:
+            record = elem
+        else:
+            record = self[0]
+        if record.find('.//{0}identifier'.format(NAMESPACES['mods'])) is not None:
+            for identifier in record.iterfind('.//{0}identifier'.format(NAMESPACES['mods'])):
+                if 'type' in identifier.attrib is not None:
+                    if type == identifier.attrib['type']:
+                        return identifier.text
 
     def _nameGen_(names, full_name):
         keys = []
@@ -427,6 +460,24 @@ class Record(etree.ElementBase):
         else:
             return None
 
+    def pid_search(self, elem=None, prefix='fsu:'):
+        """
+        Get fedora PID from MODS record:
+        return: item's fedora PID.
+        """
+        pid = re.compile(prefix)
+        if elem is not None:
+            record = elem
+        else:
+            record = self[0]
+        if record.find('.//{0}identifier'.format(NAMESPACES['mods'])) is not None:
+            for identifier in record.iterfind('.//{0}identifier'.format(NAMESPACES['mods'])):
+                match = pid.search(identifier.text)
+                if match:
+                    return match.string
+        else:
+            return None
+
     def publication_place(self, elem=None):
         """
         Access mods:place and return a list of dicts:
@@ -464,6 +515,24 @@ class Record(etree.ElementBase):
             for publisher in record.iterfind('.//{0}publisher'.format(NAMESPACES['mods'])):
                 all_publishers.append(publisher.text)
             return all_publishers
+        else:
+            return None
+
+    def purl_search(self, elem=None):
+        """
+        Accesses record's Persistent URL from mods:mods/mods:location/mods:url:
+        return: item PURL as string.
+        """
+        purl = re.compile('((http://purl)[\w\d:#@%/;$()~_?\+-=\\\.&]+)')
+        if elem is not None:
+            record = elem
+        else:
+            record = self[0]
+        if record.find('./{0}location/{0}url'.format(NAMESPACES['mods'])) is not None:
+            for url in record.iterfind('./{0}location/{0}url'.format(NAMESPACES['mods'])):
+                match = purl.search(url.text)
+                if match:
+                    return match.string
         else:
             return None
 

@@ -205,35 +205,35 @@ class GeographicCodeTests(unittest.TestCase):
         self.assertTrue(all(x in result for x in expected))
 
 
-#class IdentifierTests(unittest.TestCase):
-#    """
-#
-#    """
-#    identifier_xml = pymods.MODSReader(join(test_dir_path, 'tests/identifier_xml.xml'))
+class IdentifierTests(unittest.TestCase):
+    """
 
-#    def test_fsudl_purl_search(self):
-#        '''checks PURL service'''
-#        purl = 'http://purl.flvc.org/fsu/fd/FSU_MSS0204_B03_F10_13'
-#        result = FSUDL.purl_search(self.identifier_xml.record_list[0])
-#        self.assertEqual(result, purl)
+    """
+    identifier_xml = pymods.MODSReader(join(test_dir_path, 'tests/identifier_xml.xml'))
 
-#    def test_fsudl_pid_search(self):
-#        '''checks fedora PID service'''
-#        pid = 'fsu:1028'
-#        result = FSUDL.pid_search(self.identifier_xml.record_list[0])
-#        self.assertEqual(result, pid)
+    def test_mods_purl_search(self):
+        '''checks PURL service'''
+        purl = 'http://purl.flvc.org/fsu/fd/FSU_MSS0204_B03_F10_13'
+        result = self.identifier_xml.record_list[0].purl_search()
+        self.assertEqual(result, purl)
 
-#    def test_fsudl_local_identifier(self):
-#        '''checks IID service'''
-#        iid = 'FSU_MSS0204_B03_F10_13'
-#        result = FSUDL.local_identifier(self.identifier_xml.record_list[0])
-#        self.assertEqual(result, iid)
+    def test_mods_pid_search(self):
+        '''checks fedora PID service'''
+        pid = 'fsu:1028'
+        result = self.identifier_xml.record_list[0].pid_search()
+        self.assertEqual(result, pid)
 
-#    def test_fsudl_doi_search(self):
-#        '''checks fedora pid service'''
-#        doi = '10.3389/fmicb.2016.00458'
-#        result = FSUDL.doi_search(self.identifier_xml.record_list[0])
-#        self.assertEqual(result, doi)
+    def test_mods_local_identifier(self):
+        '''checks IID service'''
+        iid = 'FSU_MSS0204_B03_F10_13'
+        result = self.identifier_xml.record_list[0].local_identifier()
+        self.assertEqual(result, iid)
+
+    def test_mods_doi_search(self):
+        '''checks fedora pid service'''
+        doi = '10.3389/fmicb.2016.00458'
+        result = self.identifier_xml.record_list[0].doi_search()
+        self.assertEqual(result, doi)
 
 
 class LanguageTests(unittest.TestCase):
