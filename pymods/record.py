@@ -18,7 +18,7 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}abstract'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}abstract'.format(NAMESPACES['mods'])) is not None:
             all_abstracts = []
             for abstract in record.iterfind('./{0}abstract'.format(NAMESPACES['mods'])):
                 if len(abstract.attrib) >= 1:
@@ -33,6 +33,8 @@ class Record(etree.ElementBase):
                 else:
                     all_abstracts.append(abstract.text)
             return all_abstracts
+        else:
+            return None
 
     def classification(self, elem=None):
         """
@@ -43,11 +45,13 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}classification'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}classification'.format(NAMESPACES['mods'])) is not None:
             all_classifications = []
             for classification in record.iterfind('./{0}classification'.format(NAMESPACES['mods'])):
                 all_classifications.append(classification.text)
             return all_classifications
+        else:
+            return None
 
     def collection(self, elem=None):
         """
@@ -58,32 +62,25 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}relatedItem'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}relatedItem'.format(NAMESPACES['mods'])) is not None:
             for related_item in record.iterfind('./{0}relatedItem'.format(NAMESPACES['mods'])):
                 if 'type' in related_item.attrib.keys():
                     if 'host' == related_item.attrib['type']:
                         host_info = {}
-                        try:
-                            host_title = related_item.title_constructor()[0]
+                        if self.title_constructor(related_item) is not None:
+                            host_title = self.title_constructor(related_item)[0]
                             host_info['title'] = host_title
 
-                        except ElementNotFound:
-                            pass
-
-                        try:
-                            host_location = related_item.physical_location()[0]
+                        if self.physical_location(related_item) is not None:
+                            host_location = self.physical_location(related_item)[0]
                             host_info['location'] = host_location
 
-                        except ElementNotFound:
-                            pass
-
-                        try:
+                        if related_item.find('./{0}location/{0}url'.format(NAMESPACES['mods'])).text is not None:
                             host_info['url'] = related_item.find('./{0}location/{0}url'.format(NAMESPACES['mods'])).text
 
-                        except ElementNotFound:
-                            pass
-
                         return host_info
+        else:
+            return None
 
     def date_constructor(self, elem=None):
         """
@@ -106,7 +103,7 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}originInfo'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}originInfo'.format(NAMESPACES['mods'])) is not None:
             origin_info = record.find('./{0}originInfo'.format(NAMESPACES['mods']))
             date = None
             for child in origin_info.iterchildren():
@@ -129,6 +126,8 @@ class Record(etree.ElementBase):
                 elif child.tag in ignore_list:
                     pass
             return date
+        else:
+            return None
 
     def digital_origin(self, elem=None):
         """
@@ -139,8 +138,10 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('.//{0}digitalOrigin'.format(NAMESPACES['mods'])) is True:
+        if record.find('.//{0}digitalOrigin'.format(NAMESPACES['mods'])) is not None:
             return record.find('.//{0}digitalOrigin'.format(NAMESPACES['mods'])).text
+        else:
+            return None
 
     def edition(self, elem=None):
         """
@@ -151,8 +152,10 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('.//{0}edition'.format(NAMESPACES['mods'])) is True:
+        if record.find('.//{0}edition'.format(NAMESPACES['mods'])) is not None:
             return record.find('.//{0}edition'.format(NAMESPACES['mods'])).text
+        else:
+            return None
 
     def extent(self, elem=None):
         """
@@ -163,11 +166,13 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('.//{0}extent'.format(NAMESPACES['mods'])) is True:
+        if record.find('.//{0}extent'.format(NAMESPACES['mods'])) is not None:
             all_extents = []
             for extent in record.iterfind('.//{0}extent'.format(NAMESPACES['mods'])):
                 all_extents.append(extent.text)
             return all_extents
+        else:
+            return None
 
     def form(self, elem=None):
         """
@@ -178,11 +183,13 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}physicalDescription/{0}form'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}physicalDescription/{0}form'.format(NAMESPACES['mods'])) is not None:
             all_forms = []
             for form in record.iterfind('./{0}physicalDescription/{0}form'.format(NAMESPACES['mods'])):
                 all_forms.append(form.text)
             return all_forms
+        else:
+            return None
 
     def genre(self, elem=None):
         """
@@ -193,7 +200,7 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}genre'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}genre'.format(NAMESPACES['mods'])) is not None:
             all_genres = []
             for genre in record.iterfind('./{0}genre'.format(NAMESPACES['mods'])):
                 genre_elems = {}
@@ -206,6 +213,8 @@ class Record(etree.ElementBase):
                     genre_elems['valueURI'] = genre.attrib['valueURI']
                 all_genres.append(genre_elems)
             return all_genres
+        else:
+            return None
 
     def geographic_code(self, elem=None):
         """
@@ -216,11 +225,13 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}subject/{0}geographicCode'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}subject/{0}geographicCode'.format(NAMESPACES['mods'])) is not None:
             all_geocodes = []
             for geocode in record.iterfind('./{0}subject/{0}geographicCode'.format(NAMESPACES['mods'])):
                 all_geocodes.append(geocode.text)
             return all_geocodes
+        else:
+            return None
 
     def issuance(self, elem=None):
         """
@@ -231,11 +242,13 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('.//{0}issuance'.format(NAMESPACES['mods'])) is True:
+        if record.find('.//{0}issuance'.format(NAMESPACES['mods'])) is not None:
             all_issuances = []
             for issuance in record.iterfind('.//{0}issuance'.format(NAMESPACES['mods'])):
                 all_issuances.append(issuance.text)
             return all_issuances
+        else:
+            return None
 
     def language(self, elem=None):
         """
@@ -246,7 +259,7 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('.//{0}language'.format(NAMESPACES['mods'])) is True:
+        if record.find('.//{0}language'.format(NAMESPACES['mods'])) is not None:
             all_languages = []
             for language in record.iterfind('.//{0}language'.format(NAMESPACES['mods'])):
                 languages = {}
@@ -257,40 +270,42 @@ class Record(etree.ElementBase):
                         languages['untyped'] = term.text
                 all_languages.append(languages)
             return all_languages
+        else:
+            return None
 
-    def _nameGen_(names, fullName):
+    def _nameGen_(names, full_name):
         keys = []
         for key in names.keys():
             keys.append(key)
         if all(x in keys for x in ['family', 'given',
                                    'termsOfAddress', 'date']):
-            fullName = fullName + names['family'] + ', ' + names['given'] + ', ' + names['termsOfAddress'] + ', ' + \
+            full_name = full_name + names['family'] + ', ' + names['given'] + ', ' + names['termsOfAddress'] + ', ' + \
                        names['date']
         elif all(x in keys for x in ['family', 'given', 'date']):
-            fullName = fullName + names['family'] + ', ' + names['given'] + ', ' + names['date']
+            full_name = full_name + names['family'] + ', ' + names['given'] + ', ' + names['date']
         elif all(x in keys for x in ['family', 'given', 'termsOfAddress']):
-            fullName = fullName + names['family'] + ', ' + names['given'] + ', ' + names['termsOfAddress']
+            full_name = full_name + names['family'] + ', ' + names['given'] + ', ' + names['termsOfAddress']
         elif all(x in keys for x in ['family', 'termsOfAddress', 'date']):
-            fullName = fullName + names['family'] + ', ' + names['termsOfAddress'] + ', ' + names['date']
+            full_name = full_name + names['family'] + ', ' + names['termsOfAddress'] + ', ' + names['date']
         elif all(x in keys for x in ['given', 'termsOfAddress', 'date']):
-            fullName = fullName + names['given'] + ', ' + names['termsOfAddress'] + ', ' + names['date']
+            full_name = full_name + names['given'] + ', ' + names['termsOfAddress'] + ', ' + names['date']
         elif all(x in keys for x in ['family', 'given']):
-            fullName = fullName + names['family'] + ', ' + names['given']
+            full_name = full_name + names['family'] + ', ' + names['given']
         elif all(x in keys for x in ['family', 'date']):
-            fullName = fullName + names['family'] + ', ' + names['date']
+            full_name = full_name + names['family'] + ', ' + names['date']
         elif all(x in keys for x in ['family', 'termsOfAddress']):
-            fullName = fullName + names['family'] + ', ' + names['termsOfAddress']
+            full_name = full_name + names['family'] + ', ' + names['termsOfAddress']
         elif all(x in keys for x in ['given', 'date']):
-            fullName = fullName + names['given'] + ', ' + names['date']
+            full_name = full_name + names['given'] + ', ' + names['date']
         elif all(x in keys for x in ['given', 'termsOfAddress']):
-            fullName = fullName + names['given'] + ', ' + names['termsOfAddress']
+            full_name = full_name + names['given'] + ', ' + names['termsOfAddress']
         elif all(x in keys for x in ['termsOfAddress', 'date']):
-            fullName = fullName + ', ' + names['termsOfAddress'] + ', ' + names['date']
+            full_name = full_name + ', ' + names['termsOfAddress'] + ', ' + names['date']
         elif 'date' in keys:
-            fullName = fullName + ', ' + names['date']
+            full_name = full_name + ', ' + names['date']
         elif 'termsOfAddress' in keys:
-            fullName = fullName + ', ' + names['termsOfAddress']
-        return fullName
+            full_name = full_name + ', ' + names['termsOfAddress']
+        return full_name
 
     def name_constructor(self, elem=None):
         """
@@ -301,7 +316,7 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}name'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}name'.format(NAMESPACES['mods'])) is not None:
             all_names = []
             for name in record.iterfind('./{0}name'.format(NAMESPACES['mods'])):
                 full_name = name.attrib
@@ -347,6 +362,8 @@ class Record(etree.ElementBase):
                 return None
             else:
                 return all_names
+        else:
+            return None
 
     def note(self, elem=None):
         """
@@ -357,7 +374,7 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}note'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}note'.format(NAMESPACES['mods'])) is not None:
             all_notes = []
             for note in record.iterfind('./{0}note'.format(NAMESPACES['mods'])):
                 if len(note.attrib) >= 1:
@@ -372,6 +389,8 @@ class Record(etree.ElementBase):
                 else:
                     all_notes.append({'untyped': note.text})
             return all_notes
+        else:
+            return None
 
     def physical_description_note(self, elem=None):
         """
@@ -382,12 +401,14 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}physicalDescription'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}physicalDescription'.format(NAMESPACES['mods'])) is not None:
             for physical_description in record.iterfind('./{0}physicalDescription'.format(NAMESPACES['mods'])):
                 all_notes = []
                 for note in physical_description.iterfind('./{0}note'.format(NAMESPACES['mods'])):
                     all_notes.append(note.text)
             return all_notes
+        else:
+            return None
 
     def physical_location(self, elem=None):
         """
@@ -398,11 +419,13 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}location/{0}physicalLocation'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}location/{0}physicalLocation'.format(NAMESPACES['mods'])) is not None:
             all_locations = []
             for location in record.iterfind('./{0}location/{0}physicalLocation'.format(NAMESPACES['mods'])):
                 all_locations.append(location.text)
             return all_locations
+        else:
+            return None
 
     def publication_place(self, elem=None):
         """
@@ -413,7 +436,7 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('.//{0}place'.format(NAMESPACES['mods'])) is True:
+        if record.find('.//{0}place'.format(NAMESPACES['mods'])) is not None:
             all_places = []
             for place in record.iterfind('.//{0}place'.format(NAMESPACES['mods'])):
                 places = {}
@@ -424,6 +447,8 @@ class Record(etree.ElementBase):
                         places['untyped'] = term.text
                 all_places.append(places)
             return all_places
+        else:
+            return None
 
     def publisher(self, elem=None):
         """
@@ -434,11 +459,13 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('.//{0}publisher'.format(NAMESPACES['mods'])) is True:
+        if record.find('.//{0}publisher'.format(NAMESPACES['mods'])) is not None:
             all_publishers = []
             for publisher in record.iterfind('.//{0}publisher'.format(NAMESPACES['mods'])):
                 all_publishers.append(publisher.text)
             return all_publishers
+        else:
+            return None
 
     def rights(self, elem=None):
         """
@@ -449,7 +476,7 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('.//{0}accessCondition'.format(NAMESPACES['mods'])) is True:
+        if record.find('.//{0}accessCondition'.format(NAMESPACES['mods'])) is not None:
             for access_condition in record.iterfind('.//{0}accessCondition'.format(NAMESPACES['mods'])):
                 rights = {}
                 if 'use and reproduction' or 'useAndReproduction' in access_condition.attrib['type']:
@@ -457,6 +484,8 @@ class Record(etree.ElementBase):
                     if '{http://www.w3.org/1999/xlink}href' in access_condition.attrib.keys():
                         rights['URI'] = access_condition.attrib['{http://www.w3.org/1999/xlink}href']
             return rights
+        else:
+            return None
 
     def _subject_parser_(subject):
         parts = ['authority', 'authorityURI', 'valueURI']
@@ -485,18 +514,20 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}subject'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}subject'.format(NAMESPACES['mods'])) is not None:
             all_subjects = []
             for subject in record.iterfind('./{0}subject'.format(NAMESPACES['mods'])):
                 if 'authority' in subject.attrib.keys():
                     if 'lcsh' or 'lctgm' or 'fast' == subject.attrib['authority'].lower():
                         all_subjects.append(Record._subject_parser_(subject))
                     elif 'naf' or 'lcnaf' == subject.attrib['authority'].lower():
-                        if subject.name_constructor() is not None:
-                            all_subjects.append(subject.name_constructor()[0])
+                        if self.name_constructor(subject) is not None:
+                            all_subjects.append(self.name_constructor(subject)[0])
                 else:
                     all_subjects.append(Record._subject_parser_(subject))
             return all_subjects
+        else:
+            return None
 
     def _subject_text_(subject):
         subject_text = ""
@@ -506,7 +537,7 @@ class Record(etree.ElementBase):
             else:
                 subject_text = subject_text + '--' + child.text
         return subject_text.strip(' -,.')
-    '''WAT?
+
     def subject_constructor(self, elem=None):
         """
         Access mods:subject elements and parses text values into LOC double hyphenated complex headings
@@ -516,15 +547,14 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists() is True:
-        if Record.subject(self.record) is not None:
-            self.subject_text_list = []
-            for subject in Record.subject(self):
-                self.subject_text_list.append(subject['text'])
-            return self.subject_text_list
+        if self.subject(record) is not None:
+            subject_text_list = []
+            for subject in self.subject(record):
+                subject_text_list.append(subject['text'])
+            return subject_text_list
         else:
-            raise ElementNotFound
-    '''
+            return None
+
     def title_constructor(self, elem=None):
         """
         Accesses children of mods:titleInfo and return a list of titles in natural order:
@@ -534,7 +564,7 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('./{0}titleInfo'.format(NAMESPACES['mods'])) is True:
+        if record.find('./{0}titleInfo'.format(NAMESPACES['mods'])) is not None:
             all_titles = []
             for title in record.iterfind('./{0}titleInfo'.format(NAMESPACES['mods'])):
                 if title.find('./{0}nonSort'.format(NAMESPACES['mods'])) is not None and title.find(
@@ -555,6 +585,8 @@ class Record(etree.ElementBase):
                     title_full = title.find('./{0}title'.format(NAMESPACES['mods'])).text
                 all_titles.append(title_full)
             return all_titles
+        else:
+            return None
 
     def type_of_resource(self, elem=None):
         """
@@ -565,12 +597,15 @@ class Record(etree.ElementBase):
             record = elem
         else:
             record = self[0]
-        if self._exists('.//{0}typeOfResource'.format(NAMESPACES['mods'])) is True:
+        if record.find('.//{0}typeOfResource'.format(NAMESPACES['mods'])) is not None:
             type_of_resource = record.find('.//{0}typeOfResource'.format(NAMESPACES['mods']))
             return type_of_resource.text
-
-    def _exists(self, elem):
-        if self[0].find(elem) is not None:
-            return True
         else:
-            raise ElementNotFound
+            return None
+
+#    def _exists(self, elem):
+#        if self[0].find(elem) is not None:
+#            return True
+#        else:
+#            return None
+#            #raise ElementNotFound
