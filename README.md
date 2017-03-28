@@ -14,7 +14,7 @@ Recommended:
 
 ### Basics
 
-XML is parsed using either the MODSReader:
+XML is parsed using the MODSReader class:
 
 `mods_records = pymods.MODSReader('some_file.xml')`
 

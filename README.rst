@@ -7,7 +7,7 @@ wrapper for the lxml module specific to deserializing data out of
 MODSXML into python data types.
 
 If you need a module to serialize data into MODSXML, see the other
-`pymods by Matt Cordial`_.
+`pymods by Matt Cordial <https://github.com/cordmata/pymods>`__.
 
 Installing
 ----------
@@ -22,56 +22,54 @@ Using
 Basics
 ~~~~~~
 
-XML is parsed using either the MODS or OAI class:
+XML is parsed using the MODSReader class:
 
-``mods_records = MODS('some_file.xml')``
+``mods_records = pymods.MODSReader('some_file.xml')``
 
-``oai_records = OAI('some_file.xml')``
-
-Individual records are stored at the MODS or OAI object in the
-record\_list attribute. These records can be called individually by
-index number or used as an iterator.
+Individual records are stored as an iterator of the MODSRecord object:
 
 .. code:: python
 
-    for record in mods_records.record_list:
-       print(MODS.rights(record))
+    In [3]: len(mods_records)
+    Out[3]: 3
 
 .. code:: python
 
-    print(MODS.rights(oai_records.record_list[3]))
+    In [5]: for record in mods_records:
+      ....:    print(record)
+      ....:
+    <Element Record at 0x6fffe5d50e8>
+    <Element Record at 0x6fffe5d5188>
+    <Element Record at 0x6fffe5d5228>
 
-MODS
-^^^^
+Or they can be accessed invidually through the the
+MODSReader.record\_list attribute:
 
-The MODS class parses records at each ``mods:mods`` element. It will
-work with ``mods:modsCollection`` documents, outputs from OAI-PMH feeds,
-or individual MODSXML documents with ``mods:mods`` as the root element.
+.. code:: python
 
-When parsing only a single record, the MODS and OAI classes will still
-store the record in the record\_list attribute. Accessing the record
-will still require calling the object as an iterator or by list index.
+    In [8]: print(mods_records.record_list[0].title_constructor())
+    ['Fire Line System']
 
-OAI
-^^^
+MODSReader will work with ``mods:modsCollection`` documents, outputs
+from OAI-PMH feeds, or individual MODSXML documents with ``mods:mods``
+as the root element. When parsing only a single record, the MODSReader
+class will still store the record in the record\_list attribute.
+Accessing the record will still require calling the object as an
+iterator or by list index.
 
-The OAI class can be used with the output from OAI-PMH feeds or repox
-exports. ``oai_dc:record`` elements are parsed as the record root
-elements in documents in the oai\_dc namespace. Documents in the repox
-namespace are parsed using ``repox:record`` as the record root element.
+pymods.Record
+^^^^^^^^^^^^^
+
+The MODSReader class parses each ``mods:mods`` element into a
+pymods.Record object. pymods.Record is a custom wrapper class for the
+lxml.ElementBase class. All children of pymods.Record inherit the
+lxml.\_Element and lxml.ElementBase methods.
 
 Methods
 ~~~~~~~
 
 All functions return data either as a string, list, or dict. See the
 appropriate docstrings for details.
-
-FSUDL
-~~~~~
-
-Methods in the FSUDL class are helper functions specific to Florida
-State University's `DigiNole`_ and might not apply to records from other
-sources.
 
 Examples
 --------
@@ -80,15 +78,15 @@ Importing
 
 .. code:: python
 
-    from pymods import MODS, FSUDL, OAI
+    from pymods import MODSReader, Record
 
 Parsing a file
 
 .. code:: python
 
-    >>> mods = MODS('example.xml')
+    >>> mods = MODSReader('example.xml')
 
-    >>> len(mods.record_list)
+    >>> len(mods)
     3
 
 Simple tasks
@@ -98,8 +96,8 @@ Generating a title list
 
 .. code:: python
 
-    In [14]: for record in mods.record_list:
-       ....:     print(MODS.title_constructor(record))
+    In [14]: for record in mods:
+       ....:     print(record.title_constructor())
        ....:
     ['Fire Line System']
     ['$93,668.90. One Mill Tax Apportioned by Various Ways Proposed']
@@ -109,9 +107,9 @@ Creating a subject list
 
 .. code:: python
 
-    In [17]: for record in mods.record_list:
-       ....: for subject in MODS.subject_constructor(record):
-       ....: print(subject)
+    In [17]: for record in mods:
+       ....:     for subject in record.subject_constructor():
+       ....:         print(subject)
        ....:
     Concert halls
     Architecture
@@ -138,8 +136,33 @@ Creating a subject list
     Women--Societies and clubs
     National Organization for Women
 
-.. _pymods by Matt Cordial: https://github.com/cordmata/pymods
-.. _DigiNole: http://diginole.lib.fsu.edu
+More complex tasks
+~~~~~~~~~~~~~~~~~~
+
+Creating a list of subject URI's only for LCSH subjects
+
+.. code:: python
+
+    In [18]: for record in mods:
+       ....:     for subject in record.subject():
+       ....:         if 'authority' in subject.keys() and 'lcsh' == subject['authority']:
+       ....:             print(subject['valueURI'])
+       ....:
+    http://id.loc.gov/authorities/subjects/sh85082767
+    http://id.loc.gov/authorities/subjects/sh88004614
+    http://id.loc.gov/authorities/subjects/sh85132810
+    http://id.loc.gov/authorities/subjects/sh85147343
+
+Get URLs for objects using a No Copyright US rightsstatement.org URI
+
+.. code:: python
+
+    In [23]: for record in mods:
+       ....:     if record.rights()['URI'] == 'http://rightsstatements.org/vocab/NoC-US/1.0/':
+       ....:         print(record.purl_search())
+       ....:
+    http://purl.flvc.org/fsu/fd/FSU_MSS0204_B01_F10_09
+    http://purl.flvc.org/fsu/fd/FSU_MSS2008003_B18_F01_004
 
 .. |Build Status| image:: https://travis-ci.org/mrmiguez/pymods.svg?branch=master
    :target: https://travis-ci.org/mrmiguez/pymods
