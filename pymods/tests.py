@@ -9,7 +9,6 @@ class AbstractTests(unittest.TestCase):
     """
     abstract text values return as a list or exception raised if none
     """
-
     abstract_xml = pymods.MODSReader(join(test_dir_path, 'tests/abstract_xml.xml'))
 
     def test_mods_abstract_text(self):
@@ -22,7 +21,6 @@ class ClassificationTests(unittest.TestCase):
     """
     classification text values return as a list or exception raised if none
     """
-
     abstract_xml = pymods.MODSReader(join(test_dir_path, 'tests/abstract_xml.xml'))
 
     def test_mods_classification_text(self):
@@ -34,11 +32,11 @@ class ClassificationTests(unittest.TestCase):
             results.append(classification)
         self.assertTrue(all(x in expected_classifications for x in results))
 
+
 class CollectionTests(unittest.TestCase):
     """
 
     """
-
     abstract_xml = pymods.MODSReader(join(test_dir_path, 'tests/abstract_xml.xml'))
     collection_dict = abstract_xml.record_list[0].collection()
 
@@ -143,7 +141,9 @@ class PhysicalDescriptionTests(unittest.TestCase):
 
 
 class GenreTests(unittest.TestCase):
-
+    """
+    
+    """
     genre_xml = pymods.MODSReader(join(test_dir_path, 'tests/genre_xml.xml'))
 
     def test_mods_genre_text(self):
@@ -294,7 +294,9 @@ class NameTests(unittest.TestCase):
 
 
 class NoteTests(unittest.TestCase):
-
+    """
+    
+    """
     abstract_xml = pymods.MODSReader(join(test_dir_path, 'tests/abstract_xml.xml'))
 
     def test_mods_note_typed(self):
@@ -326,7 +328,6 @@ class PhysicalLocationTests(unittest.TestCase):
     """
     location text values return as a list or exception raised if none
     """
-
     location_xml = pymods.MODSReader(join(test_dir_path, 'tests/location_xml.xml'))
 
     def test_mods_physical_location(self):
@@ -403,23 +404,23 @@ class SubjectTests(unittest.TestCase):
                         results.append(child['valueURI'])
         self.assertTrue(all(x in results for x in expected))
 
-#    def test_mods_subject_complex_text(self):
-#        '''checks complex subject text'''
-#        expected = 'United States--History--Civil War, 1861-1865'
-#        result = self.subject_xml.record_list[2].subject_constructor()[0]
-#        self.assertEqual(result, expected)
+    def test_mods_subject_complex_text(self):
+        '''checks complex subject text'''
+        expected = 'United States--History--Civil War, 1861-1865'
+        result = self.subject_xml.record_list[2].subject_constructor()[0]
+        self.assertEqual(result, expected)
 
-#    def test_mods_subject_name(self):
-#        '''checks reformatting of name subject'''
-#        expected = 'Lincoln, Abraham, 1809-1865--Assassination'
-#        result = self.subject_xml.record_list[3].subject()[0]['text']
-#        self.assertEqual(result, expected)
+    def test_mods_subject_name(self):
+        '''checks reformatting of name subject'''
+        expected = 'Lincoln, Abraham, 1809-1865--Assassination'
+        result = self.subject_xml.record_list[3].subject()[0]['text']
+        self.assertEqual(result, expected)
 
-#    def test_mods_subject_name_no_authority_text(self):
-#        '''checks handling of subject w/ no @authority'''
-#        expected = 'Baruch, Bernard M. (Bernard Mannes), 1870-1965'
-#        result = self.subject_xml.record_list[4].subject()[0]['text']
-#        self.assertEqual(result, expected)
+    def test_mods_subject_name_no_authority_text(self):
+        '''checks handling of subject w/ no @authority'''
+        expected = 'Baruch, Bernard M. (Bernard Mannes), 1870-1965'
+        result = self.subject_xml.record_list[4].subject()[0]['text']
+        self.assertEqual(result, expected)
 
 
 class TitleTests(unittest.TestCase):

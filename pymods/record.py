@@ -386,9 +386,6 @@ class Record(etree.ElementBase):
                             elif role_term.attrib['type'] == 'text':
                                 full_name['roleText'] = role_term.text
 
-                else:
-                    pass
-
                     all_names.append(full_name)
 
             if len(all_names) == 0:
@@ -602,7 +599,7 @@ class Record(etree.ElementBase):
         subject_text = ""
         for child in subject:
             if child.tag == '{0}name'.format(NAMESPACES['mods']):
-                subject_text = subject_text + '--' + Record.name_constructor(child.getparent())[0]['text']
+                subject_text = subject_text + '--' + Record.name_constructor(subject, elem=child.getparent())[0]['text']
             else:
                 subject_text = subject_text + '--' + child.text
         return subject_text.strip(' -,.')
