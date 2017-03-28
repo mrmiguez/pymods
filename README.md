@@ -14,52 +14,55 @@ Recommended:
 
 ### Basics
 
-XML is parsed using either the MODS or OAI class:
+XML is parsed using either the MODSReader:
 
-`mods_records = MODS('some_file.xml')`
+`mods_records = pymods.MODSReader('some_file.xml')`
 
-`oai_records = OAI('some_file.xml')`
-
-Individual records are stored at the MODS or OAI object in the record_list attribute. These records can be called individually by index number or used as an iterator.
+Individual records are stored as an iterator of the MODSRecord object:
 
 ```python
-for record in mods_records.record_list:
-   print(MODS.rights(record))
+In [3]: len(mods_records)
+Out[3]: 3
 ```
 ```python
-print(MODS.rights(oai_records.record_list[3]))
+In [5]: for record in mods_records:
+  ....:    print(record)
+  ....:
+<Element Record at 0x6fffe5d50e8>
+<Element Record at 0x6fffe5d5188>
+<Element Record at 0x6fffe5d5228>
+
 ```
+
+Or they can be accessed invidually through the the MODSReader.record_list attribute:
+
+```python
+In [8]: print(mods_records.record_list[0].title_constructor())
+['Fire Line System']
+```
+
+MODSReader will work with `mods:modsCollection` documents, outputs from OAI-PMH feeds, or individual MODSXML documents with `mods:mods` as the root element. When parsing only a single record, the MODSReader class will still store the record in the record_list attribute. Accessing the record will still require calling the object as an iterator or by list index.
     
-#### MODS
+#### pymods.Record
 
-The MODS class parses records at each `mods:mods` element. It will work with `mods:modsCollection` documents, outputs from OAI-PMH feeds, or individual MODSXML documents with `mods:mods` as the root element.
+The MODSReader class parses each `mods:mods` element into a pymods.Record object. pymods.Record is a custom wrapper class for the lxml.ElementBase class. All children of pymods.Record inherit the lxml._Element and lxml.ElementBase methods. 
 
-When parsing only a single record, the MODS and OAI classes will still store the record in the record_list attribute. Accessing the record will still require calling the object as an iterator or by list index.
-
-#### OAI
-
-The OAI class can be used with the output from OAI-PMH feeds or repox exports. `oai_dc:record` elements are parsed as the record root elements in documents in the oai_dc namespace. Documents in the repox namespace are parsed using `repox:record` as the record root element.
-    
 ### Methods
 
 All functions return data either as a string, list, or dict. See the appropriate docstrings for details.
-
-### FSUDL
-
-Methods in the FSUDL class are helper functions specific to Florida State University's [DigiNole](http://diginole.lib.fsu.edu) and might not apply to records from other sources.
 
 ## Examples
 
 Importing
 ```python
-from pymods import MODS, FSUDL, OAI
+from pymods import MODSReader, Record
 ```
 
 Parsing a file
 ```python
->>> mods = MODS('example.xml')
+>>> mods = MODSReader('example.xml')
 
->>> len(mods.record_list)
+>>> len(mods)
 3
 ```
 
@@ -67,8 +70,8 @@ Parsing a file
 
 Generating a title list
 ```python
-In [14]: for record in mods.record_list:
-   ....:     print(MODS.title_constructor(record))
+In [14]: for record in mods:
+   ....:     print(record.title_constructor())
    ....:
 ['Fire Line System']
 ['$93,668.90. One Mill Tax Apportioned by Various Ways Proposed']
@@ -77,8 +80,8 @@ In [14]: for record in mods.record_list:
 
 Creating a subject list
 ```python
-In [17]: for record in mods.record_list:
-   ....:     for subject in MODS.subject_constructor(record):
+In [17]: for record in mods:
+   ....:     for subject in record.subject_constructor():
    ....:         print(subject)
    ....:
 Concert halls
@@ -111,8 +114,8 @@ National Organization for Women
 
 Creating a list of subject URI's only for LCSH subjects
 ```python
-In [18]: for record in mods.record_list:
-   ....:     for subject in MODS.subject(record):
+In [18]: for record in mods:
+   ....:     for subject in record.subject():
    ....:         if 'authority' in subject.keys() and 'lcsh' == subject['authority']:
    ....:             print(subject['valueURI'])
    ....:
@@ -124,9 +127,9 @@ http://id.loc.gov/authorities/subjects/sh85147343
 
 Get URLs for objects using a No Copyright US rightsstatement.org URI
 ```python
-In [23]: for record in mods.record_list:
-   ....:     if MODS.rights(record)['URI'] == 'http://rightsstatements.org/vocab/NoC-US/1.0/':
-   ....:         print(FSUDL.purl_search(record))
+In [23]: for record in mods:
+   ....:     if record.rights()['URI'] == 'http://rightsstatements.org/vocab/NoC-US/1.0/':
+   ....:         print(record.purl_search())
    ....:
 http://purl.flvc.org/fsu/fd/FSU_MSS0204_B01_F10_09
 http://purl.flvc.org/fsu/fd/FSU_MSS2008003_B18_F01_004
