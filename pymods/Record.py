@@ -513,70 +513,70 @@ class Record:
         return [publisher.text for publisher in
                 self.mods_xml.findall('./{0}originInfo/{0}publisher'.format(mods))]
 
-    @property
-    def rights_original(self):
-        """
-        If we're potentially iterating over accessConditions, should we be
-        building up a list of them?
-        
-        Also, this implementation has a subtle bug in your first conditional.
-        ---
-        if 'use and reproduction' or 'useAndReproduction' in access_condition.attrib['type']:
-        ---
-        that is always going to return True and as such enter that branch. The
-        reason is one of those areas where Python being so readable runs us into
-        a common trouble. The condition is parsed as follows:
-        if ('use and reproduction') or ('useAndReproduction' in access_condition.attrib['type']):
-        'use and reproduction' is parsed as its own statement, and since it's a
-        non-empty string, it returns True every time. It has to do with
-        operator precedence and such, but for now just know that this statement
-        needs to be written a little more verbosely:
-        if 'use and reproduction' in access_condition.attrib['type'] or 'useAndReproduction' in access_condition.attrib['type']:
-        
-        Also, is it true that we only want URIs if accessCondition is for
-        use and reproduction? Should we just build up the rights as they are
-        in the document and then pull out the ones we care about for software
-        later? We may want a separation of parsing the MODS document and what
-        we want to do with that information into pymods, the library for getting
-        the data and the software we build with the pymods library to do interesting
-        things.
-        
-        :return: 
-        """
-        if record.find('.//{0}accessCondition'.format(
-                nameSpace_default['mods'])) is not None:
-            for access_condition in record.iterfind(
-                    './/{0}accessCondition'.format(nameSpace_default['mods'])):
-                rights = {}
-                if 'use and reproduction' or 'useAndReproduction' in \
-                        access_condition.attrib['type']:
-                    rights['text'] = access_condition.text
-                    if '{http://www.w3.org/1999/xlink}href' in access_condition.attrib.keys():
-                        rights['URI'] = access_condition.attrib[
-                            '{http://www.w3.org/1999/xlink}href']
-
-        return rights
-
-    def subject(record):
-        """
-        Your inner if/elif clauses here have the same bug as above:
-        'lcsh' or 'lctgm' == subject.attrib['authority'].lower(): will always
-        go true, so your naf or lcnaf branches are never being executed.
-        """
-        if record.find('./{0}subject'.format(nameSpace_default['mods'])) is not None:
-            all_subjects = []
-            for subject in record.iterfind('./{0}subject'.format(nameSpace_default['mods'])):
-                if 'authority' in subject.attrib.keys():
-                    if 'lcsh' or 'lctgm' or 'fast' == subject.attrib['authority'].lower():
-                        all_subjects.append(MODS._subject_parser_(subject))
-                    elif 'naf' or 'lcnaf' == subject.attrib['authority'].lower():
-                        if MODS.name_constructor(subject) is not None:
-                            all_subjects.append(MODS.name_constructor(subject)[0])
-                else:
-                    all_subjects.append(MODS._subject_parser_(subject))
-            return all_subjects
-        else:
-            return None
+    # @property
+    # def rights(self):
+    #     """
+    #     If we're potentially iterating over accessConditions, should we be
+    #     building up a list of them?
+    #
+    #     Also, this implementation has a subtle bug in your first conditional.
+    #     ---
+    #     if 'use and reproduction' or 'useAndReproduction' in access_condition.attrib['type']:
+    #     ---
+    #     that is always going to return True and as such enter that branch. The
+    #     reason is one of those areas where Python being so readable runs us into
+    #     a common trouble. The condition is parsed as follows:
+    #     if ('use and reproduction') or ('useAndReproduction' in access_condition.attrib['type']):
+    #     'use and reproduction' is parsed as its own statement, and since it's a
+    #     non-empty string, it returns True every time. It has to do with
+    #     operator precedence and such, but for now just know that this statement
+    #     needs to be written a little more verbosely:
+    #     if 'use and reproduction' in access_condition.attrib['type'] or 'useAndReproduction' in access_condition.attrib['type']:
+    #
+    #     Also, is it true that we only want URIs if accessCondition is for
+    #     use and reproduction? Should we just build up the rights as they are
+    #     in the document and then pull out the ones we care about for software
+    #     later? We may want a separation of parsing the MODS document and what
+    #     we want to do with that information into pymods, the library for getting
+    #     the data and the software we build with the pymods library to do interesting
+    #     things.
+    #
+    #     :return:
+    #     """
+    #     if record.find('.//{0}accessCondition'.format(
+    #             nameSpace_default['mods'])) is not None:
+    #         for access_condition in record.iterfind(
+    #                 './/{0}accessCondition'.format(nameSpace_default['mods'])):
+    #             rights = {}
+    #             if 'use and reproduction' or 'useAndReproduction' in \
+    #                     access_condition.attrib['type']:
+    #                 rights['text'] = access_condition.text
+    #                 if '{http://www.w3.org/1999/xlink}href' in access_condition.attrib.keys():
+    #                     rights['URI'] = access_condition.attrib[
+    #                         '{http://www.w3.org/1999/xlink}href']
+    #
+    #     return rights
+    #
+    # def subject(record):
+    #     """
+    #     Your inner if/elif clauses here have the same bug as above:
+    #     'lcsh' or 'lctgm' == subject.attrib['authority'].lower(): will always
+    #     go true, so your naf or lcnaf branches are never being executed.
+    #     """
+    #     if record.find('./{0}subject'.format(nameSpace_default['mods'])) is not None:
+    #         all_subjects = []
+    #         for subject in record.iterfind('./{0}subject'.format(nameSpace_default['mods'])):
+    #             if 'authority' in subject.attrib.keys():
+    #                 if 'lcsh' or 'lctgm' or 'fast' == subject.attrib['authority'].lower():
+    #                     all_subjects.append(MODS._subject_parser_(subject))
+    #                 elif 'naf' or 'lcnaf' == subject.attrib['authority'].lower():
+    #                     if MODS.name_constructor(subject) is not None:
+    #                         all_subjects.append(MODS.name_constructor(subject)[0])
+    #             else:
+    #                 all_subjects.append(MODS._subject_parser_(subject))
+    #         return all_subjects
+    #     else:
+    #         return None
 
 def parse_xml(xml):
     """
