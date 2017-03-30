@@ -20,6 +20,12 @@ mods = NAMESPACES['mods']
 class Record:
 
     def __init__(self, mods_xml):
+        """
+        Just hold on to the individual record up here, you don't need to pass
+        it in to every method.
+        
+        :param mods_xml: XML representation of a MODS item
+        """
         self.mods_xml = parse_xml(mods_xml)
 
     @property
@@ -573,6 +579,16 @@ class Record:
             return None
 
 def parse_xml(xml):
+    """
+    Take the argument to a new instance of Record, and try to parse it as a file.
+    If it's not a file (i.e. it's coming from a MODSReader class) then an OSError
+    will be thrown, in which case we build it from a string. Should probably
+    also handle the case where some bad XML or something gets passed and
+    etree.fromstring(xml) throws an Exception to provide a good error message
+    to users rather than whatever lxml uses.
+    :param xml: 
+    :return: 
+    """
     try:
         return etree.parse(xml).getroot()
     except OSError:
