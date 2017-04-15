@@ -76,7 +76,7 @@ class Record(etree.ElementBase):
                             host_location = self.physical_location(related_item)[0]
                             host_info['location'] = host_location
 
-                        if related_item.find('./{0}location/{0}url'.format(NAMESPACES['mods'])).text is not None:
+                        if related_item.find('./{0}location/{0}url'.format(NAMESPACES['mods'])) is not None:
                             host_info['url'] = related_item.find('./{0}location/{0}url'.format(NAMESPACES['mods'])).text
 
                         return host_info
