@@ -16,15 +16,21 @@ PublicationPlace = collections.namedtuple('PublicationPlace', 'place type')
 mods = NAMESPACES['mods']
 
 
-class Record:
-    def __init__(self, mods_xml):
+class Record(etree.ElementBase):
+
+    def _init(self):
         """
         Just hold on to the individual record up here, you don't need to pass
         it in to every method.
 
         :param mods_xml: XML representation of a MODS item
         """
-        self.mods_xml = parse_xml(mods_xml)
+        super(Record, self)._init()
+        #self.mods_xml = parse_xml(mods_xml)
+
+    # @property
+    # def tag(self):
+    #     return super().tag
 
     @property
     def abstract(self):
@@ -577,6 +583,16 @@ class Record:
         #         return all_subjects
         #     else:
         #         return None
+
+
+class OAIRecord(Record):
+
+    def __init__(self):
+        super(OAIRecord, self).__init__()
+
+    @property
+    def oai_id(self):
+        pass
 
 
 def parse_xml(xml):

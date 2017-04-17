@@ -5,13 +5,20 @@ from pymods.constants import NAMESPACES
 from pymods.exceptions import NameSpaceInvalid
 
 
-class Reader:
+class Reader(etree.XMLParser):
 
     def __init__(self, file_location, iter_elem):
-        self.iterator = etree.parse(file_location).iter(iter_elem)
+        super(Reader, self).__init__()
+        self.mods_parser_registration = etree.ElementDefaultClassLookup(element=Record)
+        self.mods_parser = etree.XMLParser()
+        self.mods_parser.set_element_class_lookup(self.mods_parser_registration)
+
+        self.iterator = etree.parse(file_location, parser=self.mods_parser).iter(iter_elem)
+        #self.iterator = etree.parse(file_location).iter(iter_elem)
 
     def __next__(self):
-        return Record(etree.tostring(next(self.iterator)))
+        #return Record(etree.tostring(next(self.iterator)))
+        return Record(next(self.iterator))
 
     def __iter__(self):
         return self
