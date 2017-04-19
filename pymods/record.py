@@ -8,7 +8,7 @@ from pymods.exceptions import ElementNotFound
 class Record(etree.ElementBase):
 
     def _init(self):
-        super(etree.ElementBase, self).__init__()
+        super(Record, self)._init()
 
     def abstract(self, elem=None):
         """
