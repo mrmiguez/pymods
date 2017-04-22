@@ -39,7 +39,7 @@ class Record(etree.ElementBase):
         C-style for loop would be:
         --
         accumulator = []
-        for abstract in self.mods_xml.iterfind('./{0}abstract'.format(mods)):
+        for abstract in self[0].iterfind('./{0}abstract'.format(mods)):
             accumulator.append(Abstract(getattr(abstract, 'text', ''),
                                         abstract.attrib.get('type'),
                                         abstract.attrib.get('displayLabel'))
@@ -77,7 +77,7 @@ class Record(etree.ElementBase):
         return [Abstract(getattr(abstract, 'text', ''),
                          abstract.attrib.get('type'),
                          abstract.attrib.get('displayLabel'))
-                for abstract in self.mods_xml.iterfind(
+                for abstract in self[0].iterfind(
                 './{0}abstract'.format(mods))]
 
     @property
@@ -88,7 +88,7 @@ class Record(etree.ElementBase):
         :return: list of text from classification element(s)
         """
         return [classification.text for classification in
-                self.mods_xml.iterfind(
+                self[0].iterfind(
                     './{0}classification'.format(mods))]
 
     @property
@@ -104,7 +104,7 @@ class Record(etree.ElementBase):
 
         :return: A Collection element with location, title, and url attributes
         """
-        related_item = self.mods_xml.findall(
+        related_item = self[0].findall(
             './{0}relatedItem[@type="host"]'.format(mods))[0]
         return Collection(self.physical_location(related_item)[0],
                           self._title_constructor(related_item)[0],
@@ -224,7 +224,7 @@ class Record(etree.ElementBase):
         an error", and it's optimized for that style.
 
         So here, I try to just return the text from finding the edition field.
-        If it's not there, self.mods_xml.find... will return None. I then try
+        If it's not there, self[0].find... will return None. I then try
         to access the text attribute, and if it's None, None does not have
         a text attribute, so it throws an AttributeError, which I catch and
         return an appropriate value. It's often trial and error to see what
@@ -233,7 +233,7 @@ class Record(etree.ElementBase):
         :return: String containing digital origin information
         """
         try:
-            return self.mods_xml.find('.//{0}digitalOrigin'.format(mods)).text
+            return self[0].find('.//{0}digitalOrigin'.format(mods)).text
         except AttributeError:
             return None
 
@@ -244,7 +244,7 @@ class Record(etree.ElementBase):
         return: element text or None.
         """
         try:
-            return self.mods_xml.find('.//{0}edition'.format(mods)).text
+            return self[0].find('.//{0}edition'.format(mods)).text
         except AttributeError:
             return None
 
@@ -254,7 +254,7 @@ class Record(etree.ElementBase):
         Accesses mods:extent element:
         return: list of mods:extent texts
         """
-        return [extent.text for extent in self.mods_xml.iterfind('.//{0}extent'.format(mods))]
+        return [extent.text for extent in self[0].iterfind('.//{0}extent'.format(mods))]
 
     @property
     def form(self):
@@ -263,7 +263,7 @@ class Record(etree.ElementBase):
         return: list of mods:form texts
         """
         return [form.text for form in
-                self.mods_xml.iterfind('./{0}physicalDescription/{0}form'.format(mods))]
+                self[0].iterfind('./{0}physicalDescription/{0}form'.format(mods))]
 
     @property
     def genre(self):
@@ -288,7 +288,7 @@ class Record(etree.ElementBase):
                       genre.attrib.get('authority'),
                       genre.attrib.get('authorityURI'),
                       genre.attrib.get('valueURI'))
-                for genre in self.mods_xml.iterfind('./{0}genre'.format(mods))]
+                for genre in self[0].iterfind('./{0}genre'.format(mods))]
 
     @property
     def geographic_code(self):
@@ -296,7 +296,7 @@ class Record(etree.ElementBase):
         Accesses mods:geographicCode element:
         return: list of mods:geographicCode texts.
         """
-        return [geocode.text for geocode in self.mods_xml.iterfind(
+        return [geocode.text for geocode in self[0].iterfind(
             './{0}subject/{0}geographicCode'.format(mods))]
 
     @property
@@ -305,7 +305,7 @@ class Record(etree.ElementBase):
         Accesses mods:issuance element:
         return: list of mods:issuance texts.
         """
-        return [issuance.text for issuance in self.mods_xml.iterfind(
+        return [issuance.text for issuance in self[0].iterfind(
             './/{0}issuance'.format(mods))]
 
     @property
@@ -328,7 +328,7 @@ class Record(etree.ElementBase):
         :return: list of of Language elements with language and type attributes
         """
         return [Language(term.text, term.attrib.get('type'))
-                for lang in self.mods_xml.iterfind('.//{0}language'.format(mods))
+                for lang in self[0].iterfind('.//{0}language'.format(mods))
                 for term in lang.iterchildren()]
 
     @property
@@ -385,7 +385,7 @@ class Record(etree.ElementBase):
         return [Name(self._make_name_parts(name),
                      self._make_roles(name),
                      name.attrib.get('type'))
-                for name in self.mods_xml.iterfind('./{0}name'.format(mods))]
+                for name in self[0].iterfind('./{0}name'.format(mods))]
 
     def _make_name_parts(self, el):
         return [NamePart(name.text, name.attrib.get('type')) for name in
@@ -420,7 +420,7 @@ class Record(etree.ElementBase):
         of dicts, and a roles list of dicts.
         """
         names = []
-        for name in self.mods_xml.iterfind('./{0}name'.format(mods)):
+        for name in self[0].iterfind('./{0}name'.format(mods)):
             name_parts = collections.defaultdict(list)
             for name_part in name.iterfind('./{0}namePart'.format(mods)):
                 name_parts[name_part.attrib.get('type')].append(name_part.text)
@@ -472,11 +472,11 @@ class Record(etree.ElementBase):
     @property
     def note(self):
         return [Note(note.text, note.attrib.get('type'), note.attrib.get('displayLabel'))
-                for note in self.mods_xml.iterfind('./{0}note'.format(mods))]
+                for note in self[0].iterfind('./{0}note'.format(mods))]
 
     @property
     def physical_description_note(self):
-        return [note.text for note in self.mods_xml.findall(
+        return [note.text for note in self[0].findall(
             './{0}physicalDescription/{0}note'.format(mods))]
 
     @property
@@ -484,7 +484,7 @@ class Record(etree.ElementBase):
         """Probably not exactly what you want, treats each pub place as disctinct,
         even if just a code."""
         return [PublicationPlace(term.text, term.attrib.get('type'))
-                for place in self.mods_xml.findall('./{0}originInfo/{0}place'.format(mods))
+                for place in self[0].findall('./{0}originInfo/{0}place'.format(mods))
                 for term in place.iterchildren()]
 
     @property
@@ -508,13 +508,13 @@ class Record(etree.ElementBase):
             attribute
         """
         return [{term.attrib.get('type'): term.text for term in place.iterchildren()}
-                for place in self.mods_xml.findall(
+                for place in self[0].findall(
                 './{0}originInfo/{0}place'.format(mods))]
 
     @property
     def publisher(self):
         return [publisher.text for publisher in
-                self.mods_xml.findall('./{0}originInfo/{0}publisher'.format(mods))]
+                self[0].findall('./{0}originInfo/{0}publisher'.format(mods))]
 
         # @property
         # def rights(self):
@@ -584,8 +584,8 @@ class Record(etree.ElementBase):
 
 class OAIRecord(Record):
 
-    def __init__(self):
-        super(OAIRecord, self).__init__()
+    def _init(self):
+        super(OAIRecord, self)._init()
 
     @property
     def oai_id(self):
