@@ -25,12 +25,9 @@ class Record(etree.ElementBase):
 
         :param mods_xml: XML representation of a MODS item
         """
-        super(Record, self)._init()
-        #self.mods_xml = parse_xml(mods_xml)
-
-    # @property
-    # def tag(self):
-    #     return super().tag
+        return super(Record, self)._init()
+        # return super()._init()
+        # self = parse_xml(mods_xml)
 
     @property
     def abstract(self):
@@ -603,8 +600,8 @@ def parse_xml(xml):
     also handle the case where some bad XML or something gets passed and
     etree.fromstring(xml) throws an Exception to provide a good error message
     to users rather than whatever lxml uses.
-    :param xml: 
-    :return: 
+    :param xml:
+    :return:
     """
     try:
         return etree.parse(xml).getroot()
