@@ -18,16 +18,17 @@ class OAIRecord(Record):
 
     def _init(self):
         super(OAIRecord, self)._init()
+
+    @property
+    def oai_urn(self):
         if '{http://repox.ist.utl.pt}' in self.tag:
-            #print('check') #debug
-            #for elem in self.iter('{http://repox.ist.utl.pt}*'):
-            #    print(elem)
             try:
-                self.oai_id = self.find('{0}record'.format(NAMESPACES['repox'])).attrib['id']
+                oai_id = self.attrib['id']
+                return oai_id
             except AttributeError:
                 pass
         elif '{http://www.openarchives.org/OAI/2.0/oai_dc/}' in self.tag:
             try:
-                self.oai_id = self.find('{0}header/{0}identifier'.format(NAMESPACES['oai_dc']))
+                return self.find('{0}header/{0}identifier'.format(NAMESPACES['oai_dc']))
             except AttributeError:
                 pass
