@@ -294,6 +294,9 @@ class OAIRecord(Record):
 
     @property
     def oai_urn(self):
+        """
+        :return: The OAI ID as a string
+        """
         if '{http://repox.ist.utl.pt}' in self.tag:
             try:
                 return self.attrib['id']
