@@ -1,5 +1,18 @@
+import re
+import collections
 from lxml import etree
-from pymods.constants import NAMESPACES
+from pymods.constants import NAMESPACES, DATE_FIELDS
+
+Abstract = collections.namedtuple('Abstract', 'text type displayLabel')
+Collection = collections.namedtuple('Collection', 'location title url')
+Genre = collections.namedtuple('Genre', 'term authority authorityURI valueURI')
+Language = collections.namedtuple('Language', 'language type')
+Name = collections.namedtuple('Name', 'name_parts roles type')
+NamePart = collections.namedtuple('NamePart', 'name type')
+Role = collections.namedtuple('Role', 'role type')
+Note = collections.namedtuple('Note', 'text type dispayLabel')
+PublicationPlace = collections.namedtuple('PublicationPlace', 'place type')
+mods = NAMESPACES['mods']
 
 
 class Record(etree.ElementBase):
@@ -13,26 +26,36 @@ class MODSRecord(Record):
     def _init(self):
         super(MODSRecord, self)._init()
 
-    def abstract(self, elem=None):
+    @property
+    def abstract(self):
         """
-        Access mods:abstract elements and return a list of dicts:
-        return: [{abstract displayLabel: abstract text}] or None.
+        Pull information from mods:abstract element(s).
+        :return: list of Abstract elements with text, type, and displayLabel attributes
         """
-        pass
+        return [Abstract(getattr(abstract, 'text', ''),
+                         abstract.attrib.get('type'),
+                         abstract.attrib.get('displayLabel'))
+                for abstract in self.iterfind('./{0}abstract'.format(mods))]
 
-    def classification(self, elem=None):
+    @property
+    def classification(self):
         """
-        Access mods:classification element:
-        return: [classification text, ... ] or None
+        Pull information from mods:classification element(s)
+        :return: list of text from classification element(s)
         """
-        pass
+        return [classification.text
+                for classification in self.iterfind('./{0}classification'.format(mods))]
 
-    def collection(self, elem=None):
+    @property
+    def collection(self):
         """
         Retrieve archival collection metadata from mods:relatedItem[type="host"]:
-        return: {'location': collection location, 'title': collection title, 'url': link to collection (if found)}
+                :return: A Collection element with location, title, and url attributes
         """
-        pass
+        related_item = self.findall('./{0}relatedItem[@type="host"]'.format(mods))[0]
+        return Collection(self.physical_location(related_item)[0],
+                          self._title_constructor(related_item)[0],
+                          self._url(related_item)[0])
 
     def date_constructor(self, elem=None):
         """
@@ -41,61 +64,79 @@ class MODSRecord(Record):
         """
         pass
 
-    def digital_origin(self, elem=None):
+    @property
+    def digital_origin(self):
         """
-        Accesses mods:digitalOrigin element:
-        return: element text or None.
+        Get text from mods:edition element.
+        :return: String containing digital origin information
         """
-        pass
+        try:
+            return self.find('.//{0}digitalOrigin'.format(mods)).text
+        except AttributeError:
+            return None
 
-    def doi_search(self, elem=None):
+    @property
+    def doi(self):
         """
-        Retrieve DOI:
-        return: item's DOI.
+        :return: item's DOI.
         """
-        pass
+        return self.local_identifier(type='DOI')
 
-    def edition(self, elem=None):
+    @property
+    def edition(self):
         """
         Accesses mods:edition element:
         return: element text or None.
         """
-        pass
+        try:
+            return self.find('.//{0}edition'.format(mods)).text
+        except AttributeError:
+            return None
 
-    def extent(self, elem=None):
+    @property
+    def extent(self):
         """
         Accesses mods:extent element:
-        return: list of mods:extent texts or None.
+        return: list of mods:extent texts
         """
-        pass
+        return [extent.text for extent in self.iterfind('.//{0}extent'.format(mods))]
 
-    def form(self, elem=None):
+    @property
+    def form(self):
         """
         Accesses mods:physicalDescription/mods:form element:
-        return: list of mods:form texts or None.
+        return: list of mods:form texts
         """
-        pass
+        return [form.text for form in self.iterfind('./{0}physicalDescription/{0}form'.format(mods))]
 
-    def genre(self, elem=None):
+    @property
+    def genre(self):
         """
         Accesses mods:genre element:
-        return: [ { 'term': , 'authority': , 'authorityURI': , 'valueURI': }, ] or None.
+        :return: A list containing Genre elements with term, authority,
+            authorityURI, and valueURI attributes
         """
-        pass
+        return [Genre(genre.text,
+                      genre.attrib.get('authority'),
+                      genre.attrib.get('authorityURI'),
+                      genre.attrib.get('valueURI'))
+                for genre in self.iterfind('./{0}genre'.format(mods))]
 
-    def geographic_code(self, elem=None):
+    @property
+    def geographic_code(self):
         """
         Accesses mods:geographicCode element:
-        return: list of mods:geographicCode texts or None.
+        return: list of mods:geographicCode texts.
         """
-        pass
+        return [geocode.text for geocode in self.iterfind('./{0}subject/{0}geographicCode'.format(mods))]
 
-    def issuance(self, elem=None):
+    @property
+    def issuance(self):
         """
         Accesses mods:issuance element:
-        return: list of mods:issuance texts or None.
+        return: list of mods:issuance texts.
         """
-        pass
+        return [issuance.text for issuance in self.iterfind('.//{0}issuance'.format(mods))]
 
     def language(self, elem=None):
         """
@@ -104,7 +145,7 @@ class MODSRecord(Record):
         """
         pass
 
-    def local_identifier(self, elem=None, type='IID'):
+    def local_identifier(self, type='IID'):
         """
         Get DigiNole IID from MODS record:
         return: item's IID.
@@ -126,19 +167,22 @@ class MODSRecord(Record):
         """
         pass
 
-    def note(self, elem=None):
+    @property
+    def note(self):
         """
         Access mods:note elements and return a list of dicts:
-        return: [{note-type: note-text}, untyped-note-text]
+        :return: A list containing Note elements with text, type, and displayLabel attributes
         """
-        pass
+        return [Note(note.text, note.attrib.get('type'), note.attrib.get('displayLabel'))
+                for note in self.iterfind('./{0}note'.format(mods))]
 
-    def physical_description_note(self, elem=None):
+    @property
+    def physical_description_note(self):
         """
         Access mods:physicalDescription/mods:note elements and return a list of text values:
-        return: list of note text values.
+        :return: list of note text values.
         """
-        pass
+        return [note.text for note in self.findall('./{0}physicalDescription/{0}note'.format(mods))]
 
     def physical_location(self, elem=None):
         """
@@ -161,12 +205,14 @@ class MODSRecord(Record):
         """
         pass
 
+    @property
     def publisher(self, elem=None):
         """
         Access mods:publisher and return a list of text values:
         return: [publisher, ...]
         """
-        pass
+        return [publisher.text for publisher in
+                self.findall('./{0}originInfo/{0}publisher'.format(mods))]
 
     def purl_search(self, elem=None):
         """
@@ -204,19 +250,41 @@ class MODSRecord(Record):
         """
         pass
 
-    def title_constructor(self, elem=None):
-        """
-        Accesses children of mods:titleInfo and return a list of titles in natural order:
-        return: list of titles.
-        """
-        pass
-
     def type_of_resource(self, elem=None):
         """
         Access mods:typeOfResource and return text value:
         return: text value or None
         """
         pass
+
+    def _format_titles(self, non_sort, title, subtitle):
+        """Construct valid title regardless if any constituent part missing."""
+        return '{non_sort}{title}{subtitle}'.format(
+            non_sort=non_sort+' ' if non_sort else '',
+            title=title if title else '',
+            subtitle=': '+subtitle if subtitle else '')
+
+    def _get_dates(self, elem):
+        return [date for date in elem.find('./{0}originInfo'.format(mods)).iterchildren()
+                if date.tag in DATE_FIELDS]
+
+    def _get_text(self, elem):
+        """Wrapping common use of getattr for safe attribute access."""
+        return getattr(elem, 'text', None)
+
+    def _title_constructor(self, elem):
+        """
+        :param elem: The element containing title information
+        :return: A list of correctly formatted titles
+        """
+        return [self._format_titles(
+            self._get_text(title.find('./{0}nonSort'.format(mods))),
+            self._get_text(title.find('./{0}title'.format(mods))),
+            self._get_text(title.find('./{0}subTitle'.format(mods))))
+                for title in elem.iterfind('./{0}titleInfo'.format(mods))]
+
+    def _url(self, elem):
+        return [url.text for url in elem.iterfind('./{0}location/{0}url'.format(mods))]
 
 
 class OAIRecord(Record):

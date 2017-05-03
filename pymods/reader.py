@@ -19,11 +19,11 @@ class Reader(etree.XMLParser):
     def __iter__(self):
         return self
 
-    def __index__(self):
-        return self
-
-    def __int__(self):
-        return self
+    # def __index__(self):
+    #     return self
+    #
+    # def __int__(self):
+    #     return self
 
 
 class MODSReader(Reader):
@@ -34,8 +34,8 @@ class MODSReader(Reader):
         mods_parser.set_element_class_lookup(mods_parser_registration)
         super(MODSReader, self).__init__(file_location, '{0}mods'.format(NAMESPACES['mods']), parser=mods_parser)
 
-    def __next__(self):
-        return next(self.iterator)
+    # def __next__(self):
+    #     return next(self.iterator)
 
 
 class OAIReader(Reader):
@@ -46,5 +46,5 @@ class OAIReader(Reader):
         oai_parser.set_element_class_lookup(oai_parser_registration)
         super(OAIReader, self).__init__(file_location, '{*}record', parser=oai_parser)
 
-    def __next__(self):
-        return next(self.iterator)
+    # def __next__(self):
+    #     return next(self.iterator)
