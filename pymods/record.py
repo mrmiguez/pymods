@@ -6,6 +6,7 @@ from pymods.constants import NAMESPACES, DATE_FIELDS
 Abstract = collections.namedtuple('Abstract', 'text type displayLabel')
 Collection = collections.namedtuple('Collection', 'location title url')
 Genre = collections.namedtuple('Genre', 'term authority authorityURI valueURI')
+Identifier = collections.namedtuple('Identifier', 'text type')
 Language = collections.namedtuple('Language', 'language type')
 Name = collections.namedtuple('Name', 'name_parts roles type')
 NamePart = collections.namedtuple('NamePart', 'name type')
@@ -46,23 +47,23 @@ class MODSRecord(Record):
         return [classification.text
                 for classification in self.iterfind('./{0}classification'.format(mods))]
 
-    @property
-    def collection(self):
-        """
-        Retrieve archival collection metadata from mods:relatedItem[type="host"]:
-                :return: A Collection element with location, title, and url attributes
-        """
-        related_item = self.findall('./{0}relatedItem[@type="host"]'.format(mods))[0]
-        return Collection(self.physical_location(related_item)[0],
-                          self._title_constructor(related_item)[0],
-                          self._url(related_item)[0])
+    # @property
+    # def collection(self):
+    #     """
+    #     Retrieve archival collection metadata from mods:relatedItem[type="host"]:
+    #             :return: A Collection element with location, title, and url attributes
+    #     """
+    #     related_item = self.findall('./{0}relatedItem[@type="host"]'.format(mods))[0]
+    #     return Collection(self.physical_location(related_item)[0],
+    #                       self._title_constructor(related_item)[0],
+    #                       self._url(related_item)[0])
 
-    def date_constructor(self, elem=None):
-        """
-        Accesses mods:dateIssued, mods:dateCreated, mods:copyrightDate, and mods:dateOther underneath mods:originInfo. Other date-type elements are ignored:
-        return: A date containing string or None.
-        """
-        pass
+    # def date_constructor(self, elem=None):
+    #     """
+    #     Accesses mods:dateIssued, mods:dateCreated, mods:copyrightDate, and mods:dateOther underneath mods:originInfo. Other date-type elements are ignored:
+    #     return: A date containing string or None.
+    #     """
+    #     pass
 
     @property
     def digital_origin(self):
@@ -80,7 +81,7 @@ class MODSRecord(Record):
         """
         :return: item's DOI.
         """
-        return self.local_identifier(type='DOI')
+        return self._identifier(id_type='DOI')
 
     @property
     def edition(self):
@@ -131,6 +132,22 @@ class MODSRecord(Record):
         return [geocode.text for geocode in self.iterfind('./{0}subject/{0}geographicCode'.format(mods))]
 
     @property
+    def identifier(self):
+        """
+
+        :return:
+        """
+        return self._identifier()
+
+    @property
+    def iid(self):
+        """
+        
+        :return: 
+        """
+        return self._identifier(id_type='IID')
+
+    @property
     def issuance(self):
         """
         Accesses mods:issuance element:
@@ -138,34 +155,27 @@ class MODSRecord(Record):
         """
         return [issuance.text for issuance in self.iterfind('.//{0}issuance'.format(mods))]
 
-    def language(self, elem=None):
-        """
-        Accesses mods:languageterm elements:
-        :return: list of of dicts [{term-type: term}] or None.
-        """
-        pass
+    # def language(self, elem=None):
+    #     """
+    #     Accesses mods:languageterm elements:
+    #     :return: list of of dicts [{term-type: term}] or None.
+    #     """
+    #     pass
 
-    def local_identifier(self, type='IID'):
-        """
-        Get DigiNole IID from MODS record:
-        return: item's IID.
-        """
-        pass
+    # def _nameGen_(names, full_name):
+    #     """
+    #
+    #     :param full_name:
+    #     :return:
+    #     """
+    #     pass
 
-    def _nameGen_(names, full_name):
-        """
-        
-        :param full_name: 
-        :return: 
-        """
-        pass
-
-    def name_constructor(self, elem=None):
-        """
-        Accesses mods:name/mods:namePart elements and reconstructs names into LOC order:
-        return: a list of strings.
-        """
-        pass
+    # def name_constructor(self, elem=None):
+    #     """
+    #     Accesses mods:name/mods:namePart elements and reconstructs names into LOC order:
+    #     return: a list of strings.
+    #     """
+    #     pass
 
     @property
     def note(self):
@@ -184,29 +194,30 @@ class MODSRecord(Record):
         """
         return [note.text for note in self.findall('./{0}physicalDescription/{0}note'.format(mods))]
 
-    def physical_location(self, elem=None):
-        """
-        Access mods:mods/mods:location/mods:physicalLocation and return text values.
-        return: list of element text values.
-        """
-        pass
+    # def physical_location(self, elem=None):
+    #     """
+    #     Access mods:mods/mods:location/mods:physicalLocation and return text values.
+    #     return: list of element text values.
+    #     """
+    #     pass
 
-    def pid_search(self, elem=None, prefix='fsu:'):
+    @property
+    def pid(self):
         """
         Get fedora PID from MODS record:
         return: item's fedora PID.
         """
-        pass
+        return self._identifier(id_type='fedora')
 
-    def publication_place(self, elem=None):
-        """
-        Access mods:place and return a list of dicts:
-        return: [{termType: termText}, {'untyped': termText}, ...]
-        """
-        pass
+    # def publication_place(self, elem=None):
+    #     """
+    #     Access mods:place and return a list of dicts:
+    #     return: [{termType: termText}, {'untyped': termText}, ...]
+    #     """
+    #     pass
 
     @property
-    def publisher(self, elem=None):
+    def publisher(self):
         """
         Access mods:publisher and return a list of text values:
         return: [publisher, ...]
@@ -214,48 +225,52 @@ class MODSRecord(Record):
         return [publisher.text for publisher in
                 self.findall('./{0}originInfo/{0}publisher'.format(mods))]
 
-    def purl_search(self, elem=None):
+    @property
+    def purl(self):
         """
         Accesses record's Persistent URL from mods:mods/mods:location/mods:url:
         return: item PURL as string.
         """
         purl = re.compile('((http://purl)[\w\d:#@%/;$()~_?\+-=\\\.&]+)')
-        pass
+        return [url.text for url in self.iterfind('./{0}location/{0}url'.format(mods)) if purl.search(url.text)]
 
-    def rights(self, elem=None):
-        """
-        Access mods:rights[type="use and reproduction|useAndReproduction" and return a dict:
-        return: {'text': elementText, 'URI': rightsURI}
-        """
-        pass
+    # def rights(self, elem=None):
+    #     """
+    #     Access mods:rights[type="use and reproduction|useAndReproduction" and return a dict:
+    #     return: {'text': elementText, 'URI': rightsURI}
+    #     """
+    #     pass
+    #
+    # def _subject_parser_(subject):
+    #     pass
+    #
+    # def subject(self, elem=None):
+    #     """
+    #     Access mods:subject elements and returns a list of dicts:
+    #     return: [{'authority': , 'authorityURI': , 'valueURI': , children: {'type': child element name, 'term': text value}}, ... ]
+    #     """
+    #     pass
 
-    def _subject_parser_(subject):
-        pass
+    # def _subject_text_(subject):
+    #     pass
+    #
+    # def subject_constructor(self, elem=None):
+    #     """
+    #     Access mods:subject elements and parses text values into LOC double hyphenated complex headings
+    #     return: A list of strings
+    #     """
+    #     pass
 
-    def subject(self, elem=None):
-        """
-        Access mods:subject elements and returns a list of dicts:
-        return: [{'authority': , 'authorityURI': , 'valueURI': , children: {'type': child element name, 'term': text value}}, ... ]
-        """
-        pass
-
-
-    def _subject_text_(subject):
-        pass
-
-    def subject_constructor(self, elem=None):
-        """
-        Access mods:subject elements and parses text values into LOC double hyphenated complex headings
-        return: A list of strings
-        """
-        pass
-
-    def type_of_resource(self, elem=None):
+    @property
+    def type_of_resource(self):
         """
         Access mods:typeOfResource and return text value:
-        return: text value or None
+        :return: text value or None
         """
-        pass
+        try:
+            return self.find('./{0}typeOfResource'.format(mods)).text
+        except AttributeError:
+            return None
 
     def _format_titles(self, non_sort, title, subtitle):
         """Construct valid title regardless if any constituent part missing."""
@@ -271,6 +286,19 @@ class MODSRecord(Record):
     def _get_text(self, elem):
         """Wrapping common use of getattr for safe attribute access."""
         return getattr(elem, 'text', None)
+
+    def _identifier(self, id_type=None):
+        """
+
+        :return:
+        """
+        if id_type:
+            return [Identifier(identifier.text, id_type)
+                    for identifier in self.iterfind('.//{0}identifier'.format(mods)) if
+                    identifier.attrib.get('type') == id_type]
+        else:
+            return [Identifier(identifier.text, identifier.attrib.get('type'))
+                    for identifier in self.iterfind('.//{0}identifier'.format(mods))]
 
     def _title_constructor(self, elem):
         """
