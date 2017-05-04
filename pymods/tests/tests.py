@@ -10,8 +10,8 @@ test_dir_path = os.path.abspath(os.path.dirname(__file__))
 class AbstractTests(unittest.TestCase):
 
     def setUp(self):
-        self.record = MODSRecord(os.path.join(test_dir_path, 'abstract_xml.xml'))
-        self.no_abstract = MODSRecord(os.path.join(test_dir_path, 'genre_xml.xml'))
+        self.record = MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')).__next__()
+        self.no_abstract = MODSReader(os.path.join(test_dir_path, 'genre_xml.xml')).__next__()
 
     def test_mods_abstract_text(self):
         expected_text = 'Remain calm! This is only a test!'
@@ -27,20 +27,20 @@ class AbstractTests(unittest.TestCase):
         self.assertEqual([], self.no_abstract.abstract)
 
 
-# class ClassificationTests(unittest.TestCase):
-#
-#     def setUp(self):
-#         self.record = MODSRecord(os.path.join(test_dir_path, 'abstract_xml.xml'))
-#         self.no_class = MODSRecord(os.path.join(test_dir_path, 'genre_xml.xml'))
-#
-#     def test_mods_classification_text(self):
-#         '''checks element value'''
-#         expected_classifications = ['PS3566.Y55 G7',
-#                                     'Y 4.B 22/3:S.PRT.109-8']
-#         self.assertEqual(expected_classifications, self.record.classification)
-#
-#     def test_mods_no_classification(self):
-#         self.assertEqual([], self.no_class.classification)
+class ClassificationTests(unittest.TestCase):
+
+    def setUp(self):
+        self.record = MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')).__next__()
+        self.no_class = MODSReader(os.path.join(test_dir_path, 'genre_xml.xml')).__next__()
+
+    def test_mods_classification_text(self):
+        '''checks element value'''
+        expected_classifications = ['PS3566.Y55 G7',
+                                    'Y 4.B 22/3:S.PRT.109-8']
+        self.assertEqual(expected_classifications, self.record.classification)
+
+    def test_mods_no_classification(self):
+        self.assertEqual([], self.no_class.classification)
 
 
 # class CollectionTests(unittest.TestCase):

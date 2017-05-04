@@ -18,14 +18,26 @@ mods = NAMESPACES['mods']
 
 class Record(etree.ElementBase):
 
-    def _init(self):
+    def _init(self, *parser):
         super(Record, self)._init()
+
+        ## Testing
+        # if isinstance(self, etree._Element):
+        #     super(Record, self)._init()
+        # else:
+        #     super(Record, etree.parse(self, parser=parser).getroot())._init()
 
 
 class MODSRecord(Record):
 
     def _init(self):
         super(MODSRecord, self)._init()
+
+        ## Testing
+        # mods_parser_registration = etree.ElementDefaultClassLookup(element=MODSRecord)
+        # mods_parser = etree.XMLParser()
+        # mods_parser.set_element_class_lookup(mods_parser_registration)
+        # super(MODSRecord, self)._init(mods_parser)
 
     @property
     def abstract(self):
