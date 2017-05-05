@@ -18,26 +18,14 @@ mods = NAMESPACES['mods']
 
 class Record(etree.ElementBase):
 
-    def _init(self, *parser):
+    def _init(self):
         super(Record, self)._init()
-
-        ## Testing
-        # if isinstance(self, etree._Element):
-        #     super(Record, self)._init()
-        # else:
-        #     super(Record, etree.parse(self, parser=parser).getroot())._init()
 
 
 class MODSRecord(Record):
 
     def _init(self):
         super(MODSRecord, self)._init()
-
-        ## Testing
-        # mods_parser_registration = etree.ElementDefaultClassLookup(element=MODSRecord)
-        # mods_parser = etree.XMLParser()
-        # mods_parser.set_element_class_lookup(mods_parser_registration)
-        # super(MODSRecord, self)._init(mods_parser)
 
     @property
     def abstract(self):
@@ -59,16 +47,16 @@ class MODSRecord(Record):
         return [classification.text
                 for classification in self.iterfind('./{0}classification'.format(mods))]
 
-    # @property
-    # def collection(self):
-    #     """
-    #     Retrieve archival collection metadata from mods:relatedItem[type="host"]:
-    #             :return: A Collection element with location, title, and url attributes
-    #     """
-    #     related_item = self.findall('./{0}relatedItem[@type="host"]'.format(mods))[0]
-    #     return Collection(self.physical_location(related_item)[0],
-    #                       self._title_constructor(related_item)[0],
-    #                       self._url(related_item)[0])
+    @property
+    def collection(self):
+        """
+        Retrieve archival collection metadata from mods:relatedItem[type="host"]:
+        :return: A Collection element with location, title, and url attributes
+        """
+        related_item = self.findall('./{0}relatedItem[@type="host"]'.format(mods))[0]
+        return Collection(self._physical_location(related_item)[0],
+                          self._title_constructor(related_item)[0],
+                          self._url(related_item)[0])
 
     # def date_constructor(self, elem=None):
     #     """
@@ -206,12 +194,13 @@ class MODSRecord(Record):
         """
         return [note.text for note in self.findall('./{0}physicalDescription/{0}note'.format(mods))]
 
-    # def physical_location(self, elem=None):
-    #     """
-    #     Access mods:mods/mods:location/mods:physicalLocation and return text values.
-    #     return: list of element text values.
-    #     """
-    #     pass
+    @property
+    def physical_location(self):
+        """
+        Access mods:mods/mods:location/mods:physicalLocation and return text values.
+        :return: list of element text values.
+        """
+        return self._physical_location()
 
     @property
     def pid(self):
@@ -311,6 +300,16 @@ class MODSRecord(Record):
         else:
             return [Identifier(identifier.text, identifier.attrib.get('type'))
                     for identifier in self.iterfind('.//{0}identifier'.format(mods))]
+
+    def _physical_location(self, elem=None):
+        """
+        Access mods:mods/mods:location/mods:physicalLocation and return text values.
+        return: list of element text values.
+        """
+        if elem is not None:
+            return [location.text for location in elem.iterfind('./{0}location/{0}physicalLocation'.format(mods))]
+        else:
+            return [location.text for location in self.iterfind('./{0}location/{0}physicalLocation'.format(mods))]
 
     def _title_constructor(self, elem):
         """
