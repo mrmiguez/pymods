@@ -7,12 +7,15 @@ Abstract = collections.namedtuple('Abstract', 'text type displayLabel')
 Collection = collections.namedtuple('Collection', 'location title url')
 Genre = collections.namedtuple('Genre', 'term authority authorityURI valueURI')
 Identifier = collections.namedtuple('Identifier', 'text type')
-Language = collections.namedtuple('Language', 'language type')
+Language = collections.namedtuple('Language', 'text type authority')
 Name = collections.namedtuple('Name', 'name_parts roles type')
 NamePart = collections.namedtuple('NamePart', 'name type')
-Role = collections.namedtuple('Role', 'role type')
 Note = collections.namedtuple('Note', 'text type dispayLabel')
 PublicationPlace = collections.namedtuple('PublicationPlace', 'place type')
+Rights = collections.namedtuple('Rights', 'text type uri')
+Role = collections.namedtuple('Role', 'role type')
+Subject = collections.namedtuple('Subject', 'text uri authority authorityURI')
+SubjectPart = collections.namedtuple('SubjectPart', 'text type')
 mods = NAMESPACES['mods']
 
 
@@ -155,12 +158,17 @@ class MODSRecord(Record):
         """
         return [issuance.text for issuance in self.iterfind('.//{0}issuance'.format(mods))]
 
-    # def language(self, elem=None):
-    #     """
-    #     Accesses mods:languageterm elements:
-    #     :return: list of of dicts [{term-type: term}] or None.
-    #     """
-    #     pass
+    @property
+    def language(self):
+        """
+        Accesses mods:languageterm elements:
+        :return: A Collection element with location, title, and url attributes
+        """
+        return [Language(term.text,
+                         term.attrib.get('type'),
+                         term.attrib.get('authority'))
+                for language in self.iterfind('{0}language'.format(mods))
+                for term in language.iterfind('{0}languageTerm'.format(mods))]
 
     # def _nameGen_(names, full_name):
     #     """
@@ -173,7 +181,7 @@ class MODSRecord(Record):
     # def name_constructor(self, elem=None):
     #     """
     #     Accesses mods:name/mods:namePart elements and reconstructs names into LOC order:
-    #     return: a list of strings.
+    #     :return: a list of strings.
     #     """
     #     pass
 
@@ -213,7 +221,7 @@ class MODSRecord(Record):
     # def publication_place(self, elem=None):
     #     """
     #     Access mods:place and return a list of dicts:
-    #     return: [{termType: termText}, {'untyped': termText}, ...]
+    #     :return: [{termType: termText}, {'untyped': termText}, ...]
     #     """
     #     pass
 
@@ -235,32 +243,57 @@ class MODSRecord(Record):
         purl = re.compile('((http://purl)[\w\d:#@%/;$()~_?\+-=\\\.&]+)')
         return [url.text for url in self.iterfind('./{0}location/{0}url'.format(mods)) if purl.search(url.text)]
 
-    # def rights(self, elem=None):
-    #     """
-    #     Access mods:rights[type="use and reproduction|useAndReproduction" and return a dict:
-    #     return: {'text': elementText, 'URI': rightsURI}
-    #     """
-    #     pass
-    #
+    @property
+    def rights(self):
+        """
+        Access mods:rights[type="use and reproduction|useAndReproduction" and return a dict:
+        :return: A list containing Rights elements with text, type, and uri
+        """
+        return [Rights(rights.text,
+                       rights.attrib.get('type'),
+                       rights.attrib.get('{*}href'))
+                for rights in self.iterfind('{0}accessCondition'.format(mods))]
+
+    @property
+    def subject(self):
+        """
+        
+        :return: list of Subject elements with text, uri, authority and authorityURI values.
+        """
+        return [Subject(subject._subject_text(),
+                        subject.attrib.get('valueURI'),
+                        subject.attrib.get('authority'),
+                        subject.attrib.get('authorityURI'))
+                for subject in self.iterfind('{0}subject'.format(mods))
+                if 'geographicCode' not in subject[0].tag]
+
     # def _subject_parser_(subject):
     #     pass
-    #
+
     # def subject(self, elem=None):
     #     """
     #     Access mods:subject elements and returns a list of dicts:
-    #     return: [{'authority': , 'authorityURI': , 'valueURI': , children: {'type': child element name, 'term': text value}}, ... ]
+    #     :return: [{'authority': , 'authorityURI': , 'valueURI': , children: {'type': child element name, 'term': text value}}, ... ]
     #     """
     #     pass
 
     # def _subject_text_(subject):
     #     pass
-    #
+
     # def subject_constructor(self, elem=None):
     #     """
     #     Access mods:subject elements and parses text values into LOC double hyphenated complex headings
-    #     return: A list of strings
+    #     :return: A list of strings
     #     """
     #     pass
+
+    @property
+    def title(self):
+        """
+        
+        :return: 
+        """
+        return [title for title in self._title_constructor()]
 
     @property
     def type_of_resource(self):
@@ -306,16 +339,40 @@ class MODSRecord(Record):
         Access mods:mods/mods:location/mods:physicalLocation and return text values.
         return: list of element text values.
         """
-        if elem is not None:
-            return [location.text for location in elem.iterfind('./{0}location/{0}physicalLocation'.format(mods))]
-        else:
-            return [location.text for location in self.iterfind('./{0}location/{0}physicalLocation'.format(mods))]
+        if not elem:
+            elem = self
+        return [location.text for location in elem.iterfind('./{0}location/{0}physicalLocation'.format(mods))]
 
-    def _title_constructor(self, elem):
+    def _subject_part(self, elem=None):
+        """
+        
+        :param elem: 
+        :return: list of SubjectPart elements with text and type values.
+        """
+        if not elem:
+            elem = self
+        return [SubjectPart(term.text,
+                            term.tag)
+                for term in elem.iterchildren()]
+
+    def _subject_text(self):
+        subject_text = ''
+        if 'name' not in self[0].tag:
+            for subject_part in self._subject_part():
+                subject_text = subject_text + '{0}--'.format(subject_part.text)
+            return subject_text.strip('--')
+        else:
+            # TODO
+            # write name stuff & return
+            pass
+
+    def _title_constructor(self, *elem):
         """
         :param elem: The element containing title information
         :return: A list of correctly formatted titles
         """
+        if not elem:
+            elem = self
         return [self._format_titles(
             self._get_text(title.find('./{0}nonSort'.format(mods))),
             self._get_text(title.find('./{0}title'.format(mods))),

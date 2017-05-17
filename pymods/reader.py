@@ -3,6 +3,10 @@ from pymods import MODSRecord, OAIRecord
 from pymods.constants import NAMESPACES
 
 
+def parse(source, parser=None):
+    return etree.parse(source, parser=parser)
+
+
 class Reader(etree.XMLParser):
 
     def __init__(self, file_location, iter_elem, parser=None):
@@ -15,9 +19,9 @@ class Reader(etree.XMLParser):
         super(Reader, self).__init__()
 
         if parser is not None:
-            self.iterator = etree.parse(file_location, parser=parser).iter(iter_elem)
+            self.iterator = parse(file_location, parser=parser).iter(iter_elem)
         else:
-            self.iterator = etree.parse(file_location).iter(iter_elem)
+            self.iterator = parse(file_location).iter(iter_elem)
 
     def __next__(self):
         return next(self.iterator)
