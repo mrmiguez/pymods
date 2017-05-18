@@ -93,7 +93,7 @@
         <note>Test 01</note>
         <note>Test 02</note>
         <subject>
-          <topic>Florida State University</topic>
+          <name><namePart>Florida State University</namePart></name>
         </subject>
         <subject>
           <topic>Photography</topic>
@@ -179,6 +179,13 @@
         <abstract displayLabel="Summary">Test 03</abstract>
         <subject authority="tgn">
           <geographicCode>7007522</geographicCode>
+        </subject>
+        <subject authority="lcsh">
+            <name type="personal" authority="naf" valueURI="whoohoo">
+                <namePart type="given">Matthew</namePart>
+                <namePart type="family">Miguez</namePart>
+                <namePart type="date">1984-</namePart>
+            </name>
         </subject>
         <relatedItem type="host">
           <titleInfo>
