@@ -8,8 +8,10 @@ Collection = collections.namedtuple('Collection', 'location title url')
 Genre = collections.namedtuple('Genre', 'term authority authorityURI valueURI')
 Identifier = collections.namedtuple('Identifier', 'text type')
 Language = collections.namedtuple('Language', 'text type authority')
-Name = collections.namedtuple('Name', 'name_parts roles type')
-NamePart = collections.namedtuple('NamePart', 'name type')
+# Name = collections.namedtuple('Name', 'text uri authority authorityURI role')  # MM
+# NamePart = collections.namedtuple('NamePart', 'text type')  # MM
+Name = collections.namedtuple('Name', 'name_parts roles type')  # EH
+NamePart = collections.namedtuple('NamePart', 'name type')  # EH
 Note = collections.namedtuple('Note', 'text type dispayLabel')
 PublicationPlace = collections.namedtuple('PublicationPlace', 'place type')
 Rights = collections.namedtuple('Rights', 'text type uri')
@@ -60,6 +62,11 @@ class MODSRecord(Record):
         return Collection(self._physical_location(related_item)[0],
                           self._title_constructor(related_item)[0],
                           self._url(related_item)[0])
+
+    @property
+    def corporate_names(self): # EH
+        return sorted([self._format_name(name) for name in self.get_names()
+                       if name.type == 'corporate'])
 
     # def date_constructor(self, elem=None):
     #     """
@@ -134,6 +141,12 @@ class MODSRecord(Record):
         """
         return [geocode.text for geocode in self.iterfind('./{0}subject/{0}geographicCode'.format(mods))]
 
+    def get_names(self):  # EH
+        return [Name(self._make_name_parts(name),
+                     self._make_roles(name),
+                     name.attrib.get('type'))
+                for name in self.iterfind('./{0}name'.format(mods))]
+
     @property
     def identifier(self):
         """
@@ -162,7 +175,7 @@ class MODSRecord(Record):
     def language(self):
         """
         Accesses mods:languageterm elements:
-        :return: A Collection element with location, title, and url attributes
+        :return: A list of Language elements with text, type, and authority attributes
         """
         return [Language(term.text,
                          term.attrib.get('type'),
@@ -185,6 +198,19 @@ class MODSRecord(Record):
     #     """
     #     pass
 
+    # @property # MM
+    # def name(self):
+    #     """
+    #
+    #     :return: A list of Name elements with text, uri, authority, and authorityURI attributes
+    #     """
+    #     return [Name(name._name_text(),
+    #                  name.attrib.get('valueURI'),
+    #                  name.attrib.get('authority'),
+    #                  name.attrib.get('authorityURI'),
+    #                  'role') # TODO
+    #             for name in self.iterfind('./{0}name'.format(mods))]
+
     @property
     def note(self):
         """
@@ -193,6 +219,11 @@ class MODSRecord(Record):
         """
         return [Note(note.text, note.attrib.get('type'), note.attrib.get('displayLabel'))
                 for note in self.iterfind('./{0}note'.format(mods))]
+
+    @property  # EH
+    def personal_names(self):
+        return sorted([self._format_name(name) for name in self.get_names()
+                       if name.type == 'personal'])
 
     @property
     def physical_description_note(self):
@@ -306,6 +337,28 @@ class MODSRecord(Record):
         except AttributeError:
             return None
 
+    def _format_name(self, name):  # EH
+        """
+
+
+        :param name: A Name element
+        :return: A string formatted according to LOC conventions
+        """
+        family = ', '.join(x.name for x in name.name_parts
+                           if x.type == 'family')
+        given = ', '.join(x.name for x in name.name_parts
+                          if x.type == 'given' or x.type is None)
+        terms_of_address = ', '.join(x.name for x in name.name_parts
+                                     if x.type == 'termsOfAddress')
+        date = ', '.join(x.name for x in name.name_parts
+                         if x.type == 'date')
+        return '{family}{given}{termsOfAddress}{date}'.format(
+            family=family + ', ' if family else '',
+            given=given if given else '',
+            termsOfAddress=', ' + terms_of_address if terms_of_address else '',
+            date=', ' + date if date else ''
+        )
+
     def _format_titles(self, non_sort, title, subtitle):
         """Construct valid title regardless if any constituent part missing."""
         return '{non_sort}{title}{subtitle}'.format(
@@ -333,6 +386,63 @@ class MODSRecord(Record):
         else:
             return [Identifier(identifier.text, identifier.attrib.get('type'))
                     for identifier in self.iterfind('.//{0}identifier'.format(mods))]
+
+    def _make_name_parts(self, el):  # EH
+        return [NamePart(name.text, name.attrib.get('type')) for name in
+                el.iterfind('./{0}namePart'.format(mods))]
+
+    def _make_roles(self, el):  # EH
+        return [Role(name.text, name.attrib.get('type')) for name in
+                el.iterfind('./{0}role/{0}roleTerm'.format(mods))]
+
+    # def _name_part(self):  # MM
+    #     """
+    #
+    #     :param elem:
+    #     :return: namePart text and type
+    #     """
+    #     # print(self.text, self.attrib, self.attrib.get('type'), self.tag)
+    #     # test = NamePart(self.text, self.attrib.get('type'))
+    #     # print(test.type)
+    #     # print(test.text)
+    #     return NamePart(self.text, self.attrib.get('type'))
+    #
+    # def _name_text(self, elem=None):
+    #     """
+    #
+    #     :param elem:
+    #     :return:
+    #     """
+    #     if not elem:
+    #         elem = self
+    #     if elem.attrib.get('type') == 'personal':
+    #         for part in elem.iterfind('{0}namePart'.format(mods)):
+    #             name_part = part._name_part()
+    #             family = '{0}'.format(name_part.text if name_part.type == 'family' else pass)
+    #             given = '{0}'.format(name_part.text if name_part.type == 'given')
+    #             terms_of_address = '{0}'.format(name_part.text if name_part.type == 'termsOfAddress')
+    #             date = '{0}'.format(name_part.text if name_part.type == 'date')
+    #         # for part in elem.iterfind('{0}namePart'.format(mods)):
+    #         #     name_part = part._name_part()
+    #         #     if name_part.type == 'family':
+    #         #         family = '{0}'.format(name_part.text)
+    #         #     if name_part.type == 'given':
+    #         #         given = '{0}'.format(name_part.text)
+    #         #     if name_part.type == 'termsOfAddress':
+    #         #         terms_of_address = '{0}'.format(name_part.text)
+    #         #     if name_part.type == 'date':
+    #         #         date = '{0}'.format(name_part.text)
+    #         return '{family}{given}{termsOfAddress}{date}'.format(
+    #             family=family + ', ' if family else '',
+    #             given=given if given else '',
+    #             termsOfAddress=', ' + terms_of_address if terms_of_address else '',
+    #             date=', ' + date if date else ''
+    #         )
+    #     else:
+    #         text = ''
+    #         for part in elem.iter(tag='{0}namePart'.format(mods)):
+    #             text = text + '{0} '.format(part)
+    #         return text.strip()
 
     def _physical_location(self, elem=None):
         """
