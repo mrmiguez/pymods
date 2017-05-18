@@ -5,6 +5,7 @@ from pymods.constants import NAMESPACES, DATE_FIELDS
 
 Abstract = collections.namedtuple('Abstract', 'text type displayLabel')
 Collection = collections.namedtuple('Collection', 'location title url')
+Date = collections.namedtuple('Date', 'text type')
 Genre = collections.namedtuple('Genre', 'term authority authorityURI valueURI')
 Identifier = collections.namedtuple('Identifier', 'text type')
 Language = collections.namedtuple('Language', 'text type authority')
@@ -74,6 +75,13 @@ class MODSRecord(Record):
     #     return: A date containing string or None.
     #     """
     #     pass
+
+    @property
+    def dates(self):
+        """
+        
+        :return: 
+        """
 
     @property
     def digital_origin(self):
@@ -208,7 +216,7 @@ class MODSRecord(Record):
         
         :return: 
         """
-        raise NotImplemented
+        return NotImplemented
 
     @property
     def note(self):
@@ -306,10 +314,10 @@ class MODSRecord(Record):
         
         :return: 
         """
-        raise NotImplemented
+        return NotImplemented
 
     @property
-    def title(self):
+    def titles(self):
         """
         
         :return: 
@@ -322,7 +330,7 @@ class MODSRecord(Record):
         
         :return: 
         """
-        raise NotImplemented
+        return NotImplemented
 
     @property
     def type_of_resource(self):
@@ -356,6 +364,9 @@ class MODSRecord(Record):
     #         termsOfAddress=', ' + terms_of_address if terms_of_address else '',
     #         date=', ' + date if date else ''
     #     )
+
+    def _date_text(self):
+        pass
 
     def _get_dates(self, elem):
         return [date for date in elem.find('./{0}originInfo'.format(mods)).iterchildren()
