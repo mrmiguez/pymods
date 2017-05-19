@@ -394,9 +394,10 @@ class MODSRecord(Record):
     def _date_collector(self, elem):
         for tag in DATE_FIELDS:
             try:
-                return [elem.findall('./{0}'.format(tag))]
+                if elem.find('./{0}'.format(tag)) is not None:
+                    return [elem.findall('./{0}'.format(tag))]
             except AttributeError:
-                continue
+                pass
 
     def _date_text(self, date_pair):
         if len(date_pair) == 1:
