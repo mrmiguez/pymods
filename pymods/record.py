@@ -59,11 +59,30 @@ class MODSRecord(Record):
         Retrieve archival collection metadata from mods:relatedItem[type="host"]:
         :return: A Collection element with location, title, and url attributes
         """
-        related_item = self.findall('./{0}relatedItem[@type="host"]'.format(mods))[0]
-        return Collection(self._physical_location(related_item)[0],
-                          self._title_constructor(related_item)[0],
-                          self._url(related_item)[0])
+        try:
+            related_item = self.findall('./{0}relatedItem[@type="host"]'.format(mods))[0]
+            coll_location, coll_title, coll_url = None, None, None
 
+            try:
+                coll_location = self._physical_location(related_item)[0]
+            except IndexError:
+                pass
+
+            try:
+                coll_title = self._title_constructor(related_item)[0]
+            except IndexError:
+                pass
+
+            try:
+                coll_url = self._url(related_item)[0]
+            except IndexError:
+                pass
+
+            return Collection(coll_location, coll_title, coll_url)
+
+        except IndexError:
+            return None
+            # return Collection(None, None, None)
     # @property
     # def corporate_names(self):  # EH
     #     return sorted([self._format_name(name) for name in self.get_names()
@@ -397,24 +416,24 @@ class MODSRecord(Record):
     #     return [Role(name.text, name.attrib.get('type')) for name in
     #             el.iterfind('./{0}role/{0}roleTerm'.format(mods))]
 
-    def _name_part(self, *elem):  # MM
+    def _name_part(self, elem=None):  # MM
         """
 
         :param elem:
         :return: namePart text and type
         """
-        if not elem:
+        if elem is None:
             elem = self
         return [NamePart(name.text, name.attrib.get('type')) for name in
                 elem.iterfind('./{0}namePart'.format(mods))]
 
-    def _name_text(self, *elem):  # MM
+    def _name_text(self, elem=None):  # MM
         """
 
         :param elem:
         :return:
         """
-        if not elem:
+        if elem is not None:
             elem = self
         if elem.attrib.get('type') == 'personal':
             family = ', '.join(x.text for x in elem._name_part() if x.type == 'family')
@@ -433,22 +452,22 @@ class MODSRecord(Record):
                 text = text + '{0} '.format(part.text)
             return text.strip()
 
-    def _physical_location(self, *elem):
+    def _physical_location(self, elem=None):
         """
         Access mods:mods/mods:location/mods:physicalLocation and return text values.
         return: list of element text values.
         """
-        if not elem:
+        if elem is None:
             elem = self
         return [location.text for location in elem.iterfind('./{0}location/{0}physicalLocation'.format(mods))]
 
-    def _subject_part(self, *elem):
+    def _subject_part(self, elem=None):
         """
         
         :param elem: 
         :return: list of SubjectPart elements with text and type values.
         """
-        if not elem:
+        if elem is None:
             elem = self
         return [SubjectPart(term.text,
                             term.tag)
@@ -463,12 +482,12 @@ class MODSRecord(Record):
         else:
             return self.names[0].text
 
-    def _title_constructor(self, *elem): # TODO - name title stuff to match name&subject methods
+    def _title_constructor(self, elem=None): # TODO - name title stuff to match name&subject methods
         """
         :param elem: The element containing title information
         :return: A list of correctly formatted titles
         """
-        if not elem:
+        if elem is None:
             elem = self
         return [self._title_text(
             self._get_text(title.find('./{0}nonSort'.format(mods))),

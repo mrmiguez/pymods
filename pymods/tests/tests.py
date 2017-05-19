@@ -43,23 +43,22 @@ class ClassificationTests(unittest.TestCase):
         self.assertEqual([], self.no_class.classification)
 
 
-# class CollectionTests(unittest.TestCase):
-#
-#     def setUp(self):
-#         self.record = MODSRecord(os.path.join(test_dir_path, 'abstract_xml.xml'))
-#         self.no_class = MODSRecord(os.path.join(test_dir_path, 'genre_xml.xml'))
-#
-#     def test_mods_collections_location(self):
-#         expected_location = 'Special Collections & Archives, Florida State University Libraries, Tallahassee, Florida.'
-#         self.assertEqual(self.record.collection.location, expected_location)
-#
-#     def test_mods_collection_title(self):
-#         expected_title = 'Pine Hill Plantation Papers, 1832-1926'
-#         self.assertEqual(self.record.collection.title, expected_title)
-#
-#     def test_mods_collection_url(self):
-#         expected_url = 'http://purl.fcla.edu/fsu/MSS_0-204'
-#         self.assertEqual(self.record.collection.url, expected_url)
+class CollectionTests(unittest.TestCase):
+
+    def setUp(self):
+        self.record = MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')).__next__()
+
+    def test_mods_collections_location(self):
+        expected_location = 'Special Collections & Archives, Florida State University Libraries, Tallahassee, Florida.'
+        self.assertEqual(self.record.collection.location, expected_location)
+
+    def test_mods_collection_title(self):
+        expected_title = 'Pine Hill Plantation Papers, 1832-1926'
+        self.assertEqual(self.record.collection.title, expected_title)
+
+    def test_mods_collection_url(self):
+        expected_url = 'http://purl.fcla.edu/fsu/MSS_0-204'
+        self.assertEqual(self.record.collection.url, expected_url)
 
 
 # class OriginInfoTests(unittest.TestCase):
@@ -86,43 +85,43 @@ class ClassificationTests(unittest.TestCase):
 #         self.assertEqual(expected, self.third_record.date_constructor())
 
 
-# class LanguageTests(unittest.TestCase):
-#
-#     def setUp(self):
-#         records = MODSReader(os.path.join(test_dir_path, 'language_xml.xml'))
-#         self.first_record = next(records)
-#         self.second_record = next(records)
-#         self.third_record = next(records)
-#
-#     def test_mods_lang_text(self):
-#         '''checks languageTerm@type="text"'''
-#         expected = 'English'
-#         self.assertEqual(self.first_record.language[0].language, expected)
-#
-#     def test_mods_lang_code(self):
-#         '''checks languageTerm@type="code"'''
-#         expected = 'eng'
-#         self.assertEqual(self.first_record.language[1].language, expected)
-#
-#     def test_mods_lang_code_type(self):
-#         '''checks languageTerm@type="code"'''
-#         expected = 'code'
-#         self.assertEqual(self.first_record.language[1].type, expected)
-#
-#     def test_mods_lang_untyped(self):
-#         '''checks untyped languageTerm elements'''
-#         expected = 'Klingon'
-#         self.assertEqual(self.second_record.language[0].language, expected)
-#
-#     def test_mods_lang_untyped_type(self):
-#         '''checks untyped languageTerm elements'''
-#         expected = None
-#         self.assertEqual(self.second_record.language[0].type, expected)
-#
-#     def test_mods_lang_none(self):
-#         '''checks lang None value'''
-#         expected = []
-#         self.assertEqual(self.third_record.language, expected)
+class LanguageTests(unittest.TestCase):
+
+    def setUp(self):
+        records = MODSReader(os.path.join(test_dir_path, 'language_xml.xml'))
+        self.first_record = next(records)
+        self.second_record = next(records)
+        self.third_record = next(records)
+
+    def test_mods_lang_text(self):
+        '''checks languageTerm@type="text"'''
+        expected = 'English'
+        self.assertEqual(self.first_record.language[0].text, expected)
+
+    def test_mods_lang_code(self):
+        '''checks languageTerm@type="code"'''
+        expected = 'eng'
+        self.assertEqual(self.first_record.language[1].text, expected)
+
+    def test_mods_lang_code_type(self):
+        '''checks languageTerm@type="code"'''
+        expected = 'code'
+        self.assertEqual(self.first_record.language[1].type, expected)
+
+    def test_mods_lang_untyped(self):
+        '''checks untyped languageTerm elements'''
+        expected = 'Klingon'
+        self.assertEqual(self.second_record.language[0].text, expected)
+
+    def test_mods_lang_untyped_type(self):
+        '''checks untyped languageTerm elements'''
+        expected = None
+        self.assertEqual(self.second_record.language[0].type, expected)
+
+    def test_mods_lang_none(self):
+        '''checks lang None value'''
+        expected = None
+        self.assertEqual(self.third_record.text, expected)
 
 
 # class NameTests(unittest.TestCase):
