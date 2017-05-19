@@ -21,6 +21,8 @@ Subject = collections.namedtuple('Subject', 'text uri authority authorityURI')
 SubjectPart = collections.namedtuple('SubjectPart', 'text type')
 mods = NAMESPACES['mods']
 
+# TODO - name roles, dates, pers/corp names (??)
+
 
 class Record(etree.ElementBase):
 
@@ -99,8 +101,13 @@ class MODSRecord(Record):
     def dates(self):
         """
         
-        :return: 
+        :return: List of date elements with text and type attributes.
         """
+        try:
+            return [Date(self._date_text(date_pair)[0], self._date_text(date_pair)[1])
+                    for date_pair in self._date_collector(self.find('./{0}originInfo'.format(mods)))]
+        except TypeError:
+            return None
 
     @property
     def digital_origin(self):
@@ -384,10 +391,21 @@ class MODSRecord(Record):
     #         date=', ' + date if date else ''
     #     )
 
-    def _date_text(self):
-        pass
+    def _date_collector(self, elem):
+        for tag in DATE_FIELDS:
+            try:
+                return [elem.findall('./{0}'.format(tag))]
+            except AttributeError:
+                continue
 
-    def _get_dates(self, elem):
+    def _date_text(self, date_pair):
+        if len(date_pair) == 1:
+            return date_pair[0].text, date_pair[0].tag
+        elif len(date_pair) == 2:
+            date_list = sorted([date.text for date in date_pair])
+            return '{0} - {1}'.format(date_list[0], date_list[1]), date_pair[0].tag
+
+    def _get_dates(self, elem):  # EH
         return [date for date in elem.find('./{0}originInfo'.format(mods)).iterchildren()
                 if date.tag in DATE_FIELDS]
 

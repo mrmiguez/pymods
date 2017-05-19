@@ -61,28 +61,28 @@ class CollectionTests(unittest.TestCase):
         self.assertEqual(self.record.collection.url, expected_url)
 
 
-# class OriginInfoTests(unittest.TestCase):
-#
-#     def setUp(self):
-#         records = MODSReader(os.path.join(test_dir_path, 'originInfo_xml.xml'))
-#         self.first_record = next(records)
-#         self.second_record = next(records)
-#         self.third_record = next(records)
-#
-#     def test_mods_date_range(self):
-#         '''checks date range reformatting'''
-#         expected = '1776-07-04 - today'
-#         self.assertEqual(expected, self.first_record.date_constructor())
-#
-#     def test_mods_date_single(self):
-#         '''checks single date'''
-#         expected = '1984-10-14'
-#         self.assertEqual(expected, self.second_record.date_constructor())
-#
-#     def test_mods_date_none(self):
-#         '''dates not in date_list should return None'''
-#         expected = None
-#         self.assertEqual(expected, self.third_record.date_constructor())
+class OriginInfoTests(unittest.TestCase):
+
+    def setUp(self):
+        records = MODSReader(os.path.join(test_dir_path, 'originInfo_xml.xml'))
+        self.first_record = next(records)
+        self.second_record = next(records)
+        self.third_record = next(records)
+
+    def test_mods_date_range(self):
+        '''checks date range reformatting'''
+        expected = '1776-07-04 - today'
+        self.assertEqual(expected, self.first_record.dates[0].text)
+
+    def test_mods_date_single(self):
+        '''checks single date'''
+        expected = '1984-10-14'
+        self.assertEqual(expected, self.second_record.dates[0].text)
+
+    def test_mods_date_none(self):
+        '''dates not in date_list should return None'''
+        expected = None
+        self.assertEqual(expected, self.third_record.dates)
 
 
 class LanguageTests(unittest.TestCase):
