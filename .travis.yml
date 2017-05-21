@@ -12,7 +12,7 @@ python:
 # command to install dependencies
 install: "pip install lxml"
 # command to run tests
-script: py.test pymods/tests
+script: py.test pymods/tests/tests.py
 notifications:
     email: 
         on_success: change

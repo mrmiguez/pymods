@@ -68,6 +68,10 @@ class OriginInfoTests(unittest.TestCase):
         self.first_record = next(records)
         self.second_record = next(records)
         self.third_record = next(records)
+        self.fourth_record = next(records)
+        self.fifth_record = next(records)
+        self.sixth_record = next(records)
+        self.seventh_record = next(records)
 
     def test_mods_date_range(self):
         '''checks date range reformatting'''
@@ -84,18 +88,16 @@ class OriginInfoTests(unittest.TestCase):
         expected = None
         self.assertEqual(expected, self.third_record.dates)
 
-    # def test_mods_edition(self):
-    #     '''checks edition'''
-    #     expected = 'Pre-print'
-    #     result =self.originInfo_xml.record_list[3].edition()
-    #     self.assertEqual(result, expected)
-    #
-    # def test_mods_issuance(self):
-    #     '''checks issuance'''
-    #     expected = 'integrating resource'
-    #     result = self.originInfo_xml.record_list[4].issuance()
-    #     self.assertEqual(result[0], expected)
-    #
+    def test_mods_edition(self):
+        '''checks edition'''
+        expected = 'Pre-print'
+        self.assertEqual(expected, self.fourth_record.edition)
+
+    def test_mods_issuance(self):
+        '''checks issuance'''
+        expected = 'integrating resource'
+        self.assertEqual(expected, self.fifth_record.issuance[0])
+
     # def test_mods_place(self):
     #     '''checks place of publication'''
     #     expected = [{'code': 'hgz',
@@ -103,11 +105,10 @@ class OriginInfoTests(unittest.TestCase):
     #     result = self.originInfo_xml.record_list[5].publication_place()
     #     self.assertEqual(result, expected)
     #
-    # def test_mods_publisher(self):
-    #     '''checks publisher'''
-    #     expected = 'Image Comics'
-    #     result = self.originInfo_xml.record_list[6].publisher()
-    #     self.assertEqual(result[0], expected)
+    def test_mods_publisher(self):
+        '''checks publisher'''
+        expected = 'Image Comics'
+        self.assertEqual(expected, self.seventh_record.publisher[0])
 
 class LanguageTests(unittest.TestCase):
 
@@ -176,40 +177,42 @@ class LanguageTests(unittest.TestCase):
 #                           'Florida, Legislature, House of Representatives, Office of the Clerk']
 #         self.assertEqual(self.record.corporate_names, expected_names)
 
-# class PhysicalDescriptionTests(unittest.TestCase):
-#     physicalDesc_xml = pymods.MODSReader(join(test_dir_path, 'tests/physicalDesc_xml.xml'))
-#
-#     def test_mods_digital_origin(self):
-#         '''checks digital origin'''
-#         expected = 'reformatted digital'
-#         result = self.physicalDesc_xml.record_list[0].digital_origin()
-#         self.assertEqual(result, expected)
-#
-#     def test_mods_extent(self):
-#         '''checks extent'''
-#         expected = ['5 pieces', '2 tonnes']
-#         result = self.physicalDesc_xml.record_list[1].extent()
-#         self.assertTrue(all(x in result for x in expected))
-#
-#     def test_mods_form(self):
-#         '''checks form'''
-#
-#     def test_mods_physdesk_note(self):
-#         '''checks physicalDescription/note'''
-#         expected = ['Battered & bruised',
-#                     'Infinite summer']
-#         results = []
-#         for note in self.physicalDesc_xml.record_list[3].physical_description_note():
-#             results.append(note)
-#         self.assertTrue(all(x in results for x in expected))
+class PhysicalDescriptionTests(unittest.TestCase):
 
+    def setUp(self):
+        records = MODSReader(os.path.join(test_dir_path, 'physicalDesc_xml.xml'))
+        self.first_record = next(records)
+        self.second_record = next(records)
+        self.third_record = next(records)
+        self.fourth_record = next(records)
 
-# class GenreTests(unittest.TestCase):
-#     """
-#
-#     """
-#     genre_xml = pymods.MODSReader(join(test_dir_path, 'tests/genre_xml.xml'))
-#
+    def test_mods_digital_origin(self):
+        '''checks digital origin'''
+        expected = 'reformatted digital'
+        self.assertEqual(expected, self.first_record.digital_origin)
+
+    def test_mods_extent(self):
+        '''checks extent'''
+        expected = ['5 pieces', '2 tonnes']
+        self.assertTrue(expected, self.second_record.extent)
+
+    # def test_mods_form(self):
+    #     '''checks form'''
+
+    def test_mods_physdesc_note(self):
+        '''checks physicalDescription/note'''
+        expected = ['Battered & bruised',
+                    'Infinite summer']
+        self.assertTrue(expected, self.third_record.physical_description_note)
+
+class GenreTests(unittest.TestCase):
+
+    # def setUp(self):
+    #     records = MODSReader(os.path.join(test_dir_path, 'genre_xml.xml'))
+    #     self.first_record = next(records)
+    #     self.second_record = next(records)
+    #     self.no_genre = MODSReader(os.path.join(test_dir_path, 'originInfo_xml.xml')).__next__()
+
 #     def test_mods_genre_text(self):
 #         '''checks genre term values'''
 #         expected = ['Personal correspondence',

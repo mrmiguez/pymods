@@ -30,7 +30,7 @@
     </mods>
 
     <!-- issuance -->
-        <mods>
+    <mods>
         <originInfo>
             <issuance>integrating resource</issuance>
         </originInfo>
