@@ -9,11 +9,11 @@ Date = collections.namedtuple('Date', 'text type')
 Genre = collections.namedtuple('Genre', 'term authority authorityURI valueURI')
 Identifier = collections.namedtuple('Identifier', 'text type')
 Language = collections.namedtuple('Language', 'text type authority')
-Name = collections.namedtuple('Name', 'text uri authority authorityURI role')  # MM
+Name = collections.namedtuple('Name', 'text type uri authority authorityURI role')  # MM
 NamePart = collections.namedtuple('NamePart', 'text type')  # MM
 # Name = collections.namedtuple('Name', 'name_parts roles type')  # EH
 # NamePart = collections.namedtuple('NamePart', 'name type')  # EH
-Note = collections.namedtuple('Note', 'text type dispayLabel')
+Note = collections.namedtuple('Note', 'text type displayLabel')
 PublicationPlace = collections.namedtuple('PublicationPlace', 'place type')
 Rights = collections.namedtuple('Rights', 'text type uri')
 Role = collections.namedtuple('Role', 'role type')
@@ -178,11 +178,33 @@ class MODSRecord(Record):
         """
         return [geocode.text for geocode in self.iterfind('./{0}subject/{0}geographicCode'.format(mods))]
 
-    # def get_names(self):  # EH
-    #     return [Name(self._name_part(name),
-    #                  self._make_roles(name),
-    #                  name.attrib.get('type'))
-    #             for name in self.iterfind('./{0}name'.format(mods))]
+    def get_names(self, **kwargs):
+        """
+
+        :param kwargs: 
+        :return: 
+        """
+        if 'type' in kwargs.keys():
+            return [name for name in self.names if name.type == kwargs['type']]
+        elif 'authority' in kwargs.keys():
+            return [name for name in self.names if name.type == kwargs['authority']]
+        # elif 'role' in kwargs.keys():  # TODO
+        #     return [name for name in self.names if name.type == kwargs['authority']]
+        else:
+            return self.names
+
+    def get_notes(self, **kwargs):
+        """
+        
+        :param kwargs: 
+        :return: 
+        """
+        if 'type' in kwargs.keys():
+            return [note for note in self.note if note.type == kwargs['type']]
+        elif 'displayLabel' in kwargs.keys():
+            return [note for note in self.note if note.displayLabel == kwargs['displayLabel']]
+        else:
+            return self.note
 
     @property
     def identifiers(self):
@@ -230,6 +252,7 @@ class MODSRecord(Record):
         :return: A list of Name elements with text, uri, authority, and authorityURI attributes
         """
         return [Name(name._name_text(),
+                     name.attrib.get('type'),
                      name.attrib.get('valueURI'),
                      name.attrib.get('authority'),
                      name.attrib.get('authorityURI'),
@@ -318,7 +341,7 @@ class MODSRecord(Record):
         """
         return [Rights(rights.text,
                        rights.attrib.get('type'),
-                       rights.attrib.get('{*}href'))
+                       rights.attrib.get('{http://www.w3.org/1999/xlink}href'))
                 for rights in self.iterfind('{0}accessCondition'.format(mods))]
 
     @property

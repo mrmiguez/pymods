@@ -22,7 +22,7 @@
     <note type="acquisition">Pulled from garbage.</note>
 
     <!-- displayLabel note -->
-    <note displayLabel="Related burial(s)">0234.234.532</note>
+    <note type="don't fail the test" displayLabel="Related burial(s)">0234.234.532</note>
 
     <!-- untyped note -->
     <note>Stick it in a note.</note>

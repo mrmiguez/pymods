@@ -10,8 +10,8 @@ test_dir_path = os.path.abspath(os.path.dirname(__file__))
 class AbstractTests(unittest.TestCase):
 
     def setUp(self):
-        self.record = MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')).__next__()
-        self.no_abstract = MODSReader(os.path.join(test_dir_path, 'genre_xml.xml')).__next__()
+        self.record = next(MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')))
+        self.no_abstract = next(MODSReader(os.path.join(test_dir_path, 'genre_xml.xml')))
 
     def test_mods_abstract_text(self):
         expected_text = 'Remain calm! This is only a test!'
@@ -30,8 +30,8 @@ class AbstractTests(unittest.TestCase):
 class ClassificationTests(unittest.TestCase):
 
     def setUp(self):
-        self.record = MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')).__next__()
-        self.no_class = MODSReader(os.path.join(test_dir_path, 'genre_xml.xml')).__next__()
+        self.record = next(MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')))
+        self.no_class = next(MODSReader(os.path.join(test_dir_path, 'genre_xml.xml')))
 
     def test_mods_classification_text(self):
         '''checks element value'''
@@ -46,7 +46,7 @@ class ClassificationTests(unittest.TestCase):
 class CollectionTests(unittest.TestCase):
 
     def setUp(self):
-        self.record = MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')).__next__()
+        self.record = next(MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')))
 
     def test_mods_collections_location(self):
         expected_location = 'Special Collections & Archives, Florida State University Libraries, Tallahassee, Florida.'
@@ -301,75 +301,66 @@ class PhysicalDescriptionTests(unittest.TestCase):
 #         result = self.identifier_xml.record_list[0].doi_search()
 #         self.assertEqual(result, doi)
 
-# class NoteTests(unittest.TestCase):
-#     """
-#
-#     """
-#     abstract_xml = pymods.MODSReader(join(test_dir_path, 'tests/abstract_xml.xml'))
-#
-#     def test_mods_note_typed(self):
-#         '''checks typed note'''
-#         expected = 'Pulled from garbage.'
-#         for note in self.abstract_xml.record_list[0].note():
-#             if 'acquisition' in note.keys():
-#                 result = note['acquisition']
-#         self.assertEqual(result, expected)
-#
-#     def test_mods_note_labelled(self):
-#         '''checks labelled note'''
-#         expected = '0234.234.532'
-#         for note in self.abstract_xml.record_list[0].note():
-#             if 'Related burial(s)' in note.keys():
-#                 result = note['Related burial(s)']
-#         self.assertEqual(result, expected)
-#
-#     def test_mods_note_untyped(self):
-#         '''checks untyped note'''
-#         expected = 'Stick it in a note.'
-#         for note in self.abstract_xml.record_list[0].note():
-#             if 'untyped' in note.keys():
-#                 result = note['untyped']
-#         self.assertEqual(result, expected)
+class NoteTests(unittest.TestCase):
+    """
+
+    """
+    def setUp(self):
+        self.record = next(MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')))
+
+    def test_mods_note_typed(self):
+        '''checks typed note'''
+        expected = 'Pulled from garbage.'
+        self.assertEqual(expected, self.record.get_notes(type='acquisition')[0].text)
+
+    def test_mods_note_labelled(self):
+        '''checks labelled note'''
+        expected = '0234.234.532'
+        self.assertEqual(expected, self.record.get_notes(displayLabel='Related burial(s)')[0].text)
+
+    def test_mods_note_untyped(self):
+        '''checks untyped note'''
+        expected = 'Stick it in a note.'
+        self.assertEqual(expected, self.record.get_notes(type=None)[0].text)
 
 
-# class PhysicalLocationTests(unittest.TestCase):
-#     """
-#     location text values return as a list or exception raised if none
-#     """
-#     location_xml = pymods.MODSReader(join(test_dir_path, 'tests/location_xml.xml'))
-#
-#     def test_mods_physical_location(self):
-#         expected = ['The Circus', 'The Zoo',
-#                     'The Snow']
-#         results = []
-#         for location in self.location_xml.record_list[0].physical_location():
-#             results.append(location)
-#         self.assertTrue(all(x in results for x in expected))
+class PhysicalLocationTests(unittest.TestCase):
+    """
+    location text values return as a list or exception raised if none
+    """
+    def setUp(self):
+        self.record = next(MODSReader(os.path.join(test_dir_path, 'location_xml.xml')))
+
+    def test_mods_physical_location(self):
+        expected = ['The Circus', 'The Zoo',
+                    'The Snow']
+        self.assertTrue(all(x in expected for x in self.record.physical_location))
 
 
-# class RightsTests(unittest.TestCase):
-#     """
-#
-#     """
-#     rights_xml = pymods.MODSReader(join(test_dir_path, 'tests/rights_xml.xml'))
-#
-#     def test_mods_rights_text(self):
-#         '''checks rights text'''
-#         expected = 'Cue legalese'
-#         result = self.rights_xml.record_list[0].rights()['text']
-#         self.assertEqual(result, expected)
-#
-#     def test_mods_rights_uri(self):
-#         '''checks rights URI'''
-#         expected = 'http://rightsstatements.org/vocab/InC/1.0/'
-#         result = self.rights_xml.record_list[0].rights()['URI']
-#         self.assertEqual(result, expected)
-#
-#     def test_mods_rights_camelCased(self):
-#         '''checks camel-cased @type'''
-#         expected = 'camelCasedCamelHump'
-#         result = self.rights_xml.record_list[2].rights()['text']
-#         self.assertEqual(result, expected)
+class RightsTests(unittest.TestCase):
+    """
+
+    """
+    def setUp(self):
+        records = MODSReader(os.path.join(test_dir_path, 'rights_xml.xml'))
+        self.first_record = next(records)
+        self.second_record = next(records)
+        self.third_record = next(records)
+
+    def test_mods_rights_text(self):
+        '''checks rights text'''
+        expected = 'Cue legalese'
+        self.assertEqual(expected, self.first_record.rights[0].text)
+
+    def test_mods_rights_uri(self):
+        '''checks rights URI'''
+        expected = 'http://rightsstatements.org/vocab/InC/1.0/'
+        self.assertEqual(expected, self.first_record.rights[0].uri)
+
+    def test_mods_rights_camelCased(self):
+        '''checks camel-cased @type'''
+        expected = 'camelCasedCamelHump'
+        self.assertEqual(expected, self.third_record.rights[0].text)
 
 
 # class SubjectTests(unittest.TestCase):
@@ -456,23 +447,24 @@ class PhysicalDescriptionTests(unittest.TestCase):
 #         self.assertEqual(result, expected)
 
 
-# class TypeOfResourceTests(unittest.TestCase):
-#     """
-#
-#     """
-#     resourceType_xml = pymods.MODSReader(join(test_dir_path, 'tests/resourceType_xml.xml'))
-#
-#     def test_mods_resourceType_text(self):
-#         '''checks typeOfResource element'''
-#         expected = 'still image'
-#         result = self.resourceType_xml.record_list[0].type_of_resource()
-#         self.assertEqual(result, expected)
-#
-#     def test_mods_resourceType_none(self):
-#         '''checks typeOfResource None value'''
-#         expected = None
-#         result = self.resourceType_xml.record_list[1].type_of_resource()
-#         self.assertEqual(result, expected)
+class TypeOfResourceTests(unittest.TestCase):
+    """
+
+    """
+    def setUp(self):
+        records = MODSReader(os.path.join(test_dir_path, 'resourceType_xml.xml'))
+        self.first_record = next(records)
+        self.second_record = next(records)
+
+    def test_mods_resourceType_text(self):
+        '''checks typeOfResource element'''
+        expected = 'still image'
+        self.assertEqual(expected, self.first_record.type_of_resource)
+
+    def test_mods_resourceType_none(self):
+        '''checks typeOfResource None value'''
+        expected = None
+        self.assertEqual(expected, self.second_record.type_of_resource)
 
 
 if __name__ == '__main__':
