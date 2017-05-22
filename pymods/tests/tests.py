@@ -205,13 +205,13 @@ class PhysicalDescriptionTests(unittest.TestCase):
                     'Infinite summer']
         self.assertTrue(expected, self.third_record.physical_description_note)
 
-class GenreTests(unittest.TestCase):
-
-    # def setUp(self):
-    #     records = MODSReader(os.path.join(test_dir_path, 'genre_xml.xml'))
-    #     self.first_record = next(records)
-    #     self.second_record = next(records)
-    #     self.no_genre = MODSReader(os.path.join(test_dir_path, 'originInfo_xml.xml')).__next__()
+# class GenreTests(unittest.TestCase):
+#
+#     def setUp(self):
+#         records = MODSReader(os.path.join(test_dir_path, 'genre_xml.xml'))
+#         self.first_record = next(records)
+#         self.second_record = next(records)
+#         self.no_genre = MODSReader(os.path.join(test_dir_path, 'originInfo_xml.xml')).__next__()
 
 #     def test_mods_genre_text(self):
 #         '''checks genre term values'''
@@ -475,5 +475,5 @@ class GenreTests(unittest.TestCase):
 #         self.assertEqual(result, expected)
 
 
-# if __name__ == '__main__':
-#     unittest.main()
+if __name__ == '__main__':
+    unittest.main()
