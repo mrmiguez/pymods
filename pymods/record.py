@@ -509,8 +509,8 @@ class MODSRecord(Record):
         else:
             text = ''
             for part in elem.iter(tag='{0}namePart'.format(mods)):
-                text = text + '{0} '.format(part.text)
-            return text.strip()
+                text = text + '{0}, '.format(part.text)
+            return text.strip(', ')
 
     def _physical_location(self, elem=None):
         """

@@ -148,33 +148,25 @@ class LanguageTests(unittest.TestCase):
         self.assertEqual(self.third_record.text, expected)
 
 
-# class NameTests(unittest.TestCase):
-#
-#     def setUp(self):
-#         self.record = next(MODSReader(os.path.join(test_dir_path, 'name_xml.xml')))
+class NameTests(unittest.TestCase):
 
-#     def test_mods_names_pers_text(self):
-#         '''checks reformatting of name elements'''
-#         expected_names = ['Delp, Roy',
-#                           'Miguez, Matthew Roland, 1984-',
-#                           'Olsen, Stanford',
-#                           'Steinbeck, John, 1902-1968']
-#         self.assertEqual(self.record.personal_names, expected_names)
-#
-#     def test_mods_names_pers_text_dict(self):
-#         '''checks reformatting of name elements'''
-#         expected_names = ['Delp, Roy',
-#                           'Miguez, Matthew Roland, 1984-',
-#                           'Olsen, Stanford',
-#                           'Steinbeck, John, 1902-1968']
-#         self.assertEqual(self.record.personal_names_dict, expected_names)
+    def setUp(self):
+        self.record = next(MODSReader(os.path.join(test_dir_path, 'name_xml.xml')))
 
-    # def test_mods_names_corp_text(self):
+    # def test_mods_names_pers_text(self):
     #     '''checks reformatting of name elements'''
-    #     expected_names = ['College of Music',
-    #                       'Florida State University',
-    #                       'Florida, Legislature, House of Representatives, Office of the Clerk']
-    #     self.assertEqual(sorted([name.text for name in self.record.get_corp_names]), sorted(expected_names))
+    #     expected_names = ['Delp, Roy',
+    #                       'Miguez, Matthew Roland, 1984-',
+    #                       'Olsen, Stanford',
+    #                       'Steinbeck, John, 1902-1968']
+    #     self.assertEqual(sorted([name.text for name in self.record.get_pers_names]), sorted(expected_names))
+
+    def test_mods_names_corp_text(self):
+        '''checks reformatting of name elements'''
+        expected_names = ['College of Music',
+                          'Florida State University',
+                          'Florida, Legislature, House of Representatives, Office of the Clerk']
+        self.assertEqual(sorted([name.text for name in self.record.get_corp_names]), sorted(expected_names))
 
 class PhysicalDescriptionTests(unittest.TestCase):
 
