@@ -1,7 +1,6 @@
 import os
 import unittest
 
-from pymods.record import MODSRecord
 from pymods.reader import MODSReader
 
 test_dir_path = os.path.abspath(os.path.dirname(__file__))
@@ -205,101 +204,92 @@ class PhysicalDescriptionTests(unittest.TestCase):
                     'Infinite summer']
         self.assertTrue(expected, self.third_record.physical_description_note)
 
-# class GenreTests(unittest.TestCase):
-#
-#     def setUp(self):
-#         records = MODSReader(os.path.join(test_dir_path, 'genre_xml.xml'))
-#         self.first_record = next(records)
-#         self.second_record = next(records)
-#         self.no_genre = MODSReader(os.path.join(test_dir_path, 'originInfo_xml.xml')).__next__()
 
-#     def test_mods_genre_text(self):
-#         '''checks genre term values'''
-#         expected = ['Personal correspondence',
-#                     'receipts (financial records)']
-#         results = []
-#         for record in self.genre_xml.record_list:
-#             if record.genre() is not None:
-#                 results.append(record.genre()[0]['term'])
-#         self.assertTrue(all(x in results for x in expected))
-#
-#     def test_mods_genre_authority(self):
-#         '''checks genre authority value'''
-#         expected = ['aat', 'lcgft']
-#         results = []
-#         for record in self.genre_xml.record_list:
-#             if record.genre() is not None:
-#                 results.append(record.genre()[0]['authority'])
-#         self.assertTrue(all(x in results for x in expected))
-#
-#     def test_mods_genre_authorityURI(self):
-#         '''checks genre authorityURI'''
-#         expected = ['http://vocab.getty.edu/aat']
-#         results = []
-#         for record in self.genre_xml.record_list:
-#             if record.genre() is not None and 'authorityURI' in record.genre()[0].keys():
-#                 results.append(record.genre()[0]['authorityURI'])
-#         self.assertTrue(all(x in results for x in expected))
-#
-#     def test_mods_genre_valueURI(self):
-#         '''checks genre valueURI'''
-#         expected = ['http://id.loc.gov/authorities/genreForms/gf2014026141',
-#                     'http://vocab.getty.edu/page/aat/300027015']
-#         results = []
-#         for record in self.genre_xml.record_list:
-#             if record.genre() is not None:
-#                 results.append(record.genre()[0]['valueURI'])
-#         self.assertTrue(all(x in results for x in expected))
-#
-#     def test_mods_genre_none(self):
-#         '''checks for None value for missing element'''
-#         expected = None
-#         result = self.genre_xml.record_list[2].genre()
-#         self.assertEqual(result, expected)
+class GenreTests(unittest.TestCase):
+
+    def setUp(self):
+        records = MODSReader(os.path.join(test_dir_path, 'genre_xml.xml'))
+        self.first_record = next(records)
+        self.second_record = next(records)
+        self.no_genre = next(MODSReader(os.path.join(test_dir_path, 'originInfo_xml.xml')))
+
+    def test_mods_genre_text(self):
+        '''checks genre term values'''
+        expected = ['Personal correspondence',
+                    'receipts (financial records)']
+        results = []
+        for genre in (self.first_record.genre, self.second_record.genre):
+            results.append(genre[0].text)
+        self.assertEqual(expected, results)
+
+    def test_mods_genre_authority(self):
+        '''checks genre authority value'''
+        expected = ['aat', 'lcgft']
+        results = []
+        for genre in (self.first_record.genre, self.second_record.genre):
+            results.append(genre[0].authority)
+        self.assertEqual(expected, sorted(results))
+
+    def test_mods_genre_authorityURI(self):
+        '''checks genre authorityURI'''
+        expected = [None, 'http://vocab.getty.edu/aat']
+        results = []
+        for genre in (self.first_record.genre, self.second_record.genre):
+            results.append(genre[0].authorityURI)
+        self.assertEqual(expected, results)
+
+    def test_mods_genre_valueURI(self):
+        '''checks genre valueURI'''
+        expected = ['http://id.loc.gov/authorities/genreForms/gf2014026141',
+                    'http://vocab.getty.edu/page/aat/300027015']
+        results = []
+        for genre in (self.first_record.genre, self.second_record.genre):
+            results.append(genre[0].valueURI)
+        self.assertEqual(expected, results)
+
+    def test_mods_genre_none(self):
+        '''checks for None value for missing element'''
+        expected = []
+        self.assertEqual(expected, self.no_genre.genre)
 
 
-# class GeographicCodeTests(unittest.TestCase):
-#     """
-#
-#     """
-#     subject_xml = pymods.MODSReader(join(test_dir_path, 'tests/subject_xml.xml'))
-#
-#     def test_mods_geographicCode(self):
-#         '''checks subject/geographicCode'''
-#         expected = ['7013331',
-#                     '7013938']
-#         result = self.subject_xml.record_list[0].geographic_code()
-#         self.assertTrue(all(x in result for x in expected))
+class GeographicCodeTests(unittest.TestCase):
+    """
+
+    """
+    def setUp(self):
+        self.record = next(MODSReader(os.path.join(test_dir_path, 'subject_xml.xml')))
+
+    def test_mods_geographicCode(self):
+        '''checks subject/geographicCode'''
+        expected = ['7013331',
+                    '7013938']
+        self.assertEqual(expected, self.record.geographic_code)
 
 
-# class IdentifierTests(unittest.TestCase):
-#     """
-#     """
-#     identifier_xml = pymods.MODSReader(join(test_dir_path, 'tests/identifier_xml.xml'))
-#
-#     def test_mods_purl_search(self):
-#         '''checks PURL service'''
-#         purl = 'http://purl.flvc.org/fsu/fd/FSU_MSS0204_B03_F10_13'
-#         result = self.identifier_xml.record_list[0].purl_search()
-#         self.assertEqual(result, purl)
-#
-#     def test_mods_pid_search(self):
-#         '''checks fedora PID service'''
-#         pid = 'fsu:1028'
-#         result = self.identifier_xml.record_list[0].pid_search()
-#         self.assertEqual(result, pid)
-#
-#     def test_mods_local_identifier(self):
-#         '''checks IID service'''
-#         iid = 'FSU_MSS0204_B03_F10_13'
-#         result = self.identifier_xml.record_list[0].local_identifier()
-#         self.assertEqual(result, iid)
-#
-#     def test_mods_doi_search(self):
-#         '''checks fedora pid service'''
-#         doi = '10.3389/fmicb.2016.00458'
-#         result = self.identifier_xml.record_list[0].doi_search()
-#         self.assertEqual(result, doi)
+class IdentifierTests(unittest.TestCase):
+    def setUp(self):
+        self.record = next(MODSReader(os.path.join(test_dir_path, 'identifier_xml.xml')))
+
+    def test_mods_purl_search(self):
+        '''checks PURL service'''
+        purl = 'http://purl.flvc.org/fsu/fd/FSU_MSS0204_B03_F10_13'
+        self.assertEqual(purl, self.record.purl[0])
+
+    def test_mods_pid_search(self):
+        '''checks fedora PID service'''
+        pid = 'fsu:1028'
+        self.assertEqual(pid, self.record.pid)
+
+    def test_mods_local_identifier(self):
+        '''checks IID service'''
+        iid = 'FSU_MSS0204_B03_F10_13'
+        self.assertEqual(iid, self.record.iid)
+
+    def test_mods_doi_search(self):
+        '''checks DOI service'''
+        doi = '10.3389/fmicb.2016.00458'
+        self.assertEqual(doi, self.record.doi)
 
 class NoteTests(unittest.TestCase):
     """
@@ -363,46 +353,46 @@ class RightsTests(unittest.TestCase):
         self.assertEqual(expected, self.third_record.rights[0].text)
 
 
-# class SubjectTests(unittest.TestCase):
-#     """
-#
-#     """
-#     subject_xml = pymods.MODSReader(join(test_dir_path, 'tests/subject_xml.xml'))
-#
-#     def test_mods_subject_simple_text(self):
-#         '''checks simple subject text'''
-#         expected = ['Poetry',
-#                     'Childhood and youth',
-#                     'Architectural design']
-#         results = []
-#         for subject in self.subject_xml.record_list[1].subject():
-#             results.append(subject['children'][0]['term'])
-#         self.assertTrue(all(x in results for x in expected))
-#
-#     def test_mods_subject_simple_authority(self):
-#         '''checks simple subject text'''
-#         expected = ['lctgm', 'fast', 'lcsh']
-#         results = []
-#         for subject in self.subject_xml.record_list[1].subject():
-#             results.append(subject['authority'])
-#         self.assertTrue(all(x in results for x in expected))
-#
-#     def test_mods_subject_simple_uri(self):
-#         '''checks simple subject text'''
-#         expected = ['http://id.loc.gov/vocabulary/graphicMaterials/tgm007948',
-#                     'http://id.loc.gov/authorities/subjects/sh99004940',
-#                     'http://id.worldcat.org/fast/813184']
-#         results = []
-#         for subject in self.subject_xml.record_list[1].subject():
-#             if 'valueURI' in subject.keys():
-#                 if subject['valueURI'] is not None:
-#                     results.append(subject['valueURI'])
-#             else:
-#                 for child in subject['children']:
-#                     if child['valueURI'] is not None:
-#                         results.append(child['valueURI'])
-#         self.assertTrue(all(x in results for x in expected))
-#
+class SubjectTests(unittest.TestCase):
+    """
+
+    """
+    def setUp(self):
+        records = MODSReader(os.path.join(test_dir_path, 'subject_xml.xml'))
+        self.first_record = next(records)
+        self.second_record = next(records)
+        self.third_record = next(records)
+        self.fourth_record = next(records)
+        self.fifth_record = next(records)
+
+    def test_mods_subject_simple_text(self):
+        '''checks simple subject text'''
+        expected = ['Poetry',
+                    'Childhood and youth',
+                    'Architectural design']
+        results = []
+        for subject in self.second_record.subjects:
+            results.append(subject.text)
+        self.assertEqual(sorted(expected), sorted(results))
+
+    def test_mods_subject_simple_authority(self):
+        '''checks simple subject text'''
+        expected = ['lctgm', 'fast', 'lcsh']
+        results = []
+        for subject in self.second_record.subjects:
+            results.append(subject.authority)
+        self.assertEqual(sorted(expected), sorted(results))
+
+    # def test_mods_subject_simple_uri(self):  # TODO: pass up URI's from subject children to Subject named tuple
+    #     '''checks simple subject text'''
+    #     expected = ['http://id.loc.gov/vocabulary/graphicMaterials/tgm007948',
+    #                 'http://id.loc.gov/authorities/subjects/sh99004940',
+    #                 'http://id.worldcat.org/fast/813184']
+    #     results = []
+    #     for subject in self.second_record.subjects:
+    #         results.append(subject.uri)
+    #     self.assertEqual(sorted(expected), sorted(results))
+
 #     def test_mods_subject_complex_text(self):
 #         '''checks complex subject text'''
 #         expected = 'United States--History--Civil War, 1861-1865'
@@ -422,29 +412,30 @@ class RightsTests(unittest.TestCase):
 #         self.assertEqual(result, expected)
 
 
-# class TitleTests(unittest.TestCase):
-#     """
-#
-#     """
-#     title_xml = pymods.MODSReader(join(test_dir_path, 'tests/title_xml.xml'))
-#
-#     def test_mods_title_simple(self):
-#         '''checks simple title formatting'''
-#         expected = "Gravity's Rainbow"
-#         result = self.title_xml.record_list[0].title_constructor()[0]
-#         self.assertEqual(result, expected)
-#
-#     def test_mods_title_subtitle(self):
-#         '''checks title & subtitle formatting'''
-#         expected = "Homer Simpson: A retrospective"
-#         result = self.title_xml.record_list[1].title_constructor()[0]
-#         self.assertEqual(result, expected)
-#
-#     def test_mods_title_complex(self):
-#         '''checks complex formatting'''
-#         expected = "A Title: Should never be alone"
-#         result = self.title_xml.record_list[2].title_constructor()[0]
-#         self.assertEqual(result, expected)
+class TitleTests(unittest.TestCase):
+    """
+
+    """
+    def setUp(self):
+        records = MODSReader(os.path.join(test_dir_path, 'title_xml.xml'))
+        self.first_record = next(records)
+        self.second_record = next(records)
+        self.third_record = next(records)
+
+    def test_mods_title_simple(self):
+        '''checks simple title formatting'''
+        expected = "Gravity's Rainbow"
+        self.assertEqual(expected, self.first_record.titles[0])
+
+    def test_mods_title_subtitle(self):
+        '''checks title & subtitle formatting'''
+        expected = "Homer Simpson: A retrospective"
+        self.assertEqual(expected, self.second_record.titles[0])
+
+    def test_mods_title_complex(self):
+        '''checks complex formatting'''
+        expected = "A Title: Should never be alone"
+        self.assertEqual(expected, self.third_record.titles[0])
 
 
 class TypeOfResourceTests(unittest.TestCase):

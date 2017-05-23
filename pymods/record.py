@@ -6,7 +6,7 @@ from pymods.constants import NAMESPACES, DATE_FIELDS
 Abstract = collections.namedtuple('Abstract', 'text type displayLabel')
 Collection = collections.namedtuple('Collection', 'location title url')
 Date = collections.namedtuple('Date', 'text type')
-Genre = collections.namedtuple('Genre', 'term authority authorityURI valueURI')
+Genre = collections.namedtuple('Genre', 'text authority authorityURI valueURI')
 Identifier = collections.namedtuple('Identifier', 'text type')
 Language = collections.namedtuple('Language', 'text type authority')
 Name = collections.namedtuple('Name', 'text type uri authority authorityURI role')  # MM
@@ -14,14 +14,14 @@ NamePart = collections.namedtuple('NamePart', 'text type')  # MM
 # Name = collections.namedtuple('Name', 'name_parts roles type')  # EH
 # NamePart = collections.namedtuple('NamePart', 'name type')  # EH
 Note = collections.namedtuple('Note', 'text type displayLabel')
-PublicationPlace = collections.namedtuple('PublicationPlace', 'place type')
+PublicationPlace = collections.namedtuple('PublicationPlace', 'text type')
 Rights = collections.namedtuple('Rights', 'text type uri')
-Role = collections.namedtuple('Role', 'role type')
+Role = collections.namedtuple('Role', 'text type')
 Subject = collections.namedtuple('Subject', 'text uri authority authorityURI')
 SubjectPart = collections.namedtuple('SubjectPart', 'text type')
 mods = NAMESPACES['mods']
 
-# TODO - name roles, dates, pers/corp names (??)
+# TODO - pub. place
 
 
 class Record(etree.ElementBase):
@@ -84,11 +84,6 @@ class MODSRecord(Record):
 
         except IndexError:
             return None
-            # return Collection(None, None, None)
-    # @property
-    # def corporate_names(self):  # EH
-    #     return sorted([self._format_name(name) for name in self.get_names()
-    #                    if name.type == 'corporate'])
 
     # def date_constructor(self, elem=None):
     #     """
@@ -178,6 +173,14 @@ class MODSRecord(Record):
         """
         return [geocode.text for geocode in self.iterfind('./{0}subject/{0}geographicCode'.format(mods))]
 
+    @property
+    def get_corporate_names(self):  # EH
+        return sorted([name for name in self.get_names(type='corporate')])
+
+    @property
+    def get_creators(self):
+        return sorted([name for name in self.get_names(role='Creator')])  # TODO: this needs to flexible to code='cre'
+
     def get_names(self, **kwargs):
         """
 
@@ -187,11 +190,13 @@ class MODSRecord(Record):
         if 'type' in kwargs.keys():
             return [name for name in self.names if name.type == kwargs['type']]
         elif 'authority' in kwargs.keys():
-            return [name for name in self.names if name.type == kwargs['authority']]
-        # elif 'role' in kwargs.keys():  # TODO
-        #     return [name for name in self.names if name.type == kwargs['authority']]
+            return [name for name in self.names if name.authority == kwargs['authority']]
+        elif 'role' in kwargs.keys():  # TODO
+            return [name for name in self.names for role in name.role if role.text == kwargs['role']]
         else:
-            return self.names
+            raise TypeError  # TODO: find proper error to raise
+
+        # return [name for name in self.names if name.type == kwargs['type']]
 
     def get_notes(self, **kwargs):
         """
@@ -205,6 +210,10 @@ class MODSRecord(Record):
             return [note for note in self.note if note.displayLabel == kwargs['displayLabel']]
         else:
             return self.note
+
+    @property
+    def get_personal_names(self):  # EH
+        return sorted([name for name in self.get_names(type='personal')])
 
     @property
     def identifiers(self):
@@ -256,7 +265,7 @@ class MODSRecord(Record):
                      name.attrib.get('valueURI'),
                      name.attrib.get('authority'),
                      name.attrib.get('authorityURI'),
-                     'role') # TODO
+                     name._name_role())
                 for name in self.iterfind('./{0}name'.format(mods))]
 
     @property
@@ -266,6 +275,7 @@ class MODSRecord(Record):
         :return: 
         """
         return NotImplemented
+        # TODO: return unformatted name parts for transformation scenarios
 
     @property
     def note(self):
@@ -364,6 +374,7 @@ class MODSRecord(Record):
         :return: 
         """
         return NotImplemented
+        # TODO: return unformatted subject parts for transformation scenarios
 
     @property
     def titles(self):
@@ -454,10 +465,6 @@ class MODSRecord(Record):
     #     return [NamePart(name.text, name.attrib.get('type')) for name in
     #             el.iterfind('./{0}namePart'.format(mods))]
 
-    # def _make_roles(self, el):  # EH
-    #     return [Role(name.text, name.attrib.get('type')) for name in
-    #             el.iterfind('./{0}role/{0}roleTerm'.format(mods))]
-
     def _name_part(self, elem=None):  # MM
         """
 
@@ -469,13 +476,24 @@ class MODSRecord(Record):
         return [NamePart(name.text, name.attrib.get('type')) for name in
                 elem.iterfind('./{0}namePart'.format(mods))]
 
+    def _name_role(self, elem=None):  # EH
+        """
+        
+        :param elem: 
+        :return: 
+        """
+        if elem is None:
+            elem = self
+        return [Role(name.text, name.attrib.get('type')) for name in
+                elem.iterfind('./{0}role/{0}roleTerm'.format(mods))]
+
     def _name_text(self, elem=None):  # MM
         """
 
         :param elem:
         :return:
         """
-        if elem is not None:
+        if elem is None:
             elem = self
         if elem.attrib.get('type') == 'personal':
             family = ', '.join(x.text for x in elem._name_part() if x.type == 'family')

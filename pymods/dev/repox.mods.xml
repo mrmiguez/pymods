@@ -34,6 +34,11 @@
             <roleTerm authority="marcrelator" type="code">cre</roleTerm>
           </role>
         </name>
+        <name type="corporate">
+          <namePart>FSU</namePart>
+          <namePart>Strozier Library</namePart>
+          <namePart>Roof swimming pool</namePart>
+        </name>
         <classification>BEEP BOOP</classification>
         <typeOfResource>still image</typeOfResource>
         <genre authority="gmgpc">Photographs</genre>
