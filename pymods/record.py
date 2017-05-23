@@ -174,7 +174,7 @@ class MODSRecord(Record):
         return [geocode.text for geocode in self.iterfind('./{0}subject/{0}geographicCode'.format(mods))]
 
     @property
-    def get_corporate_names(self):  # EH
+    def get_corp_names(self):  # EH
         return sorted([name for name in self.get_names(type='corporate')])
 
     @property
@@ -212,7 +212,7 @@ class MODSRecord(Record):
             return self.note
 
     @property
-    def get_personal_names(self):  # EH
+    def get_pers_names(self):  # EH
         return sorted([name for name in self.get_names(type='personal')])
 
     @property

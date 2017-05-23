@@ -151,8 +151,8 @@ class LanguageTests(unittest.TestCase):
 # class NameTests(unittest.TestCase):
 #
 #     def setUp(self):
-#         self.record = MODSRecord(os.path.join(test_dir_path, 'name_xml.xml'))
-#
+#         self.record = next(MODSReader(os.path.join(test_dir_path, 'name_xml.xml')))
+
 #     def test_mods_names_pers_text(self):
 #         '''checks reformatting of name elements'''
 #         expected_names = ['Delp, Roy',
@@ -168,13 +168,13 @@ class LanguageTests(unittest.TestCase):
 #                           'Olsen, Stanford',
 #                           'Steinbeck, John, 1902-1968']
 #         self.assertEqual(self.record.personal_names_dict, expected_names)
-#
-#     def test_mods_names_corp_text(self):
-#         '''checks reformatting of name elements'''
-#         expected_names = ['College of Music',
-#                           'Florida State University',
-#                           'Florida, Legislature, House of Representatives, Office of the Clerk']
-#         self.assertEqual(self.record.corporate_names, expected_names)
+
+    # def test_mods_names_corp_text(self):
+    #     '''checks reformatting of name elements'''
+    #     expected_names = ['College of Music',
+    #                       'Florida State University',
+    #                       'Florida, Legislature, House of Representatives, Office of the Clerk']
+    #     self.assertEqual(sorted([name.text for name in self.record.get_corp_names]), sorted(expected_names))
 
 class PhysicalDescriptionTests(unittest.TestCase):
 
@@ -393,23 +393,20 @@ class SubjectTests(unittest.TestCase):
     #         results.append(subject.uri)
     #     self.assertEqual(sorted(expected), sorted(results))
 
-#     def test_mods_subject_complex_text(self):
-#         '''checks complex subject text'''
-#         expected = 'United States--History--Civil War, 1861-1865'
-#         result = self.subject_xml.record_list[2].subject_constructor()[0]
-#         self.assertEqual(result, expected)
-#
-#     def test_mods_subject_name(self):
-#         '''checks reformatting of name subject'''
-#         expected = 'Lincoln, Abraham, 1809-1865--Assassination'
-#         result = self.subject_xml.record_list[3].subject()[0]['text']
-#         self.assertEqual(result, expected)
-#
-#     def test_mods_subject_name_no_authority_text(self):
-#         '''checks handling of subject w/ no @authority'''
-#         expected = 'Baruch, Bernard M. (Bernard Mannes), 1870-1965'
-#         result = self.subject_xml.record_list[4].subject()[0]['text']
-#         self.assertEqual(result, expected)
+    def test_mods_subject_complex_text(self):
+        '''checks complex subject text'''
+        expected = 'United States--History--Civil War, 1861-1865'
+        self.assertEqual(expected, self.third_record.subjects[0].text)
+
+    # def test_mods_subject_name(self):
+    #     '''checks reformatting of name subject'''
+    #     expected = 'Lincoln, Abraham, 1809-1865--Assassination'
+    #     self.assertEqual(expected, self.fourth_record.subjects[0].text)
+
+    def test_mods_subject_name_no_authority_text(self):
+        '''checks handling of subject w/ no @authority'''
+        expected = 'Baruch, Bernard M. (Bernard Mannes), 1870-1965'
+        self.assertEqual(expected, self.fifth_record.subjects[0].text)
 
 
 class TitleTests(unittest.TestCase):
