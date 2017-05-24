@@ -375,25 +375,25 @@ class SubjectTests(unittest.TestCase):
             results.append(subject.authority)
         self.assertEqual(sorted(expected), sorted(results))
 
-    # def test_mods_subject_simple_uri(self):  # TODO: pass up URI's from subject children to Subject named tuple
-    #     '''checks simple subject text'''
-    #     expected = ['http://id.loc.gov/vocabulary/graphicMaterials/tgm007948',
-    #                 'http://id.loc.gov/authorities/subjects/sh99004940',
-    #                 'http://id.worldcat.org/fast/813184']
-    #     results = []
-    #     for subject in self.second_record.subjects:
-    #         results.append(subject.uri)
-    #     self.assertEqual(sorted(expected), sorted(results))
+    def test_mods_subject_simple_uri(self):
+        '''checks simple subject text'''
+        expected = ['http://id.loc.gov/vocabulary/graphicMaterials/tgm007948',
+                    'http://id.loc.gov/authorities/subjects/sh99004940',
+                    'http://id.worldcat.org/fast/813184']
+        results = []
+        for subject in self.second_record.subjects:
+            results.append(subject.uri)
+        self.assertEqual(sorted(expected), sorted(results))
 
     def test_mods_subject_complex_text(self):
         '''checks complex subject text'''
         expected = 'United States--History--Civil War, 1861-1865'
         self.assertEqual(expected, self.third_record.subjects[0].text)
 
-    # def test_mods_subject_name(self):
-    #     '''checks reformatting of name subject'''
-    #     expected = 'Lincoln, Abraham, 1809-1865--Assassination'
-    #     self.assertEqual(expected, self.fourth_record.subjects[0].text)
+    def test_mods_subject_name(self):
+        '''checks reformatting of name subject'''
+        expected = 'Lincoln, Abraham, 1809-1865--Assassination'
+        self.assertEqual(expected, self.fourth_record.subjects[0].text)
 
     def test_mods_subject_name_no_authority_text(self):
         '''checks handling of subject w/ no @authority'''

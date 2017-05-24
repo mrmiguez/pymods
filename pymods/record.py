@@ -361,9 +361,14 @@ class MODSRecord(Record):
         :return: list of Subject elements with text, uri, authority and authorityURI values.
         """
         return [Subject(subject._subject_text(),
-                        subject.attrib.get('valueURI'),
-                        subject.attrib.get('authority'),
-                        subject.attrib.get('authorityURI'))
+                             subject[0].attrib.get('valueURI'),
+                             subject.attrib.get('authority'),
+                             subject.attrib.get('authorityURI'))
+                if subject.attrib.get('valueURI') is None
+                else Subject(subject._subject_text(),
+                             subject.attrib.get('valueURI'),
+                             subject.attrib.get('authority'),
+                             subject.attrib.get('authorityURI'))
                 for subject in self.iterfind('{0}subject'.format(mods))
                 if 'geographicCode' not in subject[0].tag]
 
@@ -501,11 +506,11 @@ class MODSRecord(Record):
             terms_of_address = ', '.join(x.text for x in elem._name_part() if x.type == 'termsOfAddress')
             date = ', '.join(x.text for x in elem._name_part() if x.type == 'date')
             untyped_name = ', '.join(x.text for x in elem._name_part() if x.type is None)
-            return '{untyped_name}{family}{given}{termsOfAddress}{date}'.format(
-                untyped_name=untyped_name if untyped_name else '',
+            return '{family}{given}{termsOfAddress}{untyped_name}{date}'.format(
                 family=family + ', ' if family else '',
                 given=given if given else '',
                 termsOfAddress=', ' + terms_of_address if terms_of_address else '',
+                untyped_name=untyped_name if untyped_name else '',
                 date=', ' + date if date else ''
             )
         else:
@@ -531,18 +536,16 @@ class MODSRecord(Record):
         """
         if elem is None:
             elem = self
-        return [SubjectPart(term.text,
-                            term.tag)
+        return [SubjectPart(term._name_text(), term.tag)
+                if 'name' in term.tag
+                else SubjectPart(term.text, term.tag)
                 for term in elem.iterchildren()]
 
     def _subject_text(self):
         subject_text = ''
-        if 'name' not in self[0].tag:
-            for subject_part in self._subject_part():
-                subject_text = subject_text + '{0}--'.format(subject_part.text)
-            return subject_text.strip('--')
-        else:
-            return self.names[0].text
+        for subject_part in self._subject_part():
+            subject_text = subject_text + '{0}--'.format(subject_part.text)
+        return subject_text.strip('--')
 
     def _title_constructor(self, elem=None): # TODO - name title stuff to match name&subject methods
         """
