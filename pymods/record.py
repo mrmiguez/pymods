@@ -318,12 +318,14 @@ class MODSRecord(Record):
         except IndexError:
             return None
 
-    # def publication_place(self, elem=None):
-    #     """
-    #     Access mods:place and return a list of dicts:
-    #     :return: [{termType: termText}, {'untyped': termText}, ...]
-    #     """
-    #     pass
+    @property
+    def publication_place(self):
+        """
+        Access mods:place and return a list of dicts:
+        :return: [{termType: termText}, {'untyped': termText}, ...]
+        """
+        return [PublicationPlace(place.text, place.attrib.get('type'))
+                for place in self.iterfind('./{0}originInfo/{0}place/{0}placeTerm'.format(mods))]
 
     @property
     def publisher(self):
@@ -396,6 +398,7 @@ class MODSRecord(Record):
         :return: 
         """
         return NotImplemented
+        # TODO: return unformatted title parts for transformation scenarios
 
     @property
     def type_of_resource(self):

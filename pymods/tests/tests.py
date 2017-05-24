@@ -97,13 +97,12 @@ class OriginInfoTests(unittest.TestCase):
         expected = 'integrating resource'
         self.assertEqual(expected, self.fifth_record.issuance[0])
 
-    # def test_mods_place(self):
-    #     '''checks place of publication'''
-    #     expected = [{'code': 'hgz',
-    #                 'untyped': 'Hogwartz'}]
-    #     result = self.originInfo_xml.record_list[5].publication_place()
-    #     self.assertEqual(result, expected)
-    #
+    def test_mods_place(self):
+        '''checks place of publication'''
+        expected = [('Hogwartz', None),
+                    ('hgz', 'code')]
+        self.assertEqual(expected, self.sixth_record.publication_place)
+
     def test_mods_publisher(self):
         '''checks publisher'''
         expected = 'Image Comics'
