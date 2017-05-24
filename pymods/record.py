@@ -500,7 +500,9 @@ class MODSRecord(Record):
             given = ', '.join(x.text for x in elem._name_part() if x.type == 'given')
             terms_of_address = ', '.join(x.text for x in elem._name_part() if x.type == 'termsOfAddress')
             date = ', '.join(x.text for x in elem._name_part() if x.type == 'date')
-            return '{family}{given}{termsOfAddress}{date}'.format(
+            untyped_name = ', '.join(x.text for x in elem._name_part() if x.type is None)
+            return '{untyped_name}{family}{given}{termsOfAddress}{date}'.format(
+                untyped_name=untyped_name if untyped_name else '',
                 family=family + ', ' if family else '',
                 given=given if given else '',
                 termsOfAddress=', ' + terms_of_address if terms_of_address else '',
