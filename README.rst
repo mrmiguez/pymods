@@ -30,25 +30,12 @@ Individual records are stored as an iterator of the MODSRecord object:
 
 .. code:: python
 
-    In [3]: len(mods_records)
-    Out[3]: 3
-
-.. code:: python
-
     In [5]: for record in mods_records:
       ....:    print(record)
       ....:
-    <Element Record at 0x6fffe5d50e8>
-    <Element Record at 0x6fffe5d5188>
-    <Element Record at 0x6fffe5d5228>
-
-Or they can be accessed invidually through the the
-MODSReader.record\_list attribute:
-
-.. code:: python
-
-    In [8]: print(mods_records.record_list[0].title_constructor())
-    ['Fire Line System']
+    <Element {http://www.loc.gov/mods/v3}mods at 0x47a69f8>
+    <Element {http://www.loc.gov/mods/v3}mods at 0x47fd908>
+    <Element {http://www.loc.gov/mods/v3}mods at 0x47fda48>
 
 MODSReader will work with ``mods:modsCollection`` documents, outputs
 from OAI-PMH feeds, or individual MODSXML documents with ``mods:mods``
@@ -57,19 +44,56 @@ class will still store the record in the record\_list attribute.
 Accessing the record will still require calling the object as an
 iterator or by list index.
 
-pymods.Record
-^^^^^^^^^^^^^
+pymods.MODSRecord
+^^^^^^^^^^^^^^^^^
 
 The MODSReader class parses each ``mods:mods`` element into a
-pymods.Record object. pymods.Record is a custom wrapper class for the
-lxml.ElementBase class. All children of pymods.Record inherit the
-lxml.\_Element and lxml.ElementBase methods.
+pymods.MODSRecord object. pymods.MODSRecord is a custom wrapper class
+for the lxml.ElementBase class. All children of pymods.Record inherit
+the lxml.\_Element and lxml.ElementBase methods.
+
+.. code:: python
+
+    In [6]: record = next(pymods.MODSReader('example.xml'))
+    In [7]: print(record.nsmap)
+    {'dcterms': 'http://purl.org/dc/terms/', 'xsi': 'http://www.w3.org/2001/XMLSchema-instance', None: 'http://www.loc.gov/mods/v3', 'flvc': 'info:flvc/manifest/v1', 'xlink': 'http://www.w3.org/1999/xlink', 'mods': 'http://www.loc.gov/mods/v3'}
+
+.. code:: python
+
+    In [8]: for child in record.iterdescendants():
+      ....:    print(child.tag)
+        
+    {http://www.loc.gov/mods/v3}identifier
+    {http://www.loc.gov/mods/v3}extension
+    {info:flvc/manifest/v1}flvc
+    {info:flvc/manifest/v1}owningInstitution
+    {info:flvc/manifest/v1}submittingInstitution
+    {http://www.loc.gov/mods/v3}titleInfo
+    {http://www.loc.gov/mods/v3}title
+    {http://www.loc.gov/mods/v3}name
+    {http://www.loc.gov/mods/v3}namePart
+    {http://www.loc.gov/mods/v3}role
+    {http://www.loc.gov/mods/v3}roleTerm
+    {http://www.loc.gov/mods/v3}roleTerm
+    {http://www.loc.gov/mods/v3}typeOfResource
+    {http://www.loc.gov/mods/v3}genre
+    ...
 
 Methods
 ~~~~~~~
 
-All functions return data either as a string, list, or dict. See the
-appropriate docstrings for details.
+All functions return data either as a string, list, list of named
+tuples. See the appropriate docstring for details.
+
+.. code:: python
+
+    >>> record.genre?
+    Type:        property
+    String form: <property object at 0x0000000004812C78>
+    Docstring:
+    Accesses mods:genre element.
+    :return: A list contraining Genre elements with term, authority,
+        authorityURI, and valueURI attributes.
 
 Examples
 --------
@@ -78,16 +102,19 @@ Importing
 
 .. code:: python
 
-    from pymods import MODSReader, Record
+    from pymods import MODSReader, MODSRecord
 
 Parsing a file
 
 .. code:: python
 
-    >>> mods = MODSReader('example.xml')
-
-    >>> len(mods)
-    3
+    In [10]: mods = MODSReader('example.xml')
+    In [11]: for record in mods:
+       ....:    print(record.dates)
+       ....:
+    [Date(text='1966-12-08', type='{http://www.loc.gov/mods/v3}dateCreated')]
+    None
+    [Date(text='1987-02', type='{http://www.loc.gov/mods/v3}dateIssued')]
 
 Simple tasks
 ~~~~~~~~~~~~
@@ -97,7 +124,7 @@ Generating a title list
 .. code:: python
 
     In [14]: for record in mods:
-       ....:     print(record.title_constructor())
+       ....:     print(record.titles)
        ....:
     ['Fire Line System']
     ['$93,668.90. One Mill Tax Apportioned by Various Ways Proposed']
@@ -108,8 +135,8 @@ Creating a subject list
 .. code:: python
 
     In [17]: for record in mods:
-       ....:     for subject in record.subject_constructor():
-       ....:         print(subject)
+       ....:     for subject in record.subjects:
+       ....:         print(subject.text)
        ....:
     Concert halls
     Architecture
@@ -123,7 +150,6 @@ Creating a subject list
     Structural optimization
     Architectural design
     Fire prevention--Safety measures
-    7013143
     Taxes
     Tax payers
     Tax collection
@@ -132,7 +158,6 @@ Creating a subject list
     Sex discrimination against women
     Women's rights
     Equal rights amendments
-    2020598
     Women--Societies and clubs
     National Organization for Women
 
@@ -144,9 +169,9 @@ Creating a list of subject URI's only for LCSH subjects
 .. code:: python
 
     In [18]: for record in mods:
-       ....:     for subject in record.subject():
-       ....:         if 'authority' in subject.keys() and 'lcsh' == subject['authority']:
-       ....:             print(subject['valueURI'])
+       ....:     for subject in record.subjects:
+       ....:         if 'lcsh' == subject.authority:
+       ....:             print(subject.uri)
        ....:
     http://id.loc.gov/authorities/subjects/sh85082767
     http://id.loc.gov/authorities/subjects/sh88004614
@@ -158,8 +183,9 @@ Get URLs for objects using a No Copyright US rightsstatement.org URI
 .. code:: python
 
     In [23]: for record in mods:
-       ....:     if record.rights()['URI'] == 'http://rightsstatements.org/vocab/NoC-US/1.0/':
-       ....:         print(record.purl_search())
+       ....:     for rights_elem in record.rights
+       ....:         if rights_elem.uri == 'http://rightsstatements.org/vocab/NoC-US/1.0/':
+       ....:             print(record.purl)
        ....:
     http://purl.flvc.org/fsu/fd/FSU_MSS0204_B01_F10_09
     http://purl.flvc.org/fsu/fd/FSU_MSS2008003_B18_F01_004
