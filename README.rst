@@ -39,10 +39,7 @@ Individual records are stored as an iterator of the MODSRecord object:
 
 MODSReader will work with ``mods:modsCollection`` documents, outputs
 from OAI-PMH feeds, or individual MODSXML documents with ``mods:mods``
-as the root element. When parsing only a single record, the MODSReader
-class will still store the record in the record\_list attribute.
-Accessing the record will still require calling the object as an
-iterator or by list index.
+as the root element.
 
 pymods.MODSRecord
 ^^^^^^^^^^^^^^^^^
@@ -92,7 +89,7 @@ tuples. See the appropriate docstring for details.
     String form: <property object at 0x0000000004812C78>
     Docstring:
     Accesses mods:genre element.
-    :return: A list contraining Genre elements with term, authority,
+    :return: A list containing Genre elements with term, authority,
         authorityURI, and valueURI attributes.
 
 Examples
