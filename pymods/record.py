@@ -9,10 +9,8 @@ Date = collections.namedtuple('Date', 'text type')
 Genre = collections.namedtuple('Genre', 'text authority authorityURI valueURI')
 Identifier = collections.namedtuple('Identifier', 'text type')
 Language = collections.namedtuple('Language', 'text type authority')
-Name = collections.namedtuple('Name', 'text type uri authority authorityURI role')  # MM
-NamePart = collections.namedtuple('NamePart', 'text type')  # MM
-# Name = collections.namedtuple('Name', 'name_parts roles type')  # EH
-# NamePart = collections.namedtuple('NamePart', 'name type')  # EH
+Name = collections.namedtuple('Name', 'text type uri authority authorityURI role')
+NamePart = collections.namedtuple('NamePart', 'text type')
 Note = collections.namedtuple('Note', 'text type displayLabel')
 PublicationPlace = collections.namedtuple('PublicationPlace', 'text type')
 Rights = collections.namedtuple('Rights', 'text type uri')
@@ -21,17 +19,13 @@ Subject = collections.namedtuple('Subject', 'text uri authority authorityURI')
 SubjectPart = collections.namedtuple('SubjectPart', 'text type')
 mods = NAMESPACES['mods']
 
-# TODO - pub. place
-
 
 class Record(etree.ElementBase):
-
     def _init(self):
         super(Record, self)._init()
 
 
 class MODSRecord(Record):
-
     def _init(self):
         super(MODSRecord, self)._init()
 
@@ -39,7 +33,7 @@ class MODSRecord(Record):
     def abstract(self):
         """
         Pull information from mods:abstract element(s).
-        :return: list of Abstract elements with text, type, and displayLabel attributes
+        :return: A list of Abstract elements with text, type, and displayLabel attributes.
         """
         return [Abstract(getattr(abstract, 'text', ''),
                          abstract.attrib.get('type'),
@@ -49,8 +43,8 @@ class MODSRecord(Record):
     @property
     def classification(self):
         """
-        Pull information from mods:classification element(s)
-        :return: list of text from classification element(s)
+        Pull information from mods:classification element(s).
+        :return: A list of text from classification element(s).
         """
         return [classification.text
                 for classification in self.iterfind('./{0}classification'.format(mods))]
@@ -58,8 +52,8 @@ class MODSRecord(Record):
     @property
     def collection(self):
         """
-        Retrieve archival collection metadata from mods:relatedItem[type="host"]:
-        :return: A Collection element with location, title, and url attributes
+        Retrieve archival collection metadata from mods:relatedItem[type="host"].
+        :return: A Collection element with location, title, and url attributes.
         """
         try:
             related_item = self.findall('./{0}relatedItem[@type="host"]'.format(mods))[0]
@@ -71,7 +65,7 @@ class MODSRecord(Record):
                 pass
 
             try:
-                coll_title = self._title_constructor(related_item)[0]
+                coll_title = self._title_part(related_item)[0]
             except IndexError:
                 pass
 
@@ -85,18 +79,11 @@ class MODSRecord(Record):
         except IndexError:
             return None
 
-    # def date_constructor(self, elem=None):
-    #     """
-    #     Accesses mods:dateIssued, mods:dateCreated, mods:copyrightDate, and mods:dateOther underneath mods:originInfo. Other date-type elements are ignored:
-    #     return: A date containing string or None.
-    #     """
-    #     pass
-
     @property
     def dates(self):
         """
-        
-        :return: List of date elements with text and type attributes.
+        Constructs dates from dateIssued, dateCreated, copyrightDate, and dateOther elements.
+        :return: List of Date elements with text and type attributes.
         """
         try:
             return [Date(self._date_text(date_pair)[0], self._date_text(date_pair)[1])
@@ -108,7 +95,7 @@ class MODSRecord(Record):
     def digital_origin(self):
         """
         Get text from mods:edition element.
-        :return: String containing digital origin information
+        :return: String containing digital origin information.
         """
         try:
             return self.find('.//{0}digitalOrigin'.format(mods)).text
@@ -118,7 +105,7 @@ class MODSRecord(Record):
     @property
     def doi(self):
         """
-        :return: item's DOI.
+        :return: Item's DOI or None.
         """
         try:
             return self._identifier(id_type='DOI')[0].text
@@ -128,8 +115,8 @@ class MODSRecord(Record):
     @property
     def edition(self):
         """
-        Accesses mods:edition element:
-        return: element text or None.
+        Accesses mods:edition element.
+        :return: Edition element text or None.
         """
         try:
             return self.find('.//{0}edition'.format(mods)).text
@@ -139,25 +126,25 @@ class MODSRecord(Record):
     @property
     def extent(self):
         """
-        Accesses mods:extent element:
-        return: list of mods:extent texts
+        Accesses mods:extent element.
+        :return: A list of mods:extent texts.
         """
         return [extent.text for extent in self.iterfind('.//{0}extent'.format(mods))]
 
     @property
     def form(self):
         """
-        Accesses mods:physicalDescription/mods:form element:
-        return: list of mods:form texts
+        Accesses mods:physicalDescription/mods:form element.
+        :return: A list of mods:form texts.
         """
         return [form.text for form in self.iterfind('./{0}physicalDescription/{0}form'.format(mods))]
 
     @property
     def genre(self):
         """
-        Accesses mods:genre element:
+        Accesses mods:genre element.
         :return: A list containing Genre elements with term, authority,
-            authorityURI, and valueURI attributes
+            authorityURI, and valueURI attributes.
         """
         return [Genre(genre.text,
                       genre.attrib.get('authority'),
@@ -168,66 +155,78 @@ class MODSRecord(Record):
     @property
     def geographic_code(self):
         """
-        Accesses mods:geographicCode element:
-        return: list of mods:geographicCode texts.
+        Accesses mods:geographicCode element.
+        :return: A list of mods:geographicCode texts.
         """
         return [geocode.text for geocode in self.iterfind('./{0}subject/{0}geographicCode'.format(mods))]
 
     @property
-    def get_corp_names(self):  # EH
+    def get_corp_names(self):
+        """
+        Separates corporate names from other name types.
+        :return: A list of corporate names.
+        """
         return sorted([name for name in self.get_names(type='corporate')])
 
     @property
     def get_creators(self):
+        """
+        Separates creator names from other name roles.
+        :return: A list of corporate names.
+        """
         return sorted([name for name in self.get_names(role='Creator')])  # TODO: this needs to flexible to code='cre'
 
     def get_names(self, **kwargs):
         """
-
-        :param kwargs: 
-        :return: 
+        A customizable name query service. Subsets of all record names can be identified by 
+        type ('personal', 'corporate', etc.), name authority, or role. 
+        :param kwargs: A key, value pair of type="*", authority="*", or role="*".
+        :return: A list of names matching query.
         """
         if 'type' in kwargs.keys():
             return [name for name in self.names if name.type == kwargs['type']]
         elif 'authority' in kwargs.keys():
             return [name for name in self.names if name.authority == kwargs['authority']]
-        elif 'role' in kwargs.keys():  # TODO
+        elif 'role' in kwargs.keys():
             return [name for name in self.names for role in name.role if role.text == kwargs['role']]
         else:
-            raise TypeError  # TODO: find proper error to raise
-
-        # return [name for name in self.names if name.type == kwargs['type']]
+            raise KeyError
 
     def get_notes(self, **kwargs):
         """
-        
-        :param kwargs: 
-        :return: 
+        A customizable name query service. Subsets of all record notes can be identified by 
+        type or displayLabel.
+        :param kwargs: A key, value pair of type="*" or displayLabel="*".
+        :return: A list of notes matching query.
         """
         if 'type' in kwargs.keys():
             return [note for note in self.note if note.type == kwargs['type']]
         elif 'displayLabel' in kwargs.keys():
             return [note for note in self.note if note.displayLabel == kwargs['displayLabel']]
         else:
-            return self.note
+            raise KeyError
 
     @property
-    def get_pers_names(self):  # EH
+    def get_pers_names(self):
+        """
+        Separates personal names from other name types.
+        :return: A list of personal names.
+        """
         return sorted([name for name in self.get_names(type='personal')])
 
     @property
     def identifiers(self):
         """
-
-        :return:
+        Accesses mods:identifier elements.
+        :return: A list of identifiers.
         """
         return self._identifier()
 
     @property
     def iid(self):
         """
-        
-        :return: 
+        A custom FSU identifier service.
+        :return: Item's IID or None.
         """
         try:
             return self._identifier(id_type='IID')[0].text
@@ -235,18 +234,27 @@ class MODSRecord(Record):
             return None
 
     @property
+    def internet_media_type(self):
+        """
+        Accesses mods:physicalDescription/mods:internetMediaType element.
+        :return: A list of mods:internetMediaType texts.
+        """
+        return [mime_type.text for mime_type in
+                self.iterfind('./{0}physicalDescription/{0}internetMediaType'.format(mods))]
+
+    @property
     def issuance(self):
         """
-        Accesses mods:issuance element:
-        return: list of mods:issuance texts.
+        Accesses mods:issuance element.
+        :return: List of mods:issuance texts.
         """
         return [issuance.text for issuance in self.iterfind('.//{0}issuance'.format(mods))]
 
     @property
     def language(self):
         """
-        Accesses mods:languageterm elements:
-        :return: A list of Language elements with text, type, and authority attributes
+        Accesses mods:languageTerm elements.
+        :return: A list of Language elements with text, type, and authority attributes.
         """
         return [Language(term.text,
                          term.attrib.get('type'),
@@ -257,8 +265,8 @@ class MODSRecord(Record):
     @property
     def names(self):
         """
-
-        :return: A list of Name elements with text, uri, authority, and authorityURI attributes
+        General mods:name service.
+        :return: A list of Name elements with text, uri, authority, and authorityURI attributes.
         """
         return [Name(name._name_text(),
                      name.attrib.get('type'),
@@ -271,7 +279,7 @@ class MODSRecord(Record):
     @property
     def name_parts(self):
         """
-        
+        Not currently implemented.
         :return: 
         """
         return NotImplemented
@@ -280,22 +288,17 @@ class MODSRecord(Record):
     @property
     def note(self):
         """
-        Access mods:note elements and return a list of dicts:
-        :return: A list containing Note elements with text, type, and displayLabel attributes
+        Access mods:note elements.
+        :return: A list containing Note elements with text, type, and displayLabel attributes.
         """
         return [Note(note.text, note.attrib.get('type'), note.attrib.get('displayLabel'))
                 for note in self.iterfind('./{0}note'.format(mods))]
 
-    # @property  # EH
-    # def personal_names(self):
-    #     return sorted([self._name_text(name) for name in self.get_names()
-    #                    if name.type == 'personal'])
-
     @property
     def physical_description_note(self):
         """
-        Access mods:physicalDescription/mods:note elements and return a list of text values:
-        :return: list of note text values.
+        Access mods:physicalDescription/mods:note elements and return a list of text values.
+        :return: A list of note text values.
         """
         return [note.text for note in self.findall('./{0}physicalDescription/{0}note'.format(mods))]
 
@@ -303,15 +306,15 @@ class MODSRecord(Record):
     def physical_location(self):
         """
         Access mods:mods/mods:location/mods:physicalLocation and return text values.
-        :return: list of element text values.
+        :return: A list of element text values.
         """
         return self._physical_location()
 
     @property
     def pid(self):
         """
-        Get fedora PID from MODS record:
-        return: item's fedora PID.
+        Get fedora PID from MODS record.
+        :return: Item's fedora PID or None.
         """
         try:
             return self._identifier(id_type='fedora')[0].text
@@ -321,8 +324,8 @@ class MODSRecord(Record):
     @property
     def publication_place(self):
         """
-        Access mods:place and return a list of dicts:
-        :return: [{termType: termText}, {'untyped': termText}, ...]
+        Accesses mods:originInfo/mods:place elements.
+        :return: A list of PublicationPlace elements with text and type attributes.
         """
         return [PublicationPlace(place.text, place.attrib.get('type'))
                 for place in self.iterfind('./{0}originInfo/{0}place/{0}placeTerm'.format(mods))]
@@ -330,8 +333,8 @@ class MODSRecord(Record):
     @property
     def publisher(self):
         """
-        Access mods:publisher and return a list of text values:
-        return: [publisher, ...]
+        Accesses mods:publisher elements.
+        :return: A list of element text values.
         """
         return [publisher.text for publisher in
                 self.findall('./{0}originInfo/{0}publisher'.format(mods))]
@@ -339,8 +342,8 @@ class MODSRecord(Record):
     @property
     def purl(self):
         """
-        Accesses record's Persistent URL from mods:mods/mods:location/mods:url:
-        return: item PURL as string.
+        Retrieves record's Persistent URL from mods:mods/mods:location/mods:url.
+        :return: List of strings.
         """
         purl = re.compile('((http://purl)[\w\d:#@%/;$()~_?\+-=\\\.&]+)')
         return [url.text for url in self.iterfind('./{0}location/{0}url'.format(mods)) if purl.search(url.text)]
@@ -348,8 +351,8 @@ class MODSRecord(Record):
     @property
     def rights(self):
         """
-        Access mods:rights[type="use and reproduction|useAndReproduction" and return a dict:
-        :return: A list containing Rights elements with text, type, and uri
+        Access mods:accessCondition and return values.
+        :return: A list containing Rights elements with text, type, and uri.
         """
         return [Rights(rights.text,
                        rights.attrib.get('type'),
@@ -359,13 +362,13 @@ class MODSRecord(Record):
     @property
     def subjects(self):
         """
-        
+        General subject retrieval service.
         :return: list of Subject elements with text, uri, authority and authorityURI values.
         """
         return [Subject(subject._subject_text(),
-                             subject[0].attrib.get('valueURI'),
-                             subject.attrib.get('authority'),
-                             subject.attrib.get('authorityURI'))
+                        subject[0].attrib.get('valueURI'),
+                        subject.attrib.get('authority'),
+                        subject.attrib.get('authorityURI'))
                 if subject.attrib.get('valueURI') is None
                 else Subject(subject._subject_text(),
                              subject.attrib.get('valueURI'),
@@ -377,7 +380,7 @@ class MODSRecord(Record):
     @property
     def subject_parts(self):
         """
-        
+        Not currently implemented.
         :return: 
         """
         return NotImplemented
@@ -386,15 +389,15 @@ class MODSRecord(Record):
     @property
     def titles(self):
         """
-        
-        :return: 
+        General title retrieval service.
+        :return: A list of title texts.
         """
-        return [title for title in self._title_constructor()]
+        return [title for title in self._title_part()]
 
     @property
     def title_parts(self):
         """
-        
+        Not currently implemented.
         :return: 
         """
         return NotImplemented
@@ -403,35 +406,13 @@ class MODSRecord(Record):
     @property
     def type_of_resource(self):
         """
-        Access mods:typeOfResource and return text value:
-        :return: text value or None
+        Access mods:typeOfResource and return text value.
+        :return: Text value or None.
         """
         try:
             return self.find('./{0}typeOfResource'.format(mods)).text
         except AttributeError:
             return None
-
-    # def _format_name(self, name):  # EH
-    #     """
-    #
-    #
-    #     :param name: A Name element
-    #     :return: A string formatted according to LOC conventions
-    #     """
-    #     family = ', '.join(x.name for x in name.name_parts
-    #                        if x.type == 'family')
-    #     given = ', '.join(x.name for x in name.name_parts
-    #                       if x.type == 'given' or x.type is None)
-    #     terms_of_address = ', '.join(x.name for x in name.name_parts
-    #                                  if x.type == 'termsOfAddress')
-    #     date = ', '.join(x.name for x in name.name_parts
-    #                      if x.type == 'date')
-    #     return '{family}{given}{termsOfAddress}{date}'.format(
-    #         family=family + ', ' if family else '',
-    #         given=given if given else '',
-    #         termsOfAddress=', ' + terms_of_address if terms_of_address else '',
-    #         date=', ' + date if date else ''
-    #     )
 
     def _date_collector(self, elem):
         for tag in DATE_FIELDS:
@@ -448,7 +429,7 @@ class MODSRecord(Record):
             date_list = sorted([date.text for date in date_pair])
             return '{0} - {1}'.format(date_list[0], date_list[1]), date_pair[0].tag
 
-    def _get_dates(self, elem):  # EH
+    def _get_dates(self, elem):
         return [date for date in elem.find('./{0}originInfo'.format(mods)).iterchildren()
                 if date.tag in DATE_FIELDS]
 
@@ -458,8 +439,8 @@ class MODSRecord(Record):
 
     def _identifier(self, id_type=None):
         """
-
-        :return:
+        :param id_type: A MODSXML @type='id_type' attribute value.
+        :return: A list of Identifier elements with text and type attributes.
         """
         if id_type:
             return [Identifier(identifier.text, id_type)
@@ -469,38 +450,19 @@ class MODSRecord(Record):
             return [Identifier(identifier.text, identifier.attrib.get('type'))
                     for identifier in self.iterfind('.//{0}identifier'.format(mods))]
 
-    # def _make_name_parts(self, el):  # EH
-    #     return [NamePart(name.text, name.attrib.get('type')) for name in
-    #             el.iterfind('./{0}namePart'.format(mods))]
-
-    def _name_part(self, elem=None):  # MM
-        """
-
-        :param elem:
-        :return: namePart text and type
-        """
+    def _name_part(self, elem=None):
         if elem is None:
             elem = self
         return [NamePart(name.text, name.attrib.get('type')) for name in
                 elem.iterfind('./{0}namePart'.format(mods))]
 
-    def _name_role(self, elem=None):  # EH
-        """
-        
-        :param elem: 
-        :return: 
-        """
+    def _name_role(self, elem=None):
         if elem is None:
             elem = self
         return [Role(name.text, name.attrib.get('type')) for name in
                 elem.iterfind('./{0}role/{0}roleTerm'.format(mods))]
 
-    def _name_text(self, elem=None):  # MM
-        """
-
-        :param elem:
-        :return:
-        """
+    def _name_text(self, elem=None):
         if elem is None:
             elem = self
         if elem.attrib.get('type') == 'personal':
@@ -525,18 +487,13 @@ class MODSRecord(Record):
     def _physical_location(self, elem=None):
         """
         Access mods:mods/mods:location/mods:physicalLocation and return text values.
-        return: list of element text values.
+        :return: A list of text values.
         """
         if elem is None:
             elem = self
         return [location.text for location in elem.iterfind('./{0}location/{0}physicalLocation'.format(mods))]
 
     def _subject_part(self, elem=None):
-        """
-        
-        :param elem: 
-        :return: list of SubjectPart elements with text and type values.
-        """
         if elem is None:
             elem = self
         return [SubjectPart(term._name_text(), term.tag)
@@ -550,10 +507,10 @@ class MODSRecord(Record):
             subject_text = subject_text + '{0}--'.format(subject_part.text)
         return subject_text.strip('--')
 
-    def _title_constructor(self, elem=None): # TODO - name title stuff to match name&subject methods
+    def _title_part(self, elem=None):  # TODO - name title stuff to match name&subject methods
         """
-        :param elem: The element containing title information
-        :return: A list of correctly formatted titles
+        :param elem: The element containing a mods:titleInfo elements (i.e. mods:mods or mods:relatedItem).
+        :return: A list of correctly formatted titles.
         """
         if elem is None:
             elem = self
@@ -561,28 +518,27 @@ class MODSRecord(Record):
             self._get_text(title.find('./{0}nonSort'.format(mods))),
             self._get_text(title.find('./{0}title'.format(mods))),
             self._get_text(title.find('./{0}subTitle'.format(mods))))
-                for title in elem.iterfind('./{0}titleInfo'.format(mods))]
+            for title in elem.iterfind('./{0}titleInfo'.format(mods))]
 
     def _title_text(self, non_sort, title, subtitle):
         """Construct valid title regardless if any constituent part missing."""
         return '{non_sort}{title}{subtitle}'.format(
-            non_sort=non_sort+' ' if non_sort else '',
+            non_sort=non_sort + ' ' if non_sort else '',
             title=title if title else '',
-            subtitle=': '+subtitle if subtitle else '')
+            subtitle=': ' + subtitle if subtitle else '')
 
     def _url(self, elem):
         return [url.text for url in elem.iterfind('./{0}location/{0}url'.format(mods))]
 
 
 class OAIRecord(Record):
-
     def _init(self):
         super(OAIRecord, self)._init()
 
     @property
     def oai_urn(self):
         """
-        :return: The OAI ID as a string
+        :return: The OAI ID as a string.
         """
         if '{http://repox.ist.utl.pt}' in self.tag:
             try:

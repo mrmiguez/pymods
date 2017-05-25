@@ -2,24 +2,24 @@
 
     <!-- digital origin -->
     <mods>
-        <physicalDesctiption>
+        <physicalDescription>
             <digitalOrigin>reformatted digital</digitalOrigin>
-        </physicalDesctiption>
+        </physicalDescription>
     </mods>
 
     <!-- extent -->
     <mods>
-        <physicalDesctiption>
+        <physicalDescription>
             <extent>5 pieces</extent>
             <extent>2 tonnes</extent>
-        </physicalDesctiption>
+        </physicalDescription>
     </mods>
 
     <!-- form -->
     <mods>
-        <physicalDesctiption>
-            <form></form>
-        </physicalDesctiption>
+        <physicalDescription>
+            <form>pancakes</form>
+        </physicalDescription>
     </mods>
 
     <!-- physDesc note -->
@@ -27,6 +27,13 @@
         <physicalDescription>
             <note>Battered &amp; bruised</note>
             <note>Infinite summer</note>
+        </physicalDescription>
+    </mods>
+    
+    <!-- internetMediaType -->
+    <mods>
+        <physicalDescription>
+            <internetMediaType>food/pancakes</internetMediaType>
         </physicalDescription>
     </mods>
 

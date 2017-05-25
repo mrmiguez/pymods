@@ -30,10 +30,10 @@ class Reader(etree.XMLParser):
         return self
 
     # def __index__(self):
-    #     return self
+    #     """"""
     #
     # def __int__(self):
-    #     return self
+    #     """"""
 
 
 class MODSReader(Reader):

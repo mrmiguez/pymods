@@ -7,7 +7,6 @@ test_dir_path = os.path.abspath(os.path.dirname(__file__))
 
 
 class AbstractTests(unittest.TestCase):
-
     def setUp(self):
         self.record = next(MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')))
         self.no_abstract = next(MODSReader(os.path.join(test_dir_path, 'genre_xml.xml')))
@@ -27,7 +26,6 @@ class AbstractTests(unittest.TestCase):
 
 
 class ClassificationTests(unittest.TestCase):
-
     def setUp(self):
         self.record = next(MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')))
         self.no_class = next(MODSReader(os.path.join(test_dir_path, 'genre_xml.xml')))
@@ -43,7 +41,6 @@ class ClassificationTests(unittest.TestCase):
 
 
 class CollectionTests(unittest.TestCase):
-
     def setUp(self):
         self.record = next(MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')))
 
@@ -61,7 +58,6 @@ class CollectionTests(unittest.TestCase):
 
 
 class OriginInfoTests(unittest.TestCase):
-
     def setUp(self):
         records = MODSReader(os.path.join(test_dir_path, 'originInfo_xml.xml'))
         self.first_record = next(records)
@@ -108,8 +104,8 @@ class OriginInfoTests(unittest.TestCase):
         expected = 'Image Comics'
         self.assertEqual(expected, self.seventh_record.publisher[0])
 
-class LanguageTests(unittest.TestCase):
 
+class LanguageTests(unittest.TestCase):
     def setUp(self):
         records = MODSReader(os.path.join(test_dir_path, 'language_xml.xml'))
         self.first_record = next(records)
@@ -148,7 +144,6 @@ class LanguageTests(unittest.TestCase):
 
 
 class NameTests(unittest.TestCase):
-
     def setUp(self):
         self.record = next(MODSReader(os.path.join(test_dir_path, 'name_xml.xml')))
 
@@ -167,14 +162,15 @@ class NameTests(unittest.TestCase):
                           'Florida, Legislature, House of Representatives, Office of the Clerk']
         self.assertEqual(sorted([name.text for name in self.record.get_corp_names]), sorted(expected_names))
 
-class PhysicalDescriptionTests(unittest.TestCase):
 
+class PhysicalDescriptionTests(unittest.TestCase):
     def setUp(self):
         records = MODSReader(os.path.join(test_dir_path, 'physicalDesc_xml.xml'))
         self.first_record = next(records)
         self.second_record = next(records)
         self.third_record = next(records)
         self.fourth_record = next(records)
+        self.fifth_record = next(records)
 
     def test_mods_digital_origin(self):
         '''checks digital origin'''
@@ -186,18 +182,24 @@ class PhysicalDescriptionTests(unittest.TestCase):
         expected = ['5 pieces', '2 tonnes']
         self.assertTrue(expected, self.second_record.extent)
 
-    # def test_mods_form(self):
-    #     '''checks form'''
+    def test_mods_form(self):
+        '''checks form'''
+        expected = ['pancakes']
+        self.assertTrue(expected, self.third_record.extent)
 
     def test_mods_physdesc_note(self):
         '''checks physicalDescription/note'''
         expected = ['Battered & bruised',
                     'Infinite summer']
-        self.assertTrue(expected, self.third_record.physical_description_note)
+        self.assertTrue(expected, self.fourth_record.physical_description_note)
+
+    def test_mods_internet_media_type(self):
+        '''checks form'''
+        expected = ['food/pancakes']
+        self.assertTrue(expected, self.fifth_record.internet_media_type)
 
 
 class GenreTests(unittest.TestCase):
-
     def setUp(self):
         records = MODSReader(os.path.join(test_dir_path, 'genre_xml.xml'))
         self.first_record = next(records)
@@ -248,6 +250,7 @@ class GeographicCodeTests(unittest.TestCase):
     """
 
     """
+
     def setUp(self):
         self.record = next(MODSReader(os.path.join(test_dir_path, 'subject_xml.xml')))
 
@@ -282,10 +285,12 @@ class IdentifierTests(unittest.TestCase):
         doi = '10.3389/fmicb.2016.00458'
         self.assertEqual(doi, self.record.doi)
 
+
 class NoteTests(unittest.TestCase):
     """
 
     """
+
     def setUp(self):
         self.record = next(MODSReader(os.path.join(test_dir_path, 'abstract_xml.xml')))
 
@@ -309,6 +314,7 @@ class PhysicalLocationTests(unittest.TestCase):
     """
     location text values return as a list or exception raised if none
     """
+
     def setUp(self):
         self.record = next(MODSReader(os.path.join(test_dir_path, 'location_xml.xml')))
 
@@ -322,6 +328,7 @@ class RightsTests(unittest.TestCase):
     """
 
     """
+
     def setUp(self):
         records = MODSReader(os.path.join(test_dir_path, 'rights_xml.xml'))
         self.first_record = next(records)
@@ -348,6 +355,7 @@ class SubjectTests(unittest.TestCase):
     """
 
     """
+
     def setUp(self):
         records = MODSReader(os.path.join(test_dir_path, 'subject_xml.xml'))
         self.first_record = next(records)
@@ -404,6 +412,7 @@ class TitleTests(unittest.TestCase):
     """
 
     """
+
     def setUp(self):
         records = MODSReader(os.path.join(test_dir_path, 'title_xml.xml'))
         self.first_record = next(records)
@@ -430,6 +439,7 @@ class TypeOfResourceTests(unittest.TestCase):
     """
 
     """
+
     def setUp(self):
         records = MODSReader(os.path.join(test_dir_path, 'resourceType_xml.xml'))
         self.first_record = next(records)
