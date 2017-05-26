@@ -555,3 +555,25 @@ class OAIRecord(Record):
                 return self.find('{}header/{}identifier').text
             except AttributeError:
                 pass
+
+    @property
+    def metadata(self):
+        """
+        
+        :return: 
+        """
+        record_data = self.find('./{*}metadata')
+        if record_data is not None:
+            try:
+                if 'mods' in record_data[0].tag:
+                    mods_parser_registration = etree.ElementDefaultClassLookup(element=MODSRecord)
+                    mods_parser = etree.XMLParser()
+                    mods_parser.set_element_class_lookup(mods_parser_registration)
+                    return etree.XML(etree.tostring(record_data[0], encoding='UTF-8').decode('utf-8'),
+                                     parser=mods_parser)
+                elif 'qualified' in record_data[0].tag:
+                    return "It's QDC!"
+                elif 'dc' in record_data[0].tag:
+                    return "It's DC!"
+            except IndexError:
+                pass
