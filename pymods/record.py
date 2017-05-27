@@ -21,11 +21,27 @@ mods = NAMESPACES['mods']
 
 
 class Record(etree.ElementBase):
+    """
+    Base record class. Subclass of etree.ElementBase.
+    """
+
     def _init(self):
         super(Record, self)._init()
 
 
 class MODSRecord(Record):
+    """
+    Class for retrieving information from documents using the
+    MODSXML standard (http://www.loc.gov/standards/mods).
+
+    Most element structures are supported. Data is returned mostly
+    as lists of strings or lists of named tuples. When possible
+    data is parsed from element parts and returned in typical
+    LOC ordered strings:
+        {family name}, {given name}, {dates} for names.
+        {non-sort character} {title}: {subtitle} for titles.
+    """
+
     def _init(self):
         super(MODSRecord, self)._init()
 
@@ -472,11 +488,11 @@ class MODSRecord(Record):
             date = ', '.join(x.text for x in elem._name_part() if x.type == 'date')
             untyped_name = ', '.join(x.text for x in elem._name_part() if x.type is None)
             return '{family}{given}{termsOfAddress}{untyped_name}{date}'.format(
-                family=family + ', ' if family else '',
-                given=given if given else '',
-                termsOfAddress=', ' + terms_of_address if terms_of_address else '',
-                untyped_name=untyped_name if untyped_name else '',
-                date=', ' + date if date else ''
+                    family=family + ', ' if family else '',
+                    given=given if given else '',
+                    termsOfAddress=', ' + terms_of_address if terms_of_address else '',
+                    untyped_name=untyped_name if untyped_name else '',
+                    date=', ' + date if date else ''
             )
         else:
             text = ''
@@ -515,23 +531,37 @@ class MODSRecord(Record):
         if elem is None:
             elem = self
         return [self._title_text(
-            self._get_text(title.find('./{0}nonSort'.format(mods))),
-            self._get_text(title.find('./{0}title'.format(mods))),
-            self._get_text(title.find('./{0}subTitle'.format(mods))))
-            for title in elem.iterfind('./{0}titleInfo'.format(mods))]
+                self._get_text(title.find('./{0}nonSort'.format(mods))),
+                self._get_text(title.find('./{0}title'.format(mods))),
+                self._get_text(title.find('./{0}subTitle'.format(mods))))
+                for title in elem.iterfind('./{0}titleInfo'.format(mods))]
 
     def _title_text(self, non_sort, title, subtitle):
         """Construct valid title regardless if any constituent part missing."""
         return '{non_sort}{title}{subtitle}'.format(
-            non_sort=non_sort + ' ' if non_sort else '',
-            title=title if title else '',
-            subtitle=': ' + subtitle if subtitle else '')
+                non_sort=non_sort + ' ' if non_sort else '',
+                title=title if title else '',
+                subtitle=': ' + subtitle if subtitle else '')
 
     def _url(self, elem):
         return [url.text for url in elem.iterfind('./{0}location/{0}url'.format(mods))]
 
 
 class OAIRecord(Record):
+    """
+    Record class for records stored in the OAI-PMH format.
+    OAI documents in either the OAI-PMH standard or
+    repox export standard are supported.
+
+    This class allows access to OAI wrapper data,
+    such as the OAI record URN. The OAIRecord.metadata property
+    allows access to the metadata content of the record.
+    Standard methods from the MODSRecord and DCRecord classes
+    can be performed on OAIRecord objects through the metadata
+    property. Internal tests will automatically select the correct
+    parser and class to return.
+    """
+
     def _init(self):
         super(OAIRecord, self)._init()
 
@@ -559,8 +589,8 @@ class OAIRecord(Record):
     @property
     def metadata(self):
         """
-        
-        :return: 
+        Exposes the metadata content of an OAIRecord.
+        :return: A reparsed root element either in the MODSRecord or DCRecord class, as appropriate.
         """
         record_data = self.find('./{*}metadata')
         if record_data is not None:
@@ -572,8 +602,59 @@ class OAIRecord(Record):
                     return etree.XML(etree.tostring(record_data[0], encoding='UTF-8').decode('utf-8'),
                                      parser=mods_parser)
                 elif 'qualified' in record_data[0].tag:
-                    return "It's QDC!"
+                    qdc_parser_registration = etree.ElementDefaultClassLookup(element=DCRecord)
+                    qdc_parser = etree.XMLParser()
+                    qdc_parser.set_element_class_lookup(qdc_parser_registration)
+                    return etree.XML(etree.tostring(record_data[0], encoding='UTF-8').decode('utf-8'),
+                                     parser=qdc_parser)
                 elif 'dc' in record_data[0].tag:
-                    return "It's DC!"
+                    dc_parser_registration = etree.ElementDefaultClassLookup(element=DCRecord)
+                    dc_parser = etree.XMLParser()
+                    dc_parser.set_element_class_lookup(dc_parser_registration)
+                    return etree.XML(etree.tostring(record_data[0], encoding='UTF-8').decode('utf-8'),
+                                     parser=dc_parser)
             except IndexError:
                 pass
+
+
+class DCRecord(Record):
+    """
+    Record class for Dublin Core and Qualified Dublin Core elements.
+    """
+
+    def _init(self):
+        super(DCRecord, self)._init()
+
+    def get_element(self, elem, delimiter=None):
+        """
+        :param elem: An element. It can be names explicitly by namespace using Clark Notation,
+            or using the form '{*}elem' will match elem in any namespace.
+        :param delimiter: A character used to separate values within a single element.
+        :return: A list of element values.
+        """
+        if self.find('{0}'.format(elem)) is not None:
+            if delimiter is None:
+                return [item.text for item in self.findall('{0}'.format(elem))]
+            else:
+                return [split_text
+                        for item in self.finall('{0}'.format(elem))
+                        for split_text in item.text.split(delimiter)]
+
+# class QDCRecord(Record):
+#     def _init(self):
+#         super(QDCRecord, self)._init()
+#
+#     def get_element(self, elem, delimiter=None):
+#         """
+#
+#         :param elem:
+#         :param delimiter:
+#         :return:
+#         """
+#         if self.find('{0}'.format(elem)) is not None:
+#             if delimiter is None:
+#                 return [item.text for item in self.findall('{0}'.format(elem))]
+#             else:
+#                 return [split_text
+#                         for item in self.finall('{0}'.format(elem))
+#                         for split_text in item.text.split(delimiter)]
