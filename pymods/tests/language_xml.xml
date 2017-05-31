@@ -18,4 +18,11 @@
     <!-- none value -->
     <mods></mods>
 
+    <!-- language code, no text -->
+    <mods>
+        <language>
+            <languageTerm type="code">tlh</languageTerm>
+        </language>
+    </mods>
+
 </mods:modsCollection>

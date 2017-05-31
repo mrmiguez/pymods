@@ -111,6 +111,7 @@ class LanguageTests(unittest.TestCase):
         self.first_record = next(records)
         self.second_record = next(records)
         self.third_record = next(records)
+        self.fourth_record = next(records)
 
     def test_mods_lang_text(self):
         '''checks languageTerm@type="text"'''
@@ -120,27 +121,22 @@ class LanguageTests(unittest.TestCase):
     def test_mods_lang_code(self):
         '''checks languageTerm@type="code"'''
         expected = 'eng'
-        self.assertEqual(self.first_record.language[1].text, expected)
-
-    def test_mods_lang_code_type(self):
-        '''checks languageTerm@type="code"'''
-        expected = 'code'
-        self.assertEqual(self.first_record.language[1].type, expected)
+        self.assertEqual(self.first_record.language[0].code, expected)
 
     def test_mods_lang_untyped(self):
         '''checks untyped languageTerm elements'''
         expected = 'Klingon'
         self.assertEqual(self.second_record.language[0].text, expected)
 
-    def test_mods_lang_untyped_type(self):
-        '''checks untyped languageTerm elements'''
-        expected = None
-        self.assertEqual(self.second_record.language[0].type, expected)
-
     def test_mods_lang_none(self):
         '''checks lang None value'''
         expected = None
         self.assertEqual(self.third_record.text, expected)
+
+    def test_mods_lang_only_code(self):
+        '''checks lang code-only value'''
+        expected = 'tlh'
+        self.assertEqual(self.fourth_record.language[0].code, expected)
 
 
 class NameTests(unittest.TestCase):
@@ -237,7 +233,7 @@ class GenreTests(unittest.TestCase):
                     'http://vocab.getty.edu/page/aat/300027015']
         results = []
         for genre in (self.first_record.genre, self.second_record.genre):
-            results.append(genre[0].valueURI)
+            results.append(genre[0].uri)
         self.assertEqual(expected, results)
 
     def test_mods_genre_none(self):

@@ -9,7 +9,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name="pymods",
-    version="2.0.1",
+    version="2.0.2",
     packages=find_packages(exclude=['tests*']),
     install_requires=['lxml >= 2.3'],
     author="Matthew Miguez",
@@ -20,7 +20,7 @@ setup(
     keywords="MODS metadata xml",
     license='MIT',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Other Audience',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',

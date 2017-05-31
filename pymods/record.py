@@ -6,9 +6,9 @@ from pymods.constants import NAMESPACES, DATE_FIELDS
 Abstract = collections.namedtuple('Abstract', 'text type displayLabel')
 Collection = collections.namedtuple('Collection', 'location title url')
 Date = collections.namedtuple('Date', 'text type')
-Genre = collections.namedtuple('Genre', 'text authority authorityURI valueURI')
+Genre = collections.namedtuple('Genre', 'text uri authority authorityURI')
 Identifier = collections.namedtuple('Identifier', 'text type')
-Language = collections.namedtuple('Language', 'text type authority')
+Language = collections.namedtuple('Language', 'text code authority')
 Name = collections.namedtuple('Name', 'text type uri authority authorityURI role')
 NamePart = collections.namedtuple('NamePart', 'text type')
 Note = collections.namedtuple('Note', 'text type displayLabel')
@@ -159,13 +159,13 @@ class MODSRecord(Record):
     def genre(self):
         """
         Accesses mods:genre element.
-        :return: A list containing Genre elements with term, authority,
-            authorityURI, and valueURI attributes.
+        :return: A list containing Genre elements with term, uri, authority,
+            and authorityURI attributes.
         """
         return [Genre(genre.text,
+                      genre.attrib.get('valueURI'),
                       genre.attrib.get('authority'),
-                      genre.attrib.get('authorityURI'),
-                      genre.attrib.get('valueURI'))
+                      genre.attrib.get('authorityURI'))
                 for genre in self.iterfind('./{0}genre'.format(mods))]
 
     @property
@@ -188,7 +188,7 @@ class MODSRecord(Record):
     def get_creators(self):
         """
         Separates creator names from other name roles.
-        :return: A list of corporate names.
+        :return: A list of creator names.
         """
         return sorted([name for name in self.get_names(role='Creator')])  # TODO: this needs to flexible to code='cre'
 
@@ -270,13 +270,20 @@ class MODSRecord(Record):
     def language(self):
         """
         Accesses mods:languageTerm elements.
-        :return: A list of Language elements with text, type, and authority attributes.
+        :return: A list of Language elements with text, code, and authority attributes.
         """
-        return [Language(term.text,
-                         term.attrib.get('type'),
-                         term.attrib.get('authority'))
-                for language in self.iterfind('{0}language'.format(mods))
-                for term in language.iterfind('{0}languageTerm'.format(mods))]
+        return [Language(language.find('./{0}languageTerm[@type="text"]'.format(mods)).text,
+                         language.find('./{0}languageTerm[@type="code"]'.format(mods)).text,
+                         language.find('./{0}languageTerm[@type="text"]'.format(mods)).attrib.get('authority'))
+                if len(language) > 1
+                else Language(None,
+                              language.find('./{0}languageTerm'.format(mods)).text,
+                              language.find('./{0}languageTerm'.format(mods)).attrib.get('authority'))
+                if language.find('./{0}languageTerm'.format(mods)).text.islower()
+                else Language(language.find('./{0}languageTerm'.format(mods)).text,
+                              None,
+                              language.find('./{0}languageTerm'.format(mods)).attrib.get('authority'))
+                for language in self.iterfind('{0}language'.format(mods))]
 
     @property
     def names(self):

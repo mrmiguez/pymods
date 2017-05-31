@@ -34,16 +34,24 @@ In [5]: for record in mods_records:
 
 ```
 
-MODSReader will work with `mods:modsCollection` documents, outputs from OAI-PMH feeds, or individual MODSXML documents with `mods:mods` as the root element.
+MODSReader will work with `mods:modsCollection` documents, outputs from OAI-PMH feeds, or
+individual MODSXML documents with `mods:mods` as the root element.
     
 #### pymods.MODSRecord
 
-The MODSReader class parses each `mods:mods` element into a pymods.MODSRecord object. pymods.MODSRecord is a custom wrapper class for the lxml.ElementBase class. All children of pymods.Record inherit the lxml._Element and lxml.ElementBase methods.
+The MODSReader class parses each `mods:mods` element into a pymods.MODSRecord object.
+pymods.MODSRecord is a custom wrapper class for the lxml.ElementBase class. All children
+of pymods.Record inherit the lxml._Element and lxml.ElementBase methods.
 
 ```python
 In [6]: record = next(pymods.MODSReader('example.xml'))
 In [7]: print(record.nsmap)
-{'dcterms': 'http://purl.org/dc/terms/', 'xsi': 'http://www.w3.org/2001/XMLSchema-instance', None: 'http://www.loc.gov/mods/v3', 'flvc': 'info:flvc/manifest/v1', 'xlink': 'http://www.w3.org/1999/xlink', 'mods': 'http://www.loc.gov/mods/v3'}
+{'dcterms': 'http://purl.org/dc/terms/',
+ 'xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+ None: 'http://www.loc.gov/mods/v3',
+ 'flvc': 'info:flvc/manifest/v1',
+ 'xlink': 'http://www.w3.org/1999/xlink',
+ 'mods': 'http://www.loc.gov/mods/v3'}
 
 ```
 
@@ -70,7 +78,8 @@ In [8]: for child in record.iterdescendants():
 
 ### Methods
 
-All functions return data either as a string, list, list of named tuples. See the appropriate docstring for details.
+All functions return data either as a string, list, list of named tuples. See the
+appropriate docstring for details.
 
 ```python
 >>> record.genre?
