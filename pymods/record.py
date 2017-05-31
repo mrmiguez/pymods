@@ -643,25 +643,6 @@ class DCRecord(Record):
             if delimiter is None:
                 return [item.text for item in self.findall('{0}'.format(elem))]
             else:
-                return [split_text
-                        for item in self.finall('{0}'.format(elem))
+                return [split_text.strip()
+                        for item in self.findall('{0}'.format(elem))
                         for split_text in item.text.split(delimiter)]
-
-# class QDCRecord(Record):
-#     def _init(self):
-#         super(QDCRecord, self)._init()
-#
-#     def get_element(self, elem, delimiter=None):
-#         """
-#
-#         :param elem:
-#         :param delimiter:
-#         :return:
-#         """
-#         if self.find('{0}'.format(elem)) is not None:
-#             if delimiter is None:
-#                 return [item.text for item in self.findall('{0}'.format(elem))]
-#             else:
-#                 return [split_text
-#                         for item in self.finall('{0}'.format(elem))
-#                         for split_text in item.text.split(delimiter)]
