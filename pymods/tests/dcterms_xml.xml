@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repox:exportedRecords xmlns:repox="http://repox.ist.utl.pt" set="umiami" batchsize="-1" total="1000">
+  <repox:record id="oai:lib.fsu.edu.umiami:oai:uofm.library.umiami:oai:merrick.library.miami.edu:asm0447/31" timestamp="2017-03-21">
+    <repox:metadata>
+      <oai_qdc:qualifieddc xmlns:oai_qdc="http://worldcat.org/xmlschemas/qdc-1.0/" xmlns:oai="http://www.openarchives.org/OAI/2.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://worldcat.org/xmlschemas/qdc-1.0/ http://worldcat.org/xmlschemas/qdc/1.0/qdc-1.0.xsd http://purl.org/net/oclcterms http://worldcat.org/xmlschemas/oclcterms/1.4/oclcterms-1.4.xsd">
+        <dc:title>Vincent Gilpin letter to Patty Munroe, September 3, 1933</dc:title>
+        <dc:creator>Gilpin, Vincent</dc:creator>
+        <dcterms:abstract>Test 000</dcterms:abstract>
+      </oai_qdc:qualifieddc>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.umiami:oai:uofm.library.umiami:oai:merrick.library.miami.edu:asm0447/39" timestamp="2017-03-21">
+    <repox:metadata>
+      <oai_qdc:qualifieddc xmlns:oai_qdc="http://worldcat.org/xmlschemas/qdc-1.0/" xmlns:oai="http://www.openarchives.org/OAI/2.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://worldcat.org/xmlschemas/qdc-1.0/ http://worldcat.org/xmlschemas/qdc/1.0/qdc-1.0.xsd http://purl.org/net/oclcterms http://worldcat.org/xmlschemas/oclcterms/1.4/oclcterms-1.4.xsd">
+        <dc:title>Jessie N. Munroe letter to Mrs. Gilpin, January 16, 1912</dc:title>
+        <dc:creator>Munroe, Jessie N.</dc:creator>
+        <dc:subject>Letters</dc:subject>
+        <dcterms:created>1912-01-16</dcterms:created>
+        <dcterms:temporal>1910-1919</dcterms:temporal>
+        <dcterms:spatial>Coconut Grove (Miami, Fla.); Canterbury</dcterms:spatial>
+        <dcterms:spatial>Outside</dcterms:spatial>
+        <dcterms:extent>2 letters</dcterms:extent>
+        <dc:language>eng</dc:language>
+        <dc:contributor>Primus; Jurassic 5</dc:contributor>
+        <dcterms:isPartOf>University of Miami. Library. Special Collections</dcterms:isPartOf>
+        <dcterms:isPartOf>Alan Crockwell Collection</dcterms:isPartOf>
+        <dcterms:isPartOf>ASM0447</dcterms:isPartOf>
+        <dc:rights>Rights 1C</dc:rights>
+        <dc:publisher>IDW</dc:publisher>
+        <dc:rights>In Copyright http://rightsstatements.org/vocab/InC/1.0/</dc:rights>
+        <dc:type>Rebel Alliance Victory Plans</dc:type>
+        <dc:format>image/tiff</dc:format>
+        <dc:format>Photographs</dc:format>
+        <dc:identifier>http://merrick.library.miami.edu/cdm/ref/collection/asm0447/id/39</dc:identifier>
+      </oai_qdc:qualifieddc>
+    </repox:metadata>
+  </repox:record>
+  <repox:record id="oai:lib.fsu.edu.umiami:oai:uofm.library.umiami:oai:merrick.library.miami.edu:asm0447/25" timestamp="2017-03-21">
+    <repox:metadata>
+      <oai_qdc:qualifieddc xmlns:oai_qdc="http://worldcat.org/xmlschemas/qdc-1.0/" xmlns:oai="http://www.openarchives.org/OAI/2.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://worldcat.org/xmlschemas/qdc-1.0/ http://worldcat.org/xmlschemas/qdc/1.0/qdc-1.0.xsd http://purl.org/net/oclcterms http://worldcat.org/xmlschemas/oclcterms/1.4/oclcterms-1.4.xsd">
+        <dc:title>Jessie N. Munroe letter to Mrs. Gilpin, April 26, 1915</dc:title>
+        <dc:creator>Thurston Moore</dc:creator>
+        <dc:subject>Munroe, Patty; Letters</dc:subject>
+        <dcterms:created>1915-04-26</dcterms:created>
+        <dcterms:temporal>1910-1919</dcterms:temporal>
+        <dcterms:spatial>Death Star</dcterms:spatial>
+        <dc:contributor>Buckethead</dc:contributor>
+        <dcterms:extent>4 letters</dcterms:extent>
+        <dc:language>eng</dc:language>
+        <dc:publisher>Image Comics</dc:publisher>
+        <dc:description>Test 002</dc:description>
+        <dc:description>Test 003</dc:description>
+        <dcterms:isPartOf>University of Miami. Library. Special Collections</dcterms:isPartOf>
+        <dcterms:isPartOf>Alan Crockwell Collection</dcterms:isPartOf>
+        <dcterms:isPartOf>ASM0447</dcterms:isPartOf>
+        <dc:rights>Rights E3</dc:rights>
+        <dc:rights>In Copyright http://rightsstatements.org/vocab/InC/1.0/</dc:rights>
+        <dc:type>Text</dc:type>
+        <dc:format>image/tiff</dc:format>
+        <dc:identifier>http://merrick.library.miami.edu/cdm/ref/collection/asm0447/id/25</dc:identifier>
+      </oai_qdc:qualifieddc>
+    </repox:metadata>
+  </repox:record>
+</repox:exportedRecords>

@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from pymods.reader import MODSReader
+from pymods.reader import MODSReader, OAIReader
 
 test_dir_path = os.path.abspath(os.path.dirname(__file__))
 
@@ -450,6 +450,33 @@ class TypeOfResourceTests(unittest.TestCase):
         '''checks typeOfResource None value'''
         expected = None
         self.assertEqual(expected, self.second_record.type_of_resource)
+
+
+class DCRecordTests(unittest.TestCase):
+    """
+
+    """
+    def setUp(self):
+        records = OAIReader(os.path.join(test_dir_path, 'dcterms_xml.xml'))
+        self.first_record = next(records)
+        self.second_record = next(records)
+        self.third_record = next(records)
+
+    def test_dc_iter(self):
+        expected = [{'{http://purl.org/dc/elements/1.1/}title': 'Vincent Gilpin letter to Patty Munroe, September 3, 1933'},
+                    {'{http://purl.org/dc/elements/1.1/}creator': 'Gilpin, Vincent'},
+                    {'{http://purl.org/dc/terms/}abstract': 'Test 000'}]
+        self.assertEqual(expected, [{elem.tag: elem.text} for elem in self.first_record.metadata.iterchildren()])
+
+    def test_dc_delim(self):
+        expected = ['Coconut Grove (Miami, Fla.)',
+                    'Canterbury',
+                    'Outside']
+        self.assertEqual(expected, self.second_record.metadata.get_element('./{http://purl.org/dc/terms/}spatial', delimiter=';'))
+
+    def test_oai_urn(self):
+        expected = 'oai:lib.fsu.edu.umiami:oai:uofm.library.umiami:oai:merrick.library.miami.edu:asm0447/25'
+        self.assertEqual(expected, self.third_record.oai_urn)
 
 
 if __name__ == '__main__':
