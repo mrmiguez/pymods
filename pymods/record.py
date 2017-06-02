@@ -263,7 +263,7 @@ class MODSRecord(Record):
         elif 'authority' in kwargs.keys():
             return [name for name in self.names if name.authority == kwargs['authority']]
         elif 'role' in kwargs.keys():
-            return [name for name in self.names for role in name.role if role.text == kwargs['role']]
+            return [name for name in self.names if name.role.text == kwargs['role']]
         else:
             raise KeyError
 
