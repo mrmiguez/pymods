@@ -14,7 +14,7 @@ NamePart = collections.namedtuple('NamePart', 'text type')
 Note = collections.namedtuple('Note', 'text type displayLabel')
 PublicationPlace = collections.namedtuple('PublicationPlace', 'text type')
 Rights = collections.namedtuple('Rights', 'text type uri')
-Role = collections.namedtuple('Role', 'text type')
+Role = collections.namedtuple('Role', 'text code authority')
 Subject = collections.namedtuple('Subject', 'text uri authority authorityURI')
 SubjectPart = collections.namedtuple('SubjectPart', 'text type')
 mods = NAMESPACES['mods']
@@ -482,8 +482,25 @@ class MODSRecord(Record):
     def _name_role(self, elem=None):
         if elem is None:
             elem = self
-        return [Role(name.text, name.attrib.get('type')) for name in
-                elem.iterfind('./{0}role/{0}roleTerm'.format(mods))]
+        return Role(elem._name_role_text(), elem._name_role_code(), elem._name_role_authority())
+
+    def _name_role_authority(self):
+        try:
+            return self.find('.//{0}roleTerm'.format(mods)).attrib.get('authority')
+        except AttributeError:
+            return None
+
+    def _name_role_code(self):
+        try:
+            return self.find('.//{0}roleTerm[@type="code"]'.format(mods)).text
+        except AttributeError:
+            return None
+
+    def _name_role_text(self):
+        try:
+            return self.find('.//{0}roleTerm[@type="text"]'.format(mods)).text
+        except AttributeError:
+            return None
 
     def _name_text(self, elem=None):
         if elem is None:
@@ -634,7 +651,7 @@ class DCRecord(Record):
 
     def get_element(self, elem, delimiter=None):
         """
-        :param elem: An element. It can be names explicitly by namespace using Clark Notation,
+        :param elem: An element. It can be named explicitly by namespace using Clark Notation,
             or using the form '{*}elem' will match elem in any namespace.
         :param delimiter: A character used to separate values within a single element.
         :return: A list of element values.

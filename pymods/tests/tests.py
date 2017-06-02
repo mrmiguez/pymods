@@ -148,7 +148,9 @@ class NameTests(unittest.TestCase):
         expected_names = ['Delp, Roy',
                           'Miguez, Matthew Roland, 1984-',
                           'Olsen, Stanford',
-                          'Steinbeck, John, 1902-1968']
+                          'Steinbeck, John, 1902-1968',
+                          'Lynch, Bartholomew',
+                          'Mauldin, Bob']
         self.assertEqual(sorted([name.text for name in self.record.get_pers_names]), sorted(expected_names))
 
     def test_mods_names_corp_text(self):
@@ -157,6 +159,11 @@ class NameTests(unittest.TestCase):
                           'Florida State University',
                           'Florida, Legislature, House of Representatives, Office of the Clerk']
         self.assertEqual(sorted([name.text for name in self.record.get_corp_names]), sorted(expected_names))
+
+    def test_mods_names_roles(self):
+        expected = [('Creator', 'cre', 'marcrelator'),
+                    ('Photographer', 'pht', 'marcrelator')]
+        self.assertEqual(expected, [(name.role.text, name.role.code, name.role.authority) for name in self.record.names[8:10]])
 
 
 class PhysicalDescriptionTests(unittest.TestCase):
