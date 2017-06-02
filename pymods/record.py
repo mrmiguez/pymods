@@ -3,20 +3,79 @@ import collections
 from lxml import etree
 from pymods.constants import NAMESPACES, DATE_FIELDS
 
+__pdoc__ = {}  # for pdoc documentation - http://pdoc.burntsushi.net/pdoc
+
 Abstract = collections.namedtuple('Abstract', 'text type displayLabel')
+# helper statements for pdoc documentation - http://pdoc.burntsushi.net/pdoc
+__pdoc__['Abstract.text'] = 'Abstract elem text value.'
+__pdoc__['Abstract.type'] = 'Value of elem@type attribute.'
+__pdoc__['Abstract.displayLabel'] = 'Value of elem@displayLabel attribute.'
+
 Collection = collections.namedtuple('Collection', 'location title url')
+__pdoc__['Collection'] = 'Tuple container for archival collection information.'
+__pdoc__['Collection.location'] = 'Collection location (relatedItem[@type="host"]/location/physicalLocation).'
+__pdoc__['Collection.title'] = 'Collection title (relatedItem[@type="host"]/titleInfo).'
+__pdoc__['Collection.url'] = 'Value of relatedItem[@type="host"]/location/url, which for local practice is a link to the finding aid.'
+
 Date = collections.namedtuple('Date', 'text type')
+__pdoc__['Date.text'] = 'Date elem text value. Potentially reformatted if a date range.'
+__pdoc__['Date.type'] = 'Date elem type.'
+
 Genre = collections.namedtuple('Genre', 'text uri authority authorityURI')
+__pdoc__['Genre.text'] = 'Genre elem text value.'
+__pdoc__['Genre.uri'] = 'Value of elem@valueURI attribute.'
+__pdoc__['Genre.authority'] = 'Value of elem@authority attribute.'
+__pdoc__['Genre.authorityURI'] = 'Value of elem@authorityURI attribute.'
+
 Identifier = collections.namedtuple('Identifier', 'text type')
+__pdoc__['Identifier.text'] = 'Identifier elem text value.'
+__pdoc__['Identifier.type'] = 'Value of elem@type attribute.'
+
 Language = collections.namedtuple('Language', 'text code authority')
+__pdoc__['Language.text'] = 'Language elem[@type="text"] value.'
+__pdoc__['Language.code'] = 'Language elem[@type="code"] value.'
+__pdoc__['Language.authority'] = 'Value of elem@authority attribute.'
+
 Name = collections.namedtuple('Name', 'text type uri authority authorityURI role')
+__pdoc__['Name.text'] = 'Name elem text value.'
+__pdoc__['Name.type'] = 'Value of elem@type attribute.'
+__pdoc__['Name.uri'] = 'Value of elem@valueURI attribute.'
+__pdoc__['Name.authority'] = 'Value of elem@authority attribute.'
+__pdoc__['Name.authorityURI'] = 'Value of elem@authorityURI attribute.'
+__pdoc__['Name.role'] = 'Role tuple generated from the values in elem/role/roleTerm'
+
 NamePart = collections.namedtuple('NamePart', 'text type')
+__pdoc__['NamePart'] = 'Used internally to reformat name texts.'
+
 Note = collections.namedtuple('Note', 'text type displayLabel')
+__pdoc__['Note.text'] = 'Note elem text value.'
+__pdoc__['Note.type'] = 'Value of elem@type attribute.'
+__pdoc__['Note.displayLabel'] = 'Value of elem@displayLabel attribute.'
+
 PublicationPlace = collections.namedtuple('PublicationPlace', 'text type')
+__pdoc__['PublicationPlace.text'] = 'Publication place elem text value.'
+__pdoc__['PublicationPlace.type'] = 'Value of elem@type attribute.'
+
 Rights = collections.namedtuple('Rights', 'text type uri')
+__pdoc__['Rights.text'] = 'Rights elem text value.'
+__pdoc__['Rights.type'] = 'Value of elem@type attribute.'
+__pdoc__['Rights.uri'] = "Value of elem@xlink:href attribute. Local practice is to store rightsstaments.org URI's in this attribute."
+
 Role = collections.namedtuple('Role', 'text code authority')
+__pdoc__['Role.text'] = 'Role elem[@type="text"] value.'
+__pdoc__['Role.code'] = 'Role elem[@type="code"] value.'
+__pdoc__['Role.authority'] = 'Value of elem@authority attribute.'
+
 Subject = collections.namedtuple('Subject', 'text uri authority authorityURI')
+__pdoc__['Subject.text'] = 'Text values of children of Subject elem. Potentially reformatted into LCSH order.'
+__pdoc__['Subject.uri'] = 'Value of elem@valueURI attribute.'
+__pdoc__['Subject.authority'] = 'Value of elem@authority attribute.'
+__pdoc__['Subject.authorityURI'] = 'Value of elem@authorityURI attribute.'
+
 SubjectPart = collections.namedtuple('SubjectPart', 'text type')
+__pdoc__['SubjectPart'] = 'Used internally to reformat subject texts.'
+
+# Making life easier
 mods = NAMESPACES['mods']
 
 
