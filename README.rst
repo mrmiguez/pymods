@@ -1,5 +1,5 @@
-pymods |Build Status|
-=====================
+pymods
+======
 
 pymods is utility module for working with the Library of Congress's MODS
 XML standard: Metadata Description Schema (MODS). It is a utility
@@ -7,7 +7,7 @@ wrapper for the lxml module specific to deserializing data out of
 MODSXML into python data types.
 
 If you need a module to serialize data into MODSXML, see the other
-`pymods by Matt Cordial <https://github.com/cordmata/pymods>`__.
+`pymods by Matt Cordial <https://github.com/cordmata/pymods>`_.
 
 Installing
 ----------
@@ -59,7 +59,7 @@ the lxml.\_Element and lxml.ElementBase methods.
 
     In [8]: for child in record.iterdescendants():
       ....:    print(child.tag)
-        
+
     {http://www.loc.gov/mods/v3}identifier
     {http://www.loc.gov/mods/v3}extension
     {info:flvc/manifest/v1}flvc
