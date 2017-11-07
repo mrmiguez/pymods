@@ -658,7 +658,7 @@ class OAIRecord(Record):
                 return self.attrib['id']
             except AttributeError:
                 pass
-        elif '{http://www.openarchives.org/OAI/2.0/oai_dc/}' in self.tag:
+        elif '{http://www.openarchives.org/OAI/2.0/}' in self.tag:
             try:
                 return self.find('{0}header/{0}identifier'.format(NAMESPACES['oai_dc'])).text
             except AttributeError:
