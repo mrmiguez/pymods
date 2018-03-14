@@ -97,7 +97,7 @@ class OriginInfoTests(unittest.TestCase):
         '''checks place of publication'''
         expected = [('Hogwartz', None),
                     ('hgz', 'code')]
-        self.assertEqual(expected, self.sixth_record.publication_place)
+        self.assertEqual(expected, [(place.text, place.type) for place in self.sixth_record.publication_place])
 
     def test_mods_publisher(self):
         '''checks publisher'''

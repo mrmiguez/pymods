@@ -12,6 +12,7 @@ class Reader(etree.XMLParser):
     def __init__(self, file_location, iter_elem, parser=None):
         """
         Basic XML parser & iterator
+
         :param file_location: XML encoded file
         :param iter_elem: element to use as record iterator
         :param parser: a custom etree.XMLParser (required for custom etree.ElementBase subclasses)
@@ -41,6 +42,7 @@ class MODSReader(Reader):
     def __init__(self, file_location):
         """
         Parser/iterator for the MODSRecord class. Iterates on mods:mods elements.
+
         :param file_location:
         """
         mods_parser_registration = etree.ElementDefaultClassLookup(element=MODSRecord)
@@ -54,6 +56,7 @@ class OAIReader(Reader):
     def __init__(self, file_location):
         """
         Parser/iterator for the OAIRecord class. Iterates over record elements in any namespace (repox or oai-pmh).
+
         :param file_location:
         """
         oai_parser_registration = etree.ElementDefaultClassLookup(element=OAIRecord)
