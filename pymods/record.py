@@ -66,7 +66,7 @@ __pdoc__['Role.text'] = 'Role elem[@type="text"] value.'
 __pdoc__['Role.code'] = 'Role elem[@type="code"] value.'
 __pdoc__['Role.authority'] = 'Value of elem@authority attribute.'
 
-Subject = collections.namedtuple('Subject', 'text uri authority authorityURI')
+Subject = collections.namedtuple('Subject', 'text uri authority authorityURI elem')
 __pdoc__['Subject.text'] = 'Text values of children of Subject elem. Potentially reformatted into LCSH order.'
 __pdoc__['Subject.uri'] = 'Value of elem@valueURI attribute.'
 __pdoc__['Subject.authority'] = 'Value of elem@authority attribute.'
@@ -450,12 +450,12 @@ class MODSRecord(Record):
         return [Subject(subject._subject_text(),
                         subject[0].attrib.get('valueURI'),
                         subject.attrib.get('authority'),
-                        subject.attrib.get('authorityURI'))
+                        subject.attrib.get('authorityURI'), subject)
                 if subject.attrib.get('valueURI') is None
                 else Subject(subject._subject_text(),
                              subject.attrib.get('valueURI'),
                              subject.attrib.get('authority'),
-                             subject.attrib.get('authorityURI'))
+                             subject.attrib.get('authorityURI'), subject)
                 for subject in self.iterfind('{0}subject'.format(mods))
                 if 'geographicCode' not in subject[0].tag]
 
