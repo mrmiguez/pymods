@@ -10,17 +10,17 @@ If you need a module to serialize data into MODSXML, see the other
 `pymods by Matt Cordial <https://github.com/cordmata/pymods>`_.
 
 Installing
-----------
+==========
 
 Recommended:
 
 ``pip install pymods``
 
 Using
------
+=====
 
 Basics
-~~~~~~
+------
 
 XML is parsed using the MODSReader class:
 
@@ -77,7 +77,7 @@ the lxml.\_Element and lxml.ElementBase methods.
     ...
 
 Methods
-~~~~~~~
+-------
 
 All functions return data either as a string, list, list of named
 tuples. See the appropriate docstring for details.
@@ -93,7 +93,7 @@ tuples. See the appropriate docstring for details.
         authorityURI, and valueURI attributes.
 
 Examples
---------
+========
 
 Importing
 
@@ -114,7 +114,7 @@ Parsing a file
     [Date(text='1987-02', type='{http://www.loc.gov/mods/v3}dateIssued')]
 
 Simple tasks
-~~~~~~~~~~~~
+------------
 
 Generating a title list
 
@@ -159,7 +159,7 @@ Creating a subject list
     National Organization for Women
 
 More complex tasks
-~~~~~~~~~~~~~~~~~~
+------------------
 
 Creating a list of subject URI's only for LCSH subjects
 
