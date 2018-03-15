@@ -80,7 +80,7 @@ Methods
 -------
 
 All functions return data either as a string, list, list of named
-tuples. See the appropriate docstring for details.
+tuples. See the `API documentation <http://pymods.readthedocs.io>`_ or appropriate docstring for details.
 
 .. code:: python
 
