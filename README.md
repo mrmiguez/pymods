@@ -66,7 +66,7 @@ In [8]: for child in record.iterdescendants():
 
 ### Methods
 
-All functions return data either as a string, list, list of named tuples. See the appropriate docstring or the [API documentation](https://pythonhosted.org/pymods/) for details.
+All functions return data either as a string, list, list of named tuples. See the appropriate docstring or the [API documentation](http://pymods.readthedocs.io) for details.
 
 ```python
 >>> record.genre?
