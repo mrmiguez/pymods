@@ -1,13 +1,13 @@
 pymods.record Module
 ====================
 
-Custom pymods lxml parsers.
+Custom pymods record classes.
 
-:pymods.MODSReader: Instantiates the pymods.MODSRecord class. Iterates over mods.mods elements.
+:pymods.MODSRecord: Defines functions and properties for deserializing MODSXML data into python data types.
 Many properties of the MODSRecord class return namedtuples. Named aliases correspond to attributes and features
 of the parent XML element.
 
-:pymods.OAIReader: Instantiates the pymods.OAIRecord class. Iterates record elements in any namespace.
+:pymods.OAIRecord: Provides convenience functions for accessing OAI-PMH record metadata in a variety of namespaces.
 
 :pymods.DCRecord: Basic functions for accessing elements in the Dublin Core and Qualified Dublin Core namespaces.
 

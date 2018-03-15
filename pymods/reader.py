@@ -1,9 +1,3 @@
-r'''
-
-
-
-'''
-
 from lxml import etree
 
 from pymods import MODSRecord, OAIRecord
