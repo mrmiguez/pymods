@@ -1,37 +1,10 @@
-pymods package
-==============
+pymods API
+==========
 
-Submodules
-----------
+.. toctree::
+    :maxdepth: 2
+    :caption: pymods API:
 
-pymods.reader module
---------------------
-
-.. automodule:: pymods.reader
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-pymods.record module
---------------------
-
-.. automodule:: pymods.record
-    :members:
-    :undoc-members:
-    :show-inheritance:
-    
-pymods.writer module
---------------------
-
-.. automodule:: pymods.writer
-    :members:
-    :undoc-members:
-    :show-inheritance:
-    
-Module contents
----------------
-
-.. automodule:: pymods
-    :members:
-    :undoc-members:
-    :show-inheritance:
+    reader
+    record
+    writer

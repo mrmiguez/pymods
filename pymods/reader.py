@@ -19,7 +19,9 @@ def parse(source, parser=None):
 
 
 class Reader(etree.XMLParser):
-    """lxml parser"""
+    """
+    lxml parser
+    """
 
     def __init__(self, file_location, iter_elem, parser=None):
         """
@@ -50,7 +52,9 @@ class Reader(etree.XMLParser):
 
 
 class MODSReader(Reader):
-    """Customized lxml parser for the MODSRecord class. Iterates on mods:mods elements."""
+    """
+    Customized lxml parser for the MODSRecord class. Iterates on mods:mods elements.
+    """
 
     def __init__(self, file_location):
         """
@@ -65,7 +69,9 @@ class MODSReader(Reader):
 
 
 class OAIReader(Reader):
-    """Customized lxml parser for the OAIRecord class. Iterates over oai:record elements in any namespace (repox or oai-pmh)."""
+    """
+    Customized lxml parser for the OAIRecord class. Iterates over oai:record elements in any namespace (repox or oai-pmh).
+    """
 
     def __init__(self, file_location):
         """

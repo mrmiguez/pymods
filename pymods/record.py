@@ -123,8 +123,9 @@ class MODSRecord(Record):
     as lists of strings or lists of named tuples. When possible
     data is parsed from element parts and returned in typical
     LOC ordered strings:
-        {family name}, {given name}, {dates} for names.
-        {non-sort character} {title}: {subtitle} for titles.
+
+    * {family name}, {given name}, {dates} for names.
+    * {non-sort character} {title}: {subtitle} for titles.
     """
 
     def _init(self):

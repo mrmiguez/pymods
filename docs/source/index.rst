@@ -11,17 +11,8 @@ Welcome to pymods's documentation!
     :caption: Contents:
 
     usage/quickstart
-    modules
-   
-API Docs
-========
-.. autosummary::
     pymods
-    pymods.reader
-    pymods.record
-    pymods.writer
-
-
+   
 Indices and tables
 ==================
 
