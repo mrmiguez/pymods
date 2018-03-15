@@ -1,4 +1,13 @@
+"""
+Custom pymods lxml parsers.
+
+:pymods.MODSReader: Instantiates the pymods.MODSRecord class. Iterates over mods.mods elements.
+
+:pymods.OAIReader:  Instantiates the pymods.OAIRecord class. Iterates record elements in any namespace.
+"""
+
 from lxml import etree
+
 from pymods import MODSRecord, OAIRecord
 from pymods.constants import NAMESPACES
 
@@ -8,6 +17,7 @@ def parse(source, parser=None):
 
 
 class Reader(etree.XMLParser):
+    """lxml parser"""
 
     def __init__(self, file_location, iter_elem, parser=None):
         """
@@ -38,6 +48,7 @@ class Reader(etree.XMLParser):
 
 
 class MODSReader(Reader):
+    """Customized lxml parser for the MODSRecord class. Iterates on mods:mods elements."""
 
     def __init__(self, file_location):
         """
@@ -52,6 +63,7 @@ class MODSReader(Reader):
 
 
 class OAIReader(Reader):
+    """Customized lxml parser for the OAIRecord class. Iterates over oai:record elements in any namespace (repox or oai-pmh)."""
 
     def __init__(self, file_location):
         """

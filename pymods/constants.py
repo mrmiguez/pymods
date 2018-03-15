@@ -1,3 +1,7 @@
+"""
+Various lists and dicts needed for parsers and record classes. Stored here for convenience.
+"""
+
 NAMESPACES = {'oai_dc': '{http://www.openarchives.org/OAI/2.0/}',
               'dc': '{http://purl.org/dc/elements/1.1/}',
               'mods': '{http://www.loc.gov/mods/v3}',

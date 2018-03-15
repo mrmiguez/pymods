@@ -4,22 +4,6 @@ pymods package
 Submodules
 ----------
 
-pymods.constants module
------------------------
-
-.. automodule:: pymods.constants
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-pymods.exceptions module
-------------------------
-
-.. automodule:: pymods.exceptions
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 pymods.reader module
 --------------------
 

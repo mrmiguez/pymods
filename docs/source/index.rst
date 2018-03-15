@@ -7,21 +7,19 @@ Welcome to pymods's documentation!
 ==================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 2
+    :caption: Contents:
 
-   usage/quickstart
-   modules
+    usage/quickstart
+    modules
    
 API Docs
 ========
 .. autosummary::
-   pymods
-   pymods.constants
-   pymods.exceptions
-   pymods.reader
-   pymods.record
-   pymods.writer
+    pymods
+    pymods.reader
+    pymods.record
+    pymods.writer
 
 
 Indices and tables

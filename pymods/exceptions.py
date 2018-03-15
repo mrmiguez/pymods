@@ -1,3 +1,8 @@
+"""
+Framework for future exception classes.
+"""
+
+
 class PymodsException(Exception):
     pass
 

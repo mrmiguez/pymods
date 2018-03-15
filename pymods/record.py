@@ -1,6 +1,16 @@
-import re
+"""
+Custom pymods record classes.
+
+:pymods.MODSRecord: Defines functions and properties for deserializing MODSXML data into python data types.
+
+:pymods.OAIRecord: Provides convenience functions for accessing OAI-PMH record metadata in a variety of namespaces.
+"""
+
 import collections
+import re
+
 from lxml import etree
+
 from pymods.constants import NAMESPACES, DATE_FIELDS
 
 __pdoc__ = {}  # for pdoc documentation - http://pdoc.burntsushi.net/pdoc
