@@ -1,10 +1,12 @@
-"""
+r'''
+
 Custom pymods record classes.
 
 :pymods.MODSRecord: Defines functions and properties for deserializing MODSXML data into python data types.
 
 :pymods.OAIRecord: Provides convenience functions for accessing OAI-PMH record metadata in a variety of namespaces.
-"""
+
+'''
 
 import collections
 import re
