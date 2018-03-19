@@ -12,7 +12,7 @@ Instantiates the pymods.MODSRecord class. Iterates over mods.mods elements.
 Instantiates the pymods.OAIRecord class. Iterates record elements in any namespace.
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 4
     :caption: pymods.reader:
 
 .. autoclass:: pymods.Reader

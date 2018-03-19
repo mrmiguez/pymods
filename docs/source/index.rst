@@ -7,7 +7,7 @@ Welcome to pymods's documentation!
 ==================================
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 4
     :caption: Contents:
 
     usage/quickstart

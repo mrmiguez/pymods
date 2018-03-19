@@ -18,7 +18,7 @@ Provides convenience functions for accessing OAI-PMH record metadata in a variet
 Basic functions for accessing elements in the Dublin Core and Qualified Dublin Core namespaces.
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 4
     :caption: pymods.record:
 
 .. autoclass:: pymods.Record
