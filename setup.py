@@ -9,7 +9,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name="pymods",
-    version="2.0.8",
+    version="2.0.9",
     packages=find_packages(exclude=['tests*']),
     install_requires=['lxml >= 2.3'],
     author="Matthew Miguez",

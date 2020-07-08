@@ -780,8 +780,8 @@ class DCRecord(Record):
         """
         if self.find('{0}'.format(elem)) is not None:
             if delimiter is None:
-                return [item.text for item in self.findall('{0}'.format(elem))]
+                return [item.text for item in self.findall('{0}'.format(elem)) if item.text]
             else:
                 return [split_text.strip()
-                        for item in self.findall('{0}'.format(elem))
+                        for item in self.findall('{0}'.format(elem)) if item.text
                         for split_text in item.text.split(delimiter)]
