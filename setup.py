@@ -1,6 +1,7 @@
-from setuptools import setup, find_packages
 from codecs import open
 from os import path
+
+from setuptools import setup, find_packages
 
 here = path.abspath(path.dirname(__file__))
 
@@ -17,6 +18,7 @@ setup(
     description="Utility class wrapping lxml for reading data from MODS v3.4 XML metadata into Python data types.",
     long_description=long_description,
     url='https://github.com/mrmiguez/pymods',
+    download_url='https://github.com/mrmiguez/pymods/archive/2.0.9.tar.gz',
     keywords="MODS metadata xml",
     license='MIT',
     classifiers=[
