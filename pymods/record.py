@@ -527,6 +527,13 @@ class MODSRecord(Record):
         # TODO: return unformatted subject parts for transformation scenarios
 
     @property
+    def table_of_contents(self):
+        try:        
+            return [toc.text for toc in self.iterfind('{0}tableOfContents'.format(mods))]
+        except AttributeError:
+            return None
+
+    @property
     def titles(self):
         """
         General title retrieval service.
