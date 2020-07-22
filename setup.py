@@ -18,7 +18,7 @@ setup(
     description="Utility class wrapping lxml for reading data from MODS v3.4 XML metadata into Python data types.",
     long_description=long_description,
     url='https://github.com/mrmiguez/pymods',
-    download_url='https://github.com/mrmiguez/pymods/archive/2.0.9.tar.gz',
+    download_url='https://github.com/mrmiguez/pymods/archive/2.0.10.tar.gz',
     keywords="MODS metadata xml",
     license='MIT',
     classifiers=[
