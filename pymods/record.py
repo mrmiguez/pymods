@@ -479,7 +479,7 @@ class MODSRecord(Record):
 
         :return: List of strings.
         """
-        purl = re.compile('((http://purl)[\w\d:#@%/;$()~_?\+-=\\\.&]+)')
+        purl = re.compile('((http)(s)?(://purl)[\w\d:#@%/;$()~_?\+-=\\\.&]+)')
         return [url.text for url in self.iterfind('./{0}location/{0}url'.format(mods)) if purl.search(url.text)]
 
     @property
