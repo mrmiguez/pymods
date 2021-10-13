@@ -10,7 +10,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name="pymods",
-    version="2.0.11",
+    version="2.0.12",
     packages=find_packages(exclude=['tests*']),
     install_requires=['lxml >= 2.3'],
     author="Matthew Miguez",
@@ -18,7 +18,7 @@ setup(
     description="Utility class wrapping lxml for reading data from MODS v3.4 XML metadata into Python data types.",
     long_description=long_description,
     url='https://github.com/mrmiguez/pymods',
-    download_url='https://github.com/mrmiguez/pymods/archive/2.0.11.tar.gz',
+    download_url='https://github.com/mrmiguez/pymods/archive/2.0.12.tar.gz',
     keywords="MODS metadata xml",
     license='MIT',
     classifiers=[
