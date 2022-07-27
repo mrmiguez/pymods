@@ -1,5 +1,7 @@
 # __init__.py
 
+__version__ = '2.0.12'
+
 r'''
 
 pymods
@@ -183,8 +185,7 @@ Get URLs for objects using a No Copyright US rightsstatement.org URI
 
 '''
 
-
-from .record import *
+from .constants import *
 from .exceptions import *
 from .reader import *
-from .constants import *
+from .record import *
