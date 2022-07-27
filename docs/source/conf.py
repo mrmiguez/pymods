@@ -15,8 +15,6 @@
 import os
 import sys
 
-from pymods import __version__
-
 sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
 # sys.path.insert(0, os.path.abspath('.'))
 
@@ -28,9 +26,9 @@ copyright = '2022, Matthew Miguez'
 author = 'Matthew Miguez'
 
 # The short X.Y version
-version = ''
+# version = ''
 # The full version, including alpha/beta/rc tags
-release = __version__
+# release = __version__
 
 
 # -- General configuration ---------------------------------------------------
