@@ -1,6 +1,5 @@
 # __init__.py
 
-__version__ = '2.0.12'
 
 r'''
 
@@ -189,3 +188,5 @@ from .constants import *
 from .exceptions import *
 from .reader import *
 from .record import *
+
+__version__ = '2.0.12'
