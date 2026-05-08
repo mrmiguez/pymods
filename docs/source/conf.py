@@ -22,7 +22,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
 # -- Project information -----------------------------------------------------
 
 project = 'pymods'
-copyright = '2022, Matthew Miguez'
+copyright = '2026, Matthew Miguez'
 author = 'Matthew Miguez'
 
 # The short X.Y version

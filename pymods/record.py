@@ -766,6 +766,12 @@ class OAIRecord(Record):
                     dc_parser.set_element_class_lookup(dc_parser_registration)
                     return etree.XML(etree.tostring(record_data[0], encoding='UTF-8').decode('utf-8'),
                                      parser=dc_parser)
+                elif 'MARC21' in record_data[0].tag:
+                    marcxml_parser_registration = etree.ElementDefaultClassLookup(element=MARCRecord)
+                    marcxml_parser = etree.XMLParser()
+                    marcxml_parser.set_element_class_lookup(marcxml_parser_registration)
+                    return etree.XML(etree.tostring(record_data[0], encoding='UTF-8').decode('utf-8'),
+                                     parser=marcxml_parser)
             except IndexError:
                 pass
 
@@ -792,3 +798,12 @@ class DCRecord(Record):
                 return [split_text.strip()
                         for item in self.findall('{0}'.format(elem)) if item.text
                         for split_text in item.text.split(delimiter)]
+
+
+class MARCRecord(Record):
+    """
+    Record class for MARC records.
+    """
+
+    def _init(self):
+        super(MARCRecord, self)._init()

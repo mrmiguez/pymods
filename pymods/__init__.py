@@ -189,4 +189,4 @@ from .exceptions import *
 from .reader import *
 from .record import *
 
-__version__ = '2.0.12'
+__version__ = '2.0.13'
