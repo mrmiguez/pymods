@@ -1,6 +1,6 @@
 from lxml import etree
 
-from pymods import MODSRecord, OAIRecord
+from pymods.record import MODSRecord, OAIRecord
 from pymods.constants import NAMESPACES
 
 
