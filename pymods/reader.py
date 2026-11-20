@@ -72,4 +72,4 @@ class OAIReader(Reader):
         oai_parser_registration = etree.ElementDefaultClassLookup(element=OAIRecord)
         oai_parser = etree.XMLParser()
         oai_parser.set_element_class_lookup(oai_parser_registration)
-        super(OAIReader, self).__init__(file_location, '{*}record', parser=oai_parser)
+        super(OAIReader, self).__init__(file_location, '{http://www.openarchives.org/OAI/2.0/}record', parser=oai_parser)
